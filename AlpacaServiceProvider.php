@@ -14,7 +14,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $providers = [
-//        UserServiceProvider::class,
-//        PageServiceProvider::class
+        UserServiceProvider::class,
+        PageServiceProvider::class
     ];
 }
