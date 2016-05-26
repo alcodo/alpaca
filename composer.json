@@ -1,0 +1,45 @@
+{
+  "name": "alcodo/alpaca",
+  "description": "Simple laravel CMF system",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "cmf",
+    "cms",
+    "laravel"
+  ],
+  "homepage": "https://github.com/alcodo/user",
+  "authors": [
+    {
+      "name": "Alexej Kloos",
+      "email": "alexejkloos@gmail.com",
+      "homepage": "http://alcodo.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "laravel/framework": "~5.0",
+    "artesaos/seotools": "^0.9",
+    "zizaco/entrust": "5.2.x-dev",
+    "cocur/slugify": "^2.1",
+    "adamwathan/bootforms": "^0.8.0",
+    "approached/laravel-date-international": "^1.1"
+
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Alcodo\\Block\\": "./block",
+      "Alcodo\\Crud\\": "./crud",
+      "Alcodo\\Menu\\": "./menu",
+      "Alcodo\\Page\\": "./page",
+      "Alcodo\\User\\": "./user"
+    },
+    "files": [
+      "helper.php"
+    ]
+  },
+  "minimum-stability": "dev"
+}
