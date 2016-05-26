@@ -13,12 +13,13 @@ elixir.config.sourcemaps = false;
  */
 
 elixir(function(mix) {
-    mix.sass('style.scss', 'public/assets/theme/style.css');
+    mix.sass('../../../alpaca/resources/sass/style.scss', 'public/assets/theme/style.css');
+    // mix.sass('style.scss', 'public/assets/theme/style.css');
     //mix.rubySass('style.scss', 'public/assets/theme/style.css');
 
     // js
     mix.scripts([
-        // scripts
+        // dependency
         '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         '../../../node_modules/magnific-popup/dist/jquery.magnific-popup.js',
         '../../../node_modules/summernote/dist/summernote.js',
@@ -28,14 +29,18 @@ elixir(function(mix) {
         '../../../node_modules/select2/dist/js/select2.js',
         '../../../node_modules/jquery-treegrid/js/jquery.treegrid.js',
         '../../../node_modules/jquery-treegrid/js/jquery.treegrid.bootstrap3.js',
-        'lib/bootstrap-confirmation.js',
-        'lib/jquery.bootstrap-autohidingnavbar.js',
-        'navbar.js',
-        'dataTables_languages.js',
-        'dataTables.js',
-        'confirm-button.js',
-        'page.js',
-        'select.js'
+
+        // libs
+        '../../../alpaca/resources/js-lib/bootstrap-confirmation.js',
+        '../../../alpaca/resources/js-lib/jquery.bootstrap-autohidingnavbar.js',
+
+        // js
+        '../../../alpaca/resources/js/navbar.js',
+        '../../../alpaca/resources/js/dataTables_languages.js',
+        '../../../alpaca/resources/js/dataTables.js',
+        '../../../alpaca/resources/js/confirm-button.js',
+        '../../../alpaca/resources/js/page.js',
+        '../../../alpaca/resources/js/select.js'
     ], 'public/assets/theme/script.js');
 
     // Version
