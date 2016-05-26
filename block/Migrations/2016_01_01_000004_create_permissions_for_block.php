@@ -22,7 +22,6 @@ class CreatePermissionsForBlock extends Migration
             $permission = $this->createPermission('Block', $type);
             $adminRole->attachPermission($permission);
         }
-
     }
 
     /**

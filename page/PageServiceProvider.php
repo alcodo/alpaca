@@ -10,13 +10,6 @@ class PageServiceProvider extends Provider
      */
     public function register()
     {
-        $this->app->register(\Alcodo\Crud\ServiceProvider::class);
-
-        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-
-        // seo
-        $this->app->register(\Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
-        $loader->alias('SEO', \Artesaos\SEOTools\Facades\SEOTools::class);
     }
 
     public function boot()

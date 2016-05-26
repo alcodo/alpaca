@@ -39,7 +39,6 @@ class CreateBlockTable extends Migration
      */
     public function down()
     {
-        var_dump(2435);
         Schema::drop('blocks');
     }
 

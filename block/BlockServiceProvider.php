@@ -3,7 +3,7 @@
 use Alcodo\Block\Builder\BlockBuilder;
 use Illuminate\Support\ServiceProvider as Provider;
 
-class ServiceProvider extends Provider
+class BlockServiceProvider extends Provider
 {
     /**
      * Register the service provider.
@@ -11,7 +11,11 @@ class ServiceProvider extends Provider
      */
     public function register()
     {
-        $this->app->register('Alcodo\Helper\ServiceProvider');
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+
+        // facade
+        $loader->alias('Block', \Alcodo\Block\Builder\BlockFacade::class);
+
     }
 
     public function boot()
