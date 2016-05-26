@@ -1,0 +1,30 @@
+{
+  "name": "alpaca",
+  "version": "1.0.0",
+  "description": "Simple laravel CMF system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alcodo/alpaca.git"
+  },
+  "keywords": [
+    "cmf",
+    "cms",
+    "laravel"
+  ],
+  "author": "Alexej Kloos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alcodo/alpaca/issues"
+  },
+  "homepage": "https://github.com/alcodo/alpaca#readme",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "critical": "^0.7.2",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
+    "jquery-treegrid": "^0.3.0",
+    "magnific-popup": "^1.1.0",
+    "select2": "^4.0.2",
+    "summernote": "^0.8.1"
+  }
+}
