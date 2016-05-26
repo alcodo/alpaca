@@ -31,6 +31,7 @@
   },
   "autoload": {
     "psr-4": {
+      "Alcodo\\": "",
       "Alcodo\\Block\\": "./block",
       "Alcodo\\Crud\\": "./crud",
       "Alcodo\\Menu\\": "./menu",

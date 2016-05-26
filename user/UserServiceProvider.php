@@ -4,7 +4,7 @@ namespace Alcodo\User;
 
 use Illuminate\Support\ServiceProvider as Provider;
 
-class ServiceProvider extends Provider
+class UserServiceProvider extends Provider
 {
     /**
      * Register the service provider.
