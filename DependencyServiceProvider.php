@@ -2,41 +2,55 @@
 
 namespace Alcodo;
 
-use Illuminate\Support\ServiceProvider as Provider;
+use AdamWathan\BootForms\BootFormsServiceProvider;
+use Approached\LaravelDateInternational\ServiceProvider;
+use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
+use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
+use Illuminate\Support\AggregateServiceProvider;
+use Laracasts\Flash\FlashServiceProvider;
+use Zizaco\Entrust\EntrustServiceProvider;
 
-class DependencyServiceProvider extends Provider
+class DependencyServiceProvider extends AggregateServiceProvider
 {
+
+    protected $providers = [
+        FlashServiceProvider::class,
+        EntrustServiceProvider::class,
+        SEOToolsServiceProvider::class,
+        SlugifyServiceProvider::class,
+        ServiceProvider::class,
+        BootFormsServiceProvider::class
+    ];
+
+    protected $aliases = [
+        'Flash' => \Laracasts\Flash\Flash::class,
+        'Entrust' => \Zizaco\Entrust\EntrustFacade::class,
+        'SEO' => \Artesaos\SEOTools\Facades\SEOTools::class,
+        'Slugify' => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
+        'Dateintl' => \Approached\LaravelDateInternational\DateIntlFacade::class,
+        'BootForm' => \AdamWathan\BootForms\Facades\BootForm::class
+    ];
+
+    protected $middlewares = [
+        'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class
+    ];
+
     /**
      * Register the service provider.
      * @return void
      */
     public function register()
     {
+        parent::register();
+
+        // register aliases
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
-        // flash
-        $this->app->register(\Laracasts\Flash\FlashServiceProvider::class);
-        $loader->alias('Flash', \Laracasts\Flash\Flash::class);
-
-        // entrust
-        $this->app->register(\Zizaco\Entrust\EntrustServiceProvider::class);
-        $loader->alias('Entrust', \Zizaco\Entrust\EntrustFacade::class);
-
-        // seo
-        $this->app->register(\Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
-        $loader->alias('SEO', \Artesaos\SEOTools\Facades\SEOTools::class);
-
-        // slugify
-        $this->app->register(\Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::class);
-        $loader->alias('Slugify', \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class);
-
-        // datebuilder
-        $this->app->register(\Approached\LaravelDateInternational\ServiceProvider::class);
-        $loader->alias('Dateintl', \Approached\LaravelDateInternational\DateIntlFacade::class);
-
-        // formbuilder
-        $this->app->register(\AdamWathan\BootForms\BootFormsServiceProvider::class);
-        $loader->alias('BootForm', \AdamWathan\BootForms\Facades\BootForm::class);
+        foreach ($this->aliases as $name => $class) {
+            $loader->alias($name, $class);
+        }
     }
 
     /**
@@ -44,10 +58,9 @@ class DependencyServiceProvider extends Provider
      */
     public function boot(\Illuminate\Routing\Router $router)
     {
-        // user entrust
-        $router->middleware('role', \Zizaco\Entrust\Middleware\EntrustRole::class);
-        $router->middleware('permission', \Zizaco\Entrust\Middleware\EntrustPermission::class);
-        $router->middleware('ability', \Zizaco\Entrust\Middleware\EntrustAbility::class);
+        foreach ($this->middlewares as $name => $class) {
+            $router->middleware($name, $class);
+        }
     }
 
 }
