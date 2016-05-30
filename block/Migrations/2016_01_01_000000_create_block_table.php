@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateBlockTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -41,5 +40,4 @@ class CreateBlockTable extends Migration
     {
         Schema::drop('blocks');
     }
-
 }

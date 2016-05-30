@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -7,7 +8,7 @@ class CreateRolesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
@@ -32,13 +33,12 @@ class CreateRolesTable extends Migration
 
             $table->primary(['user_id', 'role_id']);
         });
-
     }
 
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {

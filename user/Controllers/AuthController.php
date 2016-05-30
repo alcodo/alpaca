@@ -1,10 +1,10 @@
-<?php namespace Alcodo\User\Controllers;
+<?php
+
+namespace Alcodo\User\Controllers;
 
 use Alcodo\User\Models\User;
-use Illuminate\Cache\RateLimiter;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Cache\RateLimiter;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +28,8 @@ class AuthController extends Controller
     /**
      * Determine if the user has too many failed login attempts.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     protected function hasTooManyLoginAttempts(Request $request)
@@ -42,7 +43,8 @@ class AuthController extends Controller
     /**
      * Increment the login attempts for the user.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return int
      */
     protected function incrementLoginAttempts(Request $request)
@@ -55,7 +57,8 @@ class AuthController extends Controller
     /**
      * Determine how many retries are left for the user.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return int
      */
     protected function retriesLeft(Request $request)
@@ -70,7 +73,8 @@ class AuthController extends Controller
     /**
      * Redirect the user after determining they are locked out.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendLockoutResponse(Request $request)
@@ -89,7 +93,8 @@ class AuthController extends Controller
     /**
      * Get the login lockout error message.
      *
-     * @param  int $seconds
+     * @param int $seconds
+     *
      * @return string
      */
     protected function getLockoutErrorMessage($seconds)
@@ -100,7 +105,8 @@ class AuthController extends Controller
     /**
      * Clear the login locks for the given user credentials.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
     protected function clearLoginAttempts(Request $request)
@@ -113,12 +119,13 @@ class AuthController extends Controller
     /**
      * Get the throttle key for the given request.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return string
      */
     protected function getThrottleKey(Request $request)
     {
-        return mb_strtolower($request->input($this->loginUsername())) . '|' . $request->ip();
+        return mb_strtolower($request->input($this->loginUsername())).'|'.$request->ip();
     }
 
     /**
@@ -156,7 +163,8 @@ class AuthController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function postLogin(Request $request)
@@ -197,8 +205,9 @@ class AuthController extends Controller
     /**
      * Send the response after the user was authenticated.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  bool $throttles
+     * @param \Illuminate\Http\Request $request
+     * @param bool                     $throttles
+     *
      * @return \Illuminate\Http\Response
      */
     protected function handleUserWasAuthenticated(Request $request, $throttles)
@@ -212,13 +221,15 @@ class AuthController extends Controller
         }
 
         Flash::success(trans('user::user.login_successful'));
+
         return redirect()->intended($this->redirectPath());
     }
 
     /**
      * Get the needed authorization credentials from the request.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
     protected function getCredentials(Request $request)
@@ -295,6 +306,7 @@ class AuthController extends Controller
      * Handle a registration request for the application.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function postRegister(Request $request)
@@ -303,13 +315,14 @@ class AuthController extends Controller
         Auth::login($user);
 
         Flash::success(trans('user::user.registered_login_successful'));
+
         return redirect($this->redirectPath());
     }
 
     // trait RedirectsUsers
 
     /**
-     * Get redirect path after register / login
+     * Get redirect path after register / login.
      *
      * @return string
      */
@@ -331,14 +344,15 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
     {
         return User::create([
             'username' => $data['username'],
-            'email' => $data['email'],
+            'email'    => $data['email'],
             'password' => $data['password'],
         ]);
     }

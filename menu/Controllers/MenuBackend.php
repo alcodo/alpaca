@@ -1,6 +1,9 @@
-<?php namespace Alcodo\Menu\Controllers;
+<?php
+
+namespace Alcodo\Menu\Controllers;
 
 use Alcodo\Crud\Controllers\ControllerTrait;
+use Alcodo\Crud\Controllers\CrudContract;
 use Alcodo\Crud\Controllers\DependencyTrait;
 use Alcodo\Crud\Controllers\ModelTrait;
 use Alcodo\Crud\Controllers\TextTrait;
@@ -9,14 +12,13 @@ use Alcodo\Crud\Permission\Permission;
 use Alcodo\Menu\Models\Menu;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
-use Alcodo\Crud\Controllers\CrudContract;
 
 class MenuBackend extends Controller implements CrudContract
 {
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
     /**
-     * Modelname as singular
+     * Modelname as singular.
      *
      * @return string
      */
@@ -26,7 +28,7 @@ class MenuBackend extends Controller implements CrudContract
     }
 
     /**
-     * Modelname as plural
+     * Modelname as plural.
      *
      * @return string
      */
@@ -36,41 +38,43 @@ class MenuBackend extends Controller implements CrudContract
     }
 
     /**
-     *  Columns for the index page
+     *  Columns for the index page.
      *
      * @return array
      */
     public function getIndexColumns()
     {
-        return array(
+        return [
             [
-                'label' => trans('crud::crud.title'),
-                'css' => 'col-md-3',
-                'modelValue' => 'title'
-            ]
-        );
+                'label'      => trans('crud::crud.title'),
+                'css'        => 'col-md-3',
+                'modelValue' => 'title',
+            ],
+        ];
     }
 
     /**
-     * Formbuilder
+     * Formbuilder.
      *
-     * @param null $form
+     * @param null                                     $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
+     *
      * @return mixed
      */
     public function getForm($form = null, Model $entry = null)
     {
-        $formFields = array(
-            'id' => $form->hidden('id'),
-            'title' => $form->text(trans('crud::crud.name'), 'title'),
-            'class' => $form->text(trans('crud::crud.class'), 'class'),
+        $formFields = [
+            'id'     => $form->hidden('id'),
+            'title'  => $form->text(trans('crud::crud.name'), 'title'),
+            'class'  => $form->text(trans('crud::crud.class'), 'class'),
             'submit' => $form->submit(trans('crud::crud.save')),
-        );
+        ];
+
         return $formFields;
     }
 
     /**
-     * Return a model classname
+     * Return a model classname.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -80,7 +84,7 @@ class MenuBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return a permession class
+     * Return a permession class.
      *
      * @return \Alcodo\Crud\Permission\Permission
      */
@@ -90,7 +94,7 @@ class MenuBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return rules for create validation
+     * Return rules for create validation.
      *
      * @return array
      */
@@ -102,7 +106,7 @@ class MenuBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return rules for update validation
+     * Return rules for update validation.
      *
      * @return array
      */
@@ -110,5 +114,4 @@ class MenuBackend extends Controller implements CrudContract
     {
         return $this->getValidationCreate();
     }
-
 }

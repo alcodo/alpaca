@@ -1,4 +1,6 @@
-<?php namespace Alcodo\Page;
+<?php
+
+namespace Alcodo\Page;
 
 use Illuminate\Support\ServiceProvider as Provider;
 
@@ -6,6 +8,7 @@ class PageServiceProvider extends Provider
 {
     /**
      * Register the service provider.
+     *
      * @return void
      */
     public function register()
@@ -14,18 +17,18 @@ class PageServiceProvider extends Provider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/Views', 'page');
-        $this->loadTranslationsFrom(__DIR__ . '/Lang', 'page');
+        $this->loadViewsFrom(__DIR__.'/Views', 'page');
+        $this->loadTranslationsFrom(__DIR__.'/Lang', 'page');
         $this->publishes([
-            __DIR__ . '/Migrations/' => base_path('/database/migrations'),
+            __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');
-        
+
         $this->publishes([
-            __DIR__ . '/Seeds/' => base_path('/database/seeds'),
+            __DIR__.'/Seeds/' => base_path('/database/seeds'),
         ], 'seeds');
 
         if (!$this->app->routesAreCached()) {
-            require __DIR__ . '/routes.php';
+            require __DIR__.'/routes.php';
         }
     }
 }

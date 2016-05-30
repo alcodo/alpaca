@@ -25,17 +25,17 @@ trait ControllerTrait
         $urlBuilder = $this->getUrlBuilderClass($parameters);
         $urlBuilder->setCollectionUrlReadUpdateDelete($entries);
 
-        return view($this->getViewIndex(), array(
-            'title' => $this->getTitle(),
+        return view($this->getViewIndex(), [
+            'title'       => $this->getTitle(),
             'description' => $this->getDescription(),
-            'entries' => $entries,
-            'columns' => $this->getIndexColumns(),
-            'create' => [
-                'url' => $urlBuilder->getUrlCreate(),
-                'text' => $this->getUrlCreateText()
+            'entries'     => $entries,
+            'columns'     => $this->getIndexColumns(),
+            'create'      => [
+                'url'  => $urlBuilder->getUrlCreate(),
+                'text' => $this->getUrlCreateText(),
             ],
-            'permissions' => $permission->getAllPermissions()
-        ));
+            'permissions' => $permission->getAllPermissions(),
+        ]);
     }
 
     /**
@@ -71,7 +71,8 @@ trait ControllerTrait
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store()
@@ -88,6 +89,7 @@ trait ControllerTrait
         $this->getNotificationClass()->store($entry->wasRecentlyCreated);
 
         $urlBuilder = $this->getUrlBuilderClass($parameters);
+
         return redirect($urlBuilder->getUrlIndex());
     }
 
@@ -104,10 +106,10 @@ trait ControllerTrait
         $this->getPermissionClass()->canShowOrFail();
         $entry = $this->getEntry($id);
 
-        return view($this->getViewShow(), array(
+        return view($this->getViewShow(), [
             'title' => $this->getSingularModelName(),
-            'entry' => $entry
-        ));
+            'entry' => $entry,
+        ]);
     }
 
     /**
@@ -147,8 +149,9 @@ trait ControllerTrait
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update()
@@ -165,13 +168,15 @@ trait ControllerTrait
         $this->getNotificationClass()->updated($status);
 
         $urlBuilder = $this->getUrlBuilderClass($parameters);
+
         return redirect($urlBuilder->getUrlIndex());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy()
@@ -185,7 +190,7 @@ trait ControllerTrait
         $this->getNotificationClass()->destroy($status);
 
         $urlBuilder = $this->getUrlBuilderClass($parameters);
+
         return redirect($urlBuilder->getUrlIndex());
     }
-
 }

@@ -4,7 +4,6 @@ namespace Alcodo\Crud\Permission;
 
 class Permission implements PermissionContract
 {
-
     /**
      * @var string
      */
@@ -32,6 +31,7 @@ class Permission implements PermissionContract
 
     /**
      * Permission constructor.
+     *
      * @param string $index
      * @param string $show
      * @param string $create
@@ -53,7 +53,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for index
+     * Check permission for index.
      *
      * @return bool
      */
@@ -63,7 +63,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for show
+     * Check permission for show.
      *
      * @return bool
      */
@@ -73,7 +73,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for create
+     * Check permission for create.
      *
      * @return bool
      */
@@ -83,7 +83,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for edit
+     * Check permission for edit.
      *
      * @return bool
      */
@@ -93,7 +93,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for destroy
+     * Check permission for destroy.
      *
      * @return bool
      */
@@ -103,7 +103,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission
+     * Check permission.
      *
      * @return bool
      */
@@ -130,23 +130,23 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Return a array with booleans about all permissions
+     * Return a array with booleans about all permissions.
      *
      * @return array
      */
     public function getAllPermissions()
     {
-        return array(
-            'index' => $this->canIndex(),
-            'show' => $this->canShow(),
-            'create' => $this->canCreate(),
-            'edit' => $this->canEdit(),
+        return [
+            'index'   => $this->canIndex(),
+            'show'    => $this->canShow(),
+            'create'  => $this->canCreate(),
+            'edit'    => $this->canEdit(),
             'destroy' => $this->canDestroy(),
-        );
+        ];
     }
 
     /**
-     * Check permission for index or fail
+     * Check permission for index or fail.
      *
      * @return bool
      */
@@ -158,7 +158,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for show or fail
+     * Check permission for show or fail.
      *
      * @return bool
      */
@@ -170,7 +170,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for create or fail
+     * Check permission for create or fail.
      *
      * @return bool
      */
@@ -182,7 +182,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for edit or fail
+     * Check permission for edit or fail.
      *
      * @return bool
      */
@@ -194,7 +194,7 @@ class Permission implements PermissionContract
     }
 
     /**
-     * Check permission for destroy or fail
+     * Check permission for destroy or fail.
      *
      * @return bool
      */
@@ -205,9 +205,8 @@ class Permission implements PermissionContract
         );
     }
 
-
     /**
-     * Fail wrapper
+     * Fail wrapper.
      *
      * @return bool
      */

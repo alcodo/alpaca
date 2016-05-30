@@ -1,16 +1,15 @@
-<?php namespace Alcodo\Menu\Controllers;
+<?php
 
+namespace Alcodo\Menu\Controllers;
 
 use Alcodo\Menu\Models\Item;
 use Alcodo\Menu\Models\Menu;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class MenuItemController extends Controller
 {
-
     public function create($slug)
     {
         return view('menu::item.form', compact('slug'));
@@ -30,6 +29,7 @@ class MenuItemController extends Controller
         $item = $menu->items()->create($request->all());
 
         flashCreate($item, trans('menu::menu.menuitem'));
+
         return redirect(route('menu.show', $slug));
     }
 
@@ -58,6 +58,7 @@ class MenuItemController extends Controller
         $result = $item->update($request->all());
 
         flashUpdate($result, trans('menu::menu.menuitem'));
+
         return redirect(route('menu.show', $slug));
     }
 
@@ -67,7 +68,7 @@ class MenuItemController extends Controller
         $result = $menu->items()->destroy($id);
 
         flashDelete($result, trans('menu::menu.menuitem'));
+
         return redirect(route('menu.show', $slug));
     }
-
 }

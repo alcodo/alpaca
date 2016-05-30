@@ -2,15 +2,13 @@
 
 namespace Alcodo\Crud\Controllers;
 
-
 use Alcodo\Crud\Notification\Notification;
 use Alcodo\Crud\Utilities\UrlBuilder;
 
 trait DependencyTrait
 {
-
     /**
-     * Return a notification helper class
+     * Return a notification helper class.
      *
      * @return \Alcodo\Crud\Notification\Notification
      */
@@ -20,7 +18,7 @@ trait DependencyTrait
     }
 
     /**
-     * Return a url builder helper class
+     * Return a url builder helper class.
      *
      * @return \Alcodo\Crud\Utilities\UrlBuilder
      */
@@ -28,5 +26,4 @@ trait DependencyTrait
     {
         return new UrlBuilder($this, $parameters);
     }
-
 }

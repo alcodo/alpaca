@@ -2,7 +2,7 @@
 
 return [
 
-    'category' => 'Category',
+    'category'   => 'Category',
     'categories' => 'Categories',
 
 ];

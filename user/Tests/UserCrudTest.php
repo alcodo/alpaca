@@ -4,13 +4,12 @@ use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 use Alcodo\User\Controllers\UserController;
 
-
 class UserCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 
     /**
-     * Return the controller class for the crud test
+     * Return the controller class for the crud test.
      *
      * @return \Alcodo\Crud\Controllers\CrudContract
      */
@@ -20,61 +19,61 @@ class UserCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Creates the form with this values
+     * Creates the form with this values.
      *
      * @return array
      */
     public function getCreateFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'John Doe',
-                'element' => 'username'
+                'text'    => 'John Doe',
+                'element' => 'username',
             ],
             [
-                'text' => 'johndoe@example.net',
-                'element' => 'email'
+                'text'    => 'johndoe@example.net',
+                'element' => 'email',
             ],
             [
-                'text' => 'MySecrectPassword',
-                'element' => 'password'
+                'text'    => 'MySecrectPassword',
+                'element' => 'password',
             ],
             [
-                'text' => 'MySecrectPassword',
-                'element' => 'password_confirmation'
+                'text'    => 'MySecrectPassword',
+                'element' => 'password_confirmation',
             ],
-        );
+        ];
     }
 
     /**
-     * Edit the form with this values
+     * Edit the form with this values.
      *
      * @return array
      */
     public function getEditFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'John Doe Super',
-                'element' => 'username'
+                'text'    => 'John Doe Super',
+                'element' => 'username',
             ],
             [
-                'text' => 'johnSUPER@example.net',
-                'element' => 'email'
+                'text'    => 'johnSUPER@example.net',
+                'element' => 'email',
             ],
             [
-                'text' => 'MySecrectPassword',
-                'element' => 'password'
+                'text'    => 'MySecrectPassword',
+                'element' => 'password',
             ],
             [
-                'text' => 'MySecrectPassword',
-                'element' => 'password_confirmation'
+                'text'    => 'MySecrectPassword',
+                'element' => 'password_confirmation',
             ],
-        );
+        ];
     }
 
     /**
-     * Get the create button text to press form
+     * Get the create button text to press form.
      *
      * @return string
      */
@@ -84,7 +83,7 @@ class UserCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get the edit button text to press form
+     * Get the edit button text to press form.
      *
      * @return string
      */
@@ -94,7 +93,8 @@ class UserCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get additional parameters for testing
+     * Get additional parameters for testing.
+     *
      * @return array
      */
     public function getUrlParameters()

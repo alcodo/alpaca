@@ -1,4 +1,5 @@
 <?php
+
 use Alcodo\User\Models\Role;
 use Alcodo\User\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -8,13 +9,13 @@ class CreateAdminUser extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
         $user = User::create([
             'username' => 'admin',
-            'email' => 'admin@example.com',
+            'email'    => 'admin@example.com',
             'password' => 'admin',
         ]);
 
@@ -27,7 +28,7 @@ class CreateAdminUser extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {

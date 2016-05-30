@@ -2,10 +2,8 @@
 
 namespace Alcodo\Crud\Controllers;
 
-
 trait TextTrait
 {
-
     public function getTitle()
     {
         return $this->getPluralModelName();
@@ -25,5 +23,4 @@ trait TextTrait
     {
         return trans('crud::crud.edit_type', ['type' => $this->getSingularModelName()]);
     }
-
 }

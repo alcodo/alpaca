@@ -1,18 +1,19 @@
-<?php namespace Alcodo\Menu\Models;
+<?php
+
+namespace Alcodo\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-
-    protected $fillable = array(
+    protected $fillable = [
         'text',
         'title',
         'href',
         'rel',
         'target',
         'menu_id',
-    );
+    ];
 
     public function getLink()
     {
@@ -41,5 +42,4 @@ class Item extends Model
     {
         return $this->belongsTo('Alcodo\Menu\Models\Menu');
     }
-
 }

@@ -1,6 +1,9 @@
-<?php namespace Alcodo\Menu\Controllers;
+<?php
+
+namespace Alcodo\Menu\Controllers;
 
 use Alcodo\Crud\Controllers\ControllerTrait;
+use Alcodo\Crud\Controllers\CrudContract;
 use Alcodo\Crud\Controllers\DependencyTrait;
 use Alcodo\Crud\Controllers\ModelTrait;
 use Alcodo\Crud\Controllers\TextTrait;
@@ -9,14 +12,13 @@ use Alcodo\Crud\Permission\Permission;
 use Alcodo\Menu\Models\Item;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
-use Alcodo\Crud\Controllers\CrudContract;
 
 class ItemBackend extends Controller implements CrudContract
 {
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
     /**
-     * Modelname as singular
+     * Modelname as singular.
      *
      * @return string
      */
@@ -26,7 +28,7 @@ class ItemBackend extends Controller implements CrudContract
     }
 
     /**
-     * Modelname as plural
+     * Modelname as plural.
      *
      * @return string
      */
@@ -36,45 +38,47 @@ class ItemBackend extends Controller implements CrudContract
     }
 
     /**
-     *  Columns for the index page
+     *  Columns for the index page.
      *
      * @return array
      */
     public function getIndexColumns()
     {
-        return array(
+        return [
             [
-                'label' => trans('crud::crud.link'),
-                'css' => 'col-md-3',
-                'modelValue' => 'getLink'
-            ]
-        );
+                'label'      => trans('crud::crud.link'),
+                'css'        => 'col-md-3',
+                'modelValue' => 'getLink',
+            ],
+        ];
     }
 
     /**
-     * Formbuilder
+     * Formbuilder.
      *
-     * @param null $form
+     * @param null                                     $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
+     *
      * @return mixed
      */
     public function getForm($form = null, Model $entry = null, $parameters = null)
     {
-        $formFields = array(
-            'id' => $form->hidden('id'),
+        $formFields = [
+            'id'      => $form->hidden('id'),
             'menu_id' => $form->hidden('menu_id')->value($parameters[0]),
-            'text' => $form->text(trans('crud::crud.text'), 'text'),
-            'href' => $form->text(trans('crud::crud.href'), 'href'),
-            'title' => $form->text(trans('crud::crud.title'), 'title'),
-            'rel' => $form->text(trans('crud::crud.rel'), 'rel'),
-            'target' => $form->text(trans('crud::crud.target'), 'target'),
-            'submit' => $form->submit(trans('crud::crud.save')),
-        );
+            'text'    => $form->text(trans('crud::crud.text'), 'text'),
+            'href'    => $form->text(trans('crud::crud.href'), 'href'),
+            'title'   => $form->text(trans('crud::crud.title'), 'title'),
+            'rel'     => $form->text(trans('crud::crud.rel'), 'rel'),
+            'target'  => $form->text(trans('crud::crud.target'), 'target'),
+            'submit'  => $form->submit(trans('crud::crud.save')),
+        ];
+
         return $formFields;
     }
 
     /**
-     * Return a model classname
+     * Return a model classname.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -84,7 +88,7 @@ class ItemBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return a permession class
+     * Return a permession class.
      *
      * @return \Alcodo\Crud\Permission\Permission
      */
@@ -94,19 +98,19 @@ class ItemBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return rules for create validation
+     * Return rules for create validation.
      *
      * @return array
      */
     public function getValidationCreate()
     {
         return [
-            'text' => 'required|string'
+            'text' => 'required|string',
         ];
     }
 
     /**
-     * Return rules for update validation
+     * Return rules for update validation.
      *
      * @return array
      */
@@ -114,5 +118,4 @@ class ItemBackend extends Controller implements CrudContract
     {
         return $this->getValidationCreate();
     }
-
 }

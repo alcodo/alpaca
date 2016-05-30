@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MenuTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -34,5 +32,4 @@ class MenuTable extends Migration
     {
         Schema::drop('menus');
     }
-
 }

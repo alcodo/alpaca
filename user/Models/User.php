@@ -1,17 +1,16 @@
-<?php namespace Alcodo\User\Models;
+<?php
+
+namespace Alcodo\User\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-class User extends Model implements
-    AuthenticatableContract,
-    CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-
     use Authenticatable, CanResetPassword, EntrustUserTrait;
 
     /**
@@ -35,14 +34,14 @@ class User extends Model implements
      */
     protected $hidden = ['password', 'remember_token'];
 
-
     /**
      * Fill the model with an array of attributes.
      *
-     * @param  array $attributes
-     * @return $this
+     * @param array $attributes
      *
      * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     *
+     * @return $this
      */
     public function fill(array $attributes)
     {
@@ -52,6 +51,7 @@ class User extends Model implements
             // encrypt password
             $this->password = bcrypt($this->password);
         }
+
         return $this;
     }
 
@@ -69,5 +69,4 @@ class User extends Model implements
     {
         return $this->roles->implode('display_name', ', ');
     }
-
 }

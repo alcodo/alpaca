@@ -1,4 +1,5 @@
 <?php
+
 use Alcodo\Crud\Utilities\PermissionCreator;
 use Alcodo\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
@@ -10,7 +11,7 @@ class CreatePermissionsForPage extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
@@ -28,13 +29,12 @@ class CreatePermissionsForPage extends Migration
             $permission = $this->createPermission('Category', $type);
             $adminRole->attachPermission($permission);
         }
-
     }
 
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {
