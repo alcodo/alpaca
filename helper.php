@@ -6,3 +6,5 @@ function isActiveRoute($route, $output = 'active')
         return $output;
     }
 }
+
+//include __DIR__ . '/helper-dev.php';
