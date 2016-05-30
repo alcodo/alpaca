@@ -4,39 +4,18 @@
 
     <h1>{{ trans('user::user.register') }}</h1>
 
-    {!! Form::open(['url' => action('Alcodo\User\Controllers\AuthController@postRegister'), 'class' => 'form-horizontal']) !!}
+    {!! BootForm::openHorizontal([
+                              'sm' => [4, 8],
+                              'lg' => [2, 10]
+    ])->post()->action(action('Alcodo\User\Controllers\AuthController@postRegister')) !!}
 
-    <div class="form-group">
-        {!! Form::label('username', trans('user::user.username'), ['class' => 'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::text('username', null, ['required', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="form-group">
-        {!! Form::label('email', trans('user::user.email'), ['class' => 'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::email('email', null, ['required', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="form-group">
-        {!! Form::label('password', trans('user::user.password'), ['class' => 'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::password('password', ['required', 'class' => 'form-control']) !!}
-        </div>
-    </div>
-    <div class="form-group">
-        {!! Form::label('password_confirmation', trans('user::user.password_confirm'), ['class' => 'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::password('password_confirmation', ['required', 'class' => 'form-control']) !!}
-        </div>
-    </div>
+    {!! BootForm::text(trans('user::user.username'), 'username')->required() !!}
+    {!! BootForm::email(trans('user::user.email'), 'email')->required() !!}
+    {!! BootForm::password(trans('user::user.password'), 'password')->required() !!}
+    {!! BootForm::password(trans('user::user.password_confirm'), 'password_confirmation')->required() !!}
 
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            {!! Form::submit(trans('user::user.register'), ['class' => 'btn btn-primary form-control']) !!}
-        </div>
-    </div>
+    {!! BootForm::submit(trans('user::user.register'))->addClass('btn-primary') !!}
 
-    {!! Form::close() !!}
+    {!! BootForm::close() !!}
 
 @endsection
