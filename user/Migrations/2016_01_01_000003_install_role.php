@@ -3,7 +3,7 @@
 use Alcodo\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesData extends Migration
+class InstallRole extends Migration
 {
     /**
      * Run the migrations.

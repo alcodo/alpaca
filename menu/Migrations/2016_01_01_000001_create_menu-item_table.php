@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class MenuTable extends Migration
+class CreateMenuItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,13 +11,18 @@ class MenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function ($table) {
+        Schema::create('items', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
 
+            $table->string('text');
+            $table->string('href');
             $table->string('title');
-            $table->string('class')->nullable();
-            $table->text('html')->nullable();
+            $table->string('rel');
+            $table->string('target');
+
+            $table->integer('menu_id')->unsigned()->index();
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -30,6 +35,6 @@ class MenuTable extends Migration
      */
     public function down()
     {
-        Schema::drop('menus');
+        Schema::drop('items');
     }
 }

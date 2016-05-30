@@ -4,7 +4,7 @@ use Alcodo\Crud\Utilities\PermissionCreator;
 use Alcodo\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsForMenu extends Migration
+class PermissionMenu extends Migration
 {
     use PermissionCreator;
 

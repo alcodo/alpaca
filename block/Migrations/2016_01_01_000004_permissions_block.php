@@ -4,7 +4,7 @@ use Alcodo\Crud\Utilities\PermissionCreator;
 use Alcodo\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsForPage extends Migration
+class PermissionBlock extends Migration
 {
     use PermissionCreator;
 
@@ -18,15 +18,9 @@ class CreatePermissionsForPage extends Migration
         // add permission the admin role
         $adminRole = Role::where('name', 'admin')->first();
 
-        // page
+        // block
         foreach ($this->getPermissionsTypes() as $type) {
-            $permission = $this->createPermission('Page', $type);
-            $adminRole->attachPermission($permission);
-        }
-
-        // category
-        foreach ($this->getPermissionsTypes() as $type) {
-            $permission = $this->createPermission('Category', $type);
+            $permission = $this->createPermission('Block', $type);
             $adminRole->attachPermission($permission);
         }
     }

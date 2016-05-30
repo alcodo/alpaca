@@ -4,7 +4,7 @@ use Alcodo\User\Models\Role;
 use Alcodo\User\Models\User;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminUser extends Migration
+class InstallUser extends Migration
 {
     /**
      * Run the migrations.
