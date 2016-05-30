@@ -2,10 +2,11 @@
 
 namespace Alcodo;
 
-use Alcodo\Block\BlockServiceProvider;
 use Alcodo\Crud\CrudServiceProvider;
-use Alcodo\Page\PageServiceProvider;
 use Alcodo\User\UserServiceProvider;
+use Alcodo\Block\BlockServiceProvider;
+use Alcodo\Menu\MenuServiceProvider;
+use Alcodo\Page\PageServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
@@ -20,6 +21,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         CrudServiceProvider::class,
         UserServiceProvider::class,
         BlockServiceProvider::class,
+        MenuServiceProvider::class,
         PageServiceProvider::class,
     ];
 
