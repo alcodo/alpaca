@@ -22,4 +22,5 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         BlockServiceProvider::class,
         PageServiceProvider::class,
     ];
+
 }

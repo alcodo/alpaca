@@ -42,5 +42,10 @@
       "helper.php"
     ]
   },
+  "autoload-dev": {
+    "files": [
+      "helper-dev.php"
+    ]
+  },
   "minimum-stability": "dev"
 }
