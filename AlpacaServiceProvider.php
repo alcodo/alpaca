@@ -20,6 +20,6 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         CrudServiceProvider::class,
         UserServiceProvider::class,
         BlockServiceProvider::class,
-        PageServiceProvider::class
+        PageServiceProvider::class,
     ];
 }

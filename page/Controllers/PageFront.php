@@ -1,23 +1,19 @@
-<?php namespace Alcodo\Page\Controllers;
+<?php
 
-use Alcodo\Page\Models\Category;
+namespace Alcodo\Page\Controllers;
+
 use Alcodo\Page\Models\Page;
-
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class PageFront extends Controller
 {
-
     public function show($path)
     {
         if ($path != '/') {
             // it is not a frontpage
-            $path = '/' . $path;
+            $path = '/'.$path;
         }
 
         $page = Page::findBySlugOrFail($path);
@@ -50,5 +46,4 @@ class PageFront extends Controller
 
         return view('page::show', compact('page'));
     }
-
 }

@@ -1,33 +1,33 @@
-<?php namespace Alcodo\Page\Controllers;
+<?php
+
+namespace Alcodo\Page\Controllers;
 
 use Alcodo\Page\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class CategoryController extends Controller
 {
-
     public function __construct()
     {
-//        $this->middleware('auth');
+        //        $this->middleware('auth');
     }
 
     /**
-     * List all pictures
+     * List all pictures.
      *
      * @return Response
      */
     public function index()
     {
         $entries = Category::orderBy('name', 'ASC')->get();
+
         return view('page::category.list', compact('entries'));
     }
 
     /**
-     * Create form
+     * Create form.
      *
      * @return Response
      */
@@ -37,7 +37,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Not implementet
+     * Not implementet.
      *
      * @return Response
      */
@@ -55,7 +55,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Save image
+     * Save image.
      *
      * @return Response
      */
@@ -68,22 +68,25 @@ class CategoryController extends Controller
     }
 
     /**
-     * Edit form
+     * Edit form.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit($id)
     {
         $entry = Category::findOrFail($id);
+
         return view('page::category.form', compact('entry'));
     }
 
     /**
-     * Update
+     * Update.
      *
      * @param $id
      * @param Request $request
+     *
      * @return Response
      */
     public function update($id, Request $request)
@@ -98,7 +101,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy($id)
@@ -108,7 +112,4 @@ class CategoryController extends Controller
 
         return redirect(route('category.index'));
     }
-
 }
-
-

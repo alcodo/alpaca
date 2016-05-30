@@ -76,5 +76,4 @@ class UserTest extends TestCase
 //        $this->actingAs($user)
 //            ->visit($url);
     }
-
 }

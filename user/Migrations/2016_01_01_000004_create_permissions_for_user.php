@@ -1,4 +1,5 @@
 <?php
+
 use Alcodo\Crud\Utilities\PermissionCreator;
 use Alcodo\User\Models\Permission;
 use Alcodo\User\Models\Role;
@@ -11,7 +12,7 @@ class CreatePermissionsForUser extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
@@ -35,13 +36,12 @@ class CreatePermissionsForUser extends Migration
             $permission = $this->createPermission('Permission', $type);
             $adminRole->attachPermission($permission);
         }
-
     }
 
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {

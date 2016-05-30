@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 trait CrudTestTrait
 {
-
     /**
      * @test
      */
@@ -118,5 +117,4 @@ trait CrudTestTrait
         $this->delete($url, ['_token' => csrf_token()])
             ->see('Redirecting');
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
 return [
-  'permission' => 'Permission',
+  'permission'  => 'Permission',
   'permissions' => 'Permissions',
 ];

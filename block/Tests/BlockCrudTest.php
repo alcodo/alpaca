@@ -4,13 +4,12 @@ use Alcodo\Block\Controllers\BlockBackend;
 use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 
-
 class BlockCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 
     /**
-     * Return the controller class for the crud test
+     * Return the controller class for the crud test.
      *
      * @return \Alcodo\Crud\Controllers\CrudContract
      */
@@ -20,49 +19,49 @@ class BlockCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Creates the form with this values
+     * Creates the form with this values.
      *
      * @return array
      */
     public function getCreateFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'TestBlock',
-                'element' => 'name'
+                'text'    => 'TestBlock',
+                'element' => 'name',
             ],
             [
-                'text' => 'top',
-                'element' => 'area'
+                'text'    => 'top',
+                'element' => 'area',
             ],
             [
-                'text' => '2',
-                'element' => 'range'
+                'text'    => '2',
+                'element' => 'range',
             ],
             [
-                'text' => 'Brand news in block',
-                'element' => 'html'
+                'text'    => 'Brand news in block',
+                'element' => 'html',
             ],
-        );
+        ];
     }
 
     /**
-     * Edit the form with this values
+     * Edit the form with this values.
      *
      * @return array
      */
     public function getEditFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'Edited block',
-                'element' => 'html'
+                'text'    => 'Edited block',
+                'element' => 'html',
             ],
-        );
+        ];
     }
 
     /**
-     * Get the create button text to press form
+     * Get the create button text to press form.
      *
      * @return string
      */
@@ -72,7 +71,7 @@ class BlockCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get the edit button text to press form
+     * Get the edit button text to press form.
      *
      * @return string
      */
@@ -82,7 +81,8 @@ class BlockCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get additional parameters for testing
+     * Get additional parameters for testing.
+     *
      * @return array
      */
     public function getUrlParameters()

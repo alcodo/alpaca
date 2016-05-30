@@ -7,7 +7,6 @@ use Laracasts\Flash\Flash;
 
 class Notification implements NotificationContract
 {
-
     protected $crudController;
 
     public function __construct(CrudContract $controller)
@@ -16,9 +15,10 @@ class Notification implements NotificationContract
     }
 
     /**
-     * Creates a store alert
+     * Creates a store alert.
      *
      * @param bool $status
+     *
      * @return void
      */
     public function store(bool $status)
@@ -35,9 +35,10 @@ class Notification implements NotificationContract
     }
 
     /**
-     * Creates a updated alert
+     * Creates a updated alert.
      *
      * @param bool $status
+     *
      * @return void
      */
     public function updated(bool $status)
@@ -54,14 +55,14 @@ class Notification implements NotificationContract
     }
 
     /**
-     * Creates a destroy alert
+     * Creates a destroy alert.
      *
      * @param bool $status
+     *
      * @return void
      */
     public function destroy(bool $status)
     {
-
         $type = $this->crudController->getSingularModelName();
 
         if ($status) {

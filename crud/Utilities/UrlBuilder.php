@@ -3,13 +3,10 @@
 namespace Alcodo\Crud\Utilities;
 
 use Alcodo\Crud\Controllers\CrudContract;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
 
 class UrlBuilder
 {
-
     protected $controllerClassName;
     protected $parameters;
 
@@ -20,7 +17,7 @@ class UrlBuilder
     }
 
     /**
-     * Return index url path
+     * Return index url path.
      *
      * @return string
      */
@@ -30,7 +27,7 @@ class UrlBuilder
     }
 
     /**
-     * Return create url path
+     * Return create url path.
      *
      * @return string
      */
@@ -40,7 +37,7 @@ class UrlBuilder
     }
 
     /**
-     * Return create url path
+     * Return create url path.
      *
      * @return string
      */
@@ -50,7 +47,7 @@ class UrlBuilder
     }
 
     /**
-     * Return edit url path
+     * Return edit url path.
      *
      * @return string
      */
@@ -60,7 +57,7 @@ class UrlBuilder
     }
 
     /**
-     * Return edit url path
+     * Return edit url path.
      *
      * @return string
      */
@@ -70,7 +67,7 @@ class UrlBuilder
     }
 
     /**
-     * Return update url path
+     * Return update url path.
      *
      * @return string
      */
@@ -80,7 +77,7 @@ class UrlBuilder
     }
 
     /**
-     * Return destroy url path
+     * Return destroy url path.
      *
      * @return string
      */
@@ -90,20 +87,22 @@ class UrlBuilder
     }
 
     /**
-     * Return url by methodname
+     * Return url by methodname.
      *
      * @return string
      */
     protected function getUrlByMethodName($methodname, $methodParameters = [], $absoluteUrl = false)
     {
         $parameters = $this->addMethodParameters($methodParameters);
-        return action('\\' . $this->controllerClassName . '@' . $methodname, $parameters, $absoluteUrl);
+
+        return action('\\'.$this->controllerClassName.'@'.$methodname, $parameters, $absoluteUrl);
     }
 
     /**
-     * Add url to entries
+     * Add url to entries.
      *
      * @param Collection $entries
+     *
      * @return Collection $entries
      */
     public function setCollectionUrlReadUpdateDelete(Collection $entries)
@@ -118,9 +117,10 @@ class UrlBuilder
     }
 
     /**
-     * Merge global parameter with method parameter
+     * Merge global parameter with method parameter.
      *
      * @param $methodParameters
+     *
      * @return array
      */
     protected function addMethodParameters($methodParameters)

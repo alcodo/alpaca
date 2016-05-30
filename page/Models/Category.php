@@ -1,16 +1,17 @@
-<?php namespace Alcodo\Page\Models;
+<?php
+
+namespace Alcodo\Page\Models;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    
-    protected $fillable = array(
+    protected $fillable = [
         'title',
         'slug',
-        'body'
-    );
+        'body',
+    ];
 
     public function fill(array $attributes)
     {
@@ -58,5 +59,4 @@ class Category extends Model
     {
         return $this->hasOne('Alcodo\Page\Models\Page');
     }
-
 }

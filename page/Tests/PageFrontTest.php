@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Page fronted test
+ * Page fronted test.
  */
 class PageFrontTest extends TestCase
 {

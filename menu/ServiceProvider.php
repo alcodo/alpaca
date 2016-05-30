@@ -1,12 +1,14 @@
-<?php namespace Alcodo\Menu;
+<?php
 
-use Alcodo\Block\Builder\BlockBuilder;
+namespace Alcodo\Menu;
+
 use Illuminate\Support\ServiceProvider as Provider;
 
 class ServiceProvider extends Provider
 {
     /**
      * Register the service provider.
+     *
      * @return void
      */
     public function register()
@@ -16,17 +18,17 @@ class ServiceProvider extends Provider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/Views', 'menu');
-        $this->loadTranslationsFrom(__DIR__ . '/Lang', 'menu');
+        $this->loadViewsFrom(__DIR__.'/Views', 'menu');
+        $this->loadTranslationsFrom(__DIR__.'/Lang', 'menu');
         $this->publishes([
-            __DIR__ . '/Migrations/' => base_path('/database/migrations'),
+            __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');
         $this->publishes([
-            __DIR__ . '/Seeds/' => base_path('/database/seeds'),
+            __DIR__.'/Seeds/' => base_path('/database/seeds'),
         ], 'seeds');
 
         if (!$this->app->routesAreCached()) {
-            require __DIR__ . '/routes.php';
+            require __DIR__.'/routes.php';
         }
     }
 }

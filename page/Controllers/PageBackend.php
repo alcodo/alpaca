@@ -1,6 +1,9 @@
-<?php namespace Alcodo\Page\Controllers;
+<?php
+
+namespace Alcodo\Page\Controllers;
 
 use Alcodo\Crud\Controllers\ControllerTrait;
+use Alcodo\Crud\Controllers\CrudContract;
 use Alcodo\Crud\Controllers\DependencyTrait;
 use Alcodo\Crud\Controllers\ModelTrait;
 use Alcodo\Crud\Controllers\TextTrait;
@@ -10,7 +13,6 @@ use Alcodo\Page\Models\Category;
 use Alcodo\Page\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
-use Alcodo\Crud\Controllers\CrudContract;
 use Illuminate\Support\Facades\Auth;
 
 class PageBackend extends Controller implements CrudContract
@@ -18,7 +20,7 @@ class PageBackend extends Controller implements CrudContract
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
     /**
-     * Modelname as singular
+     * Modelname as singular.
      *
      * @return string
      */
@@ -28,7 +30,7 @@ class PageBackend extends Controller implements CrudContract
     }
 
     /**
-     * Modelname as plural
+     * Modelname as plural.
      *
      * @return string
      */
@@ -38,41 +40,42 @@ class PageBackend extends Controller implements CrudContract
     }
 
     /**
-     *  Columns for the index page
+     *  Columns for the index page.
      *
      * @return array
      */
     public function getIndexColumns()
     {
-        return array(
+        return [
             [
-                'label' => trans('crud::crud.title'),
-                'css' => 'col-md-3',
-                'modelValue' => 'title'
+                'label'      => trans('crud::crud.title'),
+                'css'        => 'col-md-3',
+                'modelValue' => 'title',
             ],
             [
-                'label' => trans('crud::crud.slug'),
-                'css' => 'col-md-3',
-                'modelValue' => 'slug'
+                'label'      => trans('crud::crud.slug'),
+                'css'        => 'col-md-3',
+                'modelValue' => 'slug',
             ],
             [
-                'label' => trans('crud::crud.created'),
-                'css' => 'col-md-2',
+                'label'      => trans('crud::crud.created'),
+                'css'        => 'col-md-2',
                 'modelValue' => 'getCreated',
             ],
             [
-                'label' => trans('crud::crud.updated'),
-                'css' => 'col-md-2',
+                'label'      => trans('crud::crud.updated'),
+                'css'        => 'col-md-2',
                 'modelValue' => 'getUpdated',
-            ]
-        );
+            ],
+        ];
     }
 
     /**
-     * Formbuilder
+     * Formbuilder.
      *
-     * @param null $form
+     * @param null                                     $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
+     *
      * @return mixed
      */
     public function getForm($form = null, Model $entry = null)
@@ -91,26 +94,27 @@ class PageBackend extends Controller implements CrudContract
 //        dd($categories);
 //        dd(Category::lists('title', 'id'));
 
-        $formFields = array(
-            'id' => $form->hidden('id'),
-            'title' => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
-            'slug' => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-path'),
+        $formFields = [
+            'id'       => $form->hidden('id'),
+            'title'    => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
+            'slug'     => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-path'),
             'category' => $form->select(trans('page::category.category'), 'category')
                 ->options($categories)
 //                ->select(''),
                 ->select($selectedRoles),
-            'body' => $form->textarea(trans('crud::crud.body'), 'body')->addClass('is-summernote'),
-            'html_title' => $form->text(trans('page::page.html_title'), 'html_title'),
+            'body'             => $form->textarea(trans('crud::crud.body'), 'body')->addClass('is-summernote'),
+            'html_title'       => $form->text(trans('page::page.html_title'), 'html_title'),
             'meta_description' => $form->text(trans('page::page.meta_description'), 'meta_description'),
-            'meta_robots' => $form->text(trans('page::page.meta_robots'), 'meta_robots'),
-            'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
-            'submit' => $form->submit(trans('crud::crud.save')),
-        );
+            'meta_robots'      => $form->text(trans('page::page.meta_robots'), 'meta_robots'),
+            'active'           => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
+            'submit'           => $form->submit(trans('crud::crud.save')),
+        ];
+
         return $formFields;
     }
 
     /**
-     * Return a model classname
+     * Return a model classname.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -120,7 +124,7 @@ class PageBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return a permession class
+     * Return a permession class.
      *
      * @return \Alcodo\Crud\Permission\Permission
      */
@@ -130,7 +134,7 @@ class PageBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return rules for create validation
+     * Return rules for create validation.
      *
      * @return array
      */
@@ -138,12 +142,12 @@ class PageBackend extends Controller implements CrudContract
     {
         return [
             'title' => 'required|string',
-            'body' => 'required|string',
+            'body'  => 'required|string',
         ];
     }
 
     /**
-     * Return rules for update validation
+     * Return rules for update validation.
      *
      * @return array
      */
@@ -151,15 +155,15 @@ class PageBackend extends Controller implements CrudContract
     {
         return [
             'title' => 'required|string',
-            'body' => 'required|string',
+            'body'  => 'required|string',
         ];
     }
 
-
     /**
-     * Create a entry and return it
+     * Create a entry and return it.
      *
      * @param array $data
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function createEntry(array $data)
@@ -173,10 +177,11 @@ class PageBackend extends Controller implements CrudContract
     }
 
     /**
-     * Updates a entry
+     * Updates a entry.
      *
      * @param $id
      * @param array $data
+     *
      * @return bool|int
      */
     public function updateEntry($id, array $data)

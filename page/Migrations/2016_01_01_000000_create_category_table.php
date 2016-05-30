@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCategoryTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -34,5 +33,4 @@ class CreateCategoryTable extends Migration
     {
         Schema::drop('categories');
     }
-
 }

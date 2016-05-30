@@ -1,7 +1,9 @@
-<?php namespace Alcodo\User\Controllers;
+<?php
 
-use Alcodo\Crud\Controllers\CrudContract;
+namespace Alcodo\User\Controllers;
+
 use Alcodo\Crud\Controllers\ControllerTrait;
+use Alcodo\Crud\Controllers\CrudContract;
 use Alcodo\Crud\Controllers\DependencyTrait;
 use Alcodo\Crud\Controllers\ModelTrait;
 use Alcodo\Crud\Controllers\TextTrait;
@@ -17,7 +19,7 @@ class UserController extends BaseController implements CrudContract
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
     /**
-     * Modelname as singular
+     * Modelname as singular.
      *
      * @return string
      */
@@ -27,7 +29,7 @@ class UserController extends BaseController implements CrudContract
     }
 
     /**
-     * Modelname as plural
+     * Modelname as plural.
      *
      * @return string
      */
@@ -37,47 +39,48 @@ class UserController extends BaseController implements CrudContract
     }
 
     /**
-     *  Columns for the index page
+     *  Columns for the index page.
      *
      * @return array
      */
     public function getIndexColumns()
     {
-        return array(
+        return [
             [
-                'label' => trans('user::user.username'),
-                'css' => 'col-md-3',
-                'modelValue' => 'name'
+                'label'      => trans('user::user.username'),
+                'css'        => 'col-md-3',
+                'modelValue' => 'name',
             ],
             [
-                'label' => trans('user::user.email'),
-                'css' => 'col-md-4',
+                'label'      => trans('user::user.email'),
+                'css'        => 'col-md-4',
                 'modelValue' => 'email',
             ],
             [
-                'label' => trans('user::role.roles'),
-                'css' => 'col-md-4',
+                'label'      => trans('user::role.roles'),
+                'css'        => 'col-md-4',
                 'modelValue' => 'getRoles',
 //                'modelValue' => 'user.roles',
             ],
             [
-                'label' => trans('crud::crud.created'),
-                'css' => 'col-md-2',
+                'label'      => trans('crud::crud.created'),
+                'css'        => 'col-md-2',
                 'modelValue' => 'getCreated',
             ],
             [
-                'label' => trans('crud::crud.updated'),
-                'css' => 'col-md-2',
+                'label'      => trans('crud::crud.updated'),
+                'css'        => 'col-md-2',
                 'modelValue' => 'getUpdated',
-            ]
-        );
+            ],
+        ];
     }
 
     /**
-     * Formbuilder
+     * Formbuilder.
      *
-     * @param null $form
+     * @param null       $form
      * @param Model|null $entry
+     *
      * @return array
      */
     public function getForm($form = null, Model $entry = null)
@@ -89,25 +92,25 @@ class UserController extends BaseController implements CrudContract
             $selectedRoles = $entry->roles->pluck('id')->toArray();
         }
 
-        $formFields = array(
-            'id' => $form->hidden('id'),
-            'user_id' => $form->hidden('user_id'),
-            'username' => $form->text(trans('user::user.username'), 'username'),
-            'email' => $form->text(trans('user::user.email'), 'email'),
-            'password' => $form->password(trans('user::user.password'), 'password'),
+        $formFields = [
+            'id'                    => $form->hidden('id'),
+            'user_id'               => $form->hidden('user_id'),
+            'username'              => $form->text(trans('user::user.username'), 'username'),
+            'email'                 => $form->text(trans('user::user.email'), 'email'),
+            'password'              => $form->password(trans('user::user.password'), 'password'),
             'password_confirmation' => $form->password(trans('user::user.password_confirm'), 'password_confirmation'),
-            'user.roles' => $form->select(trans('user::role.roles'), 'roles')
+            'user.roles'            => $form->select(trans('user::role.roles'), 'roles')
                 ->options(Role::lists('display_name', 'id'))
                 ->multiple()
                 ->select($selectedRoles),
             'submit' => $form->submit(trans('crud::crud.save')),
-        );
+        ];
 
         return $formFields;
     }
 
     /**
-     * Return a model classname
+     * Return a model classname.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -117,20 +120,22 @@ class UserController extends BaseController implements CrudContract
     }
 
     /**
-     * Return a entry
+     * Return a entry.
      *
      * @param $id
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getEntry($id)
     {
         $model = $this->getModelClass();
         $entry = $model::with('roles')->findOrFail($id);
+
         return $entry;
     }
 
     /**
-     * Returns a collections of entries
+     * Returns a collections of entries.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -138,13 +143,15 @@ class UserController extends BaseController implements CrudContract
     {
         $model = $this->getModelClass();
         $entries = $model::with('roles')->get();
+
         return $entries;
     }
 
     /**
-     * Create a entry and return it
+     * Create a entry and return it.
      *
      * @param array $data
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function createEntry(array $data)
@@ -161,10 +168,11 @@ class UserController extends BaseController implements CrudContract
     }
 
     /**
-     * Updates a entry
+     * Updates a entry.
      *
      * @param $id
      * @param array $data
+     *
      * @return bool|int
      */
     public function updateEntry($id, array $data)
@@ -182,7 +190,7 @@ class UserController extends BaseController implements CrudContract
     }
 
     /**
-     * Return a permession class
+     * Return a permession class.
      *
      * @return \Alcodo\Crud\Permission\Permission
      */
@@ -192,7 +200,7 @@ class UserController extends BaseController implements CrudContract
     }
 
     /**
-     * Returns rules for create validation
+     * Returns rules for create validation.
      *
      * @return array
      */
@@ -200,13 +208,13 @@ class UserController extends BaseController implements CrudContract
     {
         return [
             'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ];
     }
 
     /**
-     * Returns rules for update validation
+     * Returns rules for update validation.
      *
      * @return array
      */
@@ -216,7 +224,7 @@ class UserController extends BaseController implements CrudContract
 
         return [
             'username' => 'max:255',
-            'email' => 'email|max:255|unique:users,email,' . $data['id'],
+            'email'    => 'email|max:255|unique:users,email,'.$data['id'],
             'password' => 'confirmed|min:6',
         ];
     }

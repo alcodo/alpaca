@@ -9,7 +9,7 @@ class PermissionCrudTest extends TestCase implements CrudTestContract
     use CrudTestTrait;
 
     /**
-     * Return the controller class for the crud test
+     * Return the controller class for the crud test.
      *
      * @return \Alcodo\Crud\Controllers\CrudContract
      */
@@ -19,49 +19,49 @@ class PermissionCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Creates the form with this values
+     * Creates the form with this values.
      *
      * @return array
      */
     public function getCreateFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'create-user',
-                'element' => 'name'
+                'text'    => 'create-user',
+                'element' => 'name',
             ],
             [
-                'text' => 'Create a user',
-                'element' => 'display_name'
+                'text'    => 'Create a user',
+                'element' => 'display_name',
             ],
             [
-                'text' => 'User can create a other user',
-                'element' => 'description'
-            ]
-        );
+                'text'    => 'User can create a other user',
+                'element' => 'description',
+            ],
+        ];
     }
 
     /**
-     * Edit the form with this values
+     * Edit the form with this values.
      *
      * @return array
      */
     public function getEditFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'create-user-new',
-                'element' => 'name'
+                'text'    => 'create-user-new',
+                'element' => 'name',
             ],
             [
-                'text' => 'Create new user',
-                'element' => 'display_name'
-            ]
-        );
+                'text'    => 'Create new user',
+                'element' => 'display_name',
+            ],
+        ];
     }
 
     /**
-     * Get the create button text to press form
+     * Get the create button text to press form.
      *
      * @return string
      */
@@ -71,7 +71,7 @@ class PermissionCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get the edit button text to press form
+     * Get the edit button text to press form.
      *
      * @return string
      */
@@ -81,7 +81,8 @@ class PermissionCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get additional parameters for testing
+     * Get additional parameters for testing.
+     *
      * @return array
      */
     public function getUrlParameters()

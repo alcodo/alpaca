@@ -2,10 +2,10 @@
 
 return [
 
-    'role' => 'Role',
-    'roles' => 'Roles',
-    'name' => 'Name',
-    'description' => 'Description',
+    'role'         => 'Role',
+    'roles'        => 'Roles',
+    'name'         => 'Name',
+    'description'  => 'Description',
     'display-name' => 'Display name',
 
 ];

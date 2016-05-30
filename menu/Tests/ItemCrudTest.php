@@ -21,7 +21,7 @@ class ItemCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Return the controller class for the crud test
+     * Return the controller class for the crud test.
      *
      * @return \Alcodo\Crud\Controllers\CrudContract
      */
@@ -31,37 +31,37 @@ class ItemCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Creates the form with this values
+     * Creates the form with this values.
      *
      * @return array
      */
     public function getCreateFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'CMF',
-                'element' => 'text'
-            ]
-        );
+                'text'    => 'CMF',
+                'element' => 'text',
+            ],
+        ];
     }
 
     /**
-     * Edit the form with this values
+     * Edit the form with this values.
      *
      * @return array
      */
     public function getEditFormValues()
     {
-        return array(
+        return [
             [
-                'text' => 'Larave',
-                'element' => 'text'
+                'text'    => 'Larave',
+                'element' => 'text',
             ],
-        );
+        ];
     }
 
     /**
-     * Get the create button text to press form
+     * Get the create button text to press form.
      *
      * @return string
      */
@@ -71,7 +71,7 @@ class ItemCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get the edit button text to press form
+     * Get the edit button text to press form.
      *
      * @return string
      */
@@ -81,13 +81,14 @@ class ItemCrudTest extends TestCase implements CrudTestContract
     }
 
     /**
-     * Get additional parameters for testing
+     * Get additional parameters for testing.
+     *
      * @return array
      */
     public function getUrlParameters()
     {
         return [
-            0 => $this->menu_id
+            0 => $this->menu_id,
         ];
     }
 }

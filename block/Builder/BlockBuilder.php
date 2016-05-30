@@ -1,4 +1,6 @@
-<?php namespace Alcodo\Block\Builder;
+<?php
+
+namespace Alcodo\Block\Builder;
 
 use Alcodo\Block\Models\Block;
 use Alcodo\Menu\Models\Menu;
@@ -12,13 +14,12 @@ class BlockBuilder
 
         if ($blocks->isEmpty()) {
             // no blocks in this area
-            return null;
+            return;
         }
 
         $output = null;
         foreach ($blocks as $block) {
             if ($this->isException($block)) {
-
                 if (empty($block->menu_id)) {
                     // normal html block
                     $output .= $this->setActiveLink($block->html);
@@ -26,18 +27,23 @@ class BlockBuilder
                     // menu block
                     $menu = Menu::findOrFail($block->menu_id);
                     $output .= $menu->getHtml();
-
                 }
             }
         }
+
         return $output;
     }
 
     private function str_replace_last($string, $search, $replace)
     {
-        if ((($string_len = strlen($string)) == 0) || (($search_len = strlen($search)) == 0)) return $string;
+        if ((($string_len = strlen($string)) == 0) || (($search_len = strlen($search)) == 0)) {
+            return $string;
+        }
         $pos = strrpos($string, $search);
-        if ($pos > 0) return substr($string, 0, $pos) . $replace . substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
+        if ($pos > 0) {
+            return substr($string, 0, $pos).$replace.substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
+        }
+
         return $string;
     }
 
@@ -48,8 +54,8 @@ class BlockBuilder
             // front page
             return $html;
         } else {
-            $searchURL = '"><a href="/' . $path;
-            $replaceActive = ' active' . $searchURL;
+            $searchURL = '"><a href="/'.$path;
+            $replaceActive = ' active'.$searchURL;
 
             return $this->str_replace_last($html, $searchURL, $replaceActive);
         }
@@ -62,18 +68,18 @@ class BlockBuilder
         }
 
         $patterns_quoted = preg_quote($menu->exception, '/');
-        $to_replace = array(
+        $to_replace = [
             '/(\r\n?|\n)/', // newlines
-            '/\\\\\*/'     // wildcard
-        );
-        $replacements = array(
+            '/\\\\\*/',     // wildcard
+        ];
+        $replacements = [
             '|',
-            '.*'
-        );
+            '.*',
+        ];
 
-        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
-        return (bool)preg_match($regexpPatter, Request::path());
+        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
+        return (bool) preg_match($regexpPatter, Request::path());
     }
 
     public function getAreaChoice()
@@ -85,11 +91,12 @@ class BlockBuilder
             // set value
             $areas[$area] = $this->getAreaTranslation($area);
         }
+
         return $areas;
     }
 
     public function getAreaTranslation($areaId)
     {
-        return trans('block::block.' . $areaId);
+        return trans('block::block.'.$areaId);
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace Alcodo\Page\Models;
+<?php
+
+namespace Alcodo\Page\Models;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +13,7 @@ class Page extends Model
      */
     const BREAK_TAG = '<!-- break -->';
 
-    protected $fillable = array(
+    protected $fillable = [
         'active',
         'title',
         'slug',
@@ -23,7 +25,7 @@ class Page extends Model
         'meta_description',
 
         'user_id',
-    );
+    ];
 
     protected $casts = [
         'active' => 'integer',
@@ -31,11 +33,12 @@ class Page extends Model
 
     public static $validation = [
         'title' => 'required|string',
-        'body' => 'required|string',
+        'body'  => 'required|string',
     ];
 
     /**
-     * Casting fields
+     * Casting fields.
+     *
      * @param array $attributes A list of attributes to set.
      */
     public function fill(array $attributes)
@@ -46,11 +49,11 @@ class Page extends Model
             array_key_exists('title', $attributes)) {
             // create slug
             $slugify = new Slugify();
-            $this->slug = '/' . $slugify->slugify($attributes['title']);
+            $this->slug = '/'.$slugify->slugify($attributes['title']);
         }
 
         if (array_key_exists('active', $attributes)) {
-            $this->active = (int)$attributes['active'];
+            $this->active = (int) $attributes['active'];
         }
 
         return $this;
@@ -75,12 +78,11 @@ class Page extends Model
     {
         $entry = self::findBySlug($slug);
         if (is_null($entry)) {
-            throw (new ModelNotFoundException)->setModel(get_called_class());
+            throw (new ModelNotFoundException())->setModel(get_called_class());
         }
 
         return $entry;
     }
-
 
     public function category()
     {
@@ -92,5 +94,4 @@ class Page extends Model
         // TODO
 //        return $this->belongsTo('Alcodo\Page\Models\Category');
     }
-
 }

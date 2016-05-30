@@ -1,4 +1,6 @@
-<?php namespace Alcodo\User\Controllers;
+<?php
+
+namespace Alcodo\User\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;

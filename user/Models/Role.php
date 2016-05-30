@@ -1,4 +1,6 @@
-<?php namespace Alcodo\User\Models;
+<?php
+
+namespace Alcodo\User\Models;
 
 use Zizaco\Entrust\EntrustRole;
 

@@ -1,6 +1,8 @@
 <?php
 
-function isActiveRoute($route, $output = "active")
+function isActiveRoute($route, $output = 'active')
 {
-    if (Route::currentRouteName() == $route) return $output;
+    if (Route::currentRouteName() == $route) {
+        return $output;
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 use Alcodo\Crud\Utilities\PermissionCreator;
 use Alcodo\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
@@ -10,7 +11,7 @@ class CreatePermissionsForBlock extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
@@ -27,7 +28,7 @@ class CreatePermissionsForBlock extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {

@@ -1,39 +1,41 @@
-<?php namespace Alcodo\Block\Controllers;
+<?php
+
+namespace Alcodo\Block\Controllers;
 
 use Alcodo\Block\Models\Block;
 use Alcodo\Menu\Models\Menu;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class BlockController extends Controller
 {
-
     /**
-     * Display all block
+     * Display all block.
      *
      * @return Response
      */
     public function index()
     {
         $blocks = Block::orderBy('updated_at', 'DESC')->get();
+
         return view('block::list', compact('blocks'));
     }
 
     /**
-     * Create a block
+     * Create a block.
      *
      * @return Response
      */
     public function create()
     {
         $menus = Menu::select();
+
         return view('block::form', compact('menus'));
     }
 
     /**
-     * Store a block
+     * Store a block.
      *
      * @return Response
      */
@@ -53,13 +55,15 @@ class BlockController extends Controller
         $block = Block::create($values);
 
         flashCreate($block, trans('block::block.block'));
+
         return redirect(route('block.index'));
     }
 
     /**
-     * Show a block
+     * Show a block.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show($id)
@@ -68,22 +72,25 @@ class BlockController extends Controller
     }
 
     /**
-     * Edit a block
+     * Edit a block.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit($id)
     {
         $block = Block::findOrFail($id);
         $menus = Menu::select();
+
         return view('block::form', compact('block', 'menus'));
     }
 
     /**
-     * Update a block
+     * Update a block.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function update($id, Request $request)
@@ -103,13 +110,15 @@ class BlockController extends Controller
         $result = $block->update($values);
 
         flashUpdate($result, trans('block::block.block'));
+
         return redirect(route('block.index'));
     }
 
     /**
-     * Remove a block
+     * Remove a block.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy($id)
@@ -119,5 +128,4 @@ class BlockController extends Controller
 
         return redirect(route('block.index'));
     }
-
 }

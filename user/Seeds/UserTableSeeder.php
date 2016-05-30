@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use Alcodo\User\Models\Role;
 use Alcodo\User\Models\Permission;
+use Alcodo\User\Models\Role;
 use Alcodo\User\Models\User;
+use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
 {
@@ -42,15 +41,15 @@ class UserTableSeeder extends Seeder
         $permission_video->description = 'CRUD video';
         $permission_video->save();
 
-        $admin->attachPermissions(array(
+        $admin->attachPermissions([
             $permission_user,
-            $permission_video
-        ));
+            $permission_video,
+        ]);
 
         // User
         $admin_user = User::create([
-            'name' => 'admin',
-            'email' => 'admin@example.com',
+            'name'     => 'admin',
+            'email'    => 'admin@example.com',
             'password' => 'admin',
         ]);
 

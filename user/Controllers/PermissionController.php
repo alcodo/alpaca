@@ -1,12 +1,14 @@
-<?php namespace Alcodo\User\Controllers;
+<?php
 
-use Alcodo\Crud\Permission\Permission as AccessPermission;
+namespace Alcodo\User\Controllers;
+
 use Alcodo\Crud\Controllers\ControllerTrait;
 use Alcodo\Crud\Controllers\CrudContract;
 use Alcodo\Crud\Controllers\DependencyTrait;
 use Alcodo\Crud\Controllers\ModelTrait;
 use Alcodo\Crud\Controllers\TextTrait;
 use Alcodo\Crud\Controllers\ViewTrait;
+use Alcodo\Crud\Permission\Permission as AccessPermission;
 use Alcodo\User\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller as BaseController;
@@ -16,7 +18,7 @@ class PermissionController extends BaseController implements CrudContract
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
     /**
-     * Modelname as singular
+     * Modelname as singular.
      *
      * @return string
      */
@@ -26,7 +28,7 @@ class PermissionController extends BaseController implements CrudContract
     }
 
     /**
-     * Modelname as plural
+     * Modelname as plural.
      *
      * @return string
      */
@@ -36,47 +38,49 @@ class PermissionController extends BaseController implements CrudContract
     }
 
     /**
-     *  Columns for the index page
+     *  Columns for the index page.
      *
      * @return array
      */
     public function getIndexColumns()
     {
-        return array(
+        return [
             [
-                'label' => trans('user::role.display-name'),
-                'css' => 'col-md-3',
+                'label'      => trans('user::role.display-name'),
+                'css'        => 'col-md-3',
                 'modelValue' => 'display_name',
             ],
             [
-                'label' => trans('user::role.description'),
-                'css' => 'col-md-3',
+                'label'      => trans('user::role.description'),
+                'css'        => 'col-md-3',
                 'modelValue' => 'description',
-            ]
-        );
+            ],
+        ];
     }
 
     /**
-     * Formbuilder
+     * Formbuilder.
      *
-     * @param null $form
+     * @param null                                     $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
+     *
      * @return mixed
      */
     public function getForm($form = null, Model $entry = null)
     {
-        $formFields = array(
-            'id' => $form->hidden('id'),
-            'name' => $form->text(trans('user::role.name'), 'name'),
+        $formFields = [
+            'id'           => $form->hidden('id'),
+            'name'         => $form->text(trans('user::role.name'), 'name'),
             'display_name' => $form->text(trans('user::role.display-name'), 'display_name'),
-            'description' => $form->text(trans('user::role.description'), 'description'),
-            'submit' => $form->submit(trans('crud::crud.save')),
-        );
+            'description'  => $form->text(trans('user::role.description'), 'description'),
+            'submit'       => $form->submit(trans('crud::crud.save')),
+        ];
+
         return $formFields;
     }
 
     /**
-     * Return a model classname
+     * Return a model classname.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -86,7 +90,7 @@ class PermissionController extends BaseController implements CrudContract
     }
 
     /**
-     * Return a permession class
+     * Return a permession class.
      *
      * @return \Alcodo\Crud\Permission\Permission
      */
@@ -96,20 +100,20 @@ class PermissionController extends BaseController implements CrudContract
     }
 
     /**
-     * Return rules for create validation
+     * Return rules for create validation.
      *
      * @return array
      */
     public function getValidationCreate()
     {
         return [
-            'name' => 'required|unique:permissions',
+            'name'         => 'required|unique:permissions',
             'display_name' => 'required',
         ];
     }
 
     /**
-     * Return rules for update validation
+     * Return rules for update validation.
      *
      * @return array
      */
@@ -118,7 +122,7 @@ class PermissionController extends BaseController implements CrudContract
         $data = request()->all();
 
         return [
-            'name' => 'required|unique:permissions,name,' . $data['id'],
+            'name'         => 'required|unique:permissions,name,'.$data['id'],
             'display_name' => 'required',
         ];
     }

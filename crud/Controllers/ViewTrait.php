@@ -2,7 +2,6 @@
 
 namespace Alcodo\Crud\Controllers;
 
-
 trait ViewTrait
 {
     /**
@@ -38,16 +37,15 @@ trait ViewTrait
     }
 
     /**
-     * Return a array with form sizes
+     * Return a array with form sizes.
      *
      * @return array
      */
     public function getColumnSizes()
     {
-        return array(
+        return [
             'sm' => [4, 8],
-            'lg' => [3, 9]
-        );
+            'lg' => [3, 9],
+        ];
     }
-
 }
