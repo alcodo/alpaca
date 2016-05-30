@@ -4,7 +4,7 @@ use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 use Alcodo\User\Controllers\PermissionController;
 
-class PermissionCrudTest extends TestCase implements CrudTestContract
+class PermissionCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

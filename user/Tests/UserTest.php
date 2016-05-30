@@ -2,7 +2,7 @@
 
 use Alcodo\User\Models\User;
 
-class UserTest extends TestCase
+class UserTest extends AlpacaTestCase
 {
     /**
      * @test

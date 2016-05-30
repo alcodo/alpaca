@@ -4,7 +4,7 @@ use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 use Alcodo\User\Controllers\RoleController;
 
-class RoleCrudTest extends TestCase implements CrudTestContract
+class RoleCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

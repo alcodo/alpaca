@@ -43,6 +43,9 @@
     ]
   },
   "autoload-dev": {
+    "classmap": [
+      "tests/AlpacaTestCase.php"
+    ],
     "files": [
       "helper-dev.php"
     ]
