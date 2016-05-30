@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+
 class AlpacaTestCase extends TestCase
 {
     /**
@@ -9,6 +11,5 @@ class AlpacaTestCase extends TestCase
     {
         parent::setUp();
         Artisan::call('migrate');
-        Artisan::call('db:seed');
     }
 }

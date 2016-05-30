@@ -3,7 +3,7 @@
 /**
  * Page fronted test.
  */
-class PageFrontTest extends TestCase
+class PageFrontTest extends AlpacaTestCase
 {
     /**
      * @test

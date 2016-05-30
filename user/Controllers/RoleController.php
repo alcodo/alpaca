@@ -163,7 +163,7 @@ class RoleController extends BaseController implements CrudContract
         $status = $entry->update($data);
 
         // roles
-        $entry->detachPermissions();
+        $entry->detachPermissions($entry->perms()->get());
         if (isset($data['permissions'])) {
             $entry->attachPermissions($data['permissions']);
         }

@@ -4,7 +4,7 @@ use Alcodo\Block\Controllers\BlockBackend;
 use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 
-class BlockCrudTest extends TestCase implements CrudTestContract
+class BlockCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

@@ -5,7 +5,7 @@ use Alcodo\Crud\Tests\CrudTestTrait;
 use Alcodo\Menu\Controllers\ItemBackend;
 use Alcodo\Menu\Models\Menu;
 
-class ItemCrudTest extends TestCase implements CrudTestContract
+class ItemCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

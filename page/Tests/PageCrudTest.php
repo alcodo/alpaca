@@ -4,7 +4,7 @@ use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 use Alcodo\Page\Controllers\PageBackend;
 
-class PageCrudTest extends TestCase implements CrudTestContract
+class PageCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

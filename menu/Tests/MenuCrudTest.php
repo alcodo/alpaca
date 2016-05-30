@@ -4,10 +4,10 @@ use Alcodo\Crud\Tests\CrudTestContract;
 use Alcodo\Crud\Tests\CrudTestTrait;
 use Alcodo\Menu\Controllers\MenuBackend;
 
-class MenuCrudTest extends TestCase implements CrudTestContract
+class MenuCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
-
+    
     /**
      * Return the controller class for the crud test.
      *

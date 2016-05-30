@@ -31,7 +31,10 @@ class CreatePageTable extends Migration
 //            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
 
             // category
-            $table->integer('category_id')->unsigned()->index();
+            $table->integer('category_id')->unsigned()->index()->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
+
+//            $table->integer('category_id')->unsigned()->index();
 //            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->timestamps();
