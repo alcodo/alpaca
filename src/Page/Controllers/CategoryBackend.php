@@ -11,6 +11,7 @@ use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
 use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Page;
+use Alpaca\Page\Utilities\CategoryUrlBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 
@@ -135,5 +136,15 @@ class CategoryBackend extends Controller implements CrudContract
             'title' => 'required|string',
             'body'  => 'required|string',
         ];
+    }
+
+    /**
+     * Return a url builder helper class.
+     *
+     * @return \Alpaca\Crud\Utilities\UrlBuilder
+     */
+    public function getUrlBuilderClass($parameters = [])
+    {
+        return new CategoryUrlBuilder($this, $parameters);
     }
 }

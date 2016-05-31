@@ -1,13 +1,9 @@
 @extends('app')
 
 @section('content')
-    <div class="pull-right">
-        {!! editButton(route('category.edit', [$entry->id]))  !!}
-        {!! deleteForm(route('category.destroy', [$entry->id])) !!}
-    </div>
 
-    <h1 class="page-header">{{$entry->name}}</h1>
-    {!!$entry->body !!}
+    <h1 class="page-header">{{ $category->title }}</h1>
+    {!!$category->body !!}
 
     @foreach ($pages as $index => $page)
 
