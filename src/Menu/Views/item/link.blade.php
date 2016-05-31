@@ -1,1 +1,0 @@
-<a href="{{ $item->href }}"{{ 'title="'.$item->title.'"' | '' }}>{{ $item->text }}</a>
