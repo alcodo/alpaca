@@ -85,14 +85,9 @@ class PageBackend extends Controller implements CrudContract
         if (!is_null($entry)) {
             // only for edit
             $selectedRoles = null;
-//            $selectedRoles = $entry->category->pluck('id')->toArray();
-//            $selectedRoles = $entry->roles->pluck('id')->toArray();
         }
         $categories = Category::lists('title', 'id');
         $categories->put('0', 'Keine Kategorie');
-
-//        dd($categories);
-//        dd(Category::lists('title', 'id'));
 
         $formFields = [
             'id'       => $form->hidden('id'),
@@ -100,7 +95,6 @@ class PageBackend extends Controller implements CrudContract
             'slug'     => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-title-to-slug'),
             'category' => $form->select(trans('page::category.category'), 'category')
                 ->options($categories)
-//                ->select(''),
                 ->select($selectedRoles),
             'body'             => $form->textarea(trans('crud::crud.body'), 'body')->addClass('is-summernote'),
             'html_title'       => $form->text(trans('page::page.html_title'), 'html_title'),
