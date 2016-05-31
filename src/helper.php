@@ -18,7 +18,7 @@ if (!function_exists('alpacaFactory')) {
      */
     function alpacaFactory()
     {
-        $factory = Factory::construct(app('Faker\Generator'), base_path('/alpaca/src/alpaca/src/resources/factories/'));
+        $factory = Factory::construct(app('Faker\Generator'), base_path('/alpaca/src/resources/factories/'));
 
         $arguments = func_get_args();
 
