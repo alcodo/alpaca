@@ -9,5 +9,6 @@ Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
     Route::get('/category/{slug}', ['as' => 'category.show', 'uses' => 'CategoryFront@show']);
 
     // page show
+    Route::get('/', ['as' => 'page.show', 'uses' => 'PageFront@showFrontPage']);
     Route::get('{slug?}', ['as' => 'page.show', 'uses' => 'PageFront@show'])->where('slug', '(.*)');
 });

@@ -26,6 +26,7 @@ class Page extends Model
         'meta_description',
 
         'user_id',
+        'category_slug',
     ];
 
     protected $casts = [
@@ -93,7 +94,7 @@ class Page extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_slug');
     }
 
     public function user()

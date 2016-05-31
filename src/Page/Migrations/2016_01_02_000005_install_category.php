@@ -13,7 +13,7 @@ class InstallCategory extends Migration
      */
     public function up()
     {
-        alpacaFactory(\Alpaca\Page\Models\Category::class, 5)->create();
+        alpacaFactory(\Alpaca\Page\Models\Category::class, 3)->create();
     }
 
     /**

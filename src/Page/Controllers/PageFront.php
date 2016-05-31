@@ -11,12 +11,20 @@ class PageFront extends Controller
 {
     public function show($slug)
     {
-        if ($slug === '/') {
-            // it is a frontpage (slug transformation)
-            $slug = '';
-        }
-
         $page = Page::findBySlugOrFail($slug);
+
+        return $this->viewPage($page);
+    }
+
+    public function showFrontPage()
+    {
+        $page = Page::findBySlugOrFail('');
+
+        return $this->viewPage($page);
+    }
+
+    protected function viewPage($page)
+    {
 
         if ($page->meta_robots == 'noindex') {
             SEOMeta::addMeta('robots', 'noindex, nofollow');
