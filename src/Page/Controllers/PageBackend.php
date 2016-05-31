@@ -11,6 +11,7 @@ use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
 use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Page;
+use Alpaca\Page\Utilities\PageUrlBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -186,5 +187,15 @@ class PageBackend extends Controller implements CrudContract
         $status = $entry->update($data);
 
         return $status;
+    }
+
+    /**
+     * Return a url builder helper class.
+     *
+     * @return \Alpaca\Crud\Utilities\UrlBuilder
+     */
+    public function getUrlBuilderClass($parameters = [])
+    {
+        return new PageUrlBuilder($this, $parameters);
     }
 }
