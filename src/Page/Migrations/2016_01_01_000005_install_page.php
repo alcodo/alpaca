@@ -15,7 +15,7 @@ class InstallPage extends Migration
     {
         Page::create(array(
             'title' => 'Frontpage',
-            'slug' => '/',
+            'slug' => '',
             'body' => '<p>Let us start to create a LaravelCMF...</p>',
             'html_title' => '',
             'meta_robots' => '',

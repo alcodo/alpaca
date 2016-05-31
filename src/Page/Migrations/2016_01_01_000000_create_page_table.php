@@ -28,14 +28,11 @@ class CreatePageTable extends Migration
 
             // user
             $table->integer('user_id')->unsigned()->index();
-//            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('user');
 
             // category
             $table->integer('category_id')->unsigned()->index()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
-
-//            $table->integer('category_id')->unsigned()->index();
-//            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->timestamps();
         });

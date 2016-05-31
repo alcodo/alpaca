@@ -31,7 +31,7 @@ class PageCrudTest extends AlpacaTestCase implements CrudTestContract
                 'element' => 'title',
             ],
             [
-                'text'    => '/testpage',
+                'text'    => 'testpage',
                 'element' => 'slug',
             ],
             [

@@ -9,14 +9,14 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 
 class PageFront extends Controller
 {
-    public function show($path)
+    public function show($slug)
     {
-        if ($path != '/') {
-            // it is not a frontpage
-            $path = '/'.$path;
+        if ($slug === '/') {
+            // it is a frontpage (slug transformation)
+            $slug = '';
         }
 
-        $page = Page::findBySlugOrFail($path);
+        $page = Page::findBySlugOrFail($slug);
 
         if ($page->meta_robots == 'noindex') {
             SEOMeta::addMeta('robots', 'noindex, nofollow');

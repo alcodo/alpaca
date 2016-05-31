@@ -97,7 +97,7 @@ class PageBackend extends Controller implements CrudContract
         $formFields = [
             'id'       => $form->hidden('id'),
             'title'    => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
-            'slug'     => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-path'),
+            'slug'     => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-title-to-slug'),
             'category' => $form->select(trans('page::category.category'), 'category')
                 ->options($categories)
 //                ->select(''),

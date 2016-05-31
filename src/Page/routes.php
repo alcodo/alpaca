@@ -44,5 +44,5 @@ Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
 //    Route::resource('/video', 'VideoFront', ['only' => ['index', 'show']]);
 
     // show
-    Route::get('/{path?}', ['as' => 'page.show', 'uses' => 'PageFront@show'])->where('path', '(.*)');
+    Route::get('{slug?}', ['as' => 'page.show', 'uses' => 'PageFront@show'])->where('slug', '(.*)');
 });

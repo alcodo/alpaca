@@ -1,4 +1,5 @@
 $(function () {
+    
     function getSlug(val) {
         val = val.toLowerCase();
         val = val.replace(/ /g, '-');
@@ -8,15 +9,8 @@ $(function () {
     $(".is-title").keyup(function () {
         var val = $(this).val();
         val = getSlug(val);
-        val = '/' + val;
 
-        $(".is-path").val(val);
+        $(".is-title-to-slug").val(val);
     });
 
-    $(".is-title-to-slug").keyup(function () {
-        var val = $(this).val();
-        val = getSlug(val);
-
-        $(".is-slug").val(val);
-    });
 });
