@@ -59,6 +59,16 @@ class Page extends Model
         return $this;
     }
 
+    public function getCreated()
+    {
+        return dateintl_full('short', $this->created_at);
+    }
+
+    public function getUpdated()
+    {
+        return dateintl_full('medium', $this->updated_at);
+    }
+
 //    public static function getAllVisibilityPages()
 //    {
 //        return self::where('visibility', '=', 1)->get();

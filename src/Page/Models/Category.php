@@ -42,6 +42,16 @@ class Category extends Model
         return $entry;
     }
 
+    public function getCreated()
+    {
+        return dateintl_full('short', $this->created_at);
+    }
+
+    public function getUpdated()
+    {
+        return dateintl_full('medium', $this->updated_at);
+    }
+
 //    public static function select()
 //    {
 //        $allCategories = self::all();
