@@ -33,16 +33,11 @@
     "psr-4": {
       "Alpaca\\": "./src/"
     },
-    "files": [
-      "src/helper.php"
-    ]
-  },
-  "autoload-dev": {
     "classmap": [
       "src/resources/tests/AlpacaTestCase.php"
     ],
     "files": [
-      "src/helper-dev.php"
+      "./src/helper.php"
     ]
   },
   "minimum-stability": "dev"
