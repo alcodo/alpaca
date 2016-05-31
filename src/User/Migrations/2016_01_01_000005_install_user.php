@@ -1,7 +1,7 @@
 <?php
 
-use Alcodo\User\Models\Role;
-use Alcodo\User\Models\User;
+use Alpaca\User\Models\Role;
+use Alpaca\User\Models\User;
 use Illuminate\Database\Migrations\Migration;
 
 class InstallUser extends Migration

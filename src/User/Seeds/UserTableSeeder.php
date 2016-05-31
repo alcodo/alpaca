@@ -1,8 +1,8 @@
 <?php
 
-use Alcodo\User\Models\Permission;
-use Alcodo\User\Models\Role;
-use Alcodo\User\Models\User;
+use Alpaca\User\Models\Permission;
+use Alpaca\User\Models\Role;
+use Alpaca\User\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder

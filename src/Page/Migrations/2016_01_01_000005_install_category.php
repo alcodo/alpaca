@@ -1,6 +1,6 @@
 <?php
 
-use Alcodo\Page\Models\Page;
+use Alpaca\Page\Models\Page;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -13,7 +13,7 @@ class InstallCategory extends Migration
      */
     public function up()
     {
-        alpacaFactory(\Alcodo\Page\Models\Category::class, 5)->create();
+        alpacaFactory(\Alpaca\Page\Models\Category::class, 5)->create();
     }
 
     /**

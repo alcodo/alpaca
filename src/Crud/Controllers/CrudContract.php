@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Crud\Controllers;
+namespace Alpaca\Crud\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -67,21 +67,21 @@ interface CrudContract
     /**
      * Return a notification helper class.
      *
-     * @return \Alcodo\Crud\Notification\Notification
+     * @return \Alpaca\Crud\Notification\Notification
      */
     public function getNotificationClass();
 
     /**
      * Return a url builder helper class.
      *
-     * @return \Alcodo\Crud\Utilities\UrlBuilder
+     * @return \Alpaca\Crud\Utilities\UrlBuilder
      */
     public function getUrlBuilderClass();
 
     /**
      * Return a permession class.
      *
-     * @return \Alcodo\Crud\Permission\Permission
+     * @return \Alpaca\Crud\Permission\Permission
      */
     public function getPermissionClass();
 

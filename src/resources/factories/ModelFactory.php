@@ -1,6 +1,9 @@
 <?php
 
-use Alcodo\User\Models\User;
+use Alpaca\User\Models\User;
+use Alpaca\Page\Models\Category;
+use Alpaca\Page\Models\Page;
+use Alpaca\Menu\Models\Menu;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
     return [
@@ -37,20 +40,20 @@ $factory->defineAs(User::class, 'form', function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(\Alcodo\Page\Models\Category::class, function ($faker) {
+$factory->define(Category::class, function ($faker) {
     return [
         'title' => $faker->unique()->firstNameFemale,
         'body' => $faker->paragraph,
     ];
 });
-$factory->define(\Alcodo\Page\Models\Page::class, function ($faker) {
+$factory->define(Page::class, function ($faker) {
     return [
         'title' => $faker->sentence(),
         'body' => $faker->text(),
     ];
 });
 
-$factory->define(\Alcodo\Menu\Models\Menu::class, function (Faker\Generator $faker) {
+$factory->define(Menu::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name
     ];

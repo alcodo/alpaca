@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Alcodo\Menu\Controllers'], function () {
+Route::group(['namespace' => 'Alpaca\Menu\Controllers'], function () {
 
 //    Route::resource('/menu/item', 'MenuItemController');
 //

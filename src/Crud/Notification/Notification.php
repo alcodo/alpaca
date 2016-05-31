@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\Crud\Notification;
+namespace Alpaca\Crud\Notification;
 
-use Alcodo\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\CrudContract;
 use Laracasts\Flash\Flash;
 
 class Notification implements NotificationContract

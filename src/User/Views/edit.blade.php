@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{ trans('user::user.edit_user') }}</h1>
-    {!! Form::model($user, ['method' => 'PATCH', 'url' => action('Alcodo\User\Controllers\UserController@update', $user->_id)]) !!}
+    {!! Form::model($user, ['method' => 'PATCH', 'url' => action('Alpaca\User\Controllers\UserController@update', $user->_id)]) !!}
 
     <div class="form-group">
         {!! Form::label('name', trans('user::user.name')) !!}

@@ -1,6 +1,6 @@
 <?php
 
-use Alcodo\User\Models\User;
+use Alpaca\User\Models\User;
 
 class UserTest extends AlpacaTestCase
 {

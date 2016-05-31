@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Block\Models;
+namespace Alpaca\Block\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

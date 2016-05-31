@@ -1,9 +1,9 @@
 <?php
 
-namespace Alcodo\Block\Builder;
+namespace Alpaca\Block\Builder;
 
-use Alcodo\Block\Models\Block;
-use Alcodo\Menu\Models\Menu;
+use Alpaca\Block\Models\Block;
+use Alpaca\Menu\Models\Menu;
 use Illuminate\Support\Facades\Request;
 
 class BlockBuilder

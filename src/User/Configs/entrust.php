@@ -18,7 +18,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'Alcodo\User\Models\Role',
+    'role' => 'Alpaca\User\Models\Role',
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => 'Alcodo\User\Models\Permission',
+    'permission' => 'Alpaca\User\Models\Permission',
 
     /*
     |--------------------------------------------------------------------------

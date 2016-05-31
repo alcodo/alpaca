@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo;
+namespace Alpaca;
 
 use AdamWathan\BootForms\BootFormsServiceProvider;
 use Approached\LaravelDateInternational\ServiceProvider;

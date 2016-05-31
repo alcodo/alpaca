@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Page\Models;
+namespace Alpaca\Page\Models;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
@@ -86,12 +86,12 @@ class Page extends Model
 
     public function category()
     {
-        return $this->belongsTo('Alcodo\Page\Models\Category');
+        return $this->belongsTo('Alpaca\Page\Models\Category');
     }
 
     public function user()
     {
         // TODO
-//        return $this->belongsTo('Alcodo\Page\Models\Category');
+//        return $this->belongsTo('Alpaca\Page\Models\Category');
     }
 }

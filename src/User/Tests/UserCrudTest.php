@@ -1,8 +1,8 @@
 <?php
 
-use Alcodo\Crud\Tests\CrudTestContract;
-use Alcodo\Crud\Tests\CrudTestTrait;
-use Alcodo\User\Controllers\UserController;
+use Alpaca\Crud\Tests\CrudTestContract;
+use Alpaca\Crud\Tests\CrudTestTrait;
+use Alpaca\User\Controllers\UserController;
 
 class UserCrudTest extends AlpacaTestCase implements CrudTestContract
 {
@@ -11,7 +11,7 @@ class UserCrudTest extends AlpacaTestCase implements CrudTestContract
     /**
      * Return the controller class for the crud test.
      *
-     * @return \Alcodo\Crud\Controllers\CrudContract
+     * @return \Alpaca\Crud\Controllers\CrudContract
      */
     public function getControllerClass()
     {

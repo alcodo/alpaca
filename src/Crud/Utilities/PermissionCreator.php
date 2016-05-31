@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\Crud\Utilities;
+namespace Alpaca\Crud\Utilities;
 
-use Alcodo\User\Models\Permission;
+use Alpaca\User\Models\Permission;
 
 trait PermissionCreator
 {

@@ -24,17 +24,17 @@
                         <td>{{ $user->created_at }}</td>
                         <td>{{ $user->updated_at }}</td>
                         <td>
-                            <a class="btn btn-info" href="{{action('\Alcodo\User\Controllers\UserController@show', [$user->name])}}">
+                            <a class="btn btn-info" href="{{action('\Alpaca\User\Controllers\UserController@show', [$user->name])}}">
                                 {{ trans('user::user.show') }}
                             </a>
                         </td>
                         <td>
-                            {{--<a class="btn btn-info" href="{{action('\Alcodo\User\Controllers\UserController@edit', [$user->name])}}">--}}
+                            {{--<a class="btn btn-info" href="{{action('\Alpaca\User\Controllers\UserController@edit', [$user->name])}}">--}}
                                 {{--{{ trans('user::user.edit') }}--}}
                             {{--</a>--}}
                         </td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'url' => action('\Alcodo\User\Controllers\UserController@destroy', $user->id)])
+                            {!! Form::open(['method' => 'DELETE', 'url' => action('\Alpaca\User\Controllers\UserController@destroy', $user->id)])
                             !!}
 
                             <button data-toggle="confirmation" data-placement="bottom"

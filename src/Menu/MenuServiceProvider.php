@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Menu;
+namespace Alpaca\Menu;
 
 use Illuminate\Support\ServiceProvider as Provider;
 

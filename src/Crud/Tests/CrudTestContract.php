@@ -1,13 +1,13 @@
 <?php
 
-namespace Alcodo\Crud\Tests;
+namespace Alpaca\Crud\Tests;
 
 interface CrudTestContract
 {
     /**
      * Return the controller class for the crud test.
      *
-     * @return \Alcodo\Crud\Controllers\CrudContract
+     * @return \Alpaca\Crud\Controllers\CrudContract
      */
     public function getControllerClass();
 

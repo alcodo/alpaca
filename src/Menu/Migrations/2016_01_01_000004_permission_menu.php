@@ -1,7 +1,7 @@
 <?php
 
-use Alcodo\Crud\Utilities\PermissionCreator;
-use Alcodo\User\Models\Role;
+use Alpaca\Crud\Utilities\PermissionCreator;
+use Alpaca\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 
 class PermissionMenu extends Migration

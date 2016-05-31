@@ -1,16 +1,16 @@
 <?php
 
-namespace Alcodo\Page\Controllers;
+namespace Alpaca\Page\Controllers;
 
-use Alcodo\Crud\Controllers\ControllerTrait;
-use Alcodo\Crud\Controllers\CrudContract;
-use Alcodo\Crud\Controllers\DependencyTrait;
-use Alcodo\Crud\Controllers\ModelTrait;
-use Alcodo\Crud\Controllers\TextTrait;
-use Alcodo\Crud\Controllers\ViewTrait;
-use Alcodo\Crud\Permission\Permission;
-use Alcodo\Page\Models\Category;
-use Alcodo\Page\Models\Page;
+use Alpaca\Crud\Controllers\ControllerTrait;
+use Alpaca\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\DependencyTrait;
+use Alpaca\Crud\Controllers\ModelTrait;
+use Alpaca\Crud\Controllers\TextTrait;
+use Alpaca\Crud\Controllers\ViewTrait;
+use Alpaca\Crud\Permission\Permission;
+use Alpaca\Page\Models\Category;
+use Alpaca\Page\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 
@@ -104,7 +104,7 @@ class CategoryBackend extends Controller implements CrudContract
     /**
      * Return a permession class.
      *
-     * @return \Alcodo\Crud\Permission\Permission
+     * @return \Alpaca\Crud\Permission\Permission
      */
     public function getPermissionClass()
     {

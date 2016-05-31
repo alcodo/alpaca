@@ -14,7 +14,7 @@
         <h2>
             <a href="{{ route('page.show', [$page->slug]) }}">{{$page->title}}</a>
         </h2>
-        {!!  strstr($page->body, Alcodo\Page\Models\Page::BREAK_TAG, true) !!}
+        {!!  strstr($page->body, Alpaca\Page\Models\Page::BREAK_TAG, true) !!}
 
         <p class="clearfix">
             <a class="btn btn-info pull-right clearfix"

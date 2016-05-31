@@ -1,6 +1,6 @@
 <?php
 
-use Alcodo\User\Models\Role;
+use Alpaca\User\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 
 class InstallRole extends Migration

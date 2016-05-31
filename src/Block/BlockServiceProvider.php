@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\Block;
+namespace Alpaca\Block;
 
-use Alcodo\Block\Builder\BlockBuilder;
+use Alpaca\Block\Builder\BlockBuilder;
 use Illuminate\Support\ServiceProvider as Provider;
 
 class BlockServiceProvider extends Provider
@@ -17,7 +17,7 @@ class BlockServiceProvider extends Provider
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
         // facade
-        $loader->alias('Block', \Alcodo\Block\Builder\BlockFacade::class);
+        $loader->alias('Block', \Alpaca\Block\Builder\BlockFacade::class);
     }
 
     public function boot()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\User\Controllers;
+namespace Alpaca\User\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;

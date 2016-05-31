@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\Page\Controllers;
+namespace Alpaca\Page\Controllers;
 
-use Alcodo\Page\Models\Page;
+use Alpaca\Page\Models\Page;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;

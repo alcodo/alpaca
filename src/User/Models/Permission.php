@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\User\Models;
+namespace Alpaca\User\Models;
 
 use Zizaco\Entrust\EntrustPermission;
 

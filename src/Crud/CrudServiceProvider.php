@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Crud;
+namespace Alpaca\Crud;
 
 use Illuminate\Support\ServiceProvider as Provider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Page\Models;
+namespace Alpaca\Page\Models;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
@@ -57,6 +57,6 @@ class Category extends Model
 
     public function page()
     {
-        return $this->hasOne('Alcodo\Page\Models\Page');
+        return $this->hasOne('Alpaca\Page\Models\Page');
     }
 }

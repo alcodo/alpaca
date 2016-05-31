@@ -1,6 +1,6 @@
 <?php
 
-use Alcodo\Page\Models\Page;
+use Alpaca\Page\Models\Page;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 

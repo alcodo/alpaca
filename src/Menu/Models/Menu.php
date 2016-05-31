@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Menu\Models;
+namespace Alpaca\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class Menu extends Model
 
     public function items()
     {
-        return $this->hasMany('Alcodo\Menu\Models\Item', 'menu_id', 'id');
+        return $this->hasMany('Alpaca\Menu\Models\Item', 'menu_id', 'id');
     }
 }

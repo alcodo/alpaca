@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Crud\Notification;
+namespace Alpaca\Crud\Notification;
 
 interface NotificationContract
 {

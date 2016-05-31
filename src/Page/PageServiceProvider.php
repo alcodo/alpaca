@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Page;
+namespace Alpaca\Page;
 
 use Illuminate\Support\ServiceProvider as Provider;
 

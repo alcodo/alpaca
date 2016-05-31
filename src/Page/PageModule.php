@@ -1,8 +1,8 @@
 <?php
 
-use Alcodo\Crud\Permission\Permission;
-use Alcodo\User\Models\Role;
-use Alcodo\User\Models\User;
+use Alpaca\Crud\Permission\Permission;
+use Alpaca\User\Models\Role;
+use Alpaca\User\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class PageModule
@@ -15,7 +15,7 @@ class PageModule
     public function install()
     {
         // Category
-        alpacaFactory(\Alcodo\Page\Models\Category::class, 5)->create();
+        alpacaFactory(\Alpaca\Page\Models\Category::class, 5)->create();
 
         // Page
         Page::create(array(

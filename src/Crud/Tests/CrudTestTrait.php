@@ -1,10 +1,10 @@
 <?php
 
-namespace Alcodo\Crud\Tests;
+namespace Alpaca\Crud\Tests;
 
-use Alcodo\Crud\Controllers\CrudContract;
-use Alcodo\Crud\Utilities\UrlBuilder;
-use Alcodo\User\Models\User;
+use Alpaca\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Utilities\UrlBuilder;
+use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 trait CrudTestTrait

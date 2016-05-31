@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\User\Middlewares;
+namespace Alpaca\User\Middlewares;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

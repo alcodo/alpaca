@@ -1,12 +1,12 @@
 <?php
 
-namespace Alcodo;
+namespace Alpaca;
 
-use Alcodo\Crud\CrudServiceProvider;
-use Alcodo\User\UserServiceProvider;
-use Alcodo\Block\BlockServiceProvider;
-use Alcodo\Menu\MenuServiceProvider;
-use Alcodo\Page\PageServiceProvider;
+use Alpaca\Crud\CrudServiceProvider;
+use Alpaca\User\UserServiceProvider;
+use Alpaca\Block\BlockServiceProvider;
+use Alpaca\Menu\MenuServiceProvider;
+use Alpaca\Page\PageServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 
 class AlpacaServiceProvider extends AggregateServiceProvider

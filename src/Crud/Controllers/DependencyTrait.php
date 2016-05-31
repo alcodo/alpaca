@@ -1,16 +1,16 @@
 <?php
 
-namespace Alcodo\Crud\Controllers;
+namespace Alpaca\Crud\Controllers;
 
-use Alcodo\Crud\Notification\Notification;
-use Alcodo\Crud\Utilities\UrlBuilder;
+use Alpaca\Crud\Notification\Notification;
+use Alpaca\Crud\Utilities\UrlBuilder;
 
 trait DependencyTrait
 {
     /**
      * Return a notification helper class.
      *
-     * @return \Alcodo\Crud\Notification\Notification
+     * @return \Alpaca\Crud\Notification\Notification
      */
     public function getNotificationClass()
     {
@@ -20,7 +20,7 @@ trait DependencyTrait
     /**
      * Return a url builder helper class.
      *
-     * @return \Alcodo\Crud\Utilities\UrlBuilder
+     * @return \Alpaca\Crud\Utilities\UrlBuilder
      */
     public function getUrlBuilderClass($parameters = [])
     {

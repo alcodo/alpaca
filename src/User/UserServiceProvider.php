@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\User;
+namespace Alpaca\User;
 
 use Illuminate\Support\ServiceProvider as Provider;
 

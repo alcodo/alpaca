@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Alcodo\Page\Controllers'], function () {
+Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
 
 //
 //    // index

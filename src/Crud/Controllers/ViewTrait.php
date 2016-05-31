@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Crud\Controllers;
+namespace Alpaca\Crud\Controllers;
 
 trait ViewTrait
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\Page\Controllers;
+namespace Alpaca\Page\Controllers;
 
-use Alcodo\Page\Models\Category;
+use Alpaca\Page\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;

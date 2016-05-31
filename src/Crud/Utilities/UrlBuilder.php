@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\Crud\Utilities;
+namespace Alpaca\Crud\Utilities;
 
-use Alcodo\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\CrudContract;
 use Illuminate\Support\Collection;
 
 class UrlBuilder

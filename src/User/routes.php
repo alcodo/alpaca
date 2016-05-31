@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Alcodo\User\Controllers'], function () {
+Route::group(['namespace' => 'Alpaca\User\Controllers'], function () {
 
     // Authentication routes...
     Route::get('/login', ['as' => 'user.login', 'uses' => 'AuthController@getLogin']);

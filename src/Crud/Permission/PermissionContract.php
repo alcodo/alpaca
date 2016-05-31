@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Crud\Permission;
+namespace Alpaca\Crud\Permission;
 
 interface PermissionContract
 {

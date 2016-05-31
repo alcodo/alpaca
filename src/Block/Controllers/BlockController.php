@@ -1,9 +1,9 @@
 <?php
 
-namespace Alcodo\Block\Controllers;
+namespace Alpaca\Block\Controllers;
 
-use Alcodo\Block\Models\Block;
-use Alcodo\Menu\Models\Menu;
+use Alpaca\Block\Models\Block;
+use Alpaca\Menu\Models\Menu;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

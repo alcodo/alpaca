@@ -1,8 +1,8 @@
 <?php
 
-namespace Alcodo\User\Controllers;
+namespace Alpaca\User\Controllers;
 
-use Alcodo\User\Models\User;
+use Alpaca\User\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -267,7 +267,7 @@ class AuthController extends Controller
      */
     public function loginPath()
     {
-        return action('Alcodo\User\Controllers\AuthController@getLogin', [], false);
+        return action('Alpaca\User\Controllers\AuthController@getLogin', [], false);
     }
 
     /**

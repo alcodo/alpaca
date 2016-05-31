@@ -1,6 +1,6 @@
 <?php
 
-namespace Alcodo\Menu\Models;
+namespace Alpaca\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,6 +40,6 @@ class Item extends Model
 
     public function menu()
     {
-        return $this->belongsTo('Alcodo\Menu\Models\Menu');
+        return $this->belongsTo('Alpaca\Menu\Models\Menu');
     }
 }
