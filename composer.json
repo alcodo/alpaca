@@ -31,23 +31,18 @@
   },
   "autoload": {
     "psr-4": {
-      "Alcodo\\": "./",
-      "Alcodo\\Block\\": "./block",
-      "Alcodo\\Crud\\": "./crud",
-      "Alcodo\\Menu\\": "./menu",
-      "Alcodo\\Page\\": "./page",
-      "Alcodo\\User\\": "./user"
+      "Alcodo\\": "./src/"
     },
     "files": [
-      "helper.php"
+      "src/helper.php"
     ]
   },
   "autoload-dev": {
     "classmap": [
-      "tests/AlpacaTestCase.php"
+      "src/resources/tests/AlpacaTestCase.php"
     ],
     "files": [
-      "helper-dev.php"
+      "src/helper-dev.php"
     ]
   },
   "minimum-stability": "dev"
