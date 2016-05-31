@@ -2,6 +2,7 @@
 
 namespace Alpaca\Page\Models;
 
+use Alpaca\User\Models\User;
 use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -33,7 +34,7 @@ class Page extends Model
 
     public static $validation = [
         'title' => 'required|string',
-        'body'  => 'required|string',
+        'body' => 'required|string',
     ];
 
     /**
@@ -46,14 +47,15 @@ class Page extends Model
         parent::fill($attributes);
 
         if (array_key_exists('slug', $attributes) === false &&
-            array_key_exists('title', $attributes)) {
+            array_key_exists('title', $attributes)
+        ) {
             // create slug
             $slugify = new Slugify();
-            $this->slug = '/'.$slugify->slugify($attributes['title']);
+            $this->slug = '/' . $slugify->slugify($attributes['title']);
         }
 
         if (array_key_exists('active', $attributes)) {
-            $this->active = (int) $attributes['active'];
+            $this->active = (int)$attributes['active'];
         }
 
         return $this;
@@ -68,11 +70,6 @@ class Page extends Model
     {
         return dateintl_full('medium', $this->updated_at);
     }
-
-//    public static function getAllVisibilityPages()
-//    {
-//        return self::where('visibility', '=', 1)->get();
-//    }
 
     public function scopeActive($query, $status)
     {
@@ -96,12 +93,11 @@ class Page extends Model
 
     public function category()
     {
-        return $this->belongsTo('Alpaca\Page\Models\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function user()
     {
-        // TODO
-//        return $this->belongsTo('Alpaca\Page\Models\Category');
+        return $this->belongsTo(User::class);
     }
 }

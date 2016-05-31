@@ -16,11 +16,8 @@ class CategoryFront extends Controller
      */
     public function show($slug)
     {
-        $category = Category::getCategoryOrFail($slug);
-//        dd($category);
-        $pages = $category->page()->get();
-//        dd($pages);
+        $category = Category::with('pages')->Slug($slug)->firstOrFail();
 
-        return view('page::category.show', compact('category', 'pages'));
+        return view('page::category.show', compact('category'));
     }
 }

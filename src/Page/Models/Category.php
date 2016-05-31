@@ -18,7 +18,8 @@ class Category extends Model
         parent::fill($attributes);
 
         if (array_key_exists('slug', $attributes) === false &&
-            array_key_exists('title', $attributes)) {
+            array_key_exists('title', $attributes)
+        ) {
             // create slug
             $slugify = new Slugify();
             $this->slug = $slugify->slugify($attributes['title']);
@@ -27,19 +28,14 @@ class Category extends Model
         return $this;
     }
 
-    public static function getCategory($slug)
+    public function scopeSlug($query, $slug)
     {
-        return self::where('slug', '=', $slug)->first();
+        return $query->where('slug', '=', $slug);
     }
 
-    public static function getCategoryOrFail($slug)
+    public function pages()
     {
-        $entry = self::getCategory($slug);
-        if (is_null($entry)) {
-            abort(404);
-        }
-
-        return $entry;
+        return $this->hasMany(Page::class);
     }
 
     public function getCreated()
@@ -50,23 +46,5 @@ class Category extends Model
     public function getUpdated()
     {
         return dateintl_full('medium', $this->updated_at);
-    }
-
-//    public static function select()
-//    {
-//        $allCategories = self::all();
-//        $result = array('' => '');
-//
-//        foreach ($allCategories as $category) {
-//            $result[$category->id] = $category->name;
-//        }
-//
-//        return $result;
-//
-//    }
-
-    public function page()
-    {
-        return $this->hasOne('Alpaca\Page\Models\Page');
     }
 }
