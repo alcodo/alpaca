@@ -11,7 +11,12 @@ class PageUrlBuilder extends UrlBuilder
     public function getUrlShow($id)
     {
         $page = Page::findOrFail($id);
-        return route('page.show', $page->slug);
+
+        if (is_null($page->category_id)) {
+            return route('page.frontpage');
+        }
+
+        return route('page.show', [$page->category->slug, $page->slug]);
     }
 
 }

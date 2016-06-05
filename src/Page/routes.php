@@ -15,5 +15,5 @@ Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
     Route::get($pagePrefix . '/{categorySlug}/{pageSlug}', ['as' => 'page.show', 'uses' => 'PageFront@show']);
 
     // front page
-    Route::get('/', ['as' => 'page.show', 'uses' => 'PageFront@showFrontPage']);
+    Route::get('/', ['as' => 'page.frontpage', 'uses' => 'PageFront@showFrontPage']);
 });

@@ -10,7 +10,9 @@
         <hr/>
 
         <h2>
-            <a href="{{ route('page.show', [$page->slug]) }}">{{$page->title}}</a>
+            <a href="{{ route('page.show', [$category->slug, $page->slug]) }}">
+                {{$page->title}}
+            </a>
         </h2>
         @if(strpos($page->body, Alpaca\Page\Models\Page::BREAK_TAG) !== false)
             {{--tag exists--}}

@@ -5,6 +5,9 @@
     {!!$page->body !!}
 
     @if(!is_null($page->category))
-        <p>Category: <a href="{{ route('category.show', [$page->category->slug]) }}">{{$page->category->name}}</a></p>
+        <p>Category: <a href="{{ route('category.show', [$page->category->slug]) }}">
+                {{$page->category->title}}
+            </a>
+        </p>
     @endif
 @endsection
