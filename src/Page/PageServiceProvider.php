@@ -19,6 +19,11 @@ class PageServiceProvider extends Provider
     {
         $this->loadViewsFrom(__DIR__.'/Views', 'page');
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'page');
+
+        $this->publishes([
+            __DIR__.'/Config/' => base_path('/config'),
+        ], 'migrations');
+
         $this->publishes([
             __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');

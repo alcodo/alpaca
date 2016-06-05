@@ -34,7 +34,7 @@ class PageFrontTest extends AlpacaTestCase
             'category_slug' => $category->slug,
         ));
 
-        $url = '/' . $category->slug . '/' . $page->slug;
+        $url = config('page.prefix') . '/' . $category->slug . '/' . $page->slug;
 
         $this->visit($url)
             ->see($page->title);

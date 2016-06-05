@@ -14,7 +14,7 @@ class CategoryFrontTest extends AlpacaTestCase
     {
         $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
 
-        $this->visit('/' . $category->slug)
+        $this->visit(config('page.prefix') . '/' . $category->slug)
             ->see($category->title);
     }
 }
