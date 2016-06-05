@@ -1,14 +1,18 @@
 <?php
-
+//
 Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
 
     Route::resource('/backend/category', 'CategoryBackend');
     Route::resource('/backend/page', 'PageBackend');
 
-    // category show
-    Route::get('/category/{slug}', ['as' => 'category.show', 'uses' => 'CategoryFront@show']);
+    // fronted show
 
-    // page show
+    // category
+    Route::get('/{categorySlug}', ['as' => 'category.show', 'uses' => 'CategoryFront@show']);
+
+    // page with category
+    Route::get('/{categorySlug?}/{pageSlug}', ['as' => 'page.show', 'uses' => 'PageFront@show']);
+
+    // front page
     Route::get('/', ['as' => 'page.show', 'uses' => 'PageFront@showFrontPage']);
-    Route::get('{slug?}', ['as' => 'page.show', 'uses' => 'PageFront@show'])->where('slug', '(.*)');
 });

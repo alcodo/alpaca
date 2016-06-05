@@ -9,9 +9,9 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 
 class PageFront extends Controller
 {
-    public function show($slug)
+    public function show($categorySlug, $pageSlug)
     {
-        $page = Page::findBySlugOrFail($slug);
+        $page = Page::findBySlugOrFail($pageSlug);
 
         return $this->viewPage($page);
     }
