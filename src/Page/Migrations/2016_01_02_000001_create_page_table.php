@@ -31,8 +31,8 @@ class CreatePageTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // category
-            $table->string('category_slug')->unique()->nullable();
-            $table->foreign('category_slug')->references('slug')->on('categories');
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
         });

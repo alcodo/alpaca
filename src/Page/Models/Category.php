@@ -35,7 +35,7 @@ class Category extends Model
 
     public function pages()
     {
-        return $this->hasMany(Page::class, 'category_slug');
+        return $this->hasMany(Page::class);
     }
 
     public function getCreated()

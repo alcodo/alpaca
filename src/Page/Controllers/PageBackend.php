@@ -94,7 +94,7 @@ class PageBackend extends Controller implements CrudContract
             'id'       => $form->hidden('id'),
             'title'    => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
             'slug'     => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-title-to-slug'),
-            'category' => $form->select(trans('page::category.category'), 'category')
+            'category_id' => $form->select(trans('page::category.category'), 'category_id')
                 ->options($categories)
                 ->select($selectedRoles),
             'body'             => $form->textarea(trans('crud::crud.body'), 'body')->addClass('is-summernote'),
@@ -164,8 +164,8 @@ class PageBackend extends Controller implements CrudContract
     public function createEntry(array $data)
     {
         $model = $this->getModelClass();
-
         $data['user_id'] = Auth::user()->id;
+
         $entry = $model::create($data);
 
         return $entry;
