@@ -34,4 +34,25 @@ class CategorySelectTest extends AlpacaTestCase
         $this->visit(route('category.show', $category->slug))
             ->see($page->title);
     }
+
+    /**
+     * @test
+     */
+    public function it_allows_choice_no_category()
+    {
+        $this->actingAs(User::first());
+
+        // create a page with a category
+        $this->visit(route('backend.page.create'))
+            ->type('Hallo', 'title')
+            ->type('hallo', 'slug')
+            ->select('', 'category_id')
+            ->type('Content', 'body')
+            ->press('Speichern')
+            ->see('alert-success');
+
+        $page = Page::findBySlug('hallo');
+        $this->assertNotNull($page);
+        $this->assertEquals($page->category_id, '', 'Category id saved in page');
+    }
 }

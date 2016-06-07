@@ -25,6 +25,7 @@ class Page extends Model
         'meta_robots',
         'meta_description',
 
+        // reference
         'user_id',
         'category_id',
     ];

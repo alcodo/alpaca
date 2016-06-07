@@ -12,6 +12,7 @@ use Alpaca\Crud\Permission\Permission;
 use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Page;
 use Alpaca\Page\Utilities\PageUrlBuilder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -49,23 +50,23 @@ class PageBackend extends Controller implements CrudContract
     {
         return [
             [
-                'label'      => trans('crud::crud.title'),
-                'css'        => 'col-md-3',
+                'label' => trans('crud::crud.title'),
+                'css' => 'col-md-3',
                 'modelValue' => 'title',
             ],
             [
-                'label'      => trans('crud::crud.slug'),
-                'css'        => 'col-md-3',
+                'label' => trans('crud::crud.slug'),
+                'css' => 'col-md-3',
                 'modelValue' => 'slug',
             ],
             [
-                'label'      => trans('crud::crud.created'),
-                'css'        => 'col-md-2',
+                'label' => trans('crud::crud.created'),
+                'css' => 'col-md-2',
                 'modelValue' => 'getCreated',
             ],
             [
-                'label'      => trans('crud::crud.updated'),
-                'css'        => 'col-md-2',
+                'label' => trans('crud::crud.updated'),
+                'css' => 'col-md-2',
                 'modelValue' => 'getUpdated',
             ],
         ];
@@ -74,35 +75,36 @@ class PageBackend extends Controller implements CrudContract
     /**
      * Formbuilder.
      *
-     * @param null                                     $form
+     * @param null $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
      *
      * @return mixed
      */
     public function getForm($form = null, Model $entry = null)
     {
-        $selectedRoles = null;
+        $selectedCategory = '';
 
-        if (!is_null($entry)) {
+        if (!empty($entry->category_id)) {
             // only for edit
-            $selectedRoles = null;
+            $selectedCategory = $entry->category_id;
         }
-        $categories = Category::lists('title', 'id');
-        $categories->put('0', 'Keine Kategorie');
+
+        $categories = Category::orderBy('title', 'asc')->lists('title', 'id');
+        $categories->prepend(trans('page::category.no_category'), '');
 
         $formFields = [
-            'id'       => $form->hidden('id'),
-            'title'    => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
-            'slug'     => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-title-to-slug'),
+            'id' => $form->hidden('id'),
+            'title' => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
+            'slug' => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-title-to-slug'),
             'category_id' => $form->select(trans('page::category.category'), 'category_id')
                 ->options($categories)
-                ->select($selectedRoles),
-            'body'             => $form->textarea(trans('crud::crud.body'), 'body')->addClass('is-summernote'),
-            'html_title'       => $form->text(trans('page::page.html_title'), 'html_title'),
+                ->select($selectedCategory),
+            'body' => $form->textarea(trans('crud::crud.body'), 'body')->addClass('is-summernote'),
+            'html_title' => $form->text(trans('page::page.html_title'), 'html_title'),
             'meta_description' => $form->text(trans('page::page.meta_description'), 'meta_description'),
-            'meta_robots'      => $form->text(trans('page::page.meta_robots'), 'meta_robots'),
-            'active'           => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
-            'submit'           => $form->submit(trans('crud::crud.save')),
+            'meta_robots' => $form->text(trans('page::page.meta_robots'), 'meta_robots'),
+            'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
+            'submit' => $form->submit(trans('crud::crud.save')),
         ];
 
         return $formFields;
@@ -137,7 +139,7 @@ class PageBackend extends Controller implements CrudContract
     {
         return [
             'title' => 'required|string',
-            'body'  => 'required|string',
+            'body' => 'required|string',
         ];
     }
 
@@ -150,7 +152,7 @@ class PageBackend extends Controller implements CrudContract
     {
         return [
             'title' => 'required|string',
-            'body'  => 'required|string',
+            'body' => 'required|string',
         ];
     }
 
@@ -164,7 +166,11 @@ class PageBackend extends Controller implements CrudContract
     public function createEntry(array $data)
     {
         $model = $this->getModelClass();
+
         $data['user_id'] = Auth::user()->id;
+        if (empty($data['category_id'])) {
+            $data['category_id'] = null;
+        }
 
         $entry = $model::create($data);
 
@@ -184,6 +190,10 @@ class PageBackend extends Controller implements CrudContract
         $entry = $this->getEntry($id);
 
         $data['user_id'] = Auth::user()->id;
+        if (empty($data['category_id'])) {
+            $data['category_id'] = null;
+        }
+
         $status = $entry->update($data);
 
         return $status;
