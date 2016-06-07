@@ -30,30 +30,6 @@ class Page extends Model
         'category_id',
     ];
 
-    /**
-     * Casting fields.
-     *
-     * @param array $attributes A list of attributes to set.
-     */
-    public function fill(array $attributes)
-    {
-        parent::fill($attributes);
-
-        if (array_key_exists('slug', $attributes) === false &&
-            array_key_exists('title', $attributes)
-        ) {
-            // create slug
-            $slugify = new Slugify();
-            $this->slug = $slugify->slugify($attributes['title']);
-        }
-
-        if (array_key_exists('active', $attributes)) {
-            $this->active = (int)$attributes['active'];
-        }
-
-        return $this;
-    }
-
     public function getCreated()
     {
         return dateintl_full('short', $this->created_at);

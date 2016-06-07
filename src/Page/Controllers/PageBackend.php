@@ -12,7 +12,6 @@ use Alpaca\Crud\Permission\Permission;
 use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Page;
 use Alpaca\Page\Utilities\PageUrlBuilder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -168,8 +167,12 @@ class PageBackend extends Controller implements CrudContract
         $model = $this->getModelClass();
 
         $data['user_id'] = Auth::user()->id;
+        $data['active'] = (int)$data['active'];
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
+        }
+        if (empty($data['slug'])) {
+            $data['slug'] = app('slugify')->slugify($data['title']);
         }
 
         $entry = $model::create($data);
@@ -190,8 +193,12 @@ class PageBackend extends Controller implements CrudContract
         $entry = $this->getEntry($id);
 
         $data['user_id'] = Auth::user()->id;
+        $data['active'] = (int)$data['active'];
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
+        }
+        if (empty($data['slug'])) {
+            $data['slug'] = app('slugify')->slugify($data['title']);
         }
 
         $status = $entry->update($data);
