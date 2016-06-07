@@ -12,7 +12,7 @@ class Page extends Model
     /*
      * Body text will be cuttet on this tag
      */
-    const BREAK_TAG = '<!-- break -->';
+    const BREAK_TAG = '<!--break-->';
 
     protected $fillable = [
         'active',
