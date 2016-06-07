@@ -147,4 +147,5 @@ class CategoryBackend extends Controller implements CrudContract
     {
         return new CategoryUrlBuilder($this, $parameters);
     }
+
 }

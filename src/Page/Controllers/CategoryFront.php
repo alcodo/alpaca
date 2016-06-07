@@ -16,7 +16,9 @@ class CategoryFront extends Controller
      */
     public function show($slug)
     {
-        $category = Category::with('pages')->Slug($slug)->firstOrFail();
+        $category = Category::with(['pages' => function ($query) {
+            $query->orderBy('title', 'asc');
+        }])->Slug($slug)->firstOrFail();
 
         return view('page::category.show', compact('category'));
     }

@@ -27,7 +27,9 @@ trait ModelTrait
     public function getAllEntries()
     {
         $model = $this->getModelClass();
-        $entries = $model::all();
+        $entries = $model::orderBy(
+            $this->getModelOrderColumn(), $this->getModelOrderDirection()
+        )->get();
 
         return $entries;
     }
@@ -76,5 +78,25 @@ trait ModelTrait
         $status = $model::destroy($id);
 
         return $status;
+    }
+
+    /**
+     * Return the order column
+     *
+     * @return string
+     */
+    public function getModelOrderColumn()
+    {
+        return 'updated_at';
+    }
+
+    /**
+     * Return the order direction
+     *
+     * @return string
+     */
+    public function getModelOrderDirection()
+    {
+        return 'desc';
     }
 }

@@ -50,7 +50,7 @@ interface CrudContract
     /**
      * Formbuilder.
      *
-     * @param null                                     $form
+     * @param null $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
      *
      * @return mixed
@@ -130,7 +130,7 @@ interface CrudContract
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -194,4 +194,19 @@ interface CrudContract
      * @return array
      */
     public function getValidationUpdate();
+
+    /**
+     * Return the order column
+     *
+     * @return string
+     */
+    public function getModelOrderColumn();
+
+
+    /**
+     * Return the order direction
+     *
+     * @return string
+     */
+    public function getModelOrderDirection();
 }
