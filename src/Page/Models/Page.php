@@ -43,7 +43,7 @@ class Page extends Model
         ) {
             // create slug
             $slugify = new Slugify();
-            $this->slug = '/' . $slugify->slugify($attributes['title']);
+            $this->slug = $slugify->slugify($attributes['title']);
         }
 
         if (array_key_exists('active', $attributes)) {
