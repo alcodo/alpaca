@@ -257,7 +257,7 @@ class AuthController extends Controller
         Auth::logout();
         Flash::success(trans('user::user.logout_successful'));
 
-        return redirect($this->getRedirectUrl());
+        return redirect('/');
     }
 
     /**
