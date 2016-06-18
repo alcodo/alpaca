@@ -8,6 +8,7 @@ use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
+use Msurguy\Honeypot\HoneypotServiceProvider;
 use Zizaco\Entrust\EntrustServiceProvider;
 
 class DependencyServiceProvider extends AggregateServiceProvider
@@ -19,6 +20,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         SlugifyServiceProvider::class,
         ServiceProvider::class,
         BootFormsServiceProvider::class,
+        HoneypotServiceProvider::class,
     ];
 
     protected $aliases = [
@@ -28,6 +30,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         'Slugify'  => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
         'Dateintl' => \Approached\LaravelDateInternational\DateIntlFacade::class,
         'BootForm' => \AdamWathan\BootForms\Facades\BootForm::class,
+        'Honeypot' => \Msurguy\Honeypot\HoneypotFacade::class,
     ];
 
     protected $middlewares = [
