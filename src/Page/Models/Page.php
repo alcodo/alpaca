@@ -41,6 +41,24 @@ class Page extends Model
         return dateintl_full('medium', $this->updated_at);
     }
 
+    public function getTopic()
+    {
+        if(is_null($this->topic)){
+            return null;
+        }
+
+        return $this->topic->title;
+    }
+
+    public function getCategory()
+    {
+        if(is_null($this->category)){
+            return null;
+        }
+
+        return $this->category->title;
+    }
+
     public function scopeActive($query, $status)
     {
         return $query->where('active', '=', $status);
@@ -64,6 +82,11 @@ class Page extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
     }
 
     public function user()
