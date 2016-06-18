@@ -16,4 +16,9 @@ class Menu extends Model
     {
         return $this->hasMany('Alpaca\Menu\Models\Item', 'menu_id', 'id');
     }
+
+    public function getHtml()
+    {
+        return view('menu::show', ['menu' => $this])->render();
+    }
 }

@@ -14,18 +14,15 @@ class BlockBuilder
     {
         $blocks = $this->getBlocks($area);
 
-        if (is_null($blocks)) {
-            // no blocks in this area
-            return;
-        }
-
         $output = null;
         foreach ($blocks as $block) {
             if ($this->isException($block)) {
                 if (empty($block->menu_id)) {
                     // normal html block
-                    $output .= $this->setActiveLink($block->html);
+                    $output .= $block->html;
+//                    $output .= $this->setActiveLink($block->html);
                 } else {
+
                     // menu block
                     $menu = Menu::findOrFail($block->menu_id);
                     $output .= $menu->getHtml();
@@ -34,6 +31,13 @@ class BlockBuilder
         }
 
         return $output;
+    }
+
+    public function existsBlock($area){
+
+        $blocks = $this->getBlocks($area);
+
+        return !is_null($blocks);
     }
 
     private function str_replace_last($string, $search, $replace)

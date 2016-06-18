@@ -24,8 +24,8 @@ class CreateBlockTable extends Migration
             $table->text('html');
             $table->mediumText('exception');
 
-//            $table->integer('menu_id')->unsigned()->index();
-//            $table->foreign('menu_id')->references('id')->on('menu')->onDelete('cascade');
+            $table->integer('menu_id')->unsigned()->nullable();
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
 
             $table->timestamps();
         });

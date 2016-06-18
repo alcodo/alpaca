@@ -1,4 +1,4 @@
-@if(!is_null(Block::createBlock('top')))
+@if(Block::existsBlock('top'))
     <div class="row">
         <div class="col-sm-12">
             {!! Block::createBlock('top') !!}
@@ -7,7 +7,7 @@
 @endif
 
 <div class="row">
-    @if(!is_null(Block::createBlock('left')) && !is_null(Block::createBlock('right')))
+    @if(Block::existsBlock('left') && Block::existsBlock('right'))
 
         <aside class="col-sm-3">
             {!! Block::createBlock('left') !!}
@@ -21,7 +21,8 @@
             {!! Block::createBlock('right') !!}
         </aside>
 
-    @elseif(!is_null(Block::createBlock('left')))
+    @elseif(Block::existsBlock('left'))
+
         <aside class="col-sm-3">
             {!! Block::createBlock('left') !!}
         </aside>
@@ -31,7 +32,9 @@
                 @yield('content')
             </div>
         </main>
-    @elseif(!is_null(Block::createBlock('right')))
+
+    @elseif(Block::existsBlock('right'))
+
         <main class="col-sm-9">
             <div class="area-content">
                 @yield('content')
@@ -40,17 +43,20 @@
         <aside class="col-sm-3">
             {!! Block::createBlock('right') !!}
         </aside>
+
     @else
+
         <main class="col-sm-12">
             <div class="area-content">
                 @yield('content')
             </div>
         </main>
+
     @endif
 
 </div>
 
-@if(!is_null(Block::createBlock('bottom')))
+@if(Block::existsBlock('bottom'))
     <div class="row">
         <div class="col-sm-12">
             {!! Block::createBlock('bottom') !!}

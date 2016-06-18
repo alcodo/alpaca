@@ -10,6 +10,7 @@ use Alpaca\Crud\Controllers\ModelTrait;
 use Alpaca\Crud\Controllers\TextTrait;
 use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
+use Alpaca\Menu\Models\Menu;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 
@@ -82,6 +83,9 @@ class BlockBackend extends Controller implements CrudContract
             $selectedRange = $entry->range;
         }
 
+        $menus = Menu::orderBy('title', 'asc')->lists('title', 'id');
+        $menus->prepend(trans('menu::menu.no_menu'), '');
+
         $formFields = [
             'id' => $form->hidden('id'),
 
@@ -92,6 +96,9 @@ class BlockBackend extends Controller implements CrudContract
                 ->select($selectedArea),
             'range' => $form->select(trans('block::block.range'), 'range')
                 ->options(Block::RANGES)
+                ->select($selectedRange),
+            'menu_id' => $form->select(trans('menu::menu.menu'), 'menu_id')
+                ->options($menus)
                 ->select($selectedRange),
             'html'      => $form->textarea(trans('crud::crud.body'), 'html')->addClass('is-summernote'),
             'exception' => $form->textarea(trans('block::block.exception'), 'exception'),
