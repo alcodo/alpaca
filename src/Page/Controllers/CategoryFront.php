@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Response;
 
 class CategoryFront extends Controller
 {
-
     /**
      * Not implementet.
      *
@@ -22,6 +21,7 @@ class CategoryFront extends Controller
 
         return view('page::category.show', compact('category'));
     }
+
     /**
      * Not implementet.
      *

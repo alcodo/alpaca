@@ -1,4 +1,5 @@
 <?php
+
 use Alpaca\Page\Models\Page;
 
 /**
@@ -6,7 +7,6 @@ use Alpaca\Page\Models\Page;
  */
 class CategoryFrontTest extends AlpacaTestCase
 {
-
     /**
      * @test
      */
@@ -14,7 +14,7 @@ class CategoryFrontTest extends AlpacaTestCase
     {
         $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
 
-        $this->visit(config('page.categoryPrefix') . '/' . $category->slug)
+        $this->visit(config('page.categoryPrefix').'/'.$category->slug)
             ->see($category->title);
     }
 
@@ -26,7 +26,7 @@ class CategoryFrontTest extends AlpacaTestCase
         $topic = alpacaFactory(\Alpaca\Page\Models\Topic::class)->create();
         $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
 
-        $url = $topic->slug . '/' . config('page.categoryPrefix') . '/' . $category->slug;
+        $url = $topic->slug.'/'.config('page.categoryPrefix').'/'.$category->slug;
 
         $this->visit($url)
             ->see($category->title);

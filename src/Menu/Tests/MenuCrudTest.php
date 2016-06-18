@@ -7,7 +7,7 @@ use Alpaca\Menu\Controllers\MenuBackend;
 class MenuCrudTest extends AlpacaTestCase implements CrudTestContract
 {
     use CrudTestTrait;
-    
+
     /**
      * Return the controller class for the crud test.
      *

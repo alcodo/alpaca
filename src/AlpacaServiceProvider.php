@@ -24,5 +24,4 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         MenuServiceProvider::class,
         PageServiceProvider::class,
     ];
-
 }
