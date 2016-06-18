@@ -4,8 +4,7 @@ namespace Alpaca\Page\Controllers;
 
 use Alpaca\Page\Models\Page;
 use App\Http\Controllers\Controller;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class PageFront extends Controller
 {
@@ -15,6 +14,7 @@ class PageFront extends Controller
 
         return $this->viewPage($page);
     }
+
     public function showTopic($topicSlug, $pageSlug)
     {
         $page = Page::findBySlugOrFail($pageSlug);
@@ -32,31 +32,17 @@ class PageFront extends Controller
     protected function viewPage($page)
     {
 
-        if ($page->meta_robots == 'noindex') {
-            SEOMeta::addMeta('robots', 'noindex, nofollow');
+        if (!empty($page->meta_robots)) {
+            SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 
-        if (is_null($page->html_title) || empty($page->html_title)) {
-            $title = $page->title;
+        if (empty($page->html_title)) {
+            SEO::setTitle($page->title);
         } else {
-            $title = $page->html_title;
+            SEO::setTitle($page->html_title);
         }
 
-        // Meta
-        SEOMeta::setTitle($title);
-        SEOMeta::setDescription($page->meta_description);
-        SEOMeta::addMeta('article:published_time', $page->created_at->toW3CString(), 'property');
-
-        // Schema.org markup for Google+
-        SEOMeta::addMeta('name', $title, 'itemprop');
-        // SEOMeta::addMeta('image', $imageurl, 'itemprop');
-
-        // OpenGraph
-        OpenGraph::setDescription($page->meta_description);
-        OpenGraph::setTitle($title);
-        OpenGraph::setUrl(\Request::url());
-        OpenGraph::addProperty('type', 'article');
-        OpenGraph::addProperty('locale', 'de_DE');
+        SEO::setDescription($page->meta_description);
 
         return view('page::show', compact('page'));
     }
