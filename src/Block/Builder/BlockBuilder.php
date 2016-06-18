@@ -33,11 +33,11 @@ class BlockBuilder
         return $output;
     }
 
-    public function existsBlock($area){
-
+    public function existsBlock($area)
+    {
         $blocks = $this->getBlocks($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     private function str_replace_last($string, $search, $replace)
