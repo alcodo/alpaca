@@ -5,6 +5,7 @@ use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Topic;
 use Alpaca\Page\Models\Page;
 use Alpaca\Menu\Models\Menu;
+use Alpaca\Menu\Models\Item;
 use Alpaca\Block\Models\Block;
 
 /*
@@ -74,6 +75,15 @@ $factory->define(Page::class, function ($faker) {
 $factory->define(Menu::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
+    ];
+});
+$factory->define(Item::class, function (Faker\Generator $faker) {
+    return [
+        'text' => $faker->name,
+        'title' => $faker->firstNameMale,
+        'href' => $faker->countryCode,
+        'rel' => 'nofollow',
+        'target' => '',
     ];
 });
 
