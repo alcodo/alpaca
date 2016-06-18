@@ -116,7 +116,6 @@ class MenuBackend extends Controller implements CrudContract
         return $this->getValidationCreate();
     }
 
-
     /**
      * Return a url builder helper class.
      *
