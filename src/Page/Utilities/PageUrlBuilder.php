@@ -12,11 +12,18 @@ class PageUrlBuilder extends UrlBuilder
     {
         $page = Page::findOrFail($id);
 
-        if (is_null($page->category_id)) {
+        if (!is_null($page->topic_id)) {
+            // page with a topic
+            return route('page.show.topic', [$page->topic->slug, $page->slug]);
+        }
+
+        if (empty($page->slug)) {
+            // frontpage
             return route('page.frontpage');
         }
 
-        return route('page.show', [$page->category->slug, $page->slug]);
+        // page without a topic
+        return route('page.show', [$page->slug]);
     }
 
 }

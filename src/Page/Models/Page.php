@@ -43,7 +43,7 @@ class Page extends Model
 
     public function getTopic()
     {
-        if(is_null($this->topic)){
+        if (is_null($this->topic)) {
             return null;
         }
 
@@ -52,11 +52,20 @@ class Page extends Model
 
     public function getCategory()
     {
-        if(is_null($this->category)){
+        if (is_null($this->category)) {
             return null;
         }
 
         return $this->category->title;
+    }
+
+    public function getCategoryLink()
+    {
+        if (is_null($this->topic)) {
+            return route('category.show', [$this->category->slug]);
+        }
+
+        return route('category.show.topic', [$this->topic->slug, $this->category->slug]);
     }
 
     public function scopeActive($query, $status)

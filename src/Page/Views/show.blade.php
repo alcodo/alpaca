@@ -5,7 +5,7 @@
     {!!$page->body !!}
 
     @if(!is_null($page->category))
-        <p>Category: <a href="{{ route('category.show', [$page->category->slug]) }}">
+        <p>Category: <a href="{{ $page->getCategoryLink() }}">
                 {{$page->category->title}}
             </a>
         </p>
