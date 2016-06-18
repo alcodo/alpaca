@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Request;
 
 class BlockBuilder
 {
+    protected $blocks;
+
     public function createBlock($area)
     {
-        $blocks = Block::area($area)->orderBy('range', 'asc')->get();
+        $blocks = $this->getBlocks($area);
 
-        if ($blocks->isEmpty()) {
+        if (is_null($blocks)) {
             // no blocks in this area
             return;
         }
@@ -41,7 +43,7 @@ class BlockBuilder
         }
         $pos = strrpos($string, $search);
         if ($pos > 0) {
-            return substr($string, 0, $pos).$replace.substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
+            return substr($string, 0, $pos) . $replace . substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
         }
 
         return $string;
@@ -54,8 +56,8 @@ class BlockBuilder
             // front page
             return $html;
         } else {
-            $searchURL = '"><a href="/'.$path;
-            $replaceActive = ' active'.$searchURL;
+            $searchURL = '"><a href="/' . $path;
+            $replaceActive = ' active' . $searchURL;
 
             return $this->str_replace_last($html, $searchURL, $replaceActive);
         }
@@ -77,9 +79,9 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
+        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
 
-        return (bool) preg_match($regexpPatter, Request::path());
+        return (bool)preg_match($regexpPatter, Request::path());
     }
 
     public function getAreaChoice()
@@ -97,6 +99,22 @@ class BlockBuilder
 
     public function getAreaTranslation($areaId)
     {
-        return trans('block::block.'.$areaId);
+        return trans('block::block.' . $areaId);
+    }
+
+    /**
+     * @param $area
+     * @return mixed
+     */
+    public function getBlocks($area)
+    {
+        if (is_null($this->blocks)) {
+            $this->blocks = Block::orderBy('range', 'asc')->get()->groupBy('area');
+        }
+
+        if (isset($this->blocks[$area])) {
+            return $this->blocks[$area];
+        }
+        return null;
     }
 }
