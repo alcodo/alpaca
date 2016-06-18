@@ -156,4 +156,44 @@ class BlockBackend extends Controller implements CrudContract
     {
         return $this->getValidationCreate();
     }
+
+
+    /**
+     * Create a entry and return it.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createEntry(array $data)
+    {
+        if (empty($data['menu_id'])) {
+            $data['menu_id'] = null;
+        }
+        
+        $model = $this->getModelClass();
+        $entry = $model::create($data);
+
+        return $entry;
+    }
+
+    /**
+     * Updates a entry.
+     *
+     * @param $id
+     * @param array $data
+     *
+     * @return bool|int
+     */
+    public function updateEntry($id, array $data)
+    {
+        if (empty($data['menu_id'])) {
+            $data['menu_id'] = null;
+        }
+
+        $entry = $this->getEntry($id);
+        $status = $entry->update($data);
+
+        return $status;
+    }
 }
