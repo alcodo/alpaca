@@ -2,6 +2,7 @@
 
 namespace Alpaca\Crud\Controllers;
 
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 trait ControllerTrait
@@ -25,9 +26,13 @@ trait ControllerTrait
         $urlBuilder = $this->getUrlBuilderClass($parameters);
         $urlBuilder->setCollectionUrlReadUpdateDelete($entries);
 
+        $title = $this->getTitle();
+        $description = $this->getDescription();
+        SEO::setTitle($description);
+
         return view($this->getViewIndex(), [
-            'title'       => $this->getTitle(),
-            'description' => $this->getDescription(),
+            'title'       => $title,
+            'description' => $description,
             'entries'     => $entries,
             'columns'     => $this->getIndexColumns(),
             'create'      => [
@@ -65,6 +70,7 @@ trait ControllerTrait
 
         $title = $this->getUrlCreateText();
 
+        SEO::setTitle($title);
         return view($this->getViewCreate(), compact('title', 'formStart', 'formClose', 'formFields'));
     }
 
@@ -106,8 +112,11 @@ trait ControllerTrait
         $this->getPermissionClass()->canShowOrFail();
         $entry = $this->getEntry($id);
 
+        $title = $this->getSingularModelName();
+        SEO::setTitle($title);
+
         return view($this->getViewShow(), [
-            'title' => $this->getSingularModelName(),
+            'title' => $title,
             'entry' => $entry,
         ]);
     }
@@ -142,6 +151,7 @@ trait ControllerTrait
         /** @var FormBuilder $formClose */
         $formClose = $form->close();
         $title = $this->getUrlEditText();
+        SEO::setTitle($title);
 
         return view($this->getViewEdit(), compact('title', 'formStart', 'formClose', 'formFields'));
     }
