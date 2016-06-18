@@ -28,6 +28,7 @@ class Page extends Model
         // reference
         'user_id',
         'category_id',
+        'topic_id',
     ];
 
     public function getCreated()

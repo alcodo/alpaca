@@ -5,6 +5,11 @@
     </a>
 </li>
 <li>
+    <a class="{{ isActiveRoute('backend.topic.index') }}" href="{{ route('backend.topic.index') }}">
+        {{ trans('crud::crud.administration_type', ['type' => 'Topics']) }}
+    </a>
+</li>
+<li>
     <a class="{{ isActiveRoute('backend.category.index') }}" href="{{ route('backend.category.index') }}">
         {{ trans('crud::crud.administration_type', ['type' => 'Categories']) }}
     </a>

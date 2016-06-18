@@ -14,6 +14,6 @@ return array(
      |
      */
 
-    'prefix' => null,
+    'categoryPrefix' => 'category',
 
 );

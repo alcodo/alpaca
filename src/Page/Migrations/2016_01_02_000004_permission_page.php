@@ -24,6 +24,12 @@ class PermissionPage extends Migration
             $adminRole->attachPermission($permission);
         }
 
+        // topic
+        foreach ($this->getPermissionsTypes() as $type) {
+            $permission = $this->createPermission('Topic', $type);
+            $adminRole->attachPermission($permission);
+        }
+
         // category
         foreach ($this->getPermissionsTypes() as $type) {
             $permission = $this->createPermission('Category', $type);

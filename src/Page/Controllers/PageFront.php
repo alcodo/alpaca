@@ -9,7 +9,13 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 
 class PageFront extends Controller
 {
-    public function show($categorySlug, $pageSlug)
+    public function show($pageSlug)
+    {
+        $page = Page::findBySlugOrFail($pageSlug);
+
+        return $this->viewPage($page);
+    }
+    public function showTopic($topicSlug, $pageSlug)
     {
         $page = Page::findBySlugOrFail($pageSlug);
 

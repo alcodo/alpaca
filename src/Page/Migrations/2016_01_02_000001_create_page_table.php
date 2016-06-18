@@ -34,6 +34,10 @@ class CreatePageTable extends Migration
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
+            // topic
+            $table->integer('topic_id')->unsigned()->nullable();
+            $table->foreign('topic_id')->references('id')->on('topics');
+
             $table->timestamps();
         });
     }

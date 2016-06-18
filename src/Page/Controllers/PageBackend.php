@@ -11,6 +11,7 @@ use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
 use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Page;
+use Alpaca\Page\Models\Topic;
 use Alpaca\Page\Utilities\PageUrlBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
@@ -82,19 +83,31 @@ class PageBackend extends Controller implements CrudContract
     public function getForm($form = null, Model $entry = null)
     {
         $selectedCategory = '';
+        $selectedTopic = '';
 
         if (!empty($entry->category_id)) {
             // only for edit
             $selectedCategory = $entry->category_id;
         }
 
+        if (!empty($entry->topic_id)) {
+            // only for edit
+            $selectedTopic = $entry->topic_id;
+        }
+
         $categories = Category::orderBy('title', 'asc')->lists('title', 'id');
         $categories->prepend(trans('page::category.no_category'), '');
+
+        $topics = Topic::orderBy('title', 'asc')->lists('title', 'id');
+        $topics->prepend(trans('page::topic.no_topic'), '');
 
         $formFields = [
             'id' => $form->hidden('id'),
             'title' => $form->text(trans('crud::crud.title'), 'title')->addClass('is-title'),
             'slug' => $form->text(trans('crud::crud.slug'), 'slug')->addClass('is-title-to-slug'),
+            'topic_id' => $form->select(trans('page::topic.topic'), 'topic_id')
+                ->options($topics)
+                ->select($selectedTopic),
             'category_id' => $form->select(trans('page::category.category'), 'category_id')
                 ->options($categories)
                 ->select($selectedCategory),
@@ -171,6 +184,9 @@ class PageBackend extends Controller implements CrudContract
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
         }
+        if (empty($data['topic_id'])) {
+            $data['topic_id'] = null;
+        }
         if (empty($data['slug'])) {
             $data['slug'] = app('slugify')->slugify($data['title']);
         }
@@ -196,6 +212,9 @@ class PageBackend extends Controller implements CrudContract
         $data['active'] = (int)$data['active'];
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
+        }
+        if (empty($data['topic_id'])) {
+            $data['topic_id'] = null;
         }
         if (empty($data['slug'])) {
             $data['slug'] = app('slugify')->slugify($data['title']);

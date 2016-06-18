@@ -2,9 +2,13 @@
 
 use Alpaca\User\Models\User;
 use Alpaca\Page\Models\Category;
+use Alpaca\Page\Models\Topic;
 use Alpaca\Page\Models\Page;
 use Alpaca\Menu\Models\Menu;
 
+/**
+ * User
+ */
 $factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->name,
@@ -40,12 +44,22 @@ $factory->defineAs(User::class, 'form', function (Faker\Generator $faker) {
     ];
 });
 
+/**
+ * Page
+ */
+$factory->define(Topic::class, function ($faker) {
+    return [
+        'title' => $faker->unique()->firstNameFemale
+    ];
+});
+
 $factory->define(Category::class, function ($faker) {
     return [
         'title' => $faker->unique()->firstNameFemale,
         'body' => $faker->paragraph,
     ];
 });
+
 $factory->define(Page::class, function ($faker) {
     return [
         'title' => $faker->sentence(),
@@ -53,6 +67,9 @@ $factory->define(Page::class, function ($faker) {
     ];
 });
 
+/**
+ * Menu
+ */
 $factory->define(Menu::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name

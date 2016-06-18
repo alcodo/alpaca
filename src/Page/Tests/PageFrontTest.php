@@ -39,4 +39,49 @@ class PageFrontTest extends AlpacaTestCase
         $this->visit($url)
             ->see($page->title);
     }
+
+    /**
+     * @test
+     */
+    public function it_allows_see_simple_page_with_topic()
+    {
+        $topic = alpacaFactory(\Alpaca\Page\Models\Topic::class)->create();
+
+        $page = Page::create(array(
+            'title' => 'Topic is the king',
+            'slug' => 'king',
+            'body' => '<p>...</p>',
+            'html_title' => '',
+            'meta_robots' => '',
+            'meta_description' => '',
+            'user_id' => 1,
+            'active' => 1,
+            'topic_id' => $topic->id,
+        ));
+
+        $url = '/' . $topic->slug . '/' . $page->slug;
+
+        $this->visit($url)
+            ->see($page->title);
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_see_simple_page_without_category_and_topic()
+    {
+        $page = Page::create(array(
+            'title' => 'Alpaca is so cool',
+            'slug' => 'alpaca',
+            'body' => '<p>...</p>',
+            'html_title' => '',
+            'meta_robots' => '',
+            'meta_description' => '',
+            'user_id' => 1,
+            'active' => 1,
+        ));
+
+        $this->visit('/alpaca')
+            ->see($page->title);
+    }
 }
