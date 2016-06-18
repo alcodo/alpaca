@@ -14,7 +14,7 @@ class Menu extends Model
 
     public function items()
     {
-        return $this->hasMany('Alpaca\Menu\Models\Item', 'menu_id', 'id');
+        return $this->hasMany(Item::class);
     }
 
     public function getHtml()

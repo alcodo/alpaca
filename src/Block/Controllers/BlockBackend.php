@@ -76,11 +76,16 @@ class BlockBackend extends Controller implements CrudContract
     {
         $selectedArea = null;
         $selectedRange = null;
+        $selectedMenu = null;
 
         if (! is_null($entry)) {
             // only for edit
             $selectedArea = $entry->area;
             $selectedRange = $entry->range;
+
+            if(!empty($entry->menu->id)){
+                $selectedMenu = $entry->menu->id;
+            }
         }
 
         $menus = Menu::orderBy('title', 'asc')->lists('title', 'id');
@@ -99,11 +104,9 @@ class BlockBackend extends Controller implements CrudContract
                 ->select($selectedRange),
             'menu_id' => $form->select(trans('menu::menu.menu'), 'menu_id')
                 ->options($menus)
-                ->select($selectedRange),
+                ->select($selectedMenu),
             'html'      => $form->textarea(trans('crud::crud.body'), 'html')->addClass('is-summernote'),
             'exception' => $form->textarea(trans('block::block.exception'), 'exception'),
-
-//            'menu_id' => $form->textarea(trans('block::block.menu'), 'menu_id'),
             'submit' => $form->submit(trans('crud::crud.save')),
         ];
 

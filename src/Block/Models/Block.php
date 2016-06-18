@@ -2,6 +2,7 @@
 
 namespace Alpaca\Block\Models;
 
+use Alpaca\Menu\Models\Menu;
 use Illuminate\Database\Eloquent\Model;
 
 class Block extends Model
@@ -50,5 +51,11 @@ class Block extends Model
     public function scopeArea($query, $area)
     {
         return $query->where('area', '=', $area);
+    }
+
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
     }
 }

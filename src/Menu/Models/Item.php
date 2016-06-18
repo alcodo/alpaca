@@ -40,6 +40,6 @@ class Item extends Model
 
     public function menu()
     {
-        return $this->belongsTo('Alpaca\Menu\Models\Menu');
+        return $this->belongsTo(Menu::class);
     }
 }
