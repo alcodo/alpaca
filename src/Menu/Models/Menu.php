@@ -23,11 +23,6 @@ class Menu extends Model
         return view('menu::show', ['menu' => $this])->render();
     }
 
-    public function menu()
-    {
-        return $this->belongsTo(Menu::class);
-    }
-
     public function block()
     {
         return $this->hasMany(Block::class);
