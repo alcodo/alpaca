@@ -83,7 +83,7 @@ class BlockBackend extends Controller implements CrudContract
             $selectedArea = $entry->area;
             $selectedRange = $entry->range;
 
-            if(!empty($entry->menu->id)){
+            if (! empty($entry->menu->id)) {
                 $selectedMenu = $entry->menu->id;
             }
         }

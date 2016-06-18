@@ -53,7 +53,6 @@ class Block extends Model
         return $query->where('area', '=', $area);
     }
 
-
     public function menu()
     {
         return $this->belongsTo(Menu::class);
