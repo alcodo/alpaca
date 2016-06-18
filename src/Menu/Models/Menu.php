@@ -2,6 +2,7 @@
 
 namespace Alpaca\Menu\Models;
 
+use Alpaca\Block\Models\Block;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
@@ -20,5 +21,15 @@ class Menu extends Model
     public function getHtml()
     {
         return view('menu::show', ['menu' => $this])->render();
+    }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function block()
+    {
+        return $this->hasMany(Block::class);
     }
 }
