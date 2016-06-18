@@ -117,19 +117,6 @@ class RoleController extends BaseController implements CrudContract
     }
 
     /**
-     * Return a collections of entries.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getAllEntries()
-    {
-        $model = $this->getModelClass();
-        $entries = $model::with('perms')->get();
-
-        return $entries;
-    }
-
-    /**
      * Create a entry and return it.
      *
      * @param array $data

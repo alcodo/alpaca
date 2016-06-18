@@ -19,10 +19,10 @@ trait ControllerTrait
         $permission = $this->getPermissionClass();
         $permission->canIndexOrFail();
 
-        $entries = $this->getAllEntries();
+        $parameters = func_get_args();
+        $entries = $this->getAllEntries($parameters);
 
         // set url's in models
-        $parameters = func_get_args();
         $urlBuilder = $this->getUrlBuilderClass($parameters);
         $urlBuilder->setCollectionUrlReadUpdateDelete($entries);
 

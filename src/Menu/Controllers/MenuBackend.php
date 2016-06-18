@@ -10,6 +10,7 @@ use Alpaca\Crud\Controllers\TextTrait;
 use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
 use Alpaca\Menu\Models\Menu;
+use Alpaca\Menu\Utilities\MenuUrlBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 
@@ -113,5 +114,16 @@ class MenuBackend extends Controller implements CrudContract
     public function getValidationUpdate()
     {
         return $this->getValidationCreate();
+    }
+
+
+    /**
+     * Return a url builder helper class.
+     *
+     * @return \Alpaca\Crud\Utilities\UrlBuilder
+     */
+    public function getUrlBuilderClass($parameters = [])
+    {
+        return new MenuUrlBuilder($this, $parameters);
     }
 }

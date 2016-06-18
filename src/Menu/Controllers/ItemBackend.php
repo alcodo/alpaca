@@ -118,4 +118,21 @@ class ItemBackend extends Controller implements CrudContract
     {
         return $this->getValidationCreate();
     }
+
+    /**
+     * Returns a collections of entries.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllEntries($parameters = null)
+    {
+        $menuId = $parameters[0];
+
+        $model = $this->getModelClass();
+        $entries = $model::whereMenuId($menuId)->orderBy(
+            $this->getModelOrderColumn(), $this->getModelOrderDirection()
+        )->get();
+
+        return $entries;
+    }
 }

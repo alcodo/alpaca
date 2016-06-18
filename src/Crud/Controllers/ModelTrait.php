@@ -22,9 +22,10 @@ trait ModelTrait
     /**
      * Returns a collections of entries.
      *
+     * @param null $parameters
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getAllEntries()
+    public function getAllEntries($parameters = null)
     {
         $model = $this->getModelClass();
         $entries = $model::orderBy(
