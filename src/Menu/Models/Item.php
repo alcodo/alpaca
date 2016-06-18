@@ -19,16 +19,16 @@ class Item extends Model
     {
         $htmlLink = '<a';
 
-        if (!empty($this->title)) {
+        if (! empty($this->title)) {
             $htmlLink .= " title=$this->title";
         }
-        if (!empty($this->href)) {
+        if (! empty($this->href)) {
             $htmlLink .= " href=$this->href";
         }
-        if (!empty($this->rel)) {
+        if (! empty($this->rel)) {
             $htmlLink .= " rel=$this->rel";
         }
-        if (!empty($this->target)) {
+        if (! empty($this->target)) {
             $htmlLink .= " target=$this->target";
         }
         $htmlLink .= '>';

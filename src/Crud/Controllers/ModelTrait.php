@@ -82,7 +82,7 @@ trait ModelTrait
     }
 
     /**
-     * Return the order column
+     * Return the order column.
      *
      * @return string
      */
@@ -92,7 +92,7 @@ trait ModelTrait
     }
 
     /**
-     * Return the order direction
+     * Return the order direction.
      *
      * @return string
      */

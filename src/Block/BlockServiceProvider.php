@@ -31,7 +31,7 @@ class BlockServiceProvider extends Provider
 //            __DIR__.'/Seeds/' => base_path('/database/seeds'),
 //        ], 'seeds');
 
-        if (!$this->app->routesAreCached()) {
+        if (! $this->app->routesAreCached()) {
             require __DIR__.'/routes.php';
         }
 

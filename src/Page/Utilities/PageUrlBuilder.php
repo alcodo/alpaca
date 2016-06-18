@@ -2,7 +2,6 @@
 
 namespace Alpaca\Page\Utilities;
 
-use Alpaca\Crud\Controllers\CrudContract;
 use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\Page\Models\Page;
 
@@ -12,7 +11,7 @@ class PageUrlBuilder extends UrlBuilder
     {
         $page = Page::findOrFail($id);
 
-        if (!is_null($page->topic_id)) {
+        if (! is_null($page->topic_id)) {
             // page with a topic
             return route('page.show.topic', [$page->topic->slug, $page->slug]);
         }
@@ -25,5 +24,4 @@ class PageUrlBuilder extends UrlBuilder
         // page without a topic
         return route('page.show', [$page->slug]);
     }
-
 }

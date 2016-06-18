@@ -3,7 +3,6 @@
 namespace Alpaca\Page\Models;
 
 use Alpaca\User\Models\User;
-use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -44,7 +43,7 @@ class Page extends Model
     public function getTopic()
     {
         if (is_null($this->topic)) {
-            return null;
+            return;
         }
 
         return $this->topic->title;
@@ -53,7 +52,7 @@ class Page extends Model
     public function getCategory()
     {
         if (is_null($this->category)) {
-            return null;
+            return;
         }
 
         return $this->category->title;

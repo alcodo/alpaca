@@ -2,7 +2,6 @@
 
 use Alpaca\Page\Models\Page;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 
 class InstallPage extends Migration
 {
@@ -13,7 +12,7 @@ class InstallPage extends Migration
      */
     public function up()
     {
-        Page::create(array(
+        Page::create([
             'title' => 'Frontpage',
             'slug' => '',
             'body' => '<p>Let us start to create a LaravelCMF...</p>',
@@ -22,7 +21,7 @@ class InstallPage extends Migration
             'meta_description' => '',
             'user_id' => 1,
             'active' => 1,
-        ));
+        ]);
     }
 
     /**

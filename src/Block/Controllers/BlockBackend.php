@@ -76,7 +76,7 @@ class BlockBackend extends Controller implements CrudContract
         $selectedArea = null;
         $selectedRange = null;
 
-        if (!is_null($entry)) {
+        if (! is_null($entry)) {
             // only for edit
             $selectedArea = $entry->area;
             $selectedRange = $entry->range;

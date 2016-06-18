@@ -196,15 +196,14 @@ interface CrudContract
     public function getValidationUpdate();
 
     /**
-     * Return the order column
+     * Return the order column.
      *
      * @return string
      */
     public function getModelOrderColumn();
 
-
     /**
-     * Return the order direction
+     * Return the order direction.
      *
      * @return string
      */

@@ -1,8 +1,6 @@
 <?php
 
-use Alpaca\Page\Models\Page;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 
 class InstallCategory extends Migration
 {

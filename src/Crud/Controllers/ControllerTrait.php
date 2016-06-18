@@ -71,6 +71,7 @@ trait ControllerTrait
         $title = $this->getUrlCreateText();
 
         SEO::setTitle($title);
+
         return view($this->getViewCreate(), compact('title', 'formStart', 'formClose', 'formFields'));
     }
 

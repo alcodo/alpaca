@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 class AlpacaTestCase extends TestCase
 {
     /**
-     * SetUp before test
+     * SetUp before test.
      */
     public function setUp()
     {

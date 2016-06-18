@@ -1,14 +1,11 @@
 <?php
 
-use Alpaca\Crud\Permission\Permission;
-use Alpaca\User\Models\Role;
-use Alpaca\User\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class PageModule
 {
     /**
-     * Install module
+     * Install module.
      *
      * @return void
      */
@@ -18,7 +15,7 @@ class PageModule
         alpacaFactory(\Alpaca\Page\Models\Category::class, 5)->create();
 
         // Page
-        Page::create(array(
+        Page::create([
             'title' => 'Frontpage',
             'slug' => '/',
             'body' => '<p>Let us start to create a LaravelCMF...</p>',
@@ -27,11 +24,11 @@ class PageModule
             'meta_description' => '',
             'user_id' => '',
             'active' => 1,
-        ));
+        ]);
     }
 
     /**
-     * Remove module
+     * Remove module.
      *
      * @return void
      */

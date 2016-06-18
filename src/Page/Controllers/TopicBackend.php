@@ -133,7 +133,7 @@ class TopicBackend extends Controller implements CrudContract
         ];
     }
 
-    /**
+    /*
      * Return a url builder helper class.
      *
      * @return \Alpaca\Crud\Utilities\UrlBuilder
@@ -142,5 +142,4 @@ class TopicBackend extends Controller implements CrudContract
 //    {
 //        return new CategoryUrlBuilder($this, $parameters);
 //    }
-
 }
