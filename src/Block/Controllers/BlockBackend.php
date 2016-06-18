@@ -162,7 +162,6 @@ class BlockBackend extends Controller implements CrudContract
         return $this->getValidationCreate();
     }
 
-
     /**
      * Create a entry and return it.
      *

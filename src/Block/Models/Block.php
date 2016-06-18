@@ -48,7 +48,8 @@ class Block extends Model
         return $areas;
     }
 
-    public function getMenu(){
+    public function getMenu()
+    {
         if (is_null($this->menu)) {
             return;
         }
