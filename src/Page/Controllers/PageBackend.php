@@ -198,7 +198,10 @@ class PageBackend extends Controller implements CrudContract
             $data['topic_id'] = null;
         }
         if (empty($data['slug'])) {
-            $data['slug'] = app('slugify')->slugify($data['title']);
+            if (Page::findBySlug('') !== null) {
+                // frontpage does not exists
+                $data['slug'] = app('slugify')->slugify($data['title']);
+            }
         }
 
         $entry = $model::create($data);
@@ -227,7 +230,13 @@ class PageBackend extends Controller implements CrudContract
             $data['topic_id'] = null;
         }
         if (empty($data['slug'])) {
-            $data['slug'] = app('slugify')->slugify($data['title']);
+
+            if (
+                !empty($entry->slug) && // updated page is not a frontpage
+                Page::findBySlug('') !== null // frontpage does not exists
+            ) {
+                $data['slug'] = app('slugify')->slugify($data['title']);
+            }
         }
 
         $status = $entry->update($data);
