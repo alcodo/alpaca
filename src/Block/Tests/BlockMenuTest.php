@@ -1,11 +1,11 @@
 <?php
+
 use Alpaca\Block\Models\Block;
 use Alpaca\Menu\Models\Menu;
 use Alpaca\User\Models\User;
 
-
 /**
- * Block testing with menu
+ * Block testing with menu.
  */
 class BlockMenuTest extends AlpacaTestCase
 {
@@ -49,12 +49,11 @@ class BlockMenuTest extends AlpacaTestCase
     {
         $menu = alpacaFactory(\Alpaca\Menu\Models\Menu::class)->create();
         $block = alpacaFactory(\Alpaca\Block\Models\Block::class)->create([
-            'menu_id' => $menu->id
+            'menu_id' => $menu->id,
         ]);
 
         // check relation
         $this->assertEquals(Menu::first()->block->first()->id, $block->id);
         $this->assertEquals(Block::first()->menu->first()->id, $menu->id);
     }
-
 }
