@@ -5,6 +5,7 @@ use Alpaca\Page\Models\Category;
 use Alpaca\Page\Models\Topic;
 use Alpaca\Page\Models\Page;
 use Alpaca\Menu\Models\Menu;
+use Alpaca\Block\Models\Block;
 
 /*
  * User
@@ -73,5 +74,19 @@ $factory->define(Page::class, function ($faker) {
 $factory->define(Menu::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
+    ];
+});
+
+/*
+ * Block
+ */
+$factory->define(Block::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'area' => 'left',
+        'exception' => '',
+        'range' => 0,
+        'html' => $faker->sentence(),
+        'active' => 1,
     ];
 });
