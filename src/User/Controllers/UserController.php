@@ -87,7 +87,7 @@ class UserController extends BaseController implements CrudContract
     {
         $selectedRoles = null;
 
-        if (!is_null($entry)) {
+        if (! is_null($entry)) {
             // only for edit
             $selectedRoles = $entry->roles->pluck('id')->toArray();
         }

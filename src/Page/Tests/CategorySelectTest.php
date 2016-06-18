@@ -1,4 +1,5 @@
 <?php
+
 use Alpaca\Page\Models\Page;
 use Alpaca\User\Models\User;
 
@@ -7,7 +8,6 @@ use Alpaca\User\Models\User;
  */
 class CategorySelectTest extends AlpacaTestCase
 {
-
     /**
      * @test
      */

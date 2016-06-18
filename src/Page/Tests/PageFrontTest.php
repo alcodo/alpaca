@@ -1,4 +1,5 @@
 <?php
+
 use Alpaca\Page\Models\Page;
 
 /**
@@ -22,7 +23,7 @@ class PageFrontTest extends AlpacaTestCase
     {
         $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
 
-        $page = Page::create(array(
+        $page = Page::create([
             'title' => 'Cat vs Dog',
             'slug' => 'cat-dog',
             'body' => '<p>...</p>',
@@ -32,9 +33,9 @@ class PageFrontTest extends AlpacaTestCase
             'user_id' => 1,
             'active' => 1,
             'category_slug' => $category->slug,
-        ));
+        ]);
 
-        $url = config('page.prefix') . '/' . $category->slug . '/' . $page->slug;
+        $url = config('page.prefix').'/'.$category->slug.'/'.$page->slug;
 
         $this->visit($url)
             ->see($page->title);
@@ -47,7 +48,7 @@ class PageFrontTest extends AlpacaTestCase
     {
         $topic = alpacaFactory(\Alpaca\Page\Models\Topic::class)->create();
 
-        $page = Page::create(array(
+        $page = Page::create([
             'title' => 'Topic is the king',
             'slug' => 'king',
             'body' => '<p>...</p>',
@@ -57,9 +58,9 @@ class PageFrontTest extends AlpacaTestCase
             'user_id' => 1,
             'active' => 1,
             'topic_id' => $topic->id,
-        ));
+        ]);
 
-        $url = '/' . $topic->slug . '/' . $page->slug;
+        $url = '/'.$topic->slug.'/'.$page->slug;
 
         $this->visit($url)
             ->see($page->title);
@@ -70,7 +71,7 @@ class PageFrontTest extends AlpacaTestCase
      */
     public function it_allows_see_simple_page_without_category_and_topic()
     {
-        $page = Page::create(array(
+        $page = Page::create([
             'title' => 'Alpaca is so cool',
             'slug' => 'alpaca',
             'body' => '<p>...</p>',
@@ -79,7 +80,7 @@ class PageFrontTest extends AlpacaTestCase
             'meta_description' => '',
             'user_id' => 1,
             'active' => 1,
-        ));
+        ]);
 
         $this->visit('/alpaca')
             ->see($page->title);

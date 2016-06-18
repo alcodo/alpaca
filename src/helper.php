@@ -9,7 +9,7 @@ function isActiveRoute($route, $output = 'active')
 
 use Illuminate\Database\Eloquent\Factory;
 
-if (!function_exists('alpacaFactory')) {
+if (! function_exists('alpacaFactory')) {
     /**
      * Create a model factory builder for a given class, name, and amount.
      *

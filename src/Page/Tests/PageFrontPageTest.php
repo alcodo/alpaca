@@ -1,9 +1,10 @@
 <?php
+
 use Alpaca\Page\Models\Page;
 use Alpaca\User\Models\User;
 
 /**
- * Page frontpage test
+ * Page frontpage test.
  */
 class PageFrontPageTest extends AlpacaTestCase
 {
@@ -103,7 +104,5 @@ class PageFrontPageTest extends AlpacaTestCase
 
         $page = Page::whereTitle('Wildeast')->firstOrFail();
         $this->assertEquals('wildeast', $page->slug);
-
     }
-
 }

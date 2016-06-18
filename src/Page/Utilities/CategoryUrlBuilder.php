@@ -2,7 +2,6 @@
 
 namespace Alpaca\Page\Utilities;
 
-use Alpaca\Crud\Controllers\CrudContract;
 use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\Page\Models\Category;
 
@@ -14,5 +13,4 @@ class CategoryUrlBuilder extends UrlBuilder
 
         return route('category.show', $category->slug);
     }
-
 }

@@ -6,7 +6,7 @@ use Alpaca\Page\Models\Topic;
 use Alpaca\Page\Models\Page;
 use Alpaca\Menu\Models\Menu;
 
-/**
+/*
  * User
  */
 $factory->define(User::class, function (Faker\Generator $faker) {
@@ -40,16 +40,16 @@ $factory->defineAs(User::class, 'form', function (Faker\Generator $faker) {
     return [
         'username' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(6)
+        'password' => str_random(6),
     ];
 });
 
-/**
+/*
  * Page
  */
 $factory->define(Topic::class, function ($faker) {
     return [
-        'title' => $faker->unique()->firstNameFemale
+        'title' => $faker->unique()->firstNameFemale,
     ];
 });
 
@@ -67,11 +67,11 @@ $factory->define(Page::class, function ($faker) {
     ];
 });
 
-/**
+/*
  * Menu
  */
 $factory->define(Menu::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->name
+        'title' => $faker->name,
     ];
 });

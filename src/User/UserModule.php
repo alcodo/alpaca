@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class UserModule
 {
     /**
-     * Install module
+     * Install module.
      *
      * @return void
      */
@@ -40,10 +40,10 @@ class UserModule
         $permission_video->description = 'CRUD video';
         $permission_video->save();
 
-        $admin->attachPermissions(array(
+        $admin->attachPermissions([
             $permission_user,
-            $permission_video
-        ));
+            $permission_video,
+        ]);
 
         // User
         $admin_user = User::create([
@@ -56,7 +56,7 @@ class UserModule
     }
 
     /**
-     * Remove module
+     * Remove module.
      *
      * @return void
      */

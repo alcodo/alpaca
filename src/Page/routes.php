@@ -1,7 +1,6 @@
 <?php
 
 Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
-
     Route::resource('/backend/page', 'PageBackend');
     Route::resource('/backend/topic', 'TopicBackend');
     Route::resource('/backend/category', 'CategoryBackend');
@@ -19,5 +18,4 @@ Route::group(['namespace' => 'Alpaca\Page\Controllers'], function () {
 
     // front page
     Route::get('/', ['as' => 'page.frontpage', 'uses' => 'PageFront@showFrontPage']);
-
 });
