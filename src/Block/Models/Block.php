@@ -48,6 +48,14 @@ class Block extends Model
         return $areas;
     }
 
+    public function getMenu(){
+        if (is_null($this->menu)) {
+            return;
+        }
+
+        return $this->menu->title;
+    }
+
     public function scopeArea($query, $area)
     {
         return $query->where('area', '=', $area);

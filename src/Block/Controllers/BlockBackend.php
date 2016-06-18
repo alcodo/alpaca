@@ -57,6 +57,11 @@ class BlockBackend extends Controller implements CrudContract
                 'modelValue' => 'area',
             ],
             [
+                'label'      => trans('menu::menu.menu'),
+                'css'        => 'col-md-3',
+                'modelValue' => 'getMenu',
+            ],
+            [
                 'label'      => trans('block::block.range'),
                 'css'        => 'col-md-3',
                 'modelValue' => 'range',
@@ -170,7 +175,7 @@ class BlockBackend extends Controller implements CrudContract
         if (empty($data['menu_id'])) {
             $data['menu_id'] = null;
         }
-        
+
         $model = $this->getModelClass();
         $entry = $model::create($data);
 
