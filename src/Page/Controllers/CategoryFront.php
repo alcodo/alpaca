@@ -14,11 +14,24 @@ class CategoryFront extends Controller
      *
      * @return Response
      */
-    public function show($slug)
+    public function show($categorySlug)
     {
         $category = Category::with(['pages' => function ($query) {
             $query->orderBy('title', 'asc');
-        }])->Slug($slug)->firstOrFail();
+        }])->Slug($categorySlug)->firstOrFail();
+
+        return view('page::category.show', compact('category'));
+    }
+    /**
+     * Not implementet.
+     *
+     * @return Response
+     */
+    public function showTopic($topicSlug, $categorySlug)
+    {
+        $category = Category::with(['pages' => function ($query) {
+            $query->orderBy('title', 'asc');
+        }])->Slug($categorySlug)->firstOrFail();
 
         return view('page::category.show', compact('category'));
     }
