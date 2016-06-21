@@ -67,6 +67,15 @@ class Page extends Model
         return route('category.show.topic', [$this->topic->slug, $this->category->slug]);
     }
 
+    public function getPageLink()
+    {
+        if (!is_null($this->topic)) {
+            return route('page.show.topic', [$this->topic->slug, $this->slug]);
+        }
+
+        return route('page.show', [$this->slug]);
+    }
+
     public function scopeActive($query, $status)
     {
         return $query->where('active', '=', $status);
