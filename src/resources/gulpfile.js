@@ -31,16 +31,16 @@ elixir(function(mix) {
         '../../../node_modules/jquery-treegrid/js/jquery.treegrid.bootstrap3.js',
 
         // libs
-        '../../../alpaca/resources/js-lib/bootstrap-confirmation.js',
-        '../../../alpaca/resources/js-lib/jquery.bootstrap-autohidingnavbar.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js-lib/bootstrap-confirmation.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js-lib/jquery.bootstrap-autohidingnavbar.js',
 
         // js
-        '../../../alpaca/resources/js/navbar.js',
-        '../../../alpaca/resources/js/dataTables_languages.js',
-        '../../../alpaca/resources/js/dataTables.js',
-        '../../../alpaca/resources/js/confirm-button.js',
-        '../../../alpaca/resources/js/page.js',
-        '../../../alpaca/resources/js/select.js'
+        '../../../vendor/alcodo/alpaca/src/resources/js/navbar.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js/dataTables_languages.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js/dataTables.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js/confirm-button.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js/page.js',
+        '../../../vendor/alcodo/alpaca/src/resources/js/select.js'
     ], 'public/assets/theme/script.js');
 
     // Version
