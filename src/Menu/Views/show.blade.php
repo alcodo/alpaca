@@ -1,6 +1,6 @@
-<p>{{ $menu->title }}</p>
+<p class="nav-title">{{ $menu->title }}</p>
 @if($menu->items)
-    <ul>
+    <ul class="{{ $menu->class }}">
         @foreach ($menu->items as $item)
             <li>
                 {!! $item->getLink() !!}
