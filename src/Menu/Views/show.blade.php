@@ -7,4 +7,4 @@
             </li>
         @endforeach
     </ul>
-@
+@endif
