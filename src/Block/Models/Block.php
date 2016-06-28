@@ -28,7 +28,7 @@ class Block extends Model
 
     protected $fillable = [
         'active',
-        'name',
+        'title',
         'range',
         'area',
         'menu_id',

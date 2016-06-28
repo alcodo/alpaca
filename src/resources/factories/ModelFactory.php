@@ -92,7 +92,7 @@ $factory->define(Item::class, function (Faker\Generator $faker) {
  */
 $factory->define(Block::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'title' => $faker->name,
         'area' => 'left',
         'exception' => '',
         'range' => 0,

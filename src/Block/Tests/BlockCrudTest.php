@@ -28,7 +28,7 @@ class BlockCrudTest extends AlpacaTestCase implements CrudTestContract
         return [
             [
                 'text'    => 'TestBlock',
-                'element' => 'name',
+                'element' => 'title',
             ],
             [
                 'text'    => 'top',

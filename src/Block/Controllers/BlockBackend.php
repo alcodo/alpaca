@@ -49,7 +49,7 @@ class BlockBackend extends Controller implements CrudContract
             [
                 'label'      => trans('crud::crud.name'),
                 'css'        => 'col-md-3',
-                'modelValue' => 'name',
+                'modelValue' => 'title',
             ],
             [
                 'label'      => trans('block::block.area'),
@@ -99,7 +99,7 @@ class BlockBackend extends Controller implements CrudContract
         $formFields = [
             'id' => $form->hidden('id'),
 
-            'name'   => $form->text(trans('crud::crud.name'), 'name'),
+            'title'   => $form->text(trans('crud::crud.title'), 'title'),
             'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
             'area'   => $form->select(trans('block::block.area'), 'area')
                 ->options(Block::getAreaChoice())
@@ -146,7 +146,7 @@ class BlockBackend extends Controller implements CrudContract
     public function getValidationCreate()
     {
         return [
-            'name'  => 'required|string',
+            'title'  => 'required|string',
             'range' => 'required|integer',
             'area'  => 'required',
         ];
