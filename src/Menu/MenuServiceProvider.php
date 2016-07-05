@@ -22,12 +22,9 @@ class MenuServiceProvider extends Provider
         $this->publishes([
             __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');
-//        $this->publishes([
-//            __DIR__.'/Seeds/' => base_path('/database/seeds'),
-//        ], 'seeds');
 
-        if (! $this->app->routesAreCached()) {
+        $this->app['router']->group(['namespace' => 'Alpaca\Menu\Controllers'], function ($router) {
             require __DIR__.'/routes.php';
-        }
+        });
     }
 }
