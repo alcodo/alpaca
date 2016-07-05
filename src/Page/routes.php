@@ -8,8 +8,8 @@ Route::resource('/backend/category', 'CategoryBackend');
 $categoryPrefix = config('page.categoryPrefix');
 
 // category with/without topic
-Route::get('/{topic}/' . $categoryPrefix . '/{categorySlug}', ['as' => 'category.show.topic', 'uses' => 'CategoryFront@showTopic']);
-Route::get('/' . $categoryPrefix . '/{categorySlug}', ['as' => 'category.show', 'uses' => 'CategoryFront@show']);
+Route::get('/{topic}/'.$categoryPrefix.'/{categorySlug}', ['as' => 'category.show.topic', 'uses' => 'CategoryFront@showTopic']);
+Route::get('/'.$categoryPrefix.'/{categorySlug}', ['as' => 'category.show', 'uses' => 'CategoryFront@show']);
 
 // page with/without topic
 Route::get('/{topicSlug}/{pageSlug}', ['as' => 'page.show.topic', 'uses' => 'PageFront@showTopic']);

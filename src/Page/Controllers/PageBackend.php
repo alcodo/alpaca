@@ -15,7 +15,6 @@ use Alpaca\Page\Models\Topic;
 use Alpaca\Page\Utilities\PageUrlBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class PageBackend extends Controller implements CrudContract
 {
