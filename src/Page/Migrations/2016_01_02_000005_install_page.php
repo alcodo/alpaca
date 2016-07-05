@@ -19,7 +19,6 @@ class InstallPage extends Migration
             'html_title' => '',
             'meta_robots' => '',
             'meta_description' => '',
-            'user_id' => 1,
             'active' => 1,
         ]);
     }

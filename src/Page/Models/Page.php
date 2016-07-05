@@ -25,7 +25,6 @@ class Page extends Model
         'meta_description',
 
         // reference
-        'user_id',
         'category_id',
         'topic_id',
     ];

@@ -22,7 +22,6 @@ class PageModule
             'html_title' => '',
             'meta_robots' => '',
             'meta_description' => '',
-            'user_id' => '',
             'active' => 1,
         ]);
     }

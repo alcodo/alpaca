@@ -26,10 +26,6 @@ class CreatePageTable extends Migration
             $table->string('meta_robots');
             $table->string('meta_description');
 
-            // user
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
-
             // category
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');

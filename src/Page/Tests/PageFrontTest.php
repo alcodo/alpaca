@@ -30,7 +30,6 @@ class PageFrontTest extends AlpacaTestCase
             'html_title' => '',
             'meta_robots' => '',
             'meta_description' => '',
-            'user_id' => 1,
             'active' => 1,
             'category_slug' => $category->slug,
         ]);
@@ -55,7 +54,6 @@ class PageFrontTest extends AlpacaTestCase
             'html_title' => '',
             'meta_robots' => '',
             'meta_description' => '',
-            'user_id' => 1,
             'active' => 1,
             'topic_id' => $topic->id,
         ]);
@@ -78,7 +76,6 @@ class PageFrontTest extends AlpacaTestCase
             'html_title' => '',
             'meta_robots' => '',
             'meta_description' => '',
-            'user_id' => 1,
             'active' => 1,
         ]);
 
