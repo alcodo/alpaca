@@ -19,7 +19,7 @@ class BlockBuilder
             if ($this->isException($block)) {
                 if (empty($block->menu_id)) {
                     // normal html block
-                    if(!empty($block->title)){
+                    if (! empty($block->title)) {
                         $output .= '<p class="block-title">'.$block->title.'</p>';
                     }
                     $output .= $block->html;
