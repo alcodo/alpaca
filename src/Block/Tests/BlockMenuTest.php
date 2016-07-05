@@ -24,7 +24,7 @@ class BlockMenuTest extends AlpacaTestCase
 
         // create a block
         $this->visit('/backend/block/create')
-            ->type('Navigation', 'title')
+            ->type('Navigation', 'name')
             ->select($firstMenu->id, 'menu_id')
             ->press(trans('crud::crud.save'))
             ->see('alert-success');

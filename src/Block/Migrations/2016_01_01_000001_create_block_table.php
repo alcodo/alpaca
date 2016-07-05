@@ -18,7 +18,8 @@ class CreateBlockTable extends Migration
             $table->boolean('active');
             $table->string('area', 10)->index();
 
-            $table->string('title');
+            $table->string('name');
+            $table->string('title')->nullable();
             $table->tinyInteger('range')->unsigned();
 
             $table->text('html');
