@@ -2,10 +2,8 @@
 
 namespace Alpaca\Page;
 
-//use Illuminate\Support\ServiceProvider as Provider;
 use Alpaca\Page\Listeners\SitemapListener;
 use Alpaca\Page\Models\Page;
-use Alpaca\Sitemap\Models\Sitemap;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
