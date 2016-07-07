@@ -26,23 +26,22 @@ class SitemapListener
     {
         $pages = Page::whereActive(true)->get();
         $sitemaps = [];
-        $domain = config('app.url') . '/';
+        $domain = config('app.url').'/';
 
         foreach ($pages as $page) {
-
             if (empty($page->slug)) {
                 // frontpage
 
                 $sitemaps[] = new Sitemap([
                     'title' => $page->title,
-                    'url' => $domain
+                    'url' => $domain,
                 ]);
                 continue;
             }
 
             $sitemaps[] = new Sitemap([
                 'title' => $page->title,
-                'url' => $domain . $page->slug
+                'url' => $domain.$page->slug,
             ]);
         }
 
