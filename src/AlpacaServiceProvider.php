@@ -3,6 +3,7 @@
 namespace Alpaca;
 
 use Alpaca\Crud\CrudServiceProvider;
+use Alpaca\Sitemap\SitemapServiceProvider;
 use Alpaca\User\UserServiceProvider;
 use Alpaca\Block\BlockServiceProvider;
 use Alpaca\Menu\MenuServiceProvider;
@@ -22,6 +23,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         UserServiceProvider::class,
         BlockServiceProvider::class,
         MenuServiceProvider::class,
+        SitemapServiceProvider::class,
         PageServiceProvider::class,
     ];
 }
