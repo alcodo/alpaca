@@ -7,7 +7,7 @@
     {!! BootForm::openHorizontal([
                                   'sm' => [4, 8],
                                   'lg' => [2, 10]
-    ])->post()->action(action('Alpaca\User\Controllers\AuthController@postLogin')) !!}
+    ])->post()->action(action('\Alpaca\User\Controllers\AuthController@postLogin')) !!}
 
     {!! BootForm::text(trans('user::user.email'), 'email')->required() !!}
     {!! BootForm::password(trans('user::user.password'), 'password')->required() !!}

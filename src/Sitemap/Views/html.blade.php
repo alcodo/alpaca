@@ -17,7 +17,7 @@
                 @foreach ($sitemaps as $index => $sitemap)
                     <tr>
                         <td>{{ $index+1 }}</td>
-                        <td><a href="{{ $sitemap->url }}">{{ $sitemap->url }}</a></td>
+                        <td><a href="{{ $sitemap->url }}">{{ $sitemap->title }}</a></td>
                     </tr>
                 @endforeach
             </table>

@@ -11,18 +11,14 @@ class SitemapFront extends Controller
 
     public function xml()
     {
-        $sitemaps = collect([
-            new Sitemap(['url' => '/test'])
-        ]);
+        $sitemaps = $this->getSitemaps();
 
         return response()->view('sitemap::xml', compact('sitemaps'))->header('Content-Type', 'text/xml');
     }
 
     public function html()
     {
-        $sitemaps = collect([
-            new Sitemap(['url' => '/test'])
-        ]);
+        $sitemaps = $this->getSitemaps();
 
         SEO::setTitle(trans('sitemap::sitemap.sitemap'));
         SEO::metatags()->addMeta('robots', 'noindex, follow');
@@ -30,4 +26,16 @@ class SitemapFront extends Controller
         return view('sitemap::html', compact('sitemaps'));
     }
 
+    protected function getSitemaps()
+    {
+        $data = event('sitemap');
+
+        $sitemaps = collect();
+
+        foreach ($data as $items) {
+            $sitemaps = $sitemaps->merge($items);
+        }
+
+        return $sitemaps;
+    }
 }

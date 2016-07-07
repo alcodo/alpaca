@@ -2,10 +2,26 @@
 
 namespace Alpaca\Page;
 
-use Illuminate\Support\ServiceProvider as Provider;
+//use Illuminate\Support\ServiceProvider as Provider;
+use Alpaca\Page\Listeners\SitemapListener;
+use Alpaca\Page\Models\Page;
+use Alpaca\Sitemap\Models\Sitemap;
+use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class PageServiceProvider extends Provider
+class PageServiceProvider extends ServiceProvider
 {
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+        'sitemap' => [
+            SitemapListener::class,
+        ],
+    ];
+
     /**
      * Register the service provider.
      *
@@ -15,8 +31,10 @@ class PageServiceProvider extends Provider
     {
     }
 
-    public function boot()
+    public function boot(DispatcherContract $events)
     {
+        parent::boot($events);
+
         $this->loadViewsFrom(__DIR__.'/Views', 'page');
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'page');
 

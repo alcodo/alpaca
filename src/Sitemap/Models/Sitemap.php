@@ -8,6 +8,7 @@ class Sitemap extends Model
 {
 
     protected $fillable = [
+        'title',
         'url',
     ];
 
