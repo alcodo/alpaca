@@ -8,7 +8,6 @@ use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class SitemapFront extends Controller
 {
-
     public function xml()
     {
         $sitemaps = $this->getSitemaps();
