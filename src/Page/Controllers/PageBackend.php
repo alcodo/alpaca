@@ -194,7 +194,7 @@ class PageBackend extends Controller implements CrudContract
     {
         $model = $this->getModelClass();
 
-        $data['active'] = isset( $data['active']);
+        $data['active'] = isset($data['active']);
 
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
@@ -226,7 +226,7 @@ class PageBackend extends Controller implements CrudContract
     {
         $entry = $this->getEntry($id);
 
-        $data['active'] = isset( $data['active']);
+        $data['active'] = isset($data['active']);
 
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
