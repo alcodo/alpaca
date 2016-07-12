@@ -50,7 +50,7 @@ class PageFront extends Controller
 
     protected function viewPage($page)
     {
-        if (!empty($page->meta_robots)) {
+        if (! empty($page->meta_robots)) {
             SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 

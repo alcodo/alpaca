@@ -4,7 +4,6 @@ namespace Alpaca\Page\Models;
 
 use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Page extends Model
 {
@@ -35,9 +34,10 @@ class Page extends Model
 
     public function getIsActive()
     {
-        if($this->active){
+        if ($this->active) {
             return '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>';
         }
+
         return '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
     }
 
