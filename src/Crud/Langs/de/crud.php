@@ -29,4 +29,8 @@ return [
     'rel'                  => 'Rel',
     'target'               => 'Target',
     'text'                 => 'Text',
+    'file'                 => 'Datei',
+    'alt'                  => 'Alt',
+    'filename'             => 'Dateiname',
+    'active'             => 'Aktiv',
 ];

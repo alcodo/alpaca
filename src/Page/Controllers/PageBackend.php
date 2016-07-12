@@ -69,6 +69,12 @@ class PageBackend extends Controller implements CrudContract
                 'modelValue' => 'getCategory',
             ],
             [
+                'label' => trans('crud::crud.active'),
+                'css' => 'col-md-1',
+                'html' => true,
+                'modelValue' => 'getIsActive',
+            ],
+            [
                 'label' => trans('crud::crud.created'),
                 'css' => 'col-md-2',
                 'modelValue' => 'getCreated',
@@ -188,7 +194,8 @@ class PageBackend extends Controller implements CrudContract
     {
         $model = $this->getModelClass();
 
-        $data['active'] = (int) $data['active'];
+        $data['active'] = isset( $data['active']);
+
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
         }
@@ -219,7 +226,8 @@ class PageBackend extends Controller implements CrudContract
     {
         $entry = $this->getEntry($id);
 
-        $data['active'] = (int) $data['active'];
+        $data['active'] = isset( $data['active']);
+
         if (empty($data['category_id'])) {
             $data['category_id'] = null;
         }

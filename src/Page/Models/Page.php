@@ -29,6 +29,18 @@ class Page extends Model
         'topic_id',
     ];
 
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    public function getIsActive()
+    {
+        if($this->active){
+            return '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>';
+        }
+        return '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+    }
+
     public function getCreated()
     {
         return dateintl_full('short', $this->created_at);

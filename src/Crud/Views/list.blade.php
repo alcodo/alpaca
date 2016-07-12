@@ -43,10 +43,23 @@
                     @foreach ($entries as $entry)
                         <tr>
                             @foreach ($columns as $column)
-                                @if(method_exists($entry, $column['modelValue']))
-                                    <td>{{ $entry->{$column['modelValue']}() }}</td>
+
+                                @if(isset($column['html']) && $column['html'])
+
+                                    @if(method_exists($entry, $column['modelValue']))
+                                        <td>{!! $entry->{$column['modelValue']}() !!}</td>
+                                    @else
+                                        <td>{!! $entry->{$column['modelValue']} !!}</td>
+                                    @endif
+
                                 @else
-                                    <td>{{ $entry->{$column['modelValue']} }}</td>
+
+                                    @if(method_exists($entry, $column['modelValue']))
+                                        <td>{{ $entry->{$column['modelValue']}() }}</td>
+                                    @else
+                                        <td>{{ $entry->{$column['modelValue']} }}</td>
+                                    @endif
+
                                 @endif
                             @endforeach
                             <td>

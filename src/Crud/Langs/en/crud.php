@@ -32,5 +32,5 @@ return [
     'file'                 => 'File',
     'alt'                  => 'Alt',
     'filename'             => 'Filename',
-
+    'active'             => 'Active',
 ];
