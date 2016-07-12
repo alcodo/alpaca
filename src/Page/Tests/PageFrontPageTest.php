@@ -14,10 +14,10 @@ class PageFrontPageTest extends AlpacaTestCase
     public function it_allows_create_frontpage()
     {
         // delete frontpage
-        $page = Page::findBySlugOrFail('');
+        $page = Page::whereSlug('')->first();
         $page->delete();
 
-        $this->assertNull(Page::findBySlug(''));
+        $this->assertNull(Page::whereSlug('')->first());
 
         // log in
         $adminUser = User::first();
@@ -31,7 +31,7 @@ class PageFrontPageTest extends AlpacaTestCase
             ->press(trans('crud::crud.save'))
             ->see('alert-success');
 
-        $this->assertNotNull(Page::findBySlug(''), 'Page without slug was not created for the frontpage');
+        $this->assertNotNull(Page::whereSlug('')->first(), 'Page without slug was not created for the frontpage');
     }
 
     /**
@@ -39,7 +39,7 @@ class PageFrontPageTest extends AlpacaTestCase
      */
     public function it_not_allows_create_frontpage()
     {
-        $this->assertNotNull(Page::findBySlug(''));
+        $this->assertNotNull(Page::whereSlug('')->first());
 
         // log in
         $adminUser = User::first();
@@ -74,7 +74,7 @@ class PageFrontPageTest extends AlpacaTestCase
             ->press(trans('crud::crud.save'))
             ->see('alert-success');
 
-        $this->assertNotNull(Page::findBySlug(''), 'Page slug was created on update');
+        $this->assertNotNull(Page::whereSlug('')->first(), 'Page slug was created on update');
     }
 
     /**

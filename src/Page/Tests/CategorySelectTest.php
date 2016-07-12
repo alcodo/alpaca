@@ -26,7 +26,7 @@ class CategorySelectTest extends AlpacaTestCase
             ->press('Speichern')
             ->see('alert-success');
 
-        $page = Page::findBySlug('hallo');
+        $page = Page::whereSlug('hallo')->first();
         $this->assertNotNull($page);
         $this->assertEquals($page->category_id, $category->id, 'Category id was not saved in page');
 
@@ -51,7 +51,7 @@ class CategorySelectTest extends AlpacaTestCase
             ->press('Speichern')
             ->see('alert-success');
 
-        $page = Page::findBySlug('hallo');
+        $page = Page::whereSlug('hallo')->first();
         $this->assertNotNull($page);
         $this->assertEquals($page->category_id, '', 'Category id saved in page');
     }

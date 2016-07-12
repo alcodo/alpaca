@@ -87,26 +87,6 @@ class Page extends Model
         return route('page.show', [$this->slug]);
     }
 
-    public function scopeActive($query, $status)
-    {
-        return $query->where('active', '=', $status);
-    }
-
-    public static function findBySlug($slug)
-    {
-        return self::where('slug', '=', $slug)->first();
-    }
-
-    public static function findBySlugOrFail($slug)
-    {
-        $entry = self::findBySlug($slug);
-        if (is_null($entry)) {
-            throw (new ModelNotFoundException())->setModel(get_called_class());
-        }
-
-        return $entry;
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);
