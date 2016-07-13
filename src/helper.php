@@ -17,7 +17,7 @@ function isActiveUrl($path, $output = 'active')
     }
 }
 
-if (!function_exists('alpacaFactory')) {
+if (! function_exists('alpacaFactory')) {
     /**
      * Create a model factory builder for a given class, name, and amount.
      *
