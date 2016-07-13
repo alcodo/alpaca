@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\Facades\Request;
+
 function isActiveRoute($route, $output = 'active')
 {
     if (Route::currentRouteName() == $route) {
@@ -7,9 +10,14 @@ function isActiveRoute($route, $output = 'active')
     }
 }
 
-use Illuminate\Database\Eloquent\Factory;
+function isActiveUrl($path, $output = 'active')
+{
+    if (trim($path, '/') === Request::path()) {
+        return $output;
+    }
+}
 
-if (! function_exists('alpacaFactory')) {
+if (!function_exists('alpacaFactory')) {
     /**
      * Create a model factory builder for a given class, name, and amount.
      *
