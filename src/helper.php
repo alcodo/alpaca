@@ -12,7 +12,12 @@ function isActiveRoute($route, $output = 'active')
 
 function isActiveUrl($path, $output = 'active')
 {
-    if (trim($path, '/') === Request::path()) {
+    if ($path !== '/') {
+        // not a frontpage
+        $path = trim($path, '/');
+    }
+
+    if ($path === Request::path()) {
         return $output;
     }
 }
