@@ -1,8 +1,7 @@
 @extends('app')
 
 @section('content')
-
-    <h1 class="page-header">{{ $category->title }}</h1>
+    <h1>{{ $category->title }}</h1>
     {!!$category->body !!}
 
     @foreach ($category->pages as $index => $page)
