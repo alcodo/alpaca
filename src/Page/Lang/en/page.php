@@ -8,5 +8,6 @@ return [
     'meta_description' => 'Meta description',
     'meta_robots'      => 'Meta Robots',
     'active'           => 'Active',
+    'readmore'           => 'Read more',
 
 ];
