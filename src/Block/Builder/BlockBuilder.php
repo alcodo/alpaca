@@ -17,7 +17,7 @@ class BlockBuilder
         $output = null;
         foreach ($blocks as $block) {
             if ($this->isException($block)) {
-                if (empty($block->menu_id)) {
+                if (empty($block->menu)) {
                     // normal html block
                     if (! empty($block->title)) {
                         $output .= '<p class="block-title">'.$block->title.'</p>';
@@ -27,8 +27,8 @@ class BlockBuilder
                 } else {
 
                     // menu block
-                    $menu = Menu::findOrFail($block->menu_id);
-                    $output .= $menu->getHtml();
+//                    $menu = Menu::findOrFail($block->menu_id);
+                    $output .= $block->menu->getHtml();
                 }
             }
         }
@@ -116,7 +116,8 @@ class BlockBuilder
     public function getBlocks($area)
     {
         if (is_null($this->blocks)) {
-            $this->blocks = Block::orderBy('range', 'asc')->get()->groupBy('area');
+//            $this->blocks = Block::orderBy('range', 'asc')->get()->groupBy('area');
+            $this->blocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get()->groupBy('area');
         }
 
         if (isset($this->blocks[$area])) {
