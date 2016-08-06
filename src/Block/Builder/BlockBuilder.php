@@ -16,9 +16,8 @@ class BlockBuilder
         $blocks = $this->getBlockFromDatabase($area);
 
         return $blocks->map(function ($block, $key) {
-
             if ($this->isException($block)) {
-                return null;
+                return;
             }
 
             if (is_null($block->menu) === false) {
@@ -28,7 +27,6 @@ class BlockBuilder
 
             // block
             return Response::view('block::block', ['block' => $block])->getContent();
-
         })->implode('');
     }
 
@@ -36,7 +34,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockFromDatabase($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     private function str_replace_last($string, $search, $replace)
@@ -46,7 +44,7 @@ class BlockBuilder
         }
         $pos = strrpos($string, $search);
         if ($pos > 0) {
-            return substr($string, 0, $pos) . $replace . substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
+            return substr($string, 0, $pos).$replace.substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
         }
 
         return $string;
@@ -59,8 +57,8 @@ class BlockBuilder
             // front page
             return $html;
         } else {
-            $searchURL = '"><a href="/' . $path;
-            $replaceActive = ' active' . $searchURL;
+            $searchURL = '"><a href="/'.$path;
+            $replaceActive = ' active'.$searchURL;
 
             return $this->str_replace_last($html, $searchURL, $replaceActive);
         }
@@ -82,9 +80,9 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
+        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
-        return (bool)preg_match($regexpPatter, Request::path());
+        return (bool) preg_match($regexpPatter, Request::path());
     }
 
     public function getAreaChoice()
@@ -102,7 +100,7 @@ class BlockBuilder
 
     public function getAreaTranslation($areaId)
     {
-        return trans('block::block.' . $areaId);
+        return trans('block::block.'.$areaId);
     }
 
     /**
@@ -123,10 +121,11 @@ class BlockBuilder
     protected function getBlockTemplate($block)
     {
         $output = '';
-        if (!empty($block->title)) {
-            $output .= '<p class="block-title">' . $block->title . '</p>';
+        if (! empty($block->title)) {
+            $output .= '<p class="block-title">'.$block->title.'</p>';
         }
         $output .= $block->html;
+
         return $output;
     }
 }
