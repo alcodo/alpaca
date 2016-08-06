@@ -33,7 +33,7 @@ class AdminBlockListener
                 'title' => 'Administration',
                 'area' => 'right',
                 'exception' => '',
-                'range' => 0,
+                'range' => 1,
                 'html' => Response::view('core::adminblock')->getContent(),
             ]);
         }

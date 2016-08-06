@@ -16,8 +16,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'loadEventBlocks' => [
-            AdminBlockListener::class,
             UserBlockListener::class,
+            AdminBlockListener::class,
         ],
     ];
 
