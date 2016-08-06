@@ -35,6 +35,7 @@ class Block extends Model
         'menu_id',
         'exception',
         'html',
+        'ismobile',
     ];
 
     public static function getAreaChoice()
@@ -58,12 +59,12 @@ class Block extends Model
         return $this->menu->title;
     }
 
-    public function getHtml($isMobile, $isMobileMenu)
+    public function getHtml($isMobile, $isMobileView)
     {
         return view('block::show', [
             'block' => $this,
             'isMobile' => $isMobile,
-            'isMobileMenu' => $isMobileMenu
+            'isMobileView' => $isMobileView
         ])->render();
     }
 

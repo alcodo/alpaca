@@ -4,7 +4,6 @@ namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;
-use Response;
 
 /**
  * This class gets all blocks.
@@ -28,17 +27,10 @@ class BlockBuilder
         $areaBlocks = $this->getBlockByArea($area);
 
         return $areaBlocks->map(function ($block, $key) {
-            if ($this->isException($block)) {
-                return;
-            }
 
-            if (is_null($block->menu_id) === false) {
-                // menu
-                return $block->menu->getHtml(true, false);
-            }
+            // each block
+            return $this->getHtmlBlock($block, false);
 
-            // block
-            return $block->getHtml(true, false);
         })->implode('');
     }
 
@@ -56,6 +48,8 @@ class BlockBuilder
     }
 
     /**
+     * Return a html block list
+     *
      * @return string
      */
     public function getMobileBlocks()
@@ -66,19 +60,10 @@ class BlockBuilder
             // each area
 
             return $area->map(function ($block, $key) {
+
                 // each block
+                return $this->getHtmlBlock($block, true);
 
-                if ($this->isException($block)) {
-                    return;
-                }
-
-                if (is_null($block->menu_id) === false) {
-                    // menu
-                    return $block->menu->getHtml(true, true);
-                }
-
-                // block
-                return $block->getHtml(true, true);
             })->implode('');
         })->implode('');
     }
@@ -158,5 +143,23 @@ class BlockBuilder
         }
 
         return $this->blocks;
+    }
+
+    private function getHtmlBlock($block, $isMobileView)
+    {
+        if ($this->isException($block)) {
+            return;
+        }
+
+        // TODO
+        $block->ismobile = true;
+
+        if (is_null($block->menu_id) === false) {
+            // menu
+            return $block->menu->getHtml($block->ismobile, $isMobileView);
+        }
+
+        // block
+        return $block->getHtml($block->ismobile, $isMobileView);
     }
 }
