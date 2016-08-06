@@ -23,7 +23,7 @@ class Menu extends Model
         return view('menu::show', [
             'menu' => $this,
             'isMobile' => $isMobile,
-            'isMobileView' => $isMobileView
+            'isMobileView' => $isMobileView,
         ])->render();
     }
 
