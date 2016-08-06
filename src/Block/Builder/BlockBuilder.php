@@ -6,8 +6,15 @@ use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;
 use Response;
 
+/**
+ * This class gets all blocks.
+ * It sorted, filtered and than returned the html for each area.
+ */
 class BlockBuilder
 {
+    /**
+     * @var \Illuminate\Support\Collection
+     */
     protected $blocks;
 
     /**
@@ -39,7 +46,7 @@ class BlockBuilder
 
     /**
      * Check if any block exists for the area
-     * 
+     *
      * @param $area
      * @return bool
      */
@@ -75,24 +82,6 @@ class BlockBuilder
         $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
 
         return (bool)preg_match($regexpPatter, Request::path());
-    }
-
-    public function getAreaChoice()
-    {
-        // copy values to keys
-        $areas = array_flip(Block::AREAS);
-
-        foreach ($areas as $area => $value) {
-            // set value
-            $areas[$area] = $this->getAreaTranslation($area);
-        }
-
-        return $areas;
-    }
-
-    public function getAreaTranslation($areaId)
-    {
-        return trans('block::block.' . $areaId);
     }
 
     /**
@@ -133,4 +122,5 @@ class BlockBuilder
         $this->blocks = $databaseBlocks->groupBy('area');
 
     }
+
 }

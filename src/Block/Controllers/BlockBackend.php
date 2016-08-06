@@ -47,23 +47,23 @@ class BlockBackend extends Controller implements CrudContract
     {
         return [
             [
-                'label'      => trans('crud::crud.name'),
-                'css'        => 'col-md-3',
+                'label' => trans('crud::crud.name'),
+                'css' => 'col-md-3',
                 'modelValue' => 'name',
             ],
             [
-                'label'      => trans('block::block.area'),
-                'css'        => 'col-md-3',
+                'label' => trans('block::block.area'),
+                'css' => 'col-md-3',
                 'modelValue' => 'area',
             ],
             [
-                'label'      => trans('menu::menu.menu'),
-                'css'        => 'col-md-3',
+                'label' => trans('menu::menu.menu'),
+                'css' => 'col-md-3',
                 'modelValue' => 'getMenu',
             ],
             [
-                'label'      => trans('block::block.range'),
-                'css'        => 'col-md-3',
+                'label' => trans('block::block.range'),
+                'css' => 'col-md-3',
                 'modelValue' => 'range',
             ],
         ];
@@ -72,7 +72,7 @@ class BlockBackend extends Controller implements CrudContract
     /**
      * Formbuilder.
      *
-     * @param null                                     $form
+     * @param null $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
      *
      * @return mixed
@@ -83,12 +83,12 @@ class BlockBackend extends Controller implements CrudContract
         $selectedRange = null;
         $selectedMenu = null;
 
-        if (! is_null($entry)) {
+        if (!is_null($entry)) {
             // only for edit
             $selectedArea = $entry->area;
             $selectedRange = $entry->range;
 
-            if (! empty($entry->menu->id)) {
+            if (!empty($entry->menu->id)) {
                 $selectedMenu = $entry->menu->id;
             }
         }
@@ -99,11 +99,11 @@ class BlockBackend extends Controller implements CrudContract
         $formFields = [
             'id' => $form->hidden('id'),
 
-            'name'   => $form->text(trans('crud::crud.name'), 'name'),
-            'title'   => $form->text(trans('crud::crud.title'), 'title'),
+            'name' => $form->text(trans('crud::crud.name'), 'name'),
+            'title' => $form->text(trans('crud::crud.title'), 'title'),
             'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
-            'area'   => $form->select(trans('block::block.area'), 'area')
-                ->options(Block::getAreaChoice())
+            'area' => $form->select(trans('block::block.area'), 'area')
+                ->options($this->getAreaChoice())
                 ->select($selectedArea),
             'range' => $form->select(trans('block::block.range'), 'range')
                 ->options(Block::RANGES)
@@ -111,7 +111,7 @@ class BlockBackend extends Controller implements CrudContract
             'menu_id' => $form->select(trans('menu::menu.menu'), 'menu_id')
                 ->options($menus)
                 ->select($selectedMenu),
-            'html'      => $form->textarea(trans('crud::crud.body'), 'html')->addClass('is-summernote'),
+            'html' => $form->textarea(trans('crud::crud.body'), 'html')->addClass('is-summernote'),
             'exception' => $form->textarea(trans('block::block.exception'), 'exception'),
             'submit' => $form->submit(trans('crud::crud.save')),
         ];
@@ -147,9 +147,9 @@ class BlockBackend extends Controller implements CrudContract
     public function getValidationCreate()
     {
         return [
-            'name'  => 'required|string',
+            'name' => 'required|string',
             'range' => 'required|integer',
-            'area'  => 'required',
+            'area' => 'required',
         ];
     }
 
@@ -200,5 +200,23 @@ class BlockBackend extends Controller implements CrudContract
         $status = $entry->update($data);
 
         return $status;
+    }
+
+    /**
+     * Return a choice array for the backend
+     *
+     * @return array
+     */
+    protected function getAreaChoice()
+    {
+        // copy values to keys
+        $areas = array_flip(Block::AREAS);
+
+        foreach ($areas as $area => $value) {
+            // set value
+            $areas[$area] = trans('block::block.' . $area);
+        }
+
+        return $areas;
     }
 }
