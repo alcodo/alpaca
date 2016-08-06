@@ -1,5 +1,5 @@
 @if($isMobile)
-    <div class="block {{ $isMobileView ? 'visible-sm visible-xs' : 'hidden-sm hidden-xs' }}">
+    <div class="block {{ $isMobileView ? 'visible-xs' : 'hidden-xs' }}">
         @include('block::block')
     </div>
 @else

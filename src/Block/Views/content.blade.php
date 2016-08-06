@@ -9,25 +9,25 @@
 <div class="row">
     @if(Block::existsBlocks('left') && Block::existsBlocks('right'))
 
-        <aside class="col-sm-2">
+        <aside class="col-sm-3">
             {!! Block::getBlocks('left') !!}
         </aside>
-        <main class="col-sm-8">
+        <main class="col-sm-6">
             <div class="area-content">
                 @yield('content')
             </div>
         </main>
-        <aside class="col-sm-2">
+        <aside class="col-sm-3">
             {!! Block::getBlocks('right') !!}
         </aside>
 
     @elseif(Block::existsBlocks('left'))
 
-        <aside class="col-sm-2">
+        <aside class="col-sm-3">
             {!! Block::getBlocks('left') !!}
         </aside>
 
-        <main class="col-sm-10">
+        <main class="col-sm-9">
             <div class="area-content">
                 @yield('content')
             </div>
@@ -35,12 +35,12 @@
 
     @elseif(Block::existsBlocks('right'))
 
-        <main class="col-sm-10">
+        <main class="col-sm-9">
             <div class="area-content">
                 @yield('content')
             </div>
         </main>
-        <aside class="col-sm-2">
+        <aside class="col-sm-3">
             {!! Block::getBlocks('right') !!}
         </aside>
 
