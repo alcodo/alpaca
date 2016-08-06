@@ -32,7 +32,7 @@ class CategoryFront extends Controller
      */
     public function showTopic($topicSlug, $categorySlug)
     {
-        $category = Category::with(['pages' => function ($query) {
+        $category = Category::with(['pages.topic', 'pages' => function ($query) {
             $query->orderBy('title', 'asc');
         }])->Slug($categorySlug)->firstOrFail();
 

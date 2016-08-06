@@ -80,7 +80,7 @@ class Page extends Model
 
     public function getPageLink()
     {
-        if (! is_null($this->topic)) {
+        if (! is_null($this->topic_id)) {
             return route('page.show.topic', [$this->topic->slug, $this->slug]);
         }
 
