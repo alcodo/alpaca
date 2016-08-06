@@ -1,4 +1,4 @@
-<ul class="block">
+<ul class="block-list">
     @if(view()->exists('page::cmf.menu'))
         @include('page::cmf.menu')
     @endif

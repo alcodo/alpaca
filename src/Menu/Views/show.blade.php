@@ -1,8 +1,8 @@
 <p class="block-title">{{ $menu->title }}</p>
 @if($menu->items)
-    <ul class="block {{ $menu->class }}">
+    <ul class="block-list {{ $menu->class }}">
         @foreach ($menu->items as $item)
-            <li class="{{ isActiveUrl($item->href) }}">
+            <li class="block-item {{ isActiveUrl($item->href) }}">
                 {!! $item->getLink() !!}
             </li>
         @endforeach
