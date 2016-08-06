@@ -18,9 +18,13 @@ class Menu extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function getHtml()
+    public function getHtml($isMobile, $isMobileMenu)
     {
-        return view('menu::show', ['menu' => $this])->render();
+        return view('menu::show', [
+            'menu' => $this,
+            'isMobile' => $isMobile,
+            'isMobileMenu' => $isMobileMenu
+        ])->render();
     }
 
     public function block()

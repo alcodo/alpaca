@@ -58,6 +58,15 @@ class Block extends Model
         return $this->menu->title;
     }
 
+    public function getHtml($isMobile, $isMobileMenu)
+    {
+        return view('block::show', [
+            'block' => $this,
+            'isMobile' => $isMobile,
+            'isMobileMenu' => $isMobileMenu
+        ])->render();
+    }
+
     public function scopeArea($query, $area)
     {
         return $query->where('area', '=', $area);

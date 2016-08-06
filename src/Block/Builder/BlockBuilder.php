@@ -34,11 +34,11 @@ class BlockBuilder
 
             if (is_null($block->menu_id) === false) {
                 // menu
-                return $block->menu->getHtml();
+                return $block->menu->getHtml(true, false);
             }
 
             // block
-            return Response::view('block::block', ['block' => $block])->getContent();
+            return $block->getHtml(true, false);
         })->implode('');
     }
 
@@ -52,7 +52,35 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMobileBlocks()
+    {
+        $allBlocks = $this->getAllBlocks();
+
+        return $allBlocks->map(function ($area, $key) {
+            // each area
+
+            return $area->map(function ($block, $key) {
+                // each block
+
+                if ($this->isException($block)) {
+                    return;
+                }
+
+                if (is_null($block->menu_id) === false) {
+                    // menu
+                    return $block->menu->getHtml(true, true);
+                }
+
+                // block
+                return $block->getHtml(true, true);
+            })->implode('');
+        })->implode('');
     }
 
     /**
@@ -77,9 +105,9 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
+        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
 
-        return (bool) preg_match($regexpPatter, Request::path());
+        return (bool)preg_match($regexpPatter, Request::path());
     }
 
     /**
@@ -90,12 +118,10 @@ class BlockBuilder
      */
     protected function getBlockByArea($area)
     {
-        if (is_null($this->blocks)) {
-            $this->initBlocks();
-        }
+        $allBlocks = $this->getAllBlocks();
 
-        if (isset($this->blocks[$area])) {
-            return $this->blocks[$area];
+        if (isset($allBlocks[$area])) {
+            return $allBlocks[$area];
         }
     }
 
@@ -118,5 +144,19 @@ class BlockBuilder
 
         // group by area
         $this->blocks = $databaseBlocks->sortBy('range')->groupBy('area');
+    }
+
+    /**
+     * Returns all blocks
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    protected function getAllBlocks()
+    {
+        if (is_null($this->blocks)) {
+            $this->initBlocks();
+        }
+
+        return $this->blocks;
     }
 }
