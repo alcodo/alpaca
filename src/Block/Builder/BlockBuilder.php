@@ -3,7 +3,6 @@
 namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Models\Block;
-use Alpaca\Menu\Models\Menu;
 use Illuminate\Support\Facades\Request;
 use Response;
 
@@ -11,23 +10,13 @@ class BlockBuilder
 {
     protected $blocks;
 
-    public function __construct()
-    {
-        // get block
-        $databaseBlocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get();
-        $eventBlocks = event('loadEventBlocks');
-
-        // merge
-        foreach ($eventBlocks as $eventBlock) {
-            $databaseBlocks->push($eventBlock);
-        }
-
-        // group by area
-        $this->blocks = $databaseBlocks->groupBy('area');
-
-    }
-
-    public function getBlock($area)
+    /**
+     * Returns a html with all blocks for the area
+     *
+     * @param $area
+     * @return mixed
+     */
+    public function getBlocks($area)
     {
         $areaBlocks = $this->getBlockByArea($area);
 
@@ -48,7 +37,13 @@ class BlockBuilder
         })->implode('');
     }
 
-    public function existsBlock($area)
+    /**
+     * Check if any block exists for the area
+     * 
+     * @param $area
+     * @return bool
+     */
+    public function existsBlocks($area)
     {
         $blocks = $this->getBlockByArea($area);
 
@@ -82,6 +77,12 @@ class BlockBuilder
         }
     }
 
+    /**
+     * Check if block is a exception
+     *
+     * @param $block
+     * @return bool
+     */
     private function isException($block)
     {
         if (empty($block->exception)) {
@@ -121,20 +122,42 @@ class BlockBuilder
         return trans('block::block.' . $areaId);
     }
 
-    protected function getBlockTemplate($block)
-    {
-        $output = '';
-        if (!empty($block->title)) {
-            $output .= '<p class="block-title">' . $block->title . '</p>';
-        }
-        $output .= $block->html;
-        return $output;
-    }
-
+    /**
+     * Return all blocks for this area
+     *
+     * @param $area
+     * @return mixed
+     */
     protected function getBlockByArea($area)
     {
-        if(isset($this->blocks[$area])){
+        if (is_null($this->blocks)) {
+            $this->initBlocks();
+        }
+
+        if (isset($this->blocks[$area])) {
             return $this->blocks[$area];
         }
+    }
+
+    /**
+     * Load all blocks from database and events.
+     * Blocks collection will stored in this class
+     *
+     * return void
+     */
+    public function initBlocks()
+    {
+        // get block
+        $databaseBlocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get();
+        $eventBlocks = event('loadEventBlocks');
+
+        // merge
+        foreach ($eventBlocks as $eventBlock) {
+            $databaseBlocks->push($eventBlock);
+        }
+
+        // group by area
+        $this->blocks = $databaseBlocks->groupBy('area');
+
     }
 }

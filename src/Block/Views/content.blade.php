@@ -1,16 +1,16 @@
-@if(Block::existsBlock('top'))
+@if(Block::existsBlocks('top'))
     <div class="row">
         <div class="col-sm-12">
-            {!! Block::getBlock('top') !!}
+            {!! Block::getBlocks('top') !!}
         </div>
     </div>
 @endif
 
 <div class="row">
-    @if(Block::existsBlock('left') && Block::existsBlock('right'))
+    @if(Block::existsBlocks('left') && Block::existsBlocks('right'))
 
         <aside class="col-sm-2">
-            {!! Block::getBlock('left') !!}
+            {!! Block::getBlocks('left') !!}
         </aside>
         <main class="col-sm-8">
             <div class="area-content">
@@ -18,13 +18,13 @@
             </div>
         </main>
         <aside class="col-sm-2">
-            {!! Block::getBlock('right') !!}
+            {!! Block::getBlocks('right') !!}
         </aside>
 
-    @elseif(Block::existsBlock('left'))
+    @elseif(Block::existsBlocks('left'))
 
         <aside class="col-sm-2">
-            {!! Block::getBlock('left') !!}
+            {!! Block::getBlocks('left') !!}
         </aside>
 
         <main class="col-sm-10">
@@ -33,7 +33,7 @@
             </div>
         </main>
 
-    @elseif(Block::existsBlock('right'))
+    @elseif(Block::existsBlocks('right'))
 
         <main class="col-sm-10">
             <div class="area-content">
@@ -41,7 +41,7 @@
             </div>
         </main>
         <aside class="col-sm-2">
-            {!! Block::getBlock('right') !!}
+            {!! Block::getBlocks('right') !!}
         </aside>
 
     @else
@@ -56,10 +56,10 @@
 
 </div>
 
-@if(Block::existsBlock('bottom'))
+@if(Block::existsBlocks('bottom'))
     <div class="row">
         <div class="col-sm-12">
-            {!! Block::getBlock('bottom') !!}
+            {!! Block::getBlocks('bottom') !!}
         </div>
     </div>
 @endif
