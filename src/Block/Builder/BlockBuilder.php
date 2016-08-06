@@ -5,42 +5,38 @@ namespace Alpaca\Block\Builder;
 use Alpaca\Block\Models\Block;
 use Alpaca\Menu\Models\Menu;
 use Illuminate\Support\Facades\Request;
+use Response;
 
 class BlockBuilder
 {
     protected $blocks;
 
-    public function createBlock($area)
+    public function getBlock($area)
     {
-        $blocks = $this->getBlocks($area);
+        $blocks = $this->getBlockFromDatabase($area);
 
-        $output = null;
-        foreach ($blocks as $block) {
+        return $blocks->map(function ($block, $key) {
+
             if ($this->isException($block)) {
-                if (empty($block->menu)) {
-                    // normal html block
-                    if (! empty($block->title)) {
-                        $output .= '<p class="block-title">'.$block->title.'</p>';
-                    }
-                    $output .= $block->html;
-//                    $output .= $this->setActiveLink($block->html);
-                } else {
-
-                    // menu block
-//                    $menu = Menu::findOrFail($block->menu_id);
-                    $output .= $block->menu->getHtml();
-                }
+                return null;
             }
-        }
 
-        return $output;
+            if (is_null($block->menu) === false) {
+                // menu
+                return $block->menu->getHtml();
+            }
+
+            // block
+            return Response::view('block::block', ['block' => $block])->getContent();
+
+        })->implode('');
     }
 
     public function existsBlock($area)
     {
-        $blocks = $this->getBlocks($area);
+        $blocks = $this->getBlockFromDatabase($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     private function str_replace_last($string, $search, $replace)
@@ -50,7 +46,7 @@ class BlockBuilder
         }
         $pos = strrpos($string, $search);
         if ($pos > 0) {
-            return substr($string, 0, $pos).$replace.substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
+            return substr($string, 0, $pos) . $replace . substr($string, $pos + $search_len, max(0, $string_len - ($pos + $search_len)));
         }
 
         return $string;
@@ -63,20 +59,20 @@ class BlockBuilder
             // front page
             return $html;
         } else {
-            $searchURL = '"><a href="/'.$path;
-            $replaceActive = ' active'.$searchURL;
+            $searchURL = '"><a href="/' . $path;
+            $replaceActive = ' active' . $searchURL;
 
             return $this->str_replace_last($html, $searchURL, $replaceActive);
         }
     }
 
-    private function isException($menu)
+    private function isException($block)
     {
-        if (empty($menu->exception)) {
-            return true;
+        if (empty($block->exception)) {
+            return false;
         }
 
-        $patterns_quoted = preg_quote($menu->exception, '/');
+        $patterns_quoted = preg_quote($block->exception, '/');
         $to_replace = [
             '/(\r\n?|\n)/', // newlines
             '/\\\\\*/',     // wildcard
@@ -86,9 +82,9 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
+        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
 
-        return (bool) preg_match($regexpPatter, Request::path());
+        return (bool)preg_match($regexpPatter, Request::path());
     }
 
     public function getAreaChoice()
@@ -106,22 +102,31 @@ class BlockBuilder
 
     public function getAreaTranslation($areaId)
     {
-        return trans('block::block.'.$areaId);
+        return trans('block::block.' . $areaId);
     }
 
     /**
      * @param $area
      * @return mixed
      */
-    public function getBlocks($area)
+    public function getBlockFromDatabase($area)
     {
         if (is_null($this->blocks)) {
-//            $this->blocks = Block::orderBy('range', 'asc')->get()->groupBy('area');
             $this->blocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get()->groupBy('area');
         }
 
         if (isset($this->blocks[$area])) {
             return $this->blocks[$area];
         }
+    }
+
+    protected function getBlockTemplate($block)
+    {
+        $output = '';
+        if (!empty($block->title)) {
+            $output .= '<p class="block-title">' . $block->title . '</p>';
+        }
+        $output .= $block->html;
+        return $output;
     }
 }

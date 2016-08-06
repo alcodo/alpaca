@@ -15,8 +15,8 @@ class BlockMenuTest extends AlpacaTestCase
     public function it_allows_change_menu()
     {
         // create menus
-        $firstMenu = alpacaFactory(\Alpaca\Menu\Models\Menu::class)->create();
-        $secondMenu = alpacaFactory(\Alpaca\Menu\Models\Menu::class)->create();
+        $firstMenu = alpacaFactory(Menu::class)->create();
+        $secondMenu = alpacaFactory(Menu::class)->create();
 
         // login
         $adminUser = User::first();
