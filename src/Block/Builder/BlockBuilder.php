@@ -18,7 +18,7 @@ class BlockBuilder
     protected $blocks;
 
     /**
-     * Returns a html with all blocks for the area
+     * Returns a html with all blocks for the area.
      *
      * @param $area
      * @return mixed
@@ -28,9 +28,8 @@ class BlockBuilder
         $areaBlocks = $this->getBlockByArea($area);
 
         return $areaBlocks->map(function ($block, $key) {
-
             if ($this->isException($block)) {
-                return null;
+                return;
             }
 
             if (is_null($block->menu_id) === false) {
@@ -40,12 +39,11 @@ class BlockBuilder
 
             // block
             return Response::view('block::block', ['block' => $block])->getContent();
-
         })->implode('');
     }
 
     /**
-     * Check if any block exists for the area
+     * Check if any block exists for the area.
      *
      * @param $area
      * @return bool
@@ -54,11 +52,11 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**
-     * Check if block is a exception
+     * Check if block is a exception.
      *
      * @param $block
      * @return bool
@@ -79,13 +77,13 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
+        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
-        return (bool)preg_match($regexpPatter, Request::path());
+        return (bool) preg_match($regexpPatter, Request::path());
     }
 
     /**
-     * Return all blocks for this area
+     * Return all blocks for this area.
      *
      * @param $area
      * @return mixed
@@ -103,7 +101,7 @@ class BlockBuilder
 
     /**
      * Load all blocks from database and events.
-     * Blocks collection will stored in this class
+     * Blocks collection will stored in this class.
      *
      * return void
      */
@@ -120,7 +118,5 @@ class BlockBuilder
 
         // group by area
         $this->blocks = $databaseBlocks->groupBy('area');
-
     }
-
 }
