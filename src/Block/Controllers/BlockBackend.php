@@ -102,6 +102,7 @@ class BlockBackend extends Controller implements CrudContract
             'name' => $form->text(trans('crud::crud.name'), 'name'),
             'title' => $form->text(trans('crud::crud.title'), 'title'),
             'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
+            'ismobile' => $form->checkbox(trans('block::block.ismobile'), 'ismobile')->defaultToChecked(),
             'area' => $form->select(trans('block::block.area'), 'area')
                 ->options($this->getAreaChoice())
                 ->select($selectedArea),

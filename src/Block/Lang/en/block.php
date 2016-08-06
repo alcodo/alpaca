@@ -12,5 +12,6 @@ return [
     'bottom'    => 'Bottom',
     'htmltext'  => 'HTML Text',
     'exception' => 'Exception',
+    'ismobile' => 'Mobile solution',
 
 ];

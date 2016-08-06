@@ -4,6 +4,7 @@ namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;
+use Response;
 
 /**
  * This class gets all blocks.
@@ -147,12 +148,10 @@ class BlockBuilder
 
     private function getHtmlBlock($block, $isMobileView)
     {
-        if ($this->isException($block)) {
+        if (is_null($block) || $this->isException($block)) {
             return;
         }
 
-        // TODO
-        $block->ismobile = true;
 
         if (is_null($block->menu_id) === false) {
             // menu

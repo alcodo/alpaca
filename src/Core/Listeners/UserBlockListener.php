@@ -34,6 +34,7 @@ class UserBlockListener
                 'area' => 'right',
                 'exception' => '',
                 'range' => 0,
+                'ismobile' => true,
                 'html' => Response::view('core::userblock')->getContent(),
             ]);
         }
