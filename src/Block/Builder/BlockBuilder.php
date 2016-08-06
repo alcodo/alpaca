@@ -4,7 +4,6 @@ namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;
-use Response;
 
 /**
  * This class gets all blocks.
