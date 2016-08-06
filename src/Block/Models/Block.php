@@ -64,7 +64,7 @@ class Block extends Model
         return view('block::show', [
             'block' => $this,
             'isMobile' => $isMobile,
-            'isMobileView' => $isMobileView
+            'isMobileView' => $isMobileView,
         ])->render();
     }
 
