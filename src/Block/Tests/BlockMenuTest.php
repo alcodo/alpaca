@@ -47,7 +47,7 @@ class BlockMenuTest extends AlpacaTestCase
      */
     public function check_relation()
     {
-        $menu = alpacaFactory(\Alpaca\Menu\Models\Menu::class)->create();
+        $menu = alpacaFactory(Menu::class)->create();
         $block = alpacaFactory(\Alpaca\Block\Models\Block::class)->create([
             'menu_id' => $menu->id,
         ]);
