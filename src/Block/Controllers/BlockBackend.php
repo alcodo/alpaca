@@ -83,12 +83,12 @@ class BlockBackend extends Controller implements CrudContract
         $selectedRange = null;
         $selectedMenu = null;
 
-        if (!is_null($entry)) {
+        if (! is_null($entry)) {
             // only for edit
             $selectedArea = $entry->area;
             $selectedRange = $entry->range;
 
-            if (!empty($entry->menu->id)) {
+            if (! empty($entry->menu->id)) {
                 $selectedMenu = $entry->menu->id;
             }
         }
@@ -203,7 +203,7 @@ class BlockBackend extends Controller implements CrudContract
     }
 
     /**
-     * Return a choice array for the backend
+     * Return a choice array for the backend.
      *
      * @return array
      */
@@ -214,7 +214,7 @@ class BlockBackend extends Controller implements CrudContract
 
         foreach ($areas as $area => $value) {
             // set value
-            $areas[$area] = trans('block::block.' . $area);
+            $areas[$area] = trans('block::block.'.$area);
         }
 
         return $areas;

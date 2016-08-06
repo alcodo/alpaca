@@ -27,7 +27,6 @@ class UserBlockListener
     public function handle()
     {
         if (Auth::check()) {
-
             return new Block([
                 'active' => 1,
                 'name' => 'User',
@@ -35,9 +34,8 @@ class UserBlockListener
                 'area' => 'right',
                 'exception' => '',
                 'range' => 0,
-                'html' => Response::view('core::userblock')->getContent()
+                'html' => Response::view('core::userblock')->getContent(),
             ]);
-
         }
     }
 }

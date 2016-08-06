@@ -27,7 +27,6 @@ class AdminBlockListener
     public function handle()
     {
         if (Auth::check() && Auth::user() && Auth::user()->hasRole('admin')) {
-
             return new Block([
                 'active' => 1,
                 'name' => 'Administration',
@@ -35,9 +34,8 @@ class AdminBlockListener
                 'area' => 'right',
                 'exception' => '',
                 'range' => 0,
-                'html' => Response::view('core::adminblock')->getContent()
+                'html' => Response::view('core::adminblock')->getContent(),
             ]);
-
         }
     }
 }
