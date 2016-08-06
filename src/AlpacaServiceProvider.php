@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
 use Alpaca\User\UserServiceProvider;
@@ -19,6 +20,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      */
     protected $providers = [
         DependencyServiceProvider::class,
+        CoreServiceProvider::class,
         CrudServiceProvider::class,
         UserServiceProvider::class,
         BlockServiceProvider::class,

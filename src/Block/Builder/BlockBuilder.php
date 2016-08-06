@@ -11,11 +11,27 @@ class BlockBuilder
 {
     protected $blocks;
 
+    public function __construct()
+    {
+        // get block
+        $databaseBlocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get();
+        $eventBlocks = event('loadEventBlocks');
+
+        // merge
+        foreach ($eventBlocks as $eventBlock) {
+            $databaseBlocks->push($eventBlock);
+        }
+
+        // group by area
+        $this->blocks = $databaseBlocks->groupBy('area');
+
+    }
+
     public function getBlock($area)
     {
-        $blocks = $this->getBlockFromDatabase($area);
+        $areaBlocks = $this->getBlockByArea($area);
 
-        return $blocks->map(function ($block, $key) {
+        return $areaBlocks->map(function ($block, $key) {
 
             if ($this->isException($block)) {
                 return null;
@@ -34,7 +50,7 @@ class BlockBuilder
 
     public function existsBlock($area)
     {
-        $blocks = $this->getBlockFromDatabase($area);
+        $blocks = $this->getBlockByArea($area);
 
         return !is_null($blocks);
     }
@@ -105,21 +121,6 @@ class BlockBuilder
         return trans('block::block.' . $areaId);
     }
 
-    /**
-     * @param $area
-     * @return mixed
-     */
-    public function getBlockFromDatabase($area)
-    {
-        if (is_null($this->blocks)) {
-            $this->blocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get()->groupBy('area');
-        }
-
-        if (isset($this->blocks[$area])) {
-            return $this->blocks[$area];
-        }
-    }
-
     protected function getBlockTemplate($block)
     {
         $output = '';
@@ -128,5 +129,12 @@ class BlockBuilder
         }
         $output .= $block->html;
         return $output;
+    }
+
+    protected function getBlockByArea($area)
+    {
+        if(isset($this->blocks[$area])){
+            return $this->blocks[$area];
+        }
     }
 }
