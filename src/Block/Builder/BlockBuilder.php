@@ -21,7 +21,7 @@ class BlockBuilder
                 return null;
             }
 
-            if (is_null($block->menu) === false) {
+            if (is_null($block->menu_id) === false) {
                 // menu
                 return $block->menu->getHtml();
             }
