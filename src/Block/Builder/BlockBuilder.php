@@ -117,6 +117,6 @@ class BlockBuilder
         }
 
         // group by area
-        $this->blocks = $databaseBlocks->groupBy('area');
+        $this->blocks = $databaseBlocks->sortBy('range')->groupBy('area');
     }
 }
