@@ -19,7 +19,6 @@
   "homepage": "https://github.com/alcodo/alpaca#readme",
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "critical": "^0.7.3",
     "datatables.net": "^1.10.12",
     "datatables.net-bs": "^1.10.12",
     "jquery-treegrid": "^0.3.0",
