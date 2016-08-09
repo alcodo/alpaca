@@ -1,1 +1,1 @@
-$(".navbar-fixed-top").autoHidingNavbar();
+// $(".navbar-fixed-top").autoHidingNavbar();
