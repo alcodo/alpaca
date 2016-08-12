@@ -1,4 +1,3 @@
-<li class="block-desc">{{ trans('user::user.user') }}</li>
 <li class="block-item {{ isActiveRoute('backend.user.index') }}">
     <a href="{{ route('backend.user.index') }}">
         {{ trans('crud::crud.administration_type', ['type' => 'Users']) }}

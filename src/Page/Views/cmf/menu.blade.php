@@ -1,4 +1,3 @@
-<li class="block-desc">{{ trans('page::page.page') }}</li>
 <li class="block-item {{ isActiveRoute('backend.page.index') }}">
     <a href="{{ route('backend.page.index') }}">
         {{ trans('crud::crud.administration_type', ['type' => 'Pages']) }}

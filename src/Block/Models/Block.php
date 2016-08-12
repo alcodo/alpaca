@@ -61,9 +61,17 @@ class Block extends Model
 
     public function getHtml($isMobile, $isMobileView)
     {
-        return view('block::show', [
+        if($isMobileView){
+            $template = 'block::blockMobile';
+        }else{
+            $template = 'block::block';
+        }
+
+//        dump($template);/**/
+
+        return view($template, [
             'block' => $this,
-            'isMobile' => $isMobile,
+//            'isMobile' => $isMobile,
             'isMobileView' => $isMobileView,
         ])->render();
     }

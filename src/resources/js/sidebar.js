@@ -7,7 +7,7 @@ $(".is-sidebar-left").on("click", function (e) {
     return false;
 });
 
-$( "html" ).on( "click", ".modal-open-left .overlay", function() {
+$( "html" ).on( "click", ".modal-open-left .overlay, .modal-open-left .sidebar-close", function() {
     $("body").toggleClass("modal-open-right");
     toggleSidebar($(".sidebar-left"));
     return false;
@@ -22,7 +22,7 @@ $(".is-sidebar-right").on("click", function (e) {
     return false;
 });
 
-$( "html" ).on( "click", ".modal-open-right .overlay", function() {
+$( "html" ).on( "click", ".modal-open-right .overlay, .modal-open-right .sidebar-close", function() {
     $("body").toggleClass("modal-open-right");
     toggleSidebar($(".sidebar-right"));
     return false;

@@ -43,7 +43,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**
@@ -88,9 +88,9 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
+        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
 
-        return (bool) preg_match($regexpPatter, Request::path());
+        return (bool)preg_match($regexpPatter, Request::path());
     }
 
     /**
@@ -150,12 +150,20 @@ class BlockBuilder
         }
 
 
+        // menu
         if (is_null($block->menu_id) === false) {
-            // menu
-            return $block->menu->getHtml($block->ismobile, $isMobileView);
+            $template = $isMobileView ? 'menu::menuMobile' : 'menu::menu';
+            return view($template, [
+                'menu' => $block->menu,
+                'isMobileView' => $isMobileView
+            ])->render();
         }
 
         // block
-        return $block->getHtml($block->ismobile, $isMobileView);
+        $template = $isMobileView ? 'block::blockMobile' : 'block::block';
+        return view($template, [
+            'block' => $block,
+            'isMobileView' => $isMobileView
+        ])->render();
     }
 }
