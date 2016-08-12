@@ -60,6 +60,12 @@ class BlockBuilder
 
             return $area->map(function ($block, $key) {
 
+                dump($block->ismobile);
+                if(!$block->ismobile){
+                    dump($block->name);
+                    return '';
+                }
+
                 // each block
                 return $this->getHtmlBlock($block, true);
             })->implode('');
