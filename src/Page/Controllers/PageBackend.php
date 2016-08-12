@@ -53,31 +53,21 @@ class PageBackend extends Controller implements CrudContract
                 'css' => 'col-md-3',
                 'modelValue' => 'title',
             ],
-            [
-                'label' => trans('crud::crud.slug'),
-                'css' => 'col-md-3',
-                'modelValue' => 'slug',
-            ],
-            [
-                'label' => trans('page::topic.topic'),
-                'css' => 'col-md-3',
-                'modelValue' => 'getTopic',
-            ],
-            [
-                'label' => trans('page::category.category'),
-                'css' => 'col-md-3',
-                'modelValue' => 'getCategory',
-            ],
+//            [
+//                'label' => trans('page::topic.topic'),
+//                'css' => 'col-md-3',
+//                'modelValue' => 'getTopic',
+//            ],
+//            [
+//                'label' => trans('page::category.category'),
+//                'css' => 'col-md-3',
+//                'modelValue' => 'getCategory',
+//            ],
             [
                 'label' => trans('crud::crud.active'),
                 'css' => 'col-md-1',
                 'html' => true,
                 'modelValue' => 'getIsActive',
-            ],
-            [
-                'label' => trans('crud::crud.created'),
-                'css' => 'col-md-2',
-                'modelValue' => 'getCreated',
             ],
             [
                 'label' => trans('crud::crud.updated'),

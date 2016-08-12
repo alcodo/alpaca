@@ -1,4 +1,4 @@
-@extends('app-fluid')
+@extends('app')
 
 @section('content')
 
@@ -65,16 +65,14 @@
                             <td>
                                 @if($permissions['show'])
                                     <a class="crud-control-buttons pull-left btn btn-default btn-sm"
-                                       href="{{ $entry->showUrl  }}">
+                                       href="{{ $entry->showUrl  }}" title="{{ trans('crud::crud.show') }}">
                                         <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
-                                        {{ trans('crud::crud.show') }}
                                     </a>
                                 @endif
                                 @if($permissions['edit'])
                                     <a class="crud-control-buttons pull-left btn btn-info btn-sm "
-                                       href="{{ $entry->editUrl  }}">
+                                       href="{{ $entry->editUrl  }}" title="{{ trans('crud::crud.edit') }}">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                        {{ trans('crud::crud.edit') }}
                                     </a>
                                 @endif
                                 @if($permissions['destroy'])
@@ -82,9 +80,9 @@
                                           class="pull-left">
                                         <input name="_method" type="hidden" value="DELETE">
                                         {{ csrf_field() }}
-                                        <button class="crud-control-buttons btn btn-danger btn-sm" type="submit">
+                                        <button class="crud-control-buttons btn btn-danger btn-sm" type="submit" title="{{ trans('crud::crud.delete') }}">
                                             <span class="glyphicon glyphicon-remove"
-                                                  aria-hidden="true"></span> {{ trans('crud::crud.delete') }}
+                                                  aria-hidden="true"></span>
                                         </button>
                                     </form>
                                 @endif

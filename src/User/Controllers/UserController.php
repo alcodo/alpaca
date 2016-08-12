@@ -60,12 +60,6 @@ class UserController extends BaseController implements CrudContract
                 'label'      => trans('user::role.roles'),
                 'css'        => 'col-md-4',
                 'modelValue' => 'getRoles',
-//                'modelValue' => 'user.roles',
-            ],
-            [
-                'label'      => trans('crud::crud.created'),
-                'css'        => 'col-md-2',
-                'modelValue' => 'getCreated',
             ],
             [
                 'label'      => trans('crud::crud.updated'),
