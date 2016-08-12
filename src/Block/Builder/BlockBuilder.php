@@ -60,9 +60,7 @@ class BlockBuilder
 
             return $area->map(function ($block, $key) {
 
-                dump($block->ismobile);
                 if(!$block->ismobile){
-                    dump($block->name);
                     return '';
                 }
 
