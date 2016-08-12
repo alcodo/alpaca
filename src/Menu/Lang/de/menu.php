@@ -9,5 +9,5 @@ return [
     'item'             => 'Eintrag',
     'items'            => 'Einträge',
     'menuitem'         => 'Menüeintrag',
-    
+
 ];
