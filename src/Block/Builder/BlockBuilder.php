@@ -59,8 +59,7 @@ class BlockBuilder
             // each area
 
             return $area->map(function ($block, $key) {
-
-                if(!$block->ismobile){
+                if (! $block->ismobile) {
                     return '';
                 }
 
