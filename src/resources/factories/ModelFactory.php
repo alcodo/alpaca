@@ -99,6 +99,6 @@ $factory->define(Block::class, function (Faker\Generator $faker) {
         'range' => 0,
         'html' => $faker->sentence(),
         'active' => 1,
-        'ismobile' => true,
+        'ismobile' => 1,
     ];
 });
