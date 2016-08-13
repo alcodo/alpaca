@@ -267,7 +267,7 @@ class AuthController extends Controller
      */
     public function loginPath()
     {
-        return action('Alpaca\User\Controllers\AuthController@getLogin', [], false);
+        return action('\Alpaca\User\Controllers\AuthController@getLogin', [], false);
     }
 
     /**
