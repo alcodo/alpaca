@@ -4,7 +4,7 @@ namespace Alpaca\Block\Controllers;
 
 use Alpaca\Block\Models\Block;
 use Alpaca\Menu\Models\Menu;
-use Alpaca\Core\Controller;
+use Alpaca\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 

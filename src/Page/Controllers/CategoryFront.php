@@ -3,7 +3,7 @@
 namespace Alpaca\Page\Controllers;
 
 use Alpaca\Page\Models\Category;
-use Alpaca\Core\Controller;
+use Alpaca\Core\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
