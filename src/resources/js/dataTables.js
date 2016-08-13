@@ -12,6 +12,8 @@ $(document).ready(function () {
             };
         }
 
+        settings["order"] = [];
+
         $(".is-datatables").DataTable(settings);
     }
 });

@@ -58,11 +58,6 @@ class CategoryBackend extends Controller implements CrudContract
                 'modelValue' => 'slug',
             ],
             [
-                'label'      => trans('crud::crud.created'),
-                'css'        => 'col-md-2',
-                'modelValue' => 'getCreated',
-            ],
-            [
                 'label'      => trans('crud::crud.updated'),
                 'css'        => 'col-md-2',
                 'modelValue' => 'getUpdated',
