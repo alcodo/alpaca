@@ -2,7 +2,7 @@
 
 namespace Alpaca\User\Controllers;
 
-use App\Http\Controllers\Controller;
+use Alpaca\Core\Controller;
 use App\Model\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

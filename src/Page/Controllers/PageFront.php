@@ -3,7 +3,7 @@
 namespace Alpaca\Page\Controllers;
 
 use Alpaca\Page\Models\Page;
-use App\Http\Controllers\Controller;
+use Alpaca\Core\Controller;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;

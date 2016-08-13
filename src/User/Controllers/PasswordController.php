@@ -2,7 +2,7 @@
 
 namespace Alpaca\User\Controllers;
 
-use App\Http\Controllers\Controller;
+use Alpaca\Core\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

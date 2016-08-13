@@ -3,7 +3,7 @@
 namespace Alpaca\User\Controllers;
 
 use Alpaca\User\Models\User;
-use App\Http\Controllers\Controller;
+use Alpaca\Core\Controller;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
