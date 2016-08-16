@@ -6,7 +6,7 @@ use Alpaca\Menu\Models\Menu;
 /**
  * Block with item relation testing.
  */
-class BlockItemRelationTest extends AlpacaTestCase
+class BlockItemRelationTest extends TestCase
 {
     /**
      * @test

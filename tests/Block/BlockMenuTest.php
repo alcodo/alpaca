@@ -7,7 +7,7 @@ use Alpaca\User\Models\User;
 /**
  * Block testing with menu.
  */
-class BlockMenuTest extends AlpacaTestCase
+class BlockMenuTest extends TestCase
 {
     /**
      * @test

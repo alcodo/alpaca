@@ -6,7 +6,7 @@ use Alpaca\User\Models\User;
 /**
  * Page frontpage test.
  */
-class PageFrontPageTest extends AlpacaTestCase
+class PageFrontPageTest extends TestCase
 {
     /**
      * @test

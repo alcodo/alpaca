@@ -5,7 +5,7 @@ use Alpaca\Page\Models\Page;
 /**
  * Category fronted test.
  */
-class CategoryFrontTest extends AlpacaTestCase
+class CategoryFrontTest extends TestCase
 {
     /**
      * @test

@@ -4,7 +4,7 @@ use Alpaca\Crud\Tests\CrudTestContract;
 use Alpaca\Crud\Tests\CrudTestTrait;
 use Alpaca\User\Controllers\PermissionController;
 
-class PermissionCrudTest extends AlpacaTestCase implements CrudTestContract
+class PermissionCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

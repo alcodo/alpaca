@@ -5,7 +5,7 @@ use Alpaca\Crud\Tests\CrudTestTrait;
 use Alpaca\Menu\Controllers\ItemBackend;
 use Alpaca\Menu\Models\Menu;
 
-class ItemCrudTest extends AlpacaTestCase implements CrudTestContract
+class ItemCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

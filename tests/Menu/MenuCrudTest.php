@@ -4,7 +4,7 @@ use Alpaca\Crud\Tests\CrudTestContract;
 use Alpaca\Crud\Tests\CrudTestTrait;
 use Alpaca\Menu\Controllers\MenuBackend;
 
-class MenuCrudTest extends AlpacaTestCase implements CrudTestContract
+class MenuCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

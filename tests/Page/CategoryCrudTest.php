@@ -4,7 +4,7 @@ use Alpaca\Crud\Tests\CrudTestContract;
 use Alpaca\Crud\Tests\CrudTestTrait;
 use Alpaca\Page\Controllers\PageBackend;
 
-class CategoryCrudTest extends AlpacaTestCase implements CrudTestContract
+class CategoryCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

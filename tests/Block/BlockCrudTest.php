@@ -4,7 +4,7 @@ use Alpaca\Block\Controllers\BlockBackend;
 use Alpaca\Crud\Tests\CrudTestContract;
 use Alpaca\Crud\Tests\CrudTestTrait;
 
-class BlockCrudTest extends AlpacaTestCase implements CrudTestContract
+class BlockCrudTest extends TestCase implements CrudTestContract
 {
     use CrudTestTrait;
 

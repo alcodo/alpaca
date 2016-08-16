@@ -2,7 +2,7 @@
 
 use Alpaca\User\Models\User;
 
-class UserTest extends AlpacaTestCase
+class UserTest extends TestCase
 {
     /**
      * @test

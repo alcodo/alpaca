@@ -1,6 +1,6 @@
 <?php
 
-class SitemapTest extends AlpacaTestCase
+class SitemapTest extends TestCase
 {
     /**
      * @test

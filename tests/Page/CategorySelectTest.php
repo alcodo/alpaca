@@ -6,7 +6,7 @@ use Alpaca\User\Models\User;
 /**
  * Category fronted test.
  */
-class CategorySelectTest extends AlpacaTestCase
+class CategorySelectTest extends TestCase
 {
     /**
      * @test
