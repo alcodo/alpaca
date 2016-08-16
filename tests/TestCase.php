@@ -41,7 +41,7 @@ class TestCase extends Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         // entrust config
-        $entrustConfig = include __DIR__.'/../src/User/configs/entrust.php';
+        $entrustConfig = include __DIR__.'/../src/User/Configs/entrust.php';
         $app['config']->set('entrust', $entrustConfig);
 
         // view
