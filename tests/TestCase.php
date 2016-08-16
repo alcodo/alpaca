@@ -45,7 +45,9 @@ class TestCase extends Orchestra\Testbench\TestCase
         $app['config']->set('entrust', $entrustConfig);
 
         // view
-        $app['config']->set('view.paths', [__DIR__.'/view']);
+//        $viewFolder = __DIR__.'/../src/resources/views';
+        $viewFolder = __DIR__.'/TestHelper/view';
+        $app['config']->set('view.paths', [$viewFolder]);
 
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
