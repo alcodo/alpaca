@@ -1,7 +1,5 @@
 <?php
 
-use Alpaca\Crud\Tests\CrudTestContract;
-use Alpaca\Crud\Tests\CrudTestTrait;
 use Alpaca\Page\Controllers\PageBackend;
 
 class CategoryCrudTest extends TestCase implements CrudTestContract

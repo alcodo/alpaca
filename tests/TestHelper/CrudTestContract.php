@@ -1,7 +1,5 @@
 <?php
 
-namespace Alpaca\Crud\Tests;
-
 interface CrudTestContract
 {
     /**

@@ -1,7 +1,5 @@
 <?php
 
-use Alpaca\Crud\Tests\CrudTestContract;
-use Alpaca\Crud\Tests\CrudTestTrait;
 use Alpaca\Menu\Controllers\MenuBackend;
 
 class MenuCrudTest extends TestCase implements CrudTestContract

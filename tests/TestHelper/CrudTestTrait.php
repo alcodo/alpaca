@@ -1,7 +1,5 @@
 <?php
 
-namespace Alpaca\Crud\Tests;
-
 use Alpaca\Crud\Controllers\CrudContract;
 use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\User\Models\User;
