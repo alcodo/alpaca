@@ -18,6 +18,7 @@
     }
   ],
   "require": {
+    "laravel/framework": "~5.1",
     "artesaos/seotools": "^0.9",
     "zizaco/entrust": "5.2.x-dev",
     "cocur/slugify": "^2.1",
@@ -39,6 +40,11 @@
     ],
     "files": [
       "./src/helper.php"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
     ]
   },
   "minimum-stability": "dev"
