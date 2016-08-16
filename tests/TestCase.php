@@ -2,7 +2,6 @@
 
 class TestCase extends Orchestra\Testbench\TestCase
 {
-
     /**
      * Setup the test environment.
      */
@@ -71,7 +70,7 @@ class TestCase extends Orchestra\Testbench\TestCase
      */
     public function it_allows_to_use_service()
     {
-//        $this->assertNotEmpty(
+        //        $this->assertNotEmpty(
 //            app('Approached\LaravelImageOptimizer\ImageOptimizer')
 //        );
     }
