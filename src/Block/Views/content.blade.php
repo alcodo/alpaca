@@ -14,7 +14,9 @@
         </aside>
         <main class="col-sm-6">
             <div class="area-content">
+                {!! Block::getBlocks('content-top') !!}
                 @yield('content')
+                {!! Block::getBlocks('content-bottom') !!}
             </div>
         </main>
         <aside class="col-sm-3">
@@ -29,7 +31,9 @@
 
         <main class="col-sm-9">
             <div class="area-content">
+                {!! Block::getBlocks('content-top') !!}
                 @yield('content')
+                {!! Block::getBlocks('content-bottom') !!}
             </div>
         </main>
 
@@ -37,7 +41,9 @@
 
         <main class="col-sm-9">
             <div class="area-content">
+                {!! Block::getBlocks('content-top') !!}
                 @yield('content')
+                {!! Block::getBlocks('content-bottom') !!}
             </div>
         </main>
         <aside class="col-sm-3">
@@ -48,7 +54,9 @@
 
         <main class="col-sm-12">
             <div class="area-content">
+                {!! Block::getBlocks('content-top') !!}
                 @yield('content')
+                {!! Block::getBlocks('content-bottom') !!}
             </div>
         </main>
 

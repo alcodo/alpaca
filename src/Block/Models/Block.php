@@ -11,10 +11,13 @@ class Block extends Model
      * Possible areas.
      */
     const AREAS = [
+        'header',
         'top',
         'bottom',
         'left',
         'right',
+        'content-top',
+        'content-bottom',
     ];
 
     /**
