@@ -9,7 +9,7 @@ class UserTest extends TestCase
      */
     public function it_allows_to_register_user()
     {
-        $user = alpacaFactory(User::class, 'form')->make();
+        $user = factory(User::class, 'form')->make();
         $url = route('user.register');
 
         $this->visit($url)
@@ -27,7 +27,7 @@ class UserTest extends TestCase
      */
     public function it_allows_user_to_login()
     {
-        $user = alpacaFactory(User::class, 'testuser')->create();
+        $user = factory(User::class, 'testuser')->create();
 
         // check bcrypt password
         $passwordCorrect = app('hash')->check('testuser', $user->password);
@@ -63,7 +63,7 @@ class UserTest extends TestCase
      */
     public function it_allows_user_to_logout()
     {
-        $user = alpacaFactory(User::class)->create();
+        $user = factory(User::class)->create();
 
         $this->actingAs($user)
             ->visit('/')

@@ -14,7 +14,7 @@ class ItemCrudTest extends TestCase implements CrudTestContract
         parent::setUp();
 
         // create menu
-        $menu = alpacaFactory(Menu::class)->create();
+        $menu = factory(Menu::class)->create();
         $this->menu_id = $menu;
     }
 

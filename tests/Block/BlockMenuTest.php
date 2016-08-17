@@ -15,8 +15,8 @@ class BlockMenuTest extends TestCase
     public function it_allows_change_menu()
     {
         // create menus
-        $firstMenu = alpacaFactory(Menu::class)->create();
-        $secondMenu = alpacaFactory(Menu::class)->create();
+        $firstMenu = factory(Menu::class)->create();
+        $secondMenu = factory(Menu::class)->create();
 
         // login
         $adminUser = User::first();
@@ -47,8 +47,8 @@ class BlockMenuTest extends TestCase
      */
     public function check_relation()
     {
-        $menu = alpacaFactory(Menu::class)->create();
-        $block = alpacaFactory(\Alpaca\Block\Models\Block::class)->create([
+        $menu = factory(Menu::class)->create();
+        $block = factory(\Alpaca\Block\Models\Block::class)->create([
             'menu_id' => $menu->id,
         ]);
 

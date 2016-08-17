@@ -12,7 +12,7 @@ class CategoryFrontTest extends TestCase
      */
     public function it_allows_see_category_without_topic()
     {
-        $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
+        $category = factory(\Alpaca\Page\Models\Category::class)->create();
 
         $this->visit(config('page.categoryPrefix').'/'.$category->slug)
             ->see($category->title);
@@ -23,8 +23,8 @@ class CategoryFrontTest extends TestCase
      */
     public function it_allows_see_category_with_topic()
     {
-        $topic = alpacaFactory(\Alpaca\Page\Models\Topic::class)->create();
-        $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
+        $topic = factory(\Alpaca\Page\Models\Topic::class)->create();
+        $category = factory(\Alpaca\Page\Models\Category::class)->create();
 
         $url = $topic->slug.'/'.config('page.categoryPrefix').'/'.$category->slug;
 

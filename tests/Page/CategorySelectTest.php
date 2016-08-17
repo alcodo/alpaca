@@ -15,7 +15,7 @@ class CategorySelectTest extends TestCase
     {
         $this->actingAs(User::first());
 
-        $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
+        $category = factory(\Alpaca\Page\Models\Category::class)->create();
 
         // create a page with a category
         $this->visit(route('backend.page.create'))

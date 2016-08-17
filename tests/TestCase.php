@@ -8,21 +8,8 @@ class TestCase extends Orchestra\Testbench\TestCase
     public function setUp()
     {
         parent::setUp();
-
-        // alpaca
-        $this->artisan('migrate', [
-            '--database' => 'testing',
-            '--realpath' => realpath(__DIR__.'/../src/User/Migrations'),
-        ]);
-
-        $this->artisan('migrate', [
-            '--database' => 'testing',
-            '--realpath' => realpath(__DIR__.'/../src/Menu/Migrations'),
-        ]);
-        $this->artisan('migrate', [
-            '--database' => 'testing',
-            '--realpath' => realpath(__DIR__.'/../src/Block/Migrations'),
-        ]);
+        $this->setMigrations();
+        $this->setFactory();
     }
 
     protected function getPackageProviders($app)
@@ -41,12 +28,17 @@ class TestCase extends Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         // entrust config
-        $entrustConfig = include __DIR__.'/../src/User/Configs/entrust.php';
+        $entrustConfig = include __DIR__ . '/../src/User/Configs/entrust.php';
         $app['config']->set('entrust', $entrustConfig);
+
+//        dd($app['config']);
+
+        $app['config']->set('auth.model', 'Alpaca\User\Models\User');
+//        $app['config']->set('auth.model', Alpaca\User\Models\User::class);
 
         // view
 //        $viewFolder = __DIR__.'/../src/resources/views';
-        $viewFolder = __DIR__.'/TestHelper/view';
+        $viewFolder = __DIR__ . '/TestHelper/view';
         $app['config']->set('view.paths', [$viewFolder]);
 
         // Setup default database to use sqlite :memory:
@@ -75,5 +67,31 @@ class TestCase extends Orchestra\Testbench\TestCase
         //        $this->assertNotEmpty(
 //            app('Approached\LaravelImageOptimizer\ImageOptimizer')
 //        );
+    }
+
+    protected function setMigrations()
+    {
+        $this->artisan('migrate', [
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__ . '/../src/User/Migrations'),
+        ]);
+        $this->artisan('migrate', [
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__ . '/../src/Menu/Migrations'),
+        ]);
+        $this->artisan('migrate', [
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__ . '/../src/Page/Migrations'),
+        ]);
+        $this->artisan('migrate', [
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__ . '/../src/Block/Migrations'),
+        ]);
+    }
+
+    protected function setFactory()
+    {
+        $path = __DIR__ . '/../src/resources/factories/';
+        $this->withFactories($path);
     }
 }

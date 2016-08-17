@@ -21,7 +21,7 @@ class PageFrontTest extends TestCase
      */
     public function it_allows_see_simple_page_with_category()
     {
-        $category = alpacaFactory(\Alpaca\Page\Models\Category::class)->create();
+        $category = factory(\Alpaca\Page\Models\Category::class)->create();
 
         $page = Page::create([
             'title' => 'Cat vs Dog',
@@ -45,7 +45,7 @@ class PageFrontTest extends TestCase
      */
     public function it_allows_see_simple_page_with_topic()
     {
-        $topic = alpacaFactory(\Alpaca\Page\Models\Topic::class)->create();
+        $topic = factory(\Alpaca\Page\Models\Topic::class)->create();
 
         $page = Page::create([
             'title' => 'Topic is the king',

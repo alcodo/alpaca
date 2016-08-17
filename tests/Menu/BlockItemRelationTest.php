@@ -14,8 +14,8 @@ class BlockItemRelationTest extends TestCase
     public function check_relation()
     {
         // create
-        $menu = alpacaFactory(\Alpaca\Menu\Models\Menu::class)->create();
-        $item = alpacaFactory(\Alpaca\Menu\Models\Item::class)->create([
+        $menu = factory(\Alpaca\Menu\Models\Menu::class)->create();
+        $item = factory(\Alpaca\Menu\Models\Item::class)->create([
             'menu_id' => $menu->id,
         ]);
 
