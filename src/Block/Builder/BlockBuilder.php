@@ -46,7 +46,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**
@@ -62,7 +62,7 @@ class BlockBuilder
             // each area
 
             return $area->map(function ($block, $key) {
-                if (is_null($block) || !$block->mobile_view) {
+                if (is_null($block) || ! $block->mobile_view) {
                     return '';
                 }
 
@@ -94,9 +94,9 @@ class BlockBuilder
             '.*',
         ];
 
-        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
+        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
-        return (bool)preg_match($regexpPatter, Request::path());
+        return (bool) preg_match($regexpPatter, Request::path());
     }
 
     /**
