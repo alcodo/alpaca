@@ -80,7 +80,7 @@ class TestCase extends Orchestra\Testbench\TestCase
 
     protected function setFactory()
     {
-        $path = __DIR__.'/../src/resources/factories/';
+        $path = __DIR__.'/../resources/factories/';
         $this->withFactories($path);
     }
 
