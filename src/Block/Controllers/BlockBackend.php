@@ -103,8 +103,8 @@ class BlockBackend extends Controller implements CrudContract
             'title' => $form->text(trans('crud::crud.title'), 'title'),
             'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
             'mobile_view' => $form->checkbox(trans('block::block.mobile_view'), 'mobile_view')->defaultToChecked(),
-            'desktop_view' => $form->checkbox(trans('block::block.mobile_view'), 'desktop_view')->defaultToChecked(),
-            'desktop_view_force' => $form->checkbox(trans('block::block.mobile_view'), 'desktop_view_force'),
+            'desktop_view' => $form->checkbox(trans('block::block.desktop_view'), 'desktop_view')->defaultToChecked(),
+            'desktop_view_force' => $form->checkbox(trans('block::block.desktop_view_force'), 'desktop_view_force'),
             'area' => $form->select(trans('block::block.area'), 'area')
                 ->options($this->getAreaChoice())
                 ->select($selectedArea),
