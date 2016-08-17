@@ -2,6 +2,7 @@
 
 class TestCase extends Orchestra\Testbench\TestCase
 {
+
     /**
      * Setup the test environment.
      */
@@ -31,12 +32,9 @@ class TestCase extends Orchestra\Testbench\TestCase
         $entrustConfig = include __DIR__ . '/../src/User/Configs/entrust.php';
         $app['config']->set('entrust', $entrustConfig);
 
-
-//        $app['config']->set('auth.model', '\Alpaca\User\Models\User');
-        $app['config']->set('auth.model', 'Alpaca\User\Models\User');
+        // alpaca settings
         $app['config']->set('page.categoryPrefix', 'category');
-//        $app['config']->set('auth.model', Alpaca\User\Models\User::class);
-//        dd($app['config']);
+        $app['config']->set('auth.model', Alpaca\User\Models\User::class);
 
         // view
 //        $viewFolder = __DIR__.'/../src/resources/views';
@@ -59,16 +57,6 @@ class TestCase extends Orchestra\Testbench\TestCase
         $method->setAccessible(true);
 
         return $method->invokeArgs($obj, $args);
-    }
-
-    /**
-     * @test
-     */
-    public function it_allows_to_use_service()
-    {
-        //        $this->assertNotEmpty(
-//            app('Approached\LaravelImageOptimizer\ImageOptimizer')
-//        );
     }
 
     protected function setMigrations()
@@ -95,5 +83,12 @@ class TestCase extends Orchestra\Testbench\TestCase
     {
         $path = __DIR__ . '/../src/resources/factories/';
         $this->withFactories($path);
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_to_use_service()
+    {
     }
 }

@@ -195,6 +195,8 @@ class AuthController extends Controller
             $this->incrementLoginAttempts($request);
         }
 
+        Flash::error($this->getFailedLoginMessage());
+
         return redirect($this->loginPath())
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
@@ -336,10 +338,10 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'getLogout']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('guest', ['except' => 'getLogout']);
+//    }
 
     /**
      * Create a new user instance after a valid registration.
