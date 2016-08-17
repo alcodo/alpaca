@@ -12,6 +12,8 @@ class UserTest extends TestCase
         $user = factory(User::class, 'form')->make();
         $url = route('user.register');
 
+        $this->visit($url);
+
         $this->visit($url)
             ->see('Register')
             ->type($user->username, 'username')

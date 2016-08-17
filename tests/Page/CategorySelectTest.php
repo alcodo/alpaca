@@ -23,7 +23,7 @@ class CategorySelectTest extends TestCase
             ->type('hallo', 'slug')
             ->select($category->id, 'category_id')
             ->type('Content', 'body')
-            ->press('Speichern')
+            ->press('Save')
             ->see('alert-success');
 
         $page = Page::whereSlug('hallo')->first();
@@ -48,7 +48,7 @@ class CategorySelectTest extends TestCase
             ->type('hallo', 'slug')
             ->select('', 'category_id')
             ->type('Content', 'body')
-            ->press('Speichern')
+            ->press('Save')
             ->see('alert-success');
 
         $page = Page::whereSlug('hallo')->first();

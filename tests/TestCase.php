@@ -31,10 +31,12 @@ class TestCase extends Orchestra\Testbench\TestCase
         $entrustConfig = include __DIR__ . '/../src/User/Configs/entrust.php';
         $app['config']->set('entrust', $entrustConfig);
 
-//        dd($app['config']);
 
+//        $app['config']->set('auth.model', '\Alpaca\User\Models\User');
         $app['config']->set('auth.model', 'Alpaca\User\Models\User');
+        $app['config']->set('page.categoryPrefix', 'category');
 //        $app['config']->set('auth.model', Alpaca\User\Models\User::class);
+//        dd($app['config']);
 
         // view
 //        $viewFolder = __DIR__.'/../src/resources/views';
