@@ -16,7 +16,7 @@ class CreateBlockTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('active');
-            $table->string('area', 10)->index();
+            $table->string('area', 20)->index();
 
             $table->string('name');
             $table->string('title')->nullable();
