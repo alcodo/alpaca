@@ -12,6 +12,8 @@ return [
     'bottom' => 'Unten',
     'htmltext' => 'HTML Text',
     'exception' => 'Ausnahmen',
-    'ismobile' => 'Mobile lösung',
+    'mobile_view' => 'Mobile Ansicht',
+    'desktop_view' => 'Desktop Ansicht',
+    'desktop_view_force' => 'Desktop Ansicht erzwingen',
 
 ];

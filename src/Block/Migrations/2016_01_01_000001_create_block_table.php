@@ -21,7 +21,9 @@ class CreateBlockTable extends Migration
             $table->string('name');
             $table->string('title')->nullable();
             $table->tinyInteger('range')->unsigned();
-            $table->boolean('ismobile');
+            $table->boolean('mobile_view')->default(1);
+            $table->boolean('desktop_view')->default(1);
+            $table->boolean('desktop_view_force')->default(0);
 
             $table->text('html');
             $table->mediumText('exception');

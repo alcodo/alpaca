@@ -34,7 +34,9 @@ class AdminBlockListener
                 'area' => 'right',
                 'exception' => '',
                 'range' => 1,
-                'ismobile' => 1,
+                'mobile_view' => 1,
+                'desktop_view' => 1,
+                'desktop_view_force' => 0,
                 'html' => Response::view('core::adminblock')->getContent(),
             ]);
         }

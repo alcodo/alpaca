@@ -35,7 +35,9 @@ class Block extends Model
         'menu_id',
         'exception',
         'html',
-        'ismobile',
+        'mobile_view',
+        'desktop_view',
+        'desktop_view_force',
     ];
 
     public static function getAreaChoice()
