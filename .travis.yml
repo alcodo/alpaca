@@ -1,5 +1,7 @@
 language: php
 
+sudo: true
+
 php:
   - 7.0
 
@@ -7,10 +9,6 @@ env:
   - LARAVEL_VERSION="5.1.*" TESTBENCH_VERSION="3.1.*"
   - LARAVEL_VERSION="5.2.*" TESTBENCH_VERSION="3.2.*"
   - LARAVEL_VERSION="5.3.*" TESTBENCH_VERSION="3.3.*"
-
-matrix:
-  allow_failures:
-  - env: LARAVEL_VERSION="5.3.*" TESTBENCH_VERSION="3.3.*"
 
 before_install:
   - sudo apt-get -qq update
@@ -22,5 +20,3 @@ before_script:
   - composer install
 
 script: phpunit --coverage-text
-
-sudo: true
