@@ -3,9 +3,8 @@
 namespace Alpaca\Page;
 
 use Alpaca\Page\Listeners\SitemapListener;
-use Alpaca\Page\Models\Page;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class PageServiceProvider extends ServiceProvider
 {
@@ -29,9 +28,13 @@ class PageServiceProvider extends ServiceProvider
     {
     }
 
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
+        foreach ($this->listen as $event => $listeners) {
+            foreach ($listeners as $listener) {
+                Event::listen($event, $listener);
+            }
+        }
 
         $this->loadViewsFrom(__DIR__.'/Views', 'page');
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'page');

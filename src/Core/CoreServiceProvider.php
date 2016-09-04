@@ -4,8 +4,8 @@ namespace Alpaca\Core;
 
 use Alpaca\Core\Listeners\AdminBlockListener;
 use Alpaca\Core\Listeners\UserBlockListener;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -30,10 +30,14 @@ class CoreServiceProvider extends ServiceProvider
     {
     }
 
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
+        foreach ($this->listen as $event => $listeners) {
+            foreach ($listeners as $listener) {
+                Event::listen($event, $listener);
+            }
+        }
 
-        $this->loadViewsFrom(__DIR__.'/Views', 'core');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'core');
     }
 }
