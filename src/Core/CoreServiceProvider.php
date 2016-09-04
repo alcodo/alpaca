@@ -38,6 +38,6 @@ class CoreServiceProvider extends ServiceProvider
             }
         }
 
-        $this->loadViewsFrom(__DIR__ . '/Views', 'core');
+        $this->loadViewsFrom(__DIR__.'/Views', 'core');
     }
 }
