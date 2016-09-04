@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Application;
+
 class TestCase extends Orchestra\Testbench\TestCase
 {
     /**
@@ -10,6 +12,8 @@ class TestCase extends Orchestra\Testbench\TestCase
         parent::setUp();
         $this->setMigrations();
         $this->setFactory();
+
+//        dump(Application::VERSION);
     }
 
     protected function getPackageProviders($app)
@@ -33,7 +37,10 @@ class TestCase extends Orchestra\Testbench\TestCase
 
         // alpaca settings
         $app['config']->set('page.categoryPrefix', 'category');
+        // 5.1
         $app['config']->set('auth.model', Alpaca\User\Models\User::class);
+        // 5.2
+        $app['config']->set('auth.providers.users.model', Alpaca\User\Models\User::class);
 
         // view
 //        $viewFolder = __DIR__.'/../src/resources/views';
@@ -82,12 +89,5 @@ class TestCase extends Orchestra\Testbench\TestCase
     {
         $path = __DIR__.'/../resources/factories/';
         $this->withFactories($path);
-    }
-
-    /**
-     * @test
-     */
-    public function it_allows_to_use_service()
-    {
     }
 }
