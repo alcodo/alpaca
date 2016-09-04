@@ -74,7 +74,7 @@ class UserTest extends TestCase
             ->see('alert-success');
     }
 
-    /**
+    /*
      * @test
      */
 //    public function it_allows_user_to_edit_own_profile()
