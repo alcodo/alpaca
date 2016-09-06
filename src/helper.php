@@ -3,14 +3,15 @@
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Request;
 
-function getResourceRouteName($prefix){
+function getResourceRouteName($prefix)
+{
     return [
-        'create' => $prefix . '.create',
-        'store' => $prefix . '.store',
-        'show' => $prefix . '.show',
-        'edit' => $prefix . '.edit',
-        'update' => $prefix . '.update',
-        'destroy' => $prefix . '.destroy',
+        'create' => $prefix.'.create',
+        'store' => $prefix.'.store',
+        'show' => $prefix.'.show',
+        'edit' => $prefix.'.edit',
+        'update' => $prefix.'.update',
+        'destroy' => $prefix.'.destroy',
     ];
 }
 
