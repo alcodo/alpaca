@@ -82,7 +82,7 @@ class RoleController extends BaseController implements CrudContract
             'display_name' => $form->text(trans('user::role.display-name'), 'display_name'),
             'description'  => $form->text(trans('user::role.description'), 'description'),
             'permissions'  => $form->select(trans('user::permission.permissions'), 'permissions')
-                ->options(Permission::lists('display_name', 'id'))
+                ->options(Permission::pluck('display_name', 'id'))
                 ->multiple()
                 ->select($selectedPermissions),
             'submit' => $form->submit(trans('crud::crud.save')),

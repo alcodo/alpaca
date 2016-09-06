@@ -5,7 +5,6 @@ namespace Alpaca\Core\Listeners;
 use Alpaca\Block\Models\Block;
 use Alpaca\Sitemap\Models\Sitemap;
 use Illuminate\Support\Facades\Auth;
-use Response;
 
 class AdminBlockListener
 {
@@ -37,7 +36,7 @@ class AdminBlockListener
                 'mobile_view' => 1,
                 'desktop_view' => 1,
                 'desktop_view_force' => 0,
-                'html' => Response::view('core::adminblock')->getContent(),
+                'html' => view('core::adminblock')->render(),
             ]);
         }
     }

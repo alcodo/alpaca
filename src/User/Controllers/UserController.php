@@ -94,7 +94,7 @@ class UserController extends BaseController implements CrudContract
             'password'              => $form->password(trans('user::user.password'), 'password'),
             'password_confirmation' => $form->password(trans('user::user.password_confirm'), 'password_confirmation'),
             'user.roles'            => $form->select(trans('user::role.roles'), 'roles')
-                ->options(Role::lists('display_name', 'id'))
+                ->options(Role::pluck('display_name', 'id'))
                 ->multiple()
                 ->select($selectedRoles),
             'submit' => $form->submit(trans('crud::crud.save')),

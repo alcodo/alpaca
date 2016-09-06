@@ -1,3 +1,5 @@
 <?php
 
-Route::resource('/backend/block', 'BlockBackend');
+Route::group(['as' => 'backend.'], function () {
+    Route::resource('/backend/block', 'BlockBackend');
+});

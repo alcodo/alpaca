@@ -13,6 +13,8 @@ Route::post('/register', 'AuthController@postRegister');
 // Password forgotten
 // Edit own user profile
 
-Route::resource('/backend/user', 'UserController');
-Route::resource('/backend/role', 'RoleController');
-Route::resource('/backend/permission', 'PermissionController');
+Route::group(['as' => 'backend.'], function () {
+    Route::resource('/backend/user', 'UserController');
+    Route::resource('/backend/role', 'RoleController');
+    Route::resource('/backend/permission', 'PermissionController');
+});

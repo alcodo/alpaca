@@ -93,7 +93,7 @@ class BlockBackend extends Controller implements CrudContract
             }
         }
 
-        $menus = Menu::orderBy('title', 'asc')->lists('title', 'id');
+        $menus = Menu::orderBy('title', 'asc')->pluck('title', 'id');
         $menus->prepend(trans('menu::menu.no_menu'), '');
 
         $formFields = [

@@ -2,6 +2,7 @@
 
 namespace Alpaca\Menu;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as Provider;
 
 class MenuServiceProvider extends Provider
@@ -26,5 +27,8 @@ class MenuServiceProvider extends Provider
         $this->app['router']->group(['namespace' => 'Alpaca\Menu\Controllers'], function ($router) {
             require __DIR__.'/routes.php';
         });
+
+//        $routes = Route::getRoutes();
+//        dd($routes);
     }
 }

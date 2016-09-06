@@ -100,10 +100,10 @@ class PageBackend extends Controller implements CrudContract
             $selectedTopic = $entry->topic_id;
         }
 
-        $categories = Category::orderBy('title', 'asc')->lists('title', 'id');
+        $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
         $categories->prepend(trans('page::category.no_category'), '');
 
-        $topics = Topic::orderBy('title', 'asc')->lists('title', 'id');
+        $topics = Topic::orderBy('title', 'asc')->pluck('title', 'id');
         $topics->prepend(trans('page::topic.no_topic'), '');
 
         $formFields = [
