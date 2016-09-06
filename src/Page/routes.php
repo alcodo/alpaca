@@ -1,10 +1,8 @@
 <?php
 
-Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
-    Route::resource('page', 'PageBackend');
-    Route::resource('topic', 'TopicBackend');
-    Route::resource('category', 'CategoryBackend');
-});
+Route::resource('/backend/page', 'PageBackend', ['names' => getResourceRouteName('backend.page')]);
+Route::resource('/backend/topic', 'TopicBackend', ['names' => getResourceRouteName('backend.topic')]);
+Route::resource('/backend/category', 'CategoryBackend', ['names' => getResourceRouteName('backend.category')]);
 
 // config
 $categoryPrefix = config('page.categoryPrefix');

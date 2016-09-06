@@ -1,9 +1,4 @@
 <?php
 
-Route::group(['prefix' => 'backend', 'as' => 'backend.'], function () {
-    Route::group(['prefix' => 'menu/{menuId}', 'as' => 'menu.{menuId}.'], function () {
-        Route::resource('item', 'ItemBackend');
-    });
-
-    Route::resource('menu', 'MenuBackend');
-});
+Route::resource('/backend/menu/{menuId}/item', 'ItemBackend', ['names' => getResourceRouteName('backend.block.item')]);
+Route::resource('/backend/menu', 'MenuBackend', ['names' => getResourceRouteName('backend.menu')]);
