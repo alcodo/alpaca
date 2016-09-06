@@ -1,5 +1,3 @@
 <?php
 
-Route::group(['as' => 'backend.'], function () {
-    Route::resource('/backend/block', 'BlockBackend');
-});
+Route::resource('/backend/block', 'BlockBackend', ['names' => getResourceRouteName('backend.block')]);
