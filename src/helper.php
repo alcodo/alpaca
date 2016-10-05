@@ -1,6 +1,7 @@
 <?php
 
-function isLaravelVersion5_3(){
+function isLaravelVersion5_3()
+{
     return version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '>=');
 }
 

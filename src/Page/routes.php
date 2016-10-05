@@ -2,19 +2,15 @@
 
 
 if (isLaravelVersion5_3()) {
-
     Route::group(['as' => 'backend.'], function () {
         Route::resource('/backend/page', 'PageBackend');
         Route::resource('/backend/topic', 'TopicBackend');
         Route::resource('/backend/category', 'CategoryBackend');
     });
-
 } else {
-
     Route::resource('/backend/page', 'PageBackend');
     Route::resource('/backend/topic', 'TopicBackend');
     Route::resource('/backend/category', 'CategoryBackend');
-
 }
 
 // config
