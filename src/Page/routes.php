@@ -1,8 +1,21 @@
 <?php
 
-Route::resource('/backend/page', 'PageBackend', ['names' => getResourceRouteName('backend.page')]);
-Route::resource('/backend/topic', 'TopicBackend', ['names' => getResourceRouteName('backend.topic')]);
-Route::resource('/backend/category', 'CategoryBackend', ['names' => getResourceRouteName('backend.category')]);
+
+if (isLaravelVersion5_3()) {
+
+    Route::group(['as' => 'backend.'], function () {
+        Route::resource('/backend/page', 'PageBackend');
+        Route::resource('/backend/topic', 'TopicBackend');
+        Route::resource('/backend/category', 'CategoryBackend');
+    });
+
+} else {
+
+    Route::resource('/backend/page', 'PageBackend');
+    Route::resource('/backend/topic', 'TopicBackend');
+    Route::resource('/backend/category', 'CategoryBackend');
+
+}
 
 // config
 $categoryPrefix = config('page.categoryPrefix');

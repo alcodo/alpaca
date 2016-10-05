@@ -13,6 +13,19 @@ Route::post('/register', 'AuthController@postRegister');
 // Password forgotten
 // Edit own user profile
 
-Route::resource('/backend/user', 'UserController', ['names' => getResourceRouteName('backend.user')]);
-Route::resource('/backend/role', 'RoleController', ['names' => getResourceRouteName('backend.role')]);
-Route::resource('/backend/permission', 'PermissionController', ['names' => getResourceRouteName('backend.permission')]);
+if (isLaravelVersion5_3()) {
+
+    Route::group(['as' => 'backend.'], function () {
+        Route::resource('/backend/user', 'UserController');
+        Route::resource('/backend/role', 'RoleController');
+        Route::resource('/backend/permission', 'PermissionController');
+    });
+
+} else {
+
+    Route::resource('/backend/user', 'UserController');
+    Route::resource('/backend/role', 'RoleController');
+    Route::resource('/backend/permission', 'PermissionController');
+
+
+}

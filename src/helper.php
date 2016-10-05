@@ -1,18 +1,7 @@
 <?php
 
-use Illuminate\Database\Eloquent\Factory;
-use Illuminate\Support\Facades\Request;
-
-function getResourceRouteName($prefix)
-{
-    return [
-        'create' => $prefix.'.create',
-        'store' => $prefix.'.store',
-        'show' => $prefix.'.show',
-        'edit' => $prefix.'.edit',
-        'update' => $prefix.'.update',
-        'destroy' => $prefix.'.destroy',
-    ];
+function isLaravelVersion5_3(){
+    return version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '>=');
 }
 
 function isActiveRoute($route, $output = 'active')
@@ -29,7 +18,7 @@ function isActiveUrl($path, $output = 'active')
         $path = trim($path, '/');
     }
 
-    if ($path === Request::path()) {
+    if ($path === \Illuminate\Support\Facades\Request::path()) {
         return $output;
     }
 }
@@ -43,7 +32,7 @@ if (! function_exists('alpacaFactory')) {
      */
     function alpacaFactory()
     {
-        $factory = Factory::construct(app('Faker\Generator'), base_path('vendor/alcodo/alpaca/src/resources/factories/'));
+        $factory = \Illuminate\Database\Eloquent\Factory::construct(app('Faker\Generator'), base_path('vendor/alcodo/alpaca/src/resources/factories/'));
 
         $arguments = func_get_args();
 
