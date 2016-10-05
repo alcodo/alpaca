@@ -90,12 +90,12 @@ class PageBackend extends Controller implements CrudContract
         $selectedCategory = '';
         $selectedTopic = '';
 
-        if (!empty($entry->category_id)) {
+        if (! empty($entry->category_id)) {
             // only for edit
             $selectedCategory = $entry->category_id;
         }
 
-        if (!empty($entry->topic_id)) {
+        if (! empty($entry->topic_id)) {
             // only for edit
             $selectedTopic = $entry->topic_id;
         }
@@ -234,7 +234,7 @@ class PageBackend extends Controller implements CrudContract
         }
         if (empty($data['slug'])) {
             if (
-                !empty($entry->slug) && // updated page is not a frontpage
+                ! empty($entry->slug) && // updated page is not a frontpage
                 Page::whereSlug('')->first() !== null // frontpage does not exists
             ) {
                 $data['slug'] = app('slugify')->slugify($data['title']);

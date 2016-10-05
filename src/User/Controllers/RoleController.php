@@ -71,7 +71,7 @@ class RoleController extends BaseController implements CrudContract
     {
         $selectedPermissions = null;
 
-        if (!is_null($entry)) {
+        if (! is_null($entry)) {
             // only for edit
             $selectedPermissions = $entry->perms->pluck('id')->toArray();
         }
@@ -197,7 +197,7 @@ class RoleController extends BaseController implements CrudContract
         $data = request()->all();
 
         return [
-            'name' => 'required|unique:roles,name,' . $data['id'],
+            'name' => 'required|unique:roles,name,'.$data['id'],
             'display_name' => 'required',
         ];
     }

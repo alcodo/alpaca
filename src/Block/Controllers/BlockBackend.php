@@ -93,9 +93,9 @@ class BlockBackend extends Controller implements CrudContract
             }
         }
 
-        if(isLaravelVersion5_1()){
+        if (isLaravelVersion5_1()) {
             $menus = Menu::orderBy('title', 'asc')->lists('title', 'id');
-        }else{
+        } else {
             $menus = Menu::orderBy('title', 'asc')->pluck('title', 'id');
         }
         $menus->prepend(trans('menu::menu.no_menu'), '');
