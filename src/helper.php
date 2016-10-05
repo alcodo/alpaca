@@ -5,6 +5,12 @@ function isLaravelVersion5_3()
     return version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '>=');
 }
 
+function isLaravelVersion5_1()
+{
+    return version_compare(\Illuminate\Foundation\Application::VERSION, '5.1.0', '>=') &&
+            version_compare(\Illuminate\Foundation\Application::VERSION, '5.2.0', '<=');
+}
+
 function isActiveRoute($route, $output = 'active')
 {
     if (Route::currentRouteName() == $route) {

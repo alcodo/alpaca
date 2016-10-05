@@ -86,6 +86,12 @@ class UserController extends BaseController implements CrudContract
             $selectedRoles = $entry->roles->pluck('id')->toArray();
         }
 
+        if (isLaravelVersion5_1()) {
+            $roles = Role::lists('display_name', 'id');
+        } else {
+            $roles = Role::pluck('display_name', 'id');
+        }
+
         $formFields = [
             'id'                    => $form->hidden('id'),
             'user_id'               => $form->hidden('user_id'),
@@ -94,7 +100,7 @@ class UserController extends BaseController implements CrudContract
             'password'              => $form->password(trans('user::user.password'), 'password'),
             'password_confirmation' => $form->password(trans('user::user.password_confirm'), 'password_confirmation'),
             'user.roles'            => $form->select(trans('user::role.roles'), 'roles')
-                ->options(Role::pluck('display_name', 'id'))
+                ->options($roles)
                 ->multiple()
                 ->select($selectedRoles),
             'submit' => $form->submit(trans('crud::crud.save')),

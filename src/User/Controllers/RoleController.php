@@ -47,13 +47,13 @@ class RoleController extends BaseController implements CrudContract
     {
         return [
             [
-                'label'      => trans('user::role.display-name'),
-                'css'        => 'col-md-3',
+                'label' => trans('user::role.display-name'),
+                'css' => 'col-md-3',
                 'modelValue' => 'display_name',
             ],
             [
-                'label'      => trans('user::role.description'),
-                'css'        => 'col-md-3',
+                'label' => trans('user::role.description'),
+                'css' => 'col-md-3',
                 'modelValue' => 'description',
             ],
         ];
@@ -62,7 +62,7 @@ class RoleController extends BaseController implements CrudContract
     /**
      * Formbuilder.
      *
-     * @param null                                     $form
+     * @param null $form
      * @param \Illuminate\Database\Eloquent\Model|null $entry
      *
      * @return mixed
@@ -71,18 +71,24 @@ class RoleController extends BaseController implements CrudContract
     {
         $selectedPermissions = null;
 
-        if (! is_null($entry)) {
+        if (!is_null($entry)) {
             // only for edit
             $selectedPermissions = $entry->perms->pluck('id')->toArray();
         }
 
+        if (isLaravelVersion5_1()) {
+            $permissions = Permission::lists('display_name', 'id');
+        } else {
+            $permissions = Permission::pluck('display_name', 'id');
+        }
+
         $formFields = [
-            'id'           => $form->hidden('id'),
-            'name'         => $form->text(trans('user::role.name'), 'name'),
+            'id' => $form->hidden('id'),
+            'name' => $form->text(trans('user::role.name'), 'name'),
             'display_name' => $form->text(trans('user::role.display-name'), 'display_name'),
-            'description'  => $form->text(trans('user::role.description'), 'description'),
-            'permissions'  => $form->select(trans('user::permission.permissions'), 'permissions')
-                ->options(Permission::pluck('display_name', 'id'))
+            'description' => $form->text(trans('user::role.description'), 'description'),
+            'permissions' => $form->select(trans('user::permission.permissions'), 'permissions')
+                ->options($permissions)
                 ->multiple()
                 ->select($selectedPermissions),
             'submit' => $form->submit(trans('crud::crud.save')),
@@ -176,7 +182,7 @@ class RoleController extends BaseController implements CrudContract
     public function getValidationCreate()
     {
         return [
-            'name'         => 'required|unique:roles',
+            'name' => 'required|unique:roles',
             'display_name' => 'required',
         ];
     }
@@ -191,7 +197,7 @@ class RoleController extends BaseController implements CrudContract
         $data = request()->all();
 
         return [
-            'name'         => 'required|unique:roles,name,'.$data['id'],
+            'name' => 'required|unique:roles,name,' . $data['id'],
             'display_name' => 'required',
         ];
     }
