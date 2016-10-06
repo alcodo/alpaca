@@ -5,6 +5,7 @@ namespace Alpaca;
 use Alpaca\Contact\ContactServiceProvider;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
+use Alpaca\Gallery\GalleryServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
 use Alpaca\User\UserServiceProvider;
 use Alpaca\Block\BlockServiceProvider;
@@ -19,7 +20,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      *
      * @var array
      */
-    protected $providers = [
+    protected $providers = array(
         DependencyServiceProvider::class,
         CoreServiceProvider::class,
         CrudServiceProvider::class,
@@ -28,6 +29,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         MenuServiceProvider::class,
         SitemapServiceProvider::class,
         ContactServiceProvider::class,
+        GalleryServiceProvider::class,
         PageServiceProvider::class,
-    ];
+    );
 }

@@ -47,6 +47,13 @@ class TestCase extends Orchestra\Testbench\TestCase
         // 5.2
         $app['config']->set('auth.providers.users.model', Alpaca\User\Models\User::class);
 
+        $fileSystemSettings = [
+            'driver' => 'local',
+            'root' => storage_path('powerimage'),
+        ];
+
+        $app['config']->set('filesystems.disks.powerimage', $fileSystemSettings);
+
         // view
 //        $viewFolder = __DIR__.'/../src/resources/views';
         $viewFolder = __DIR__.'/TestHelper/view';
@@ -87,6 +94,10 @@ class TestCase extends Orchestra\Testbench\TestCase
         $this->artisan('migrate', [
             '--database' => 'testing',
             '--realpath' => realpath(__DIR__.'/../src/Block/Migrations'),
+        ]);
+        $this->artisan('migrate', [
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__.'/../src/Gallery/Migrations'),
         ]);
     }
 

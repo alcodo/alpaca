@@ -3,6 +3,7 @@
 namespace Alpaca;
 
 use AdamWathan\BootForms\BootFormsServiceProvider;
+use Alcodo\PowerImage\PowerImageServiceProvider;
 use Approached\LaravelDateInternational\ServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
@@ -14,6 +15,7 @@ use Zizaco\Entrust\EntrustServiceProvider;
 class DependencyServiceProvider extends AggregateServiceProvider
 {
     protected $providers = [
+        PowerImageServiceProvider::class,
         FlashServiceProvider::class,
         EntrustServiceProvider::class,
         SEOToolsServiceProvider::class,

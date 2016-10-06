@@ -19,6 +19,7 @@
   ],
   "require": {
     "laravel/framework": "~5.0",
+    "alcodo/powerimage": "dev-master",
     "artesaos/seotools": "^0.9",
     "zizaco/entrust": "5.2.x-dev",
     "cocur/slugify": "^2.1",
