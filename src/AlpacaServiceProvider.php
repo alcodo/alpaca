@@ -20,7 +20,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      *
      * @var array
      */
-    protected $providers = array(
+    protected $providers = [
         DependencyServiceProvider::class,
         CoreServiceProvider::class,
         CrudServiceProvider::class,
@@ -31,5 +31,5 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ContactServiceProvider::class,
         GalleryServiceProvider::class,
         PageServiceProvider::class,
-    );
+    ];
 }

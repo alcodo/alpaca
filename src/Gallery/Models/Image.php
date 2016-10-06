@@ -10,7 +10,6 @@ use Response;
 
 class Image extends Model
 {
-
     protected $fillable = [
         'title',
         'filepath',
@@ -38,7 +37,7 @@ class Image extends Model
     {
         parent::fill($attributes);
 
-        if (!empty($attributes)) {
+        if (! empty($attributes)) {
             $this->onCreateOrUpdate($attributes);
         }
 
@@ -68,7 +67,7 @@ class Image extends Model
         ) {
 
             // delete old image (update image)
-            if (!empty($this->filepath)) {
+            if (! empty($this->filepath)) {
                 // delete old image (update image)
                 $this->dispatch(new DeleteImage($this->filepath));
             }
@@ -114,7 +113,7 @@ class Image extends Model
             'show-body-only' => true,
             'indent' => true,
             'output-html' => true,
-            'wrap' => 200,];
+            'wrap' => 200, ];
         $tidy = tidy_parse_string($html, $params, 'UTF8');
         $tidy->cleanRepair();
 
