@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Contact\ContactServiceProvider;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
@@ -26,6 +27,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         BlockServiceProvider::class,
         MenuServiceProvider::class,
         SitemapServiceProvider::class,
+        ContactServiceProvider::class,
         PageServiceProvider::class,
     ];
 }

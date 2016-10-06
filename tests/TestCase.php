@@ -37,6 +37,11 @@ class TestCase extends Orchestra\Testbench\TestCase
 
         // alpaca settings
         $app['config']->set('page.categoryPrefix', 'category');
+        $app['config']->set('contact.prefix', 'contact');
+        $app['config']->set('app.key', 'ajZXLeowC4qPPajBzykbTVmwwrJOCN2d');
+        $app['config']->set('mail.from',
+            ['address' => 'info@example.com', 'name' => 'Contact Example']
+            );
         // 5.1
         $app['config']->set('auth.model', Alpaca\User\Models\User::class);
         // 5.2
