@@ -17,6 +17,8 @@ class GalleryBackend extends Controller implements CrudContract
 {
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
+    protected $multipart = true;
+
     /**
      * Modelname as singular.
      *
@@ -126,74 +128,19 @@ class GalleryBackend extends Controller implements CrudContract
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $this->getPermissionClass()->canCreateOrFail();
-
-        $parameters = func_get_args();
-        $urlBuilder = $this->getUrlBuilderClass($parameters);
-
-        /** @var HorizontalFormBuilder $form */
-        $form = app('bootform.horizontal');
-        $form->setColumnSizes($this->getColumnSizes());
-
-        /** @var FormOpen $formStart */
-        $formStart = $form->open()->multipart();
-        $formStart->action($urlBuilder->getUrlStore());
-
-        $formFields = $this->getForm($form, null, $parameters);
-
-        /** @var FormBuilder $formClose */
-        $formClose = $form->close();
-
-        $title = $this->getUrlCreateText();
-
-        return view($this->getViewCreate(), compact('title', 'formStart', 'formClose', 'formFields'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit()
-    {
-        $parameters = func_get_args();
-        $id = end($parameters);
-
-        $this->getPermissionClass()->canEditOrFail();
-        $entry = $this->getEntry($id);
-
-        $urlBuilder = $this->getUrlBuilderClass($parameters);
-
-        /** @var HorizontalFormBuilder $form */
-        $form = app('bootform.horizontal');
-        $form->setColumnSizes($this->getColumnSizes());
-        $form->bind($entry);
-
-        /** @var FormOpen $formStart */
-        $formStart = $form->open()->multipart();
-        $formStart->action($urlBuilder->getUrlUpdate($entry->getKey()));
-        $formStart->put();
-
-        $formFields = $this->getForm($form, $entry);
-
-        /** @var FormBuilder $formClose */
-        $formClose = $form->close();
-        $title = $this->getUrlEditText();
-
-        return view($this->getViewEdit(), compact('title', 'formStart', 'formClose', 'formFields'));
-    }
-
-    /**
      * @return string
      */
     public function getViewIndex()
     {
         return 'gallery::list';
+    }
+
+    /**
+     * Multipart enable
+     *
+     * @return bool
+     */
+    protected function getMultipart(){
+        return true;
     }
 }

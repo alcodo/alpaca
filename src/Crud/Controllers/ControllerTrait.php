@@ -31,12 +31,12 @@ trait ControllerTrait
         SEO::setTitle($description);
 
         return view($this->getViewIndex(), [
-            'title'       => $title,
+            'title' => $title,
             'description' => $description,
-            'entries'     => $entries,
-            'columns'     => $this->getIndexColumns(),
-            'create'      => [
-                'url'  => $urlBuilder->getUrlCreate(),
+            'entries' => $entries,
+            'columns' => $this->getIndexColumns(),
+            'create' => [
+                'url' => $urlBuilder->getUrlCreate(),
                 'text' => $this->getUrlCreateText(),
             ],
             'permissions' => $permission->getAllPermissions(),
@@ -61,6 +61,9 @@ trait ControllerTrait
 
         /** @var FormOpen $formStart */
         $formStart = $form->open();
+        if ($this->getMultipart()) {
+            $formStart->multipart();
+        }
         $formStart->action($urlBuilder->getUrlStore());
 
         $formFields = $this->getForm($form, null, $parameters);
@@ -144,6 +147,9 @@ trait ControllerTrait
 
         /** @var FormOpen $formStart */
         $formStart = $form->open();
+        if ($this->getMultipart()) {
+            $formStart->multipart();
+        }
         $formStart->action($urlBuilder->getUrlUpdate($entry->getKey()));
         $formStart->put();
 
@@ -161,7 +167,7 @@ trait ControllerTrait
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -203,5 +209,15 @@ trait ControllerTrait
         $urlBuilder = $this->getUrlBuilderClass($parameters);
 
         return redirect($urlBuilder->getUrlIndex());
+    }
+
+    /**
+     * Multipart enable
+     *
+     * @return bool
+     */
+    protected function getMultipart()
+    {
+        return false;
     }
 }
