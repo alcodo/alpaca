@@ -23,7 +23,6 @@ class Image extends Model
         'copyright_modification',
     ];
 
-
     public function user()
     {
         return $this->belongsTo(User::class);
