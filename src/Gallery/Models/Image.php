@@ -2,8 +2,6 @@
 
 namespace Alpaca\Gallery\Models;
 
-use Alcodo\PowerImage\Jobs\CreateImage;
-use Alcodo\PowerImage\Jobs\DeleteImage;
 use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Response;
@@ -25,24 +23,6 @@ class Image extends Model
         'copyright_modification',
     ];
 
-    /**
-     * Fill the model with an array of attributes.
-     *
-     * @param  array $attributes
-     * @return $this
-     *
-     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
-     */
-    public function fill(array $attributes)
-    {
-        parent::fill($attributes);
-
-        if (! empty($attributes)) {
-            $this->onCreateOrUpdate($attributes);
-        }
-
-        return $this;
-    }
 
     public function user()
     {
@@ -57,49 +37,6 @@ class Image extends Model
 
         // html prettify
         return $this->getPrettyHtml($html);
-    }
-
-    private function onCreateOrUpdate($attributes)
-    {
-        if (array_key_exists('file', $attributes) &&
-            get_class($attributes['file']) === 'Symfony\Component\HttpFoundation\File\UploadedFile' ||
-            get_class($attributes['file']) === 'Illuminate\Http\UploadedFile'
-        ) {
-
-            // delete old image (update image)
-            if (! empty($this->filepath)) {
-                // delete old image (update image)
-                $deleteImage = new DeleteImage($this->filepath);
-                $deleteImage->handle();
-            }
-
-            // create image
-            $createImage = new CreateImage($attributes['file'], $attributes['filename'], 'gallery/');
-            $this->filepath = $createImage->handle();
-        }
-    }
-
-    /**
-     * Delete the model from the database.
-     *
-     * @return bool|null
-     *
-     * @throws \Exception
-     */
-    public function delete()
-    {
-        $filepath = $this->filepath;
-
-        // db
-        $result = parent::delete();
-
-        // image files
-        if ($result) {
-            $deleteImage = new DeleteImage($filepath);
-            $deleteImage->handle();
-        }
-
-        return $result;
     }
 
     /**

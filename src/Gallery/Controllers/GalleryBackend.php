@@ -2,6 +2,8 @@
 
 namespace Alpaca\Gallery\Controllers;
 
+use Alcodo\PowerImage\Jobs\CreateImage;
+use Alcodo\PowerImage\Jobs\DeleteImage;
 use Alpaca\Crud\Controllers\ControllerTrait;
 use Alpaca\Crud\Controllers\DependencyTrait;
 use Alpaca\Crud\Controllers\ModelTrait;
@@ -143,5 +145,72 @@ class GalleryBackend extends Controller implements CrudContract
     protected function getMultipart()
     {
         return true;
+    }
+
+    /**
+     * Create a entry and return it.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createEntry(array $data)
+    {
+        $model = $this->getModelClass();
+
+        // create image
+        $createImage = new CreateImage($data['file'], $data['filename'], 'gallery/');
+        $data['filepath'] = $createImage->handle();
+
+        $entry = $model::create($data);
+
+        return $entry;
+    }
+
+    /**
+     * Updates a entry.
+     *
+     * @param $id
+     * @param array $data
+     *
+     * @return bool|int
+     */
+    public function updateEntry($id, array $data)
+    {
+        $entry = $this->getEntry($id);
+
+        if (!empty($data['file'])) {
+            // update image
+
+            $deleteImage = new DeleteImage($entry->filepath);
+            $deleteImage->handle();
+
+            $createImage = new CreateImage($data['file'], $data['filename'], 'gallery/');
+            $data['filepath'] = $createImage->handle();
+        }
+
+        $status = $entry->update($data);
+
+        return $status;
+    }
+
+    /**
+     * Destryo a entry.
+     *
+     * @param $id
+     *
+     * @return bool|int
+     */
+    public function destroyEntry($id)
+    {
+        $entry = $this->getEntry($id);
+
+        // delete image
+        $deleteImage = new DeleteImage($entry->filepath);
+        $deleteImage->handle();
+
+        $status = $entry->delete();
+
+        return $status;
     }
 }
