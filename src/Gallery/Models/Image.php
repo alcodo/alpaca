@@ -69,7 +69,8 @@ class Image extends Model
             // delete old image (update image)
             if (! empty($this->filepath)) {
                 // delete old image (update image)
-                $this->dispatch(new DeleteImage($this->filepath));
+                $deleteImage = new DeleteImage($this->filepath);
+                $deleteImage->handle();
             }
 
             // create image
