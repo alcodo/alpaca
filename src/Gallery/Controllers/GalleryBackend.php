@@ -179,7 +179,7 @@ class GalleryBackend extends Controller implements CrudContract
     {
         $entry = $this->getEntry($id);
 
-        if (!empty($data['file'])) {
+        if (! empty($data['file'])) {
             // update image
 
             $deleteImage = new DeleteImage($entry->filepath);
