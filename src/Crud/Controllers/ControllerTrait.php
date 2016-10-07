@@ -212,7 +212,7 @@ trait ControllerTrait
     }
 
     /**
-     * Multipart enable
+     * Multipart enable.
      *
      * @return bool
      */

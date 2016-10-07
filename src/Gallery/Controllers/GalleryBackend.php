@@ -136,11 +136,12 @@ class GalleryBackend extends Controller implements CrudContract
     }
 
     /**
-     * Multipart enable
+     * Multipart enable.
      *
      * @return bool
      */
-    protected function getMultipart(){
+    protected function getMultipart()
+    {
         return true;
     }
 }
