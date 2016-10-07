@@ -1,5 +1,7 @@
 <?php
 
+use MailThief\Facades\MailThief;
+
 /**
  * Simple send form test.
  */
@@ -10,6 +12,7 @@ class ContactTest extends TestCase
      */
     public function it_allows_send_a_contact_message()
     {
+        MailThief::hijack();
         Honeypot::disable();
 
         $this->visit(route('contact.show'))
@@ -19,5 +22,10 @@ class ContactTest extends TestCase
             ->type('PHP Interfaces are important.', 'text')
             ->press('Send')
             ->see(trans('contact::contact.send_successfully'));
+
+        $this->assertTrue(MailThief::hasMessageFor('info@example.com'));
+        $this->assertEquals('Contract', MailThief::lastMessage()->subject);
+        $this->assertEquals('john@example.com.io', MailThief::lastMessage()->data['email']);
+
     }
 }

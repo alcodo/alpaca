@@ -42,7 +42,6 @@ class TestCase extends Orchestra\Testbench\TestCase
         $app['config']->set('mail.from',
             ['address' => 'info@example.com', 'name' => 'Contact Example']
         );
-        $app['config']->set('mail.pretend', true);
 
         // 5.1
         $app['config']->set('auth.model', Alpaca\User\Models\User::class);
