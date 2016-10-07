@@ -110,7 +110,7 @@ class GalleryBackend extends Controller implements CrudContract
     public function getValidationCreate()
     {
         return [
-            'file' => 'required',
+//            'file' => 'image', TODO file validationimage
         ];
     }
 
