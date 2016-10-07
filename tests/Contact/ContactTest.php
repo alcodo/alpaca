@@ -26,6 +26,5 @@ class ContactTest extends TestCase
         $this->assertTrue(MailThief::hasMessageFor('info@example.com'));
         $this->assertEquals('Contract', MailThief::lastMessage()->subject);
         $this->assertEquals('john@example.com.io', MailThief::lastMessage()->data['email']);
-
     }
 }
