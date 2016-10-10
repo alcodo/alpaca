@@ -1,5 +1,6 @@
-var elixir = require('laravel-elixir');
-elixir.config.sourcemaps = false;
+const elixir = require('laravel-elixir');
+
+require('laravel-elixir-vue');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,10 +13,10 @@ elixir.config.sourcemaps = false;
  |
  */
 
-elixir(function(mix) {
-    mix.sass('../../../alpaca/resources/sass/style.scss', 'public/assets/theme/style.css');
-    // mix.sass('style.scss', 'public/assets/theme/style.css');
-    //mix.rubySass('style.scss', 'public/assets/theme/style.css');
+elixir(mix => {
+    
+    // sass
+    mix.sass('style.scss', 'public/assets/theme/style.css')
 
     // js
     mix.scripts([
@@ -31,16 +32,16 @@ elixir(function(mix) {
         '../../../node_modules/jquery-treegrid/js/jquery.treegrid.bootstrap3.js',
 
         // libs
-        '../../../vendor/alcodo/alpaca/src/resources/js-lib/bootstrap-confirmation.js',
-        '../../../vendor/alcodo/alpaca/src/resources/js-lib/jquery.bootstrap-autohidingnavbar.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/libraries/bootstrap-confirmation.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/libraries/jquery.bootstrap-autohidingnavbar.js',
 
         // js
-        '../../../vendor/alcodo/alpaca/src/resources/js/navbar.js',
-        '../../../vendor/alcodo/alpaca/src/resources/js/dataTables_languages.js',
-        '../../../vendor/alcodo/alpaca/src/resources/js/dataTables.js',
-        '../../../vendor/alcodo/alpaca/src/resources/js/confirm-button.js',
-        '../../../vendor/alcodo/alpaca/src/resources/js/page.js',
-        '../../../vendor/alcodo/alpaca/src/resources/js/select.js'
+        '../../../vendor/alcodo/alpaca/resources/javascript/alpaca/navbar.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/alpaca/dataTables_languages.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/alpaca/dataTables.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/alpaca/confirm-button.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/alpaca/page.js',
+        '../../../vendor/alcodo/alpaca/resources/javascript/alpaca/select.js'
     ], 'public/assets/theme/script.js');
 
     // Version
@@ -48,4 +49,5 @@ elixir(function(mix) {
         'assets/theme/style.css',
         'assets/theme/script.js'
     ]);
+
 });
