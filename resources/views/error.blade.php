@@ -1,4 +1,4 @@
-@if (count($errors) > 0)
+@if (isset($errors) && count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Fehler</strong><br>
         Ein Fehler ist aufgetreten bei der Eingabe.<br><br>
