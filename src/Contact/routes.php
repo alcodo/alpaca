@@ -3,7 +3,7 @@
 // config
 $prefix = config('contact.prefix');
 if (empty($prefix)) {
-    throw new Exception('Contact config isn\'t set');
+    $prefix = 'contact';
 }
 
 Route::get($prefix, ['as' => 'contact.show', 'uses' => 'ContactController@show']);
