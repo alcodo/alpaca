@@ -27,11 +27,14 @@ class BlockServiceProvider extends Provider
         $this->publishes([
             __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');
+        $this->app->instance('block', new BlockBuilder());
 
-        $this->app['router']->group(['namespace' => 'Alpaca\Block\Controllers'], function ($router) {
+        $this->app['router']->group([
+            'middleware' => 'web',
+            'namespace' => 'Alpaca\Block\Controllers'
+        ], function ($router) {
             require __DIR__.'/routes.php';
         });
 
-        $this->app->instance('block', new BlockBuilder());
     }
 }

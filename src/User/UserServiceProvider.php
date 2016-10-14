@@ -32,7 +32,10 @@ class UserServiceProvider extends Provider
             __DIR__.'/Seeds/' => base_path('/database/seeds'),
         ], 'seeds');
 
-        $this->app['router']->group(['namespace' => 'Alpaca\User\Controllers'], function ($router) {
+        $this->app['router']->group([
+            'middleware' => 'web',
+            'namespace' => 'Alpaca\User\Controllers'
+        ], function ($router) {
             require __DIR__.'/routes.php';
         });
     }

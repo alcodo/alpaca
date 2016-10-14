@@ -13,14 +13,8 @@ Route::post('/register', 'AuthController@postRegister');
 // Password forgotten
 // Edit own user profile
 
-if (isLaravelVersion5_3()) {
-    Route::group(['as' => 'backend.'], function () {
-        Route::resource('/backend/user', 'UserController');
-        Route::resource('/backend/role', 'RoleController');
-        Route::resource('/backend/permission', 'PermissionController');
-    });
-} else {
+Route::group(['as' => 'backend.'], function () {
     Route::resource('/backend/user', 'UserController');
     Route::resource('/backend/role', 'RoleController');
     Route::resource('/backend/permission', 'PermissionController');
-}
+});

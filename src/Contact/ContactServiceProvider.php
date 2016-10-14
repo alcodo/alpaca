@@ -22,7 +22,10 @@ class ContactServiceProvider extends Provider
             __DIR__.'/Config/' => base_path('/config'),
         ], 'config');
 
-        $this->app['router']->group(['namespace' => 'Alpaca\Contact\Controllers'], function ($router) {
+        $this->app['router']->group([
+            'middleware' => 'web',
+            'namespace' => 'Alpaca\Contact\Controllers'
+        ], function ($router) {
             require __DIR__.'/routes.php';
         });
     }

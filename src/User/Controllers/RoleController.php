@@ -76,11 +76,7 @@ class RoleController extends BaseController implements CrudContract
             $selectedPermissions = $entry->perms->pluck('id')->toArray();
         }
 
-        if (isLaravelVersion5_1()) {
-            $permissions = Permission::lists('display_name', 'id');
-        } else {
-            $permissions = Permission::pluck('display_name', 'id');
-        }
+        $permissions = Permission::pluck('display_name', 'id');
 
         $formFields = [
             'id' => $form->hidden('id'),

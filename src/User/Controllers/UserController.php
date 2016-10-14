@@ -86,11 +86,7 @@ class UserController extends BaseController implements CrudContract
             $selectedRoles = $entry->roles->pluck('id')->toArray();
         }
 
-        if (isLaravelVersion5_1()) {
-            $roles = Role::lists('display_name', 'id');
-        } else {
-            $roles = Role::pluck('display_name', 'id');
-        }
+        $roles = Role::pluck('display_name', 'id');
 
         $formFields = [
             'id'                    => $form->hidden('id'),

@@ -51,7 +51,10 @@ class PageServiceProvider extends ServiceProvider
             __DIR__.'/Seeds/' => base_path('/database/seeds'),
         ], 'seeds');
 
-        $this->app['router']->group(['namespace' => 'Alpaca\Page\Controllers'], function ($router) {
+        $this->app['router']->group([
+            'middleware' => 'web',
+            'namespace' => 'Alpaca\Page\Controllers'
+        ], function ($router) {
             require __DIR__.'/routes.php';
         });
     }

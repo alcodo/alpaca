@@ -20,7 +20,10 @@ class SitemapServiceProvider extends Provider
         $this->loadViewsFrom(__DIR__.'/Views', 'sitemap');
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'sitemap');
 
-        $this->app['router']->group(['namespace' => 'Alpaca\Sitemap\Controllers'], function ($router) {
+        $this->app['router']->group([
+            'middleware' => 'web',
+            'namespace' => 'Alpaca\Sitemap\Controllers'
+        ], function ($router) {
             require __DIR__.'/routes.php';
         });
     }

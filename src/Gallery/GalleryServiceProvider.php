@@ -22,7 +22,10 @@ class GalleryServiceProvider extends Provider
             __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');
 
-        $this->app['router']->group(['namespace' => 'Alpaca\Gallery\Controllers'], function ($router) {
+        $this->app['router']->group([
+            'middleware' => 'web',
+            'namespace' => 'Alpaca\Gallery\Controllers'
+        ], function ($router) {
             require __DIR__.'/routes.php';
         });
     }
