@@ -4,7 +4,7 @@ namespace Alpaca\CookieConsent;
 
 use Illuminate\Support\ServiceProvider as Provider;
 
-class CookieConsentServiceProvider extends Provider
+class CookieConsentProvider extends Provider
 {
     /**
      * Register the service provider.
