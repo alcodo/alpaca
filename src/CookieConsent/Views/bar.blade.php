@@ -1,13 +1,21 @@
-@if(!isset($_COOKIE['cnc_cookie_consent']) || $_COOKIE['cnc_cookie_consent'] !== 'yes'))
+@if(!isset($_COOKIE['cookieconsent']) || $_COOKIE['cookieconsent'] !== 'yes')
 
-<div class="cookie-consent">
+<div class="cookieconsent">
     <div class="container">
-        <div class="cookie-consent-text pull-left">
-            {{ trans('global.cookie_consent') }}
-            <a href="{{ trans('routes.disclaimer') }}" target="_blank">{{ trans('global.more') }}</a>
+        <div class="cookieconsent-text pull-left">
+            {{ trans('cookieconsent::bar.description') }}
+            <a href="{{ config('cookieconsent.link') }}" target="_blank">
+                {{ trans('cookieconsent::bar.more') }}
+            </a>
         </div>
-        <button class="btn btn-default pull-right cookie-consent-close">OK</button>
+        <button class="btn btn-sm btn-warning pull-right cookieconsent-close">OK</button>
     </div>
 </div>
+
+<script defer>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        new Alpaca.Global.CookieConsent();
+    });
+</script>
 
 @endif

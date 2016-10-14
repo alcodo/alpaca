@@ -27,7 +27,7 @@ class UserServiceProvider extends Provider
         ], 'migrations');
         $this->publishes([
             __DIR__.'/Configs/' => base_path('/config'),
-        ], 'migrations');
+        ], 'configs');
         $this->publishes([
             __DIR__.'/Seeds/' => base_path('/database/seeds'),
         ], 'seeds');

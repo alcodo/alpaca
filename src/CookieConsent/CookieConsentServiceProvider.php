@@ -4,7 +4,7 @@ namespace Alpaca\CookieConsent;
 
 use Illuminate\Support\ServiceProvider as Provider;
 
-class CookieConsentProvider extends Provider
+class CookieConsentServiceProvider extends Provider
 {
     /**
      * Register the service provider.
@@ -22,5 +22,9 @@ class CookieConsentProvider extends Provider
     {
         $this->loadViewsFrom(__DIR__.'/Views', 'cookieconsent');
         $this->loadTranslationsFrom(__DIR__.'/Langs', 'cookieconsent');
+        $this->publishes(
+            [__DIR__.'/Configs/' => base_path('/config')],
+            'configs'
+        );
     }
 }
