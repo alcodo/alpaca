@@ -46,6 +46,9 @@ class Image extends Model
      */
     public function getPrettyHtml($html)
     {
+
+        // TODO without tidy support
+
         $params = [
             'show-body-only' => true,
             'indent' => true,

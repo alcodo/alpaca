@@ -35,10 +35,10 @@ class Page extends Model
     public function getIsActive()
     {
         if ($this->active) {
-            return '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>';
+            return '<i class="fa fa-check text-success" aria-hidden="true"></i>';
         }
 
-        return '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+        return '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
     }
 
     public function getCreated()

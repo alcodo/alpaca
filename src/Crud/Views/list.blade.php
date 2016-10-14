@@ -66,13 +66,13 @@
                                 @if($permissions['show'])
                                     <a class="crud-control-buttons pull-left btn btn-default btn-sm"
                                        href="{{ $entry->showUrl  }}" title="{{ trans('crud::crud.show') }}">
-                                        <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+                                        <i class="fa fa-external-link" aria-hidden="true"></i>
                                     </a>
                                 @endif
                                 @if($permissions['edit'])
                                     <a class="crud-control-buttons pull-left btn btn-info btn-sm "
                                        href="{{ $entry->editUrl  }}" title="{{ trans('crud::crud.edit') }}">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </a>
                                 @endif
                                 @if($permissions['destroy'])
@@ -81,8 +81,7 @@
                                         <input name="_method" type="hidden" value="DELETE">
                                         {{ csrf_field() }}
                                         <button class="crud-control-buttons btn btn-danger btn-sm" type="submit" title="{{ trans('crud::crud.delete') }}">
-                                            <span class="glyphicon glyphicon-remove"
-                                                  aria-hidden="true"></span>
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </form>
                                 @endif

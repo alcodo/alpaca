@@ -38,22 +38,13 @@
                         <a data-toggle="modal" data-target="#galleryModal-{{$index}}"
                            title="{{ trans('gallery::gallery.bind') }}"
                            class="btn btn-sm btn-success pull-left" href="#">
-                            <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+                            <i class="fa fa-download" aria-hidden="true"></i>
                         </a>
 
-                        @if($permissions['show'])
-                            <a class="crud-control-buttons pull-left btn btn-default btn-sm"
-                               title="{{ trans('crud::crud.show') }}"
-                               href="{{ $entry->showUrl  }}">
-                                <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
-
-                            </a>
-                        @endif
                         @if($permissions['edit'])
                             <a class="crud-control-buttons pull-left btn btn-info btn-sm"
-                               title="{{ trans('crud::crud.edit') }}"
-                               href="{{ $entry->editUrl  }}">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                               title="{{ trans('crud::crud.edit') }}" href="{{ $entry->editUrl  }}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                         @endif
                         @if($permissions['destroy'])
@@ -61,10 +52,8 @@
                                   class="pull-left">
                                 <input name="_method" type="hidden" value="DELETE">
                                 {{ csrf_field() }}
-                                <button class="crud-control-buttons btn btn-danger btn-sm" type="submit">
-                                            <span class="glyphicon glyphicon-remove"
-                                                  title="{{ trans('crud::crud.delete') }}"
-                                                  aria-hidden="true"></span>
+                                <button class="crud-control-buttons btn btn-danger btn-sm" type="submit"  title="{{ trans('crud::crud.delete') }}">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
                         @endif
