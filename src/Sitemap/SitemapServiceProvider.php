@@ -22,7 +22,7 @@ class SitemapServiceProvider extends Provider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\Sitemap\Controllers'
+            'namespace' => 'Alpaca\Sitemap\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });

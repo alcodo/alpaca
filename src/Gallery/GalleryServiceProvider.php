@@ -24,7 +24,7 @@ class GalleryServiceProvider extends Provider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\Gallery\Controllers'
+            'namespace' => 'Alpaca\Gallery\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });

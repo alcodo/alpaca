@@ -24,7 +24,7 @@ class ContactServiceProvider extends Provider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\Contact\Controllers'
+            'namespace' => 'Alpaca\Contact\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });
