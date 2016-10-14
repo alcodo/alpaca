@@ -3,6 +3,7 @@
 namespace Alpaca;
 
 use Alpaca\Contact\ContactServiceProvider;
+use Alpaca\CookieConsent\CookieConsentServiceProvider;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Gallery\GalleryServiceProvider;
@@ -23,6 +24,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
     protected $providers = [
         DependencyServiceProvider::class,
         CoreServiceProvider::class,
+        CookieConsentServiceProvider::class,
         CrudServiceProvider::class,
         UserServiceProvider::class,
         BlockServiceProvider::class,
