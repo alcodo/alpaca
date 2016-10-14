@@ -53,7 +53,7 @@ class PageServiceProvider extends ServiceProvider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\Page\Controllers'
+            'namespace' => 'Alpaca\Page\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });

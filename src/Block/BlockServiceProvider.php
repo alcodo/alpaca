@@ -31,10 +31,9 @@ class BlockServiceProvider extends Provider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\Block\Controllers'
+            'namespace' => 'Alpaca\Block\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });
-
     }
 }

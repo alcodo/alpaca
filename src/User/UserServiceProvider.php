@@ -34,7 +34,7 @@ class UserServiceProvider extends Provider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\User\Controllers'
+            'namespace' => 'Alpaca\User\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });

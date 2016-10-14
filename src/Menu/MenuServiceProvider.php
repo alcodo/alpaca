@@ -26,7 +26,7 @@ class MenuServiceProvider extends Provider
 
         $this->app['router']->group([
             'middleware' => 'web',
-            'namespace' => 'Alpaca\Menu\Controllers'
+            'namespace' => 'Alpaca\Menu\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';
         });
