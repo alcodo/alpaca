@@ -24,6 +24,7 @@
     "jquery-treegrid": "^0.3.0",
     "magnific-popup": "^1.1.0",
     "select2": "^4.0.3",
-    "summernote": "^0.8.1"
+    "summernote": "^0.8.1",
+    "font-awesome": "^4.6.3"
   }
 }
