@@ -36,6 +36,7 @@ class Block extends Model
         'range',
         'area',
         'menu_id',
+        'exception_rule', // true =  exclude sites false = include sites
         'exception',
         'html',
         'mobile_view',

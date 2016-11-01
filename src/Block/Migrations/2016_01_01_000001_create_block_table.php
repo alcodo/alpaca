@@ -26,6 +26,7 @@ class CreateBlockTable extends Migration
             $table->boolean('desktop_view_force')->default(0);
 
             $table->text('html');
+            $table->boolean('exception_rule');
             $table->mediumText('exception');
 
             $table->integer('menu_id')->unsigned()->nullable();
