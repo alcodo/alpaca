@@ -3,11 +3,9 @@
  * Created by PhpStorm.
  * User: approach
  * Date: 01.11.16
- * Time: 17:14
+ * Time: 17:14.
  */
-
 namespace Alpaca\Block\Builder;
-
 
 use Alpaca\Block\Models\Block;
 
@@ -49,5 +47,4 @@ class Exception
     {
         return true;
     }
-
 }
