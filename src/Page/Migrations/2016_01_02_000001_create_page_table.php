@@ -18,7 +18,7 @@ class CreatePageTable extends Migration
             $table->boolean('active');
 
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->text('body');
 
             // seo
@@ -34,6 +34,7 @@ class CreatePageTable extends Migration
             $table->integer('topic_id')->unsigned()->nullable();
             $table->foreign('topic_id')->references('id')->on('topics');
 
+            $table->unique(['slug', 'topic_id']);
             $table->timestamps();
         });
     }
