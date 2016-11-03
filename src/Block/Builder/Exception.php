@@ -5,6 +5,13 @@ namespace Alpaca\Block\Builder;
 use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;
 
+/**
+ * Class Exception
+ * 
+ * Check if block is a exception
+ *
+ * @package Alpaca\Block\Builder
+ */
 class Exception
 {
     /**

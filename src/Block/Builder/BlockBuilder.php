@@ -46,7 +46,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**
@@ -62,7 +62,7 @@ class BlockBuilder
             // each area
 
             return $area->map(function ($block, $key) {
-                if (is_null($block) || ! $block->mobile_view) {
+                if (is_null($block) || !$block->mobile_view) {
                     return '';
                 }
 
@@ -70,33 +70,6 @@ class BlockBuilder
                 return $this->getHtmlBlock($block, true);
             })->implode('');
         })->implode('');
-    }
-
-    /**
-     * Check if block is a exception.
-     *
-     * @param $block
-     * @return bool
-     */
-    private function isException($block)
-    {
-        if (empty($block->exception)) {
-            return false;
-        }
-
-        $patterns_quoted = preg_quote($block->exception, '/');
-        $to_replace = [
-            '/(\r\n?|\n)/', // newlines
-            '/\\\\\*/',     // wildcard
-        ];
-        $replacements = [
-            '|',
-            '.*',
-        ];
-
-        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
-
-        return (bool) preg_match($regexpPatter, Request::path());
     }
 
     /**
@@ -151,8 +124,14 @@ class BlockBuilder
 
     private function getHtmlBlock($block, $isMobileView)
     {
-        if (is_null($block) || $this->isException($block)) {
-            return;
+        if (is_null($block)) {
+            return null;
+        }
+
+        // check exception rule
+        $ex = new Exception($block);
+        if ($ex->isViewable() === false) {
+            return null;
         }
 
 
