@@ -95,6 +95,7 @@ $factory->define(Block::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'title' => $faker->name,
         'area' => 'left',
+        'exception_rule' => true,
         'exception' => '',
         'range' => 0,
         'html' => $faker->sentence(),
