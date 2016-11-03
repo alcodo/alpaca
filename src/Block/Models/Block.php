@@ -29,9 +29,9 @@ class Block extends Model
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
     ];
 
-    const EXCEPTION_EXCLUDE = true;
+    const EXCEPTION_EXCLUDE = 0;
 
-    const EXCEPTION_ONLY = false;
+    const EXCEPTION_ONLY = 1;
 
     protected $fillable = [
         'active',

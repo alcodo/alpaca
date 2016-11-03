@@ -33,9 +33,9 @@ class Exception
         }
 
         if ($this->block->exception_rule) {
-            return ! $this->hasAccess();
-        } else {
             return $this->hasAccess();
+        } else {
+            return ! $this->hasAccess();
         }
     }
 
