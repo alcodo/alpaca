@@ -116,8 +116,9 @@ class BlockBackend extends Controller implements CrudContract
                 ->select($selectedMenu),
             'html' => $form->textarea(trans('crud::crud.body'), 'html')->addClass('is-summernote'),
 
-            'exception_rule' => $form->radio(trans('block::block.exclude_site'), 'exception_rule', '0')->checked(),
-            'exception_rule2' => $form->radio(trans('block::block.include_site'), 'exception_rule', '1'),
+            // exception
+            'exception_rule_exclude' => $form->radio(trans('block::block.exclude_site'), 'exception_rule', Block::EXCEPTION_EXCLUDE)->checked(),
+            'exception_rule_only' => $form->radio(trans('block::block.include_site'), 'exception_rule', Block::EXCEPTION_ONLY),
             'exception' => $form->textarea(trans('block::block.exception'), 'exception')
                 ->helpBlock(trans('block::block.exception_help_text')),
 

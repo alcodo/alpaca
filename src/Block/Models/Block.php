@@ -29,6 +29,10 @@ class Block extends Model
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
     ];
 
+    const EXCEPTION_EXCLUDE = true;
+
+    const EXCEPTION_ONLY = false;
+
     protected $fillable = [
         'active',
         'name',
@@ -36,7 +40,7 @@ class Block extends Model
         'range',
         'area',
         'menu_id',
-        'exception_rule', // true =  exclude sites false = include sites
+        'exception_rule', // true =  exclude false = only
         'exception',
         'html',
         'mobile_view',

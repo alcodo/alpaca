@@ -32,13 +32,13 @@ class Exception
         }
 
         if ($block->exception_rule) {
-            return $this->hasNotAccess();
+            return $this->hasExcludeAccess();
         } else {
             return $this->hasOnlyAcces();
         }
     }
 
-    private function hasNotAccess()
+    private function hasExcludeAccess()
     {
         return true;
     }
