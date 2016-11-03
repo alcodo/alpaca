@@ -108,6 +108,7 @@ class BlockBuilder
             ->filter(function ($block) {
                 // check exception rule
                 $ex = new Exception($block);
+
                 return $ex->isViewable();
             })
             ->sortBy('range')
