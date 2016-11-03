@@ -104,7 +104,14 @@ class BlockBuilder
         }
 
         // group by area
-        $this->blocks = $databaseBlocks->sortBy('range')->groupBy('area');
+        $this->blocks = $databaseBlocks
+            ->filter(function ($block) {
+                // check exception rule
+                $ex = new Exception($block);
+                return $ex->isViewable();
+            })
+            ->sortBy('range')
+            ->groupBy('area');
     }
 
     /**
@@ -126,13 +133,6 @@ class BlockBuilder
         if (is_null($block)) {
             return;
         }
-
-        // check exception rule
-        $ex = new Exception($block);
-        if ($ex->isViewable() === false) {
-            return;
-        }
-
 
         // menu
         if (is_null($block->menu_id) === false) {
