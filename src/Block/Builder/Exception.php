@@ -6,11 +6,9 @@ use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;
 
 /**
- * Class Exception
- * 
- * Check if block is a exception
+ * Class Exception.
  *
- * @package Alpaca\Block\Builder
+ * Check if block is a exception
  */
 class Exception
 {
@@ -35,7 +33,7 @@ class Exception
         }
 
         if ($this->block->exception_rule) {
-            return !$this->hasAccess();
+            return ! $this->hasAccess();
         } else {
             return $this->hasAccess();
         }
@@ -43,7 +41,6 @@ class Exception
 
     private function hasAccess()
     {
-
         $patterns_quoted = preg_quote($this->block->exception, '/');
         $to_replace = [
             '/(\r\n?|\n)/', // newlines
@@ -54,11 +51,10 @@ class Exception
             '.*',
         ];
 
-        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
+        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
-        return (bool)preg_match($regexpPatter, Request::path());
+        return (bool) preg_match($regexpPatter, Request::path());
 
         return true;
     }
-
 }
