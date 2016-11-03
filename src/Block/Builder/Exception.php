@@ -1,13 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: approach
- * Date: 01.11.16
- * Time: 17:14.
- */
+
 namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Models\Block;
+use Illuminate\Support\Facades\Request;
 
 class Exception
 {
@@ -25,26 +21,37 @@ class Exception
         $this->block = $block;
     }
 
-    public function isUsable(Block $block)
+    public function isViewable()
     {
-        if (empty($block->exception)) {
-            return false;
+        if (empty($this->block->exception)) {
+            return true;
         }
 
-        if ($block->exception_rule) {
-            return $this->hasExcludeAccess();
+        if ($this->block->exception_rule) {
+            return !$this->hasAccess();
         } else {
-            return $this->hasOnlyAcces();
+            return $this->hasAccess();
         }
     }
 
-    private function hasExcludeAccess()
+    private function hasAccess()
     {
+
+        $patterns_quoted = preg_quote($this->block->exception, '/');
+        $to_replace = [
+            '/(\r\n?|\n)/', // newlines
+            '/\\\\\*/',     // wildcard
+        ];
+        $replacements = [
+            '|',
+            '.*',
+        ];
+
+        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
+
+        return (bool)preg_match($regexpPatter, Request::path());
+
         return true;
     }
 
-    private function hasOnlyAcces()
-    {
-        return true;
-    }
 }
