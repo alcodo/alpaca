@@ -3,7 +3,6 @@
 namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Models\Block;
-use Illuminate\Support\Facades\Request;
 
 /**
  * This class gets all blocks.
@@ -46,7 +45,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**
@@ -62,7 +61,7 @@ class BlockBuilder
             // each area
 
             return $area->map(function ($block, $key) {
-                if (is_null($block) || !$block->mobile_view) {
+                if (is_null($block) || ! $block->mobile_view) {
                     return '';
                 }
 
@@ -125,13 +124,13 @@ class BlockBuilder
     private function getHtmlBlock($block, $isMobileView)
     {
         if (is_null($block)) {
-            return null;
+            return;
         }
 
         // check exception rule
         $ex = new Exception($block);
         if ($ex->isViewable() === false) {
-            return null;
+            return;
         }
 
 
