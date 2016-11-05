@@ -106,6 +106,11 @@ class BlockBuilder
         // group by area
         $this->blocks = $databaseBlocks
             ->filter(function ($block) {
+
+                if (is_null($block)) {
+                    return false;
+                }
+
                 // check exception rule
                 $ex = new Exception($block);
 
@@ -131,10 +136,6 @@ class BlockBuilder
 
     private function getHtmlBlock($block, $isMobileView)
     {
-        if (is_null($block)) {
-            return;
-        }
-
         // menu
         if (is_null($block->menu_id) === false) {
             $template = $isMobileView ? 'menu::menuMobile' : 'menu::menu';
