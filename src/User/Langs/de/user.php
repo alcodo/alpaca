@@ -18,6 +18,6 @@ return [
     'throttle'                    => 'Zu viele fehlversuche beim Anmelden. Bitte versuche es in :seconds sekunden erneut.',
     'password_forget' => 'Passwort vergessen?',
     'reset_password' => 'Passwort zurücksetzen',
-    'sent_passwort_link' => 'Passwort zurücksetzen link senden'
+    'sent_passwort_link' => 'Passwort zurücksetzen link senden',
 
 ];

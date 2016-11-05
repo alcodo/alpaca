@@ -7,7 +7,6 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
-
     use Notifiable, EntrustUserTrait;
 
     /**
