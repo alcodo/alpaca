@@ -64,7 +64,6 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        dd(1);
         Flash::success(trans('user::user.logout_successful'));
 
         return self::logout($request);
