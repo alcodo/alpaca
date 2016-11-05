@@ -1,20 +1,11 @@
 <?php
 
-// Authentication routes...
-Route::get('/login', ['as' => 'user.login', 'uses' => 'AuthController@getLogin']);
-Route::post('/login', 'AuthController@postLogin');
-Route::get('/logout', 'AuthController@getLogout');
+Auth::routes();
 
-// Registration routes..
-Route::get('/register', ['as' => 'user.register', 'uses' => 'AuthController@getRegister']);
-Route::post('/register', 'AuthController@postRegister');
-
-// TODO
-// Password forgotten
-// Edit own user profile
+Route::get('/dashboard', 'DashboardController@index');
 
 Route::group(['as' => 'backend.', 'middleware' => 'auth'], function () {
-    Route::resource('/backend/user', 'UserController');
-    Route::resource('/backend/role', 'RoleController');
-    Route::resource('/backend/permission', 'PermissionController');
+    Route::resource('/backend/user', 'UserBackend');
+    Route::resource('/backend/role', 'RoleBackend');
+    Route::resource('/backend/permission', 'PermissionBackend');
 });

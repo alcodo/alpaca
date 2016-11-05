@@ -14,7 +14,7 @@ use Alpaca\User\Models\Role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller as BaseController;
 
-class RoleController extends BaseController implements CrudContract
+class RoleBackend extends BaseController implements CrudContract
 {
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 

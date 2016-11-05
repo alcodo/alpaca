@@ -14,7 +14,7 @@ use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller as BaseController;
 
-class UserController extends BaseController implements CrudContract
+class UserBackend extends BaseController implements CrudContract
 {
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 
@@ -49,7 +49,7 @@ class UserController extends BaseController implements CrudContract
             [
                 'label'      => trans('user::user.username'),
                 'css'        => 'col-md-3',
-                'modelValue' => 'name',
+                'modelValue' => 'username',
             ],
             [
                 'label'      => trans('user::user.email'),

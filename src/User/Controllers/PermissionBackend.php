@@ -13,7 +13,7 @@ use Alpaca\User\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller as BaseController;
 
-class PermissionController extends BaseController implements CrudContract
+class PermissionBackend extends BaseController implements CrudContract
 {
     use ControllerTrait, ViewTrait, ModelTrait, TextTrait, DependencyTrait;
 

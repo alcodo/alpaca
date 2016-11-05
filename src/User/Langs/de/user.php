@@ -5,8 +5,8 @@ return [
     'user'                        => 'Benutzer',
     'users'                       => 'Benutzer',
     'username'                    => 'Username',
-    'email'                       => 'E-Mail',
-    'password'                    => 'Password',
+    'email'                       => 'E-Mail Adresse',
+    'password'                    => 'Passwort',
     'register'                    => 'Registrieren',
     'login'                       => 'Login',
     'password_confirm'            => 'Password bestätigen',
@@ -16,5 +16,8 @@ return [
     'registered_login_successful' => 'Registrierung war erfolgreich, du bist nun angemeldet.',
     'failed'                      => 'Die Anmeldedaten sind Fehlerhaft.',
     'throttle'                    => 'Zu viele fehlversuche beim Anmelden. Bitte versuche es in :seconds sekunden erneut.',
+    'password_forget' => 'Passwort vergessen?',
+    'reset_password' => 'Passwort zurücksetzen',
+    'sent_passwort_link' => 'Passwort zurücksetzen link senden'
 
 ];

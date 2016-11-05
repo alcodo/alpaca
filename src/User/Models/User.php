@@ -2,16 +2,13 @@
 
 namespace Alpaca\User\Models;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends \Illuminate\Foundation\Auth\User
 {
-    use Authenticatable, CanResetPassword, EntrustUserTrait;
+
+    use Notifiable, EntrustUserTrait;
 
     /**
      * The database table used by the model.

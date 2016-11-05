@@ -1,18 +1,72 @@
-@extends('app')
+@extends('plain')
 
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ trans('user::user.login') }}</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
 
-    <h1>{{ trans('user::user.login') }}</h1>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">
+                                {{ trans('user::user.email') }}
+                            </label>
 
-    {!! BootForm::openHorizontal([
-                                  'sm' => [4, 8],
-                                  'lg' => [2, 10]
-    ])->post()->action(action('\Alpaca\User\Controllers\AuthController@postLogin')) !!}
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
-    {!! BootForm::text(trans('user::user.email'), 'email')->required() !!}
-    {!! BootForm::password(trans('user::user.password'), 'password')->required() !!}
-    {!! BootForm::checkbox(trans('user::user.remember_me'), 'remember') !!}
-    {!! BootForm::submit(trans('user::user.login'))->addClass('btn-primary') !!}
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-    {!! BootForm::close() !!}
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">
+                                {{ trans('user::user.password') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> {{ trans('user::user.remember_me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ trans('user::user.login') }}
+                                </button>
+
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                    {{ trans('user::user.password_forget') }}
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
