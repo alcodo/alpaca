@@ -6,6 +6,7 @@ use Alpaca\User\Models\User;
 use Validator;
 use Alpaca\Core\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Laracasts\Flash\Flash;
 
 class RegisterController extends Controller
 {
@@ -62,6 +63,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Flash::success(trans('user::user.registered_successful'));
+
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],

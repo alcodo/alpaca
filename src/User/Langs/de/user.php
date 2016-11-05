@@ -13,7 +13,7 @@ return [
     'remember_me'                 => 'Angemeldet bleiben',
     'logout_successful'           => 'Abmelden war erfolgreich',
     'login_successful'            => 'Login ist erfolgreich',
-    'registered_login_successful' => 'Registrierung war erfolgreich, du bist nun angemeldet.',
+    'registered_successful' => 'Registrierung war erfolgreich, du bist nun angemeldet.',
     'failed'                      => 'Die Anmeldedaten sind Fehlerhaft.',
     'throttle'                    => 'Zu viele fehlversuche beim Anmelden. Bitte versuche es in :seconds sekunden erneut.',
     'password_forget' => 'Passwort vergessen?',
