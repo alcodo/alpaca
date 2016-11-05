@@ -1,6 +1,6 @@
 <?php
 
-use Alpaca\User\Controllers\RoleController;
+use Alpaca\User\Controllers\RoleBackend;
 
 class RoleCrudTest extends TestCase implements CrudTestContract
 {
@@ -13,7 +13,7 @@ class RoleCrudTest extends TestCase implements CrudTestContract
      */
     public function getControllerClass()
     {
-        return new RoleController();
+        return new RoleBackend();
     }
 
     /**

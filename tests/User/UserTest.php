@@ -10,11 +10,8 @@ class UserTest extends TestCase
     public function it_allows_to_register_user()
     {
         $user = factory(User::class, 'form')->make();
-        $url = route('user.register');
 
-        $this->visit($url);
-
-        $this->visit($url)
+        $this->visit('/register')
             ->see('Register')
             ->type($user->username, 'username')
             ->type($user->email, 'email')
@@ -35,9 +32,7 @@ class UserTest extends TestCase
         $passwordCorrect = app('hash')->check('testuser', $user->password);
         $this->assertTrue($passwordCorrect, 'Password not equals with bcrypt');
 
-        $url = route('user.login');
-
-        $this->visit($url)
+        $this->visit('/login')
             ->see('Login')
             ->type($user->email, 'email')
             ->type('testuser', 'password')
@@ -50,9 +45,7 @@ class UserTest extends TestCase
      */
     public function it_disallow_user_to_login()
     {
-        $url = route('user.login');
-
-        $this->visit($url)
+        $this->visit('/login')
             ->see('Login')
             ->type('johndoe@example.com', 'email')
             ->type('testuser', 'password')

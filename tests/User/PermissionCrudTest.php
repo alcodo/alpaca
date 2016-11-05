@@ -1,6 +1,6 @@
 <?php
 
-use Alpaca\User\Controllers\PermissionController;
+use Alpaca\User\Controllers\PermissionBackend;
 
 class PermissionCrudTest extends TestCase implements CrudTestContract
 {
@@ -13,7 +13,7 @@ class PermissionCrudTest extends TestCase implements CrudTestContract
      */
     public function getControllerClass()
     {
-        return new PermissionController();
+        return new PermissionBackend();
     }
 
     /**

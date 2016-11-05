@@ -2,7 +2,7 @@
 
 namespace Alpaca\User\Controllers;
 
-use App\Http\Controllers\Controller;
+use Alpaca\Core\Controllers\Controller;
 
 class DashboardController extends Controller
 {

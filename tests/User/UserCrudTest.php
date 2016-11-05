@@ -1,6 +1,6 @@
 <?php
 
-use Alpaca\User\Controllers\UserController;
+use Alpaca\User\Controllers\UserBackend;
 
 class UserCrudTest extends TestCase implements CrudTestContract
 {
@@ -13,7 +13,7 @@ class UserCrudTest extends TestCase implements CrudTestContract
      */
     public function getControllerClass()
     {
-        return new UserController();
+        return new UserBackend();
     }
 
     /**

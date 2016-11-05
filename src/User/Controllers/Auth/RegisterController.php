@@ -4,7 +4,7 @@ namespace Alpaca\User\Controllers\Auth;
 
 use Alpaca\User\Models\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Alpaca\Core\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

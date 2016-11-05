@@ -12,19 +12,19 @@
 
     @include('flash::message')
     @include('partials.error')
-    @include('block::content')
+    @yield('content')
 
 </div>
 
 <footer>
     <div class="container">
-        <p>
-            <a class="{{ isActiveRoute('contact.show') }}" href="{{ route('contact.show') }}">Kontakt</a>
-            -
-            <a class="{{ isActiveUrl('/impressum') }}" href="/impressum">Impressum</a>
+    <p>
+        <a class="{{ isActiveRoute('contact.show') }}" href="{{ route('contact.show') }}">Kontakt</a>
+         -
+        <a class="{{ isActiveUrl('/impressum') }}" href="/impressum">Impressum</a>
 
-            <small class="pull-right">Copyright © - Alle Rechte vorbehalten</small>
-        </p>
+        <small class="pull-right">Copyright © - Alle Rechte vorbehalten</small>
+    </p>
     </div>
 </footer>
 
