@@ -30,27 +30,6 @@ class User extends \Illuminate\Foundation\Auth\User
      */
     protected $hidden = ['password', 'remember_token'];
 
-    /**
-     * Fill the model with an array of attributes.
-     *
-     * @param array $attributes
-     *
-     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
-     *
-     * @return $this
-     */
-    public function fill(array $attributes)
-    {
-        parent::fill($attributes);
-
-        if (array_key_exists('password', $attributes)) {
-            // encrypt password
-            $this->password = bcrypt($this->password);
-        }
-
-        return $this;
-    }
-
     public function getCreated()
     {
         return dateintl_full('short', $this->created_at);
