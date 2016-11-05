@@ -106,7 +106,6 @@ class BlockBuilder
         // group by area
         $this->blocks = $databaseBlocks
             ->filter(function ($block) {
-
                 if (is_null($block)) {
                     return false;
                 }
