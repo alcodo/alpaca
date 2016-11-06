@@ -34,9 +34,9 @@ class PageFront extends Controller
 
     protected function getPage($pageSlug, $topicSlug = null)
     {
-        if(is_null($topicSlug)){
-            $query = Page::whereSlug($pageSlug);            
-        }else{
+        if (is_null($topicSlug)) {
+            $query = Page::whereSlug($pageSlug);
+        } else {
             $query = Topic::slug($topicSlug)->firstOrFail()->pages()->whereSlug($pageSlug);
         }
 
