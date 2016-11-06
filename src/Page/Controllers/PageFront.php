@@ -4,6 +4,7 @@ namespace Alpaca\Page\Controllers;
 
 use Alpaca\Page\Models\Page;
 use Alpaca\Core\Controllers\Controller;
+use Alpaca\Page\Models\Topic;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class PageFront extends Controller
 
     public function showTopic($topicSlug, $pageSlug)
     {
-        $page = $this->getPage($pageSlug);
+        $page = $this->getPage($pageSlug, $topicSlug);
 
         return $this->viewPage($page);
     }
@@ -31,9 +32,13 @@ class PageFront extends Controller
         return $this->viewPage($page);
     }
 
-    protected function getPage($pageSlug)
+    protected function getPage($pageSlug, $topicSlug = null)
     {
-        $query = Page::whereSlug($pageSlug);
+        if(is_null($topicSlug)){
+            $query = Page::whereSlug($pageSlug);            
+        }else{
+            $query = Topic::slug($topicSlug)->firstOrFail()->pages()->whereSlug($pageSlug);
+        }
 
         if (Auth::check() === false || Auth::user()->hasRole('admin') === false) {
             $query->whereActive(true);
