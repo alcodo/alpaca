@@ -13,13 +13,6 @@
                 <button class="btn btn-sm btn-warning pull-right cookieconsent-close">OK</button>
             </div>
         </div>
-        {{--<div class="cookieconsent-text pull-left">--}}
-            {{--{{ trans('cookieconsent::bar.description') }}--}}
-            {{--<a href="{{ config('cookieconsent.link') }}" target="_blank">--}}
-                {{--{{ trans('cookieconsent::bar.more') }}--}}
-            {{--</a>--}}
-        {{--</div>--}}
-        {{--<button class="btn btn-sm btn-warning pull-right cookieconsent-close">OK</button>--}}
     </div>
 </div>
 

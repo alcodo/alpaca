@@ -52,6 +52,8 @@ class RegisterController extends Controller
             'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'form_name' => 'honeypot',
+            'form_time' => 'required|honeytime:5',
         ]);
     }
 
