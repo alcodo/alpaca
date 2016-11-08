@@ -95,7 +95,7 @@ class BlockBuilder
     public function initBlocks()
     {
         // get block
-        $databaseBlocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get();
+        $databaseBlocks = Block::with(['menu', 'menu.items'])->whereActive(true)->orderBy('range', 'asc')->get();
         $eventBlocks = event('loadEventBlocks');
 
         // merge
@@ -107,6 +107,11 @@ class BlockBuilder
         $this->blocks = $databaseBlocks
             ->filter(function ($block) {
                 if (is_null($block)) {
+                    return false;
+                }
+
+                if($block->active == false){
+                    // event blocks are maybe not active
                     return false;
                 }
 
