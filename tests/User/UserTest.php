@@ -10,7 +10,7 @@ class UserTest extends TestCase
     public function it_allows_to_register_user()
     {
         Honeypot::disable();
-        
+
         $user = factory(User::class, 'form')->make();
 
         $this->visit('/register')

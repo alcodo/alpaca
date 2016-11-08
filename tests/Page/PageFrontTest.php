@@ -35,7 +35,7 @@ class PageFrontTest extends TestCase
         ]);
 
         $url = config('page.prefix').'/'.$page->slug;
-        
+
         $this->visit($url)
             ->see($page->title);
     }

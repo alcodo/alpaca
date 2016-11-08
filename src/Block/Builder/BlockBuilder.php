@@ -110,7 +110,7 @@ class BlockBuilder
                     return false;
                 }
 
-                if($block->active == false){
+                if ($block->active == false) {
                     // event blocks are maybe not active
                     return false;
                 }
