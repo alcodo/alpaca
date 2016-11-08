@@ -1,13 +1,13 @@
 <?php
 
-namespace Alpaca\Block\Facades;
+namespace Alpaca\Block\Builder;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Illuminate\Html\HtmlBuilder
  */
-class BlockMobileFacade extends Facade
+class BlockFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class BlockMobileFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'block_mobile';
+        return 'block';
     }
 }

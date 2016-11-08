@@ -2,8 +2,7 @@
 
 namespace Alpaca\Block;
 
-use Alpaca\Block\Builder\Desktop;
-use Alpaca\Block\Builder\Mobile;
+use Alpaca\Block\Builder\BlockBuilder;
 use Illuminate\Support\ServiceProvider as Provider;
 
 class BlockServiceProvider extends Provider
@@ -18,9 +17,7 @@ class BlockServiceProvider extends Provider
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
         // facade
-//        $loader->alias('Block', \Alpaca\Block\Builder\BlockFacade::class);
-        $loader->alias('BlockDesktop', \Alpaca\Block\Facades\BlockDesktopFacade::class);
-        $loader->alias('BlockMobile', \Alpaca\Block\Facades\BlockMobileFacade::class);
+        $loader->alias('Block', \Alpaca\Block\Builder\BlockFacade::class);
     }
 
     public function boot()
@@ -30,8 +27,7 @@ class BlockServiceProvider extends Provider
         $this->publishes([
             __DIR__.'/Migrations/' => base_path('/database/migrations'),
         ], 'migrations');
-        $this->app->instance('block_desktop', new Desktop());
-        $this->app->instance('block_mobile', new Mobile());
+        $this->app->instance('block', new BlockBuilder());
 
         $this->app['router']->group([
             'middleware' => 'web',

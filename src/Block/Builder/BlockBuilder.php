@@ -1,15 +1,17 @@
 <?php
 
-namespace Alpaca\Block\Builder\Roles;
+namespace Alpaca\Block\Builder;
 
+use Alpaca\Block\Builder\Roles\Exception;
 use Alpaca\Block\Models\Block;
 
 /**
  * This class gets all blocks.
  * It sorted, filtered and than returned the html for each area.
  */
-class Repository
+class BlockBuilder
 {
+    use Desktop, Mobile;
     /**
      * @var \Illuminate\Support\Collection
      */

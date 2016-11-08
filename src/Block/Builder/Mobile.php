@@ -10,7 +10,7 @@ use Alpaca\Block\Models\Block;
  * This class gets all blocks.
  * It sorted, filtered and than returned the html for each area.
  */
-class Mobile
+trait Mobile
 {
     /**
      * Return a html block list.
@@ -19,9 +19,7 @@ class Mobile
      */
     public function getMobileBlocks()
     {
-        // get
-        $catcher = new Repository();
-        $allBlocks = $catcher->getAllBlocks();
+        $allBlocks = $this->getAllBlocks();
 
         return $allBlocks->map(function ($area, $key) {
             // each area

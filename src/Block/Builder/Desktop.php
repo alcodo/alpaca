@@ -10,7 +10,7 @@ use Alpaca\Block\Models\Block;
  * This class gets all blocks.
  * It sorted, filtered and than returned the html for each area.
  */
-class Desktop
+trait Desktop
 {
     /**
      * @var \Illuminate\Support\Collection
@@ -50,7 +50,7 @@ class Desktop
     {
         $blocks = $this->getDesktopBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**
@@ -61,23 +61,36 @@ class Desktop
      */
     protected function getDesktopBlockByArea($area)
     {
-        $catcher = new Repository();
-        $allBlocks = $catcher->getAllBlocks();
+        $allBlocks = $this->getAllBlocks();
+
 
         if (isset($allBlocks[$area])) {
-            $allBlocks[$area]->filter(function (Block $block) {
 
-                // filter just desktop block
-                if ($block->desktop_view === 0 ||
-                    $block->mobile_view === 0 && $block->mobile_view_on_desktop === 1
-                ) {
-                    return false;
+            $blocks = $allBlocks[$area]->filter(function (Block $block) {
+
+                if ($block->desktop_view === 1) {
+                    return true;
                 }
 
-                return true;
+                if ($block->mobile_view === 0 && $block->mobile_view_on_desktop === 1) {
+                    return true;
+                }
+
+//                if ($block->mobile_view === 0) {
+//                    return false;
+//                }
+
+                return false;
             });
+
+            if ($blocks->isEmpty()) {
+                return null;
+            }
 
             return $allBlocks[$area];
         }
+
+        return null;
     }
+
 }
