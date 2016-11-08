@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Block\Builder;
+namespace Alpaca\Block\Builder\Roles;
 
 use Alpaca\Block\Models\Block;
 use Illuminate\Support\Facades\Request;

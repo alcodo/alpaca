@@ -45,7 +45,7 @@ class Block extends Model
         'html',
         'mobile_view',
         'desktop_view',
-        'desktop_view_force',
+        'desktop_view_force', // 'mobile_view_on_desktop',
     ];
 
     public static function getAreaChoice()

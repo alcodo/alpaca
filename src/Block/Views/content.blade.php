@@ -1,62 +1,62 @@
-@if(Block::existsBlocks('top'))
+@if(BlockDesktop::existsBlocks('top'))
     <div class="row">
         <div class="col-sm-12">
-            {!! Block::getBlocks('top') !!}
+            {!! BlockDesktop::getBlocks('top') !!}
         </div>
     </div>
 @endif
 
 <div class="row">
-    @if(Block::existsBlocks('left') && Block::existsBlocks('right'))
+    @if(BlockDesktop::existsBlocks('left') && BlockDesktop::existsBlocks('right'))
 
         <aside class="col-sm-3">
-            {!! Block::getBlocks('left') !!}
+            {!! BlockDesktop::getBlocks('left') !!}
         </aside>
         <main class="col-sm-6">
             <div class="area-content">
-                {!! Block::getBlocks('content-top') !!}
+                {!! BlockDesktop::getBlocks('content-top') !!}
                 @yield('content')
-                {!! Block::getBlocks('content-bottom') !!}
+                {!! BlockDesktop::getBlocks('content-bottom') !!}
             </div>
         </main>
         <aside class="col-sm-3">
-            {!! Block::getBlocks('right') !!}
+            {!! BlockDesktop::getBlocks('right') !!}
         </aside>
 
-    @elseif(Block::existsBlocks('left'))
+    @elseif(BlockDesktop::existsBlocks('left'))
 
         <aside class="col-sm-3">
-            {!! Block::getBlocks('left') !!}
+            {!! BlockDesktop::getBlocks('left') !!}
         </aside>
 
         <main class="col-sm-9">
             <div class="area-content">
-                {!! Block::getBlocks('content-top') !!}
+                {!! BlockDesktop::getBlocks('content-top') !!}
                 @yield('content')
-                {!! Block::getBlocks('content-bottom') !!}
+                {!! BlockDesktop::getBlocks('content-bottom') !!}
             </div>
         </main>
 
-    @elseif(Block::existsBlocks('right'))
+    @elseif(BlockDesktop::existsBlocks('right'))
 
         <main class="col-sm-9">
             <div class="area-content">
-                {!! Block::getBlocks('content-top') !!}
+                {!! BlockDesktop::getBlocks('content-top') !!}
                 @yield('content')
-                {!! Block::getBlocks('content-bottom') !!}
+                {!! BlockDesktop::getBlocks('content-bottom') !!}
             </div>
         </main>
         <aside class="col-sm-3">
-            {!! Block::getBlocks('right') !!}
+            {!! BlockDesktop::getBlocks('right') !!}
         </aside>
 
     @else
 
         <main class="col-sm-12">
             <div class="area-content">
-                {!! Block::getBlocks('content-top') !!}
+                {!! BlockDesktop::getBlocks('content-top') !!}
                 @yield('content')
-                {!! Block::getBlocks('content-bottom') !!}
+                {!! BlockDesktop::getBlocks('content-bottom') !!}
             </div>
         </main>
 
@@ -64,10 +64,10 @@
 
 </div>
 
-@if(Block::existsBlocks('bottom'))
+@if(BlockDesktop::existsBlocks('bottom'))
     <div class="row">
         <div class="col-sm-12">
-            {!! Block::getBlocks('bottom') !!}
+            {!! BlockDesktop::getBlocks('bottom') !!}
         </div>
     </div>
 @endif
