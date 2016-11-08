@@ -34,8 +34,8 @@ class PageFrontTest extends TestCase
             'category_slug' => $category->slug,
         ]);
 
-        $url = config('page.prefix').'/'.$category->slug.'/'.$page->slug;
-
+        $url = config('page.prefix').'/'.$page->slug;
+        
         $this->visit($url)
             ->see($page->title);
     }
