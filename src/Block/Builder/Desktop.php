@@ -32,10 +32,11 @@ class Desktop
         }
 
         return $areaBlocks->map(function (Block $block, $key) {
+
             // each block
             $html = new Html($block);
-
             return $html->getDesktopHtml();
+
         })->implode('');
     }
 

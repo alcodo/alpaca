@@ -77,5 +77,5 @@
         @endif
     </ul>
 
-    {!! Block::getMobileBlocks() !!}
+    {!! BlockMobile::getMobileBlocks() !!}
 </div>

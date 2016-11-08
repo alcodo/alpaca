@@ -41,7 +41,7 @@ class Html
             $template = $isMobileView ? 'menu::menuMobile' : 'menu::menu';
 
             return view($template, [
-                'menu' => $this->blocks->menu,
+                'menu' => $this->block->menu,
                 'isMobileView' => $isMobileView,
             ])->render();
         }
@@ -50,7 +50,7 @@ class Html
         $template = $isMobileView ? 'block::blockMobile' : 'block::block';
 
         return view($template, [
-            'block' => $this->blocks,
+            'block' => $this->block,
             'isMobileView' => $isMobileView,
         ])->render();
     }

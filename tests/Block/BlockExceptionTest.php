@@ -1,6 +1,6 @@
 <?php
 
-use Alpaca\Block\Builder\Exception;
+use Alpaca\Block\Builder\Roles\Exception;
 use Alpaca\Block\Models\Block;
 
 /**
