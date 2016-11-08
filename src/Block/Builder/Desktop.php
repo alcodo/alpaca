@@ -35,8 +35,8 @@ class Desktop
 
             // each block
             $html = new Html($block);
-            return $html->getDesktopHtml();
 
+            return $html->getDesktopHtml();
         })->implode('');
     }
 
