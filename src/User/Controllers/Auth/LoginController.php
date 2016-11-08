@@ -66,6 +66,12 @@ class LoginController extends Controller
     {
         Flash::success(trans('user::user.logout_successful'));
 
-        return self::logout($request);
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 }
