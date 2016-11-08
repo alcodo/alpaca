@@ -50,8 +50,8 @@ class Repository
                 }
                 // check exception rule
                 $ex = new Exception($block);
-                return $ex->isViewable();
 
+                return $ex->isViewable();
             })
             ->sortBy('range')
             ->groupBy('area');
@@ -70,5 +70,4 @@ class Repository
 
         return $this->blocks;
     }
-
 }

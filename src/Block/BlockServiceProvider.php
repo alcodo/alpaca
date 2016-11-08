@@ -2,7 +2,6 @@
 
 namespace Alpaca\Block;
 
-use Alpaca\Block\Builder\BlockBuilder;
 use Alpaca\Block\Builder\Desktop;
 use Alpaca\Block\Builder\Mobile;
 use Illuminate\Support\ServiceProvider as Provider;

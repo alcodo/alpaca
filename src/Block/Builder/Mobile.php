@@ -29,16 +29,15 @@ class Mobile
             return $area->map(function (Block $block, $key) {
                 // each block
 
-                if (is_null($block) || !$block->mobile_view) {
+                if (is_null($block) || ! $block->mobile_view) {
                     return '';
                 }
 
                 // generate html
                 $html = new Html($block);
-                return $html->getMobileHtml();
 
+                return $html->getMobileHtml();
             })->implode('');
         })->implode('');
     }
-
 }

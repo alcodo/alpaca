@@ -12,7 +12,6 @@ use Alpaca\Block\Models\Block;
  */
 class Desktop
 {
-
     /**
      * @var \Illuminate\Support\Collection
      */
@@ -35,6 +34,7 @@ class Desktop
         return $areaBlocks->map(function (Block $block, $key) {
             // each block
             $html = new Html($block);
+
             return $html->getDesktopHtml();
         })->implode('');
     }
@@ -49,7 +49,7 @@ class Desktop
     {
         $blocks = $this->getDesktopBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**

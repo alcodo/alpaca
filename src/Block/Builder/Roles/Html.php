@@ -5,7 +5,7 @@ namespace Alpaca\Block\Builder\Roles;
 use Alpaca\Block\Models\Block;
 
 /**
- * Generate html for a block
+ * Generate html for a block.
  */
 class Html
 {
@@ -54,5 +54,4 @@ class Html
             'isMobileView' => $isMobileView,
         ])->render();
     }
-
 }
