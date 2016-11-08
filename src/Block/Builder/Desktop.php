@@ -3,7 +3,6 @@
 namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Builder\Roles\Html;
-use Alpaca\Block\Builder\Roles\Repository;
 use Alpaca\Block\Models\Block;
 
 /**
@@ -50,7 +49,7 @@ trait Desktop
     {
         $blocks = $this->getDesktopBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**
@@ -65,9 +64,7 @@ trait Desktop
 
 
         if (isset($allBlocks[$area])) {
-
             $blocks = $allBlocks[$area]->filter(function (Block $block) {
-
                 if ($block->desktop_view === 1) {
                     return true;
                 }
@@ -84,13 +81,10 @@ trait Desktop
             });
 
             if ($blocks->isEmpty()) {
-                return null;
+                return;
             }
 
             return $allBlocks[$area];
         }
-
-        return null;
     }
-
 }

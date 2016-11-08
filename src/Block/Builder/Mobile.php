@@ -3,7 +3,6 @@
 namespace Alpaca\Block\Builder;
 
 use Alpaca\Block\Builder\Roles\Html;
-use Alpaca\Block\Builder\Roles\Repository;
 use Alpaca\Block\Models\Block;
 
 /**
