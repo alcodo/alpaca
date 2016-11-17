@@ -35,7 +35,7 @@ class AdminBlockListener
                 'range' => 1,
                 'mobile_view' => 1,
                 'desktop_view' => 1,
-                'desktop_view_force' => 0,
+                'desktop_view_force' => 1,
                 'html' => view('core::adminblock')->render(),
             ]);
         }

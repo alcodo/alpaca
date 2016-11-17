@@ -26,7 +26,9 @@ trait Mobile
             return $area->map(function (Block $block, $key) {
                 // each block
 
-                if (is_null($block) || ! $block->mobile_view) {
+                if (is_null($block) ||
+                    $block->active == false ||
+                    $block->mobile_view == false) {
                     return '';
                 }
 
