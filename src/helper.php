@@ -14,12 +14,14 @@ function isActiveUrl($path, $output = 'active')
         $path = trim($path, '/');
     }
 
-    if ($path === \Illuminate\Support\Facades\Request::path()) {
+    $actualPath = \Illuminate\Support\Facades\Request::path();
+
+    if (strpos($actualPath, $path) !== false) {
         return $output;
     }
 }
 
-if (! function_exists('alpacaFactory')) {
+if (!function_exists('alpacaFactory')) {
     /**
      * Create a model factory builder for a given class, name, and amount.
      *
