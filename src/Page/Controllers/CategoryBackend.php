@@ -153,7 +153,7 @@ class CategoryBackend extends Controller implements CrudContract
     public function createEntry(array $data)
     {
         $data['active'] = isset($data['active']);
-        
+
         $model = $this->getModelClass();
         $entry = $model::create($data);
 
