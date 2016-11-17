@@ -5,7 +5,8 @@
     {!!$page->body !!}
 
     @if(!is_null($page->category))
-        <p>Category: <a href="{{ $page->getCategoryLink() }}">
+        <hr/>
+        <p class="text-right">{{ trans('page::category.category') }}: <a href="{{ $page->getCategoryLink() }}">
                 {{$page->category->title}}
             </a>
         </p>
