@@ -98,7 +98,6 @@ class BlockBackend extends Controller implements CrudContract
 
         $formFields = [
             'id' => $form->hidden('id'),
-
             'name' => $form->text(trans('crud::crud.name'), 'name'),
             'title' => $form->text(trans('crud::crud.title'), 'title'),
             'active' => $form->checkbox(trans('page::page.active'), 'active')->defaultToChecked(),
@@ -185,6 +184,11 @@ class BlockBackend extends Controller implements CrudContract
             $data['menu_id'] = null;
         }
 
+        $data['active'] = isset($data['active']);
+        $data['mobile_view'] = isset($data['mobile_view']);
+        $data['desktop_view'] = isset($data['desktop_view']);
+        $data['desktop_view_force'] = isset($data['desktop_view_force']);
+
         $model = $this->getModelClass();
         $entry = $model::create($data);
 
@@ -204,6 +208,11 @@ class BlockBackend extends Controller implements CrudContract
         if (empty($data['menu_id'])) {
             $data['menu_id'] = null;
         }
+
+        $data['active'] = isset($data['active']);
+        $data['mobile_view'] = isset($data['mobile_view']);
+        $data['desktop_view'] = isset($data['desktop_view']);
+        $data['desktop_view_force'] = isset($data['desktop_view_force']);
 
         $entry = $this->getEntry($id);
         $status = $entry->update($data);

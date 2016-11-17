@@ -142,4 +142,39 @@ class CategoryBackend extends Controller implements CrudContract
     {
         return new CategoryUrlBuilder($this, $parameters);
     }
+
+    /**
+     * Create a entry and return it.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createEntry(array $data)
+    {
+        $data['active'] = isset($data['active']);
+        
+        $model = $this->getModelClass();
+        $entry = $model::create($data);
+
+        return $entry;
+    }
+
+    /**
+     * Updates a entry.
+     *
+     * @param $id
+     * @param array $data
+     *
+     * @return bool|int
+     */
+    public function updateEntry($id, array $data)
+    {
+        $data['active'] = isset($data['active']);
+
+        $entry = $this->getEntry($id);
+        $status = $entry->update($data);
+
+        return $status;
+    }
 }
