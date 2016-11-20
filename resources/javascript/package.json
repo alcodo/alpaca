@@ -25,6 +25,7 @@
     "magnific-popup": "^1.1.0",
     "select2": "^4.0.3",
     "summernote": "^0.8.1",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "turbolinks": "^5.0.0"
   }
 }
