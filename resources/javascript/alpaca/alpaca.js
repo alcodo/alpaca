@@ -15,4 +15,4 @@ window.Alpaca = {
 };
 
 
-Turbolinks.start()
+// Turbolinks.start();
