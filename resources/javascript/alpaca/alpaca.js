@@ -2,7 +2,8 @@
  * Modules
  */
 import Global from './global/global';
-var Turbolinks = require("turbolinks")
+
+// var Turbolinks = require("turbolinks");
 
 /**
  * Global namespace

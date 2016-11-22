@@ -65,6 +65,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $redirect = request('redirect');
+        if(!empty($redirect)){
+            $this->redirectTo = $redirect;
+        }
+
         Flash::success(trans('user::user.registered_successful'));
 
         return User::create([

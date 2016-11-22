@@ -9,6 +9,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
+                        <input type="hidden" name="redirect" value="{{ isset($redirect) ? $redirect: request('redirect') }}">
                         {!! Honeypot::generate('form_name', 'form_time')  !!}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
