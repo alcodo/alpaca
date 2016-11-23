@@ -13,18 +13,14 @@ class UserTest extends TestCase
 
         $user = factory(User::class, 'form')->make();
 
-
-//        dd(trans('user::user.register'));
-
-
         $this->visit('/register')
             ->see('Register')
             ->type($user->username, 'username')
             ->type($user->email, 'email')
             ->type($user->password, 'password')
             ->type($user->password, 'password_confirmation')
-            ->press(trans('user::user.register'));
-//            ->see('alert-success');
+            ->press(trans('user::user.register'))
+            ->see('alert-success');
     }
 
     /**

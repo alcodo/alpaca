@@ -19,5 +19,6 @@ return [
     'password_forget' => 'Forgot Your Password?',
     'reset_password' => 'Reset Password',
     'sent_passwort_link' => 'Send Password Reset Link',
+    'verification' => 'Verification',
 
 ];

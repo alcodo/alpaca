@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
 
             // email verification
             $table->tinyInteger('verified')->default(0);
-            $table->string('email_token')->nullable();
+            $table->string('email_token', 18)->nullable();
 
             $table->timestamps();
         });

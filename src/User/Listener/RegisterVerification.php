@@ -30,10 +30,24 @@ class RegisterVerification implements ShouldQueue
      */
     public function handle(Registered $event)
     {
-        Mail::to(
-            $event->user->email
-        )->send(
-            new EmailVerification($event->user)
+        $user = $event->user;
+//        dd($event->user);
+
+        Mail::send('user::emails.verification', ['user' => $user],
+            function ($m) use ($user) {
+                $m->to($user->email);
+                $subject = trans('user::user.verification') . ' - ' . config('app.name');
+                $m->subject($subject);
+//            $m->from('noreply@example.com');
+//            $m->bcc('notifications@example.com');
+//            $m->getHeaders()->addTextHeader('X-MailThief-Variables', 'mailthief');
+            }
         );
+
+//        Mail::to(
+//            $event->user->email
+//        )->send(
+//            new EmailVerification($event->user)
+//        );
     }
 }
