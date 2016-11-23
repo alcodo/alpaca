@@ -17,6 +17,7 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'email' => $faker->email,
         'password' => str_random(10),
         'remember_token' => str_random(10),
+        'email_token' => str_random(10),
     ];
 });
 
@@ -26,6 +27,7 @@ $factory->defineAs(User::class, 'admin', function ($faker) {
         'email' => $faker->email,
         'remember_token' => str_random(10),
         'admin' => true,
+        'email_token' => str_random(10),
     ];
 });
 
@@ -37,6 +39,7 @@ $factory->defineAs(User::class, 'testuser', function ($faker) {
         'email' => 'testuser@testuser.com',
         'password' => $password ?: $password = bcrypt('testuser'),
         'remember_token' => str_random(10),
+        'email_token' => str_random(10),
     ];
 });
 
@@ -45,6 +48,7 @@ $factory->defineAs(User::class, 'form', function (Faker\Generator $faker) {
         'username' => $faker->name,
         'email' => $faker->email,
         'password' => str_random(6),
+        'email_token' => str_random(10),
     ];
 });
 

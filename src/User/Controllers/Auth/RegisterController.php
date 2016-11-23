@@ -43,7 +43,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -60,13 +60,13 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
         $redirect = request('redirect');
-        if (! empty($redirect)) {
+        if (!empty($redirect)) {
             $this->redirectTo = $redirect;
         }
 
@@ -82,5 +82,14 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('user::register');
+    }
+
+    public function verify($token)
+    {
+        User::where('email_token', $token)->firstOrFail()->verified();
+
+        Flash::success('Du bist nun verifiziert.');
+
+        return redirect('login');
     }
 }

@@ -30,6 +30,13 @@ class User extends \Illuminate\Foundation\Auth\User
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function verified()
+    {
+        $this->verified = 1;
+        $this->email_token = null;
+        $this->save();
+    }
+
     public function getCreated()
     {
         return dateintl_full('short', $this->created_at);
