@@ -2,9 +2,9 @@
 
 namespace Alpaca\User;
 
+use Alpaca\User\Listener\RegisterVerification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
-use Illuminate\Support\ServiceProvider as Provider;
 
 class UserServiceProvider extends EventServiceProvider
 {
@@ -19,7 +19,7 @@ class UserServiceProvider extends EventServiceProvider
 //            ExternalVideo::class,
 //        ],
         Registered::class => [
-            DeleteVideo::class,
+            RegisterVerification::class,
         ],
     ];
 
