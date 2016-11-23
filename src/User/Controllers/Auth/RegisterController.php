@@ -66,7 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $redirect = request('redirect');
-        if (!empty($redirect)) {
+        if (! empty($redirect)) {
             $this->redirectTo = $redirect;
         }
 

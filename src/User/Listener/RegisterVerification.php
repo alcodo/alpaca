@@ -36,7 +36,7 @@ class RegisterVerification implements ShouldQueue
         Mail::send('user::emails.verification', ['user' => $user],
             function ($m) use ($user) {
                 $m->to($user->email);
-                $subject = trans('user::user.verification') . ' - ' . config('app.name');
+                $subject = trans('user::user.verification').' - '.config('app.name');
                 $m->subject($subject);
 //            $m->from('noreply@example.com');
 //            $m->bcc('notifications@example.com');

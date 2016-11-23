@@ -46,5 +46,4 @@ class RegisterVerificationTest extends TestCase
             ->press(trans('user::user.register'))
             ->see('alert-success');
     }
-
 }
