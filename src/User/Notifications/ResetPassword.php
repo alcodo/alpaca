@@ -45,6 +45,8 @@ class ResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->subject(trans('user::user.reset_password'))
+            ->line(trans('user::user.you_receive_email_because'))
             ->line(trans('user::user.you_receive_email_because'))
             ->action(trans('user::user.reset_password'), url('password/reset', $this->token))
             ->line(trans('user::user.if_not_you_requested'));
