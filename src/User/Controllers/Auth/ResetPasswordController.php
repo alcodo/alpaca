@@ -5,6 +5,7 @@ namespace Alpaca\User\Controllers\Auth;
 use Alpaca\Core\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class ResetPasswordController extends Controller
 {
@@ -38,5 +39,19 @@ class ResetPasswordController extends Controller
         return view('user::passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
+    }
+
+    /**
+     * Get the response for a successful password reset.
+     *
+     * @param  string $response
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendResetResponse($response)
+    {
+        Flash::success(trans('user::user.login_successful'));
+
+        return redirect($this->redirectPath())
+            ->with('status', trans($response));
     }
 }

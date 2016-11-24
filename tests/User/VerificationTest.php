@@ -4,7 +4,7 @@ use Alpaca\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 use MailThief\Facades\MailThief;
 
-class RegisterVerificationTest extends TestCase
+class VerificationTest extends TestCase
 {
     /**
      * @test

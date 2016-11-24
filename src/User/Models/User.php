@@ -4,6 +4,7 @@ namespace Alpaca\User\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
@@ -35,6 +36,17 @@ class User extends \Illuminate\Foundation\Auth\User
         $this->verified = 1;
         $this->email_token = null;
         $this->save();
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 
     public function getCreated()
