@@ -27,12 +27,14 @@ class EmailController extends Controller
     public function register()
     {
         $mail = new VerifyAccount('SECRET_TOKEN', 'JOHNdoe');
+
         return $this->generateNotification($mail);
     }
 
     public function passwort_reset()
     {
         $mail = new ResetPassword('SECRET_TOKEN');
+
         return $this->generateNotification($mail);
     }
 

@@ -76,5 +76,4 @@ class UserTest extends TestCase
 
         $this->assertTrue(Auth::guest(), 'User is still authenticated');
     }
-
 }

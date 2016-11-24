@@ -2,6 +2,6 @@
 
 return [
 
-    'email-templates' => 'E-Mail Templates'
+    'email-templates' => 'E-Mail Templates',
 
 ];
