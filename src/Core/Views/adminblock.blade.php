@@ -20,4 +20,7 @@
     @if(view()->exists('forum::cmf.menu'))
         @include('forum::cmf.menu')
     @endif
+    @if(view()->exists('email::cmf.menu'))
+        @include('email::cmf.menu')
+    @endif
 </ul>

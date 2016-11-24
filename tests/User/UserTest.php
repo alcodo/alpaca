@@ -70,23 +70,4 @@ class UserTest extends TestCase
 //            ->see('alert-success');
     }
 
-    /*
-     * @test
-     */
-//    public function it_allows_user_to_edit_own_profile()
-//    {
-        // without user
-//        $url = route('user.edit', 'this_user_doesnt_exists');
-//        $this->assertEquals(500, $this->call('GET', $url)->getStatusCode(), 'You are not logged in');
-//
-//        // create user
-//        $user = factory(User::class)->create();
-
-        // TODO slug
-//        $url = route('user.edit', $user->slug);
-//
-//        // edit
-//        $this->actingAs($user)
-//            ->visit($url);
-//    }
 }

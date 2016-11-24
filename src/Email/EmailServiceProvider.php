@@ -17,9 +17,10 @@ class EmailServiceProvider extends Provider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/Views', 'email');
+        $this->loadTranslationsFrom(__DIR__.'/Lang', 'email');
 
         $this->app['router']->group([
-            'middleware' => 'web',
+            'middleware' => ['web', 'role:admin'],
             'namespace' => 'Alpaca\Email\Controllers',
         ], function ($router) {
             require __DIR__.'/routes.php';

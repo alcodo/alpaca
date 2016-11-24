@@ -1,5 +1,5 @@
-<li class="block-item {{ isActiveRoute('backend.gallery.index') }}">
+<li class="block-item {{ isActiveRoute('backend.email.index') }}">
     <a href="{{ route('backend.gallery.index') }}">
-        {{ trans('crud::crud.administration_type', ['type' => trans('gallery::gallery.gallery')]) }}
+        {{ trans('email::email.email-templates') }}
     </a>
 </li>
