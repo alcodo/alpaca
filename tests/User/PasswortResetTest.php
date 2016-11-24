@@ -41,7 +41,7 @@ class PasswortResetTest extends TestCase
         $this->assertTrue(strpos($emailContent, $password_resets->token) !== false);
 
         // click link
-        $this->visit('/password/reset/' . $password_resets->token)
+        $this->visit('/password/reset/'.$password_resets->token)
             ->see(trans('user::user.reset_password'))
             ->type($formUser->email, 'email')
             ->type('passwordTwo', 'password')
@@ -54,5 +54,4 @@ class PasswortResetTest extends TestCase
         $passwordCorrect = app('hash')->check('passwordTwo', User::first()->password);
         $this->assertTrue($passwordCorrect, 'Password not equals with bcrypt');
     }
-
 }
