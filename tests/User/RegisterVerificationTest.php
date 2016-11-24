@@ -35,7 +35,7 @@ class RegisterVerificationTest extends TestCase
         $this->assertTrue(strpos($emailContent, $user->email_token) !== false);
 
         // verify
-        $this->visit('/register/verify/'. $user->email_token)
+        $this->visit('/register/verify/'.$user->email_token)
             ->see('alert-success');
 
         // check db
