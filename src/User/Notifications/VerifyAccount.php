@@ -1,0 +1,64 @@
+<?php
+
+namespace Alpaca\User\Notifications;
+
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
+
+class VerifyAccount extends Notification
+{
+    /**
+     * The password reset token.
+     *
+     * @var string
+     */
+    public $token;
+    /**
+     * @var
+     */
+    private $username;
+
+    /**
+     * Create a notification instance.
+     *
+     * @param $token
+     * @param $username
+     * @internal param string $token
+     */
+    public function __construct($token, $username)
+    {
+        $this->token = $token;
+        $this->username = $username;
+    }
+
+    /**
+     * Get the notification's channels.
+     *
+     * @param  mixed $notifiable
+     * @return array|string
+     */
+    public function via($notifiable)
+    {
+        return ['mail'];
+    }
+
+    /**
+     * Build the mail representation of the notification.
+     *
+     * @param  mixed $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        $link = url('/register/verify', $this->token);
+
+        return (new MailMessage)
+            ->subject(trans('user::user.verification') . ' - ' . config('app.name'))
+            ->greeting('Welcome to ' . config('app.name'))
+            ->line('Hi ' . $this->username)
+            ->line(trans('user::user.verification_info_last_step', ['type' => config('app.name')]))
+            ->action(trans('user::user.verify_now'), $link)
+            ->line(trans('user::user.verification_link_broken') . '<a href="' . $link . '">' . $link . '</a>')
+            ->line(trans('user::user.verification_link_advantages', ['type' => config('app.name')]));
+    }
+}

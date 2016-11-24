@@ -2,24 +2,15 @@
 
 namespace Alpaca\User;
 
-use Alpaca\User\Listener\RegisterVerification;
+use Alpaca\User\Listener\AccountVerification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 
 class UserServiceProvider extends EventServiceProvider
 {
     protected $listen = [
-//        'eloquent.created: Arena\Video\Models\Video' => [
-//            DownloadVideo::class,
-//            ExternalVideo::class,
-//            YouTubeVideo::class,
-//        ],
-//        'eloquent.updated: Arena\Video\Models\Video' => [
-//            DownloadVideo::class,
-//            ExternalVideo::class,
-//        ],
         Registered::class => [
-            RegisterVerification::class,
+            AccountVerification::class,
         ],
     ];
 
