@@ -51,6 +51,25 @@ class RegisterVerificationTest extends TestCase
         $this->assertFalse(Auth::guest(), 'User is NOT logged in');
     }
 
+    /**
+     * @test
+     */
+    public function it_not_allow_to_login_without_verify()
+    {
+        // register a user
+        Honeypot::disable();
+        $formUser = $this->registerUser();
+
+        // login
+        $this->visit('/login')
+            ->type($formUser->email, 'email')
+            ->type($formUser->password, 'password')
+            ->press(trans('user::user.login'))
+            ->see('alert-danger');
+
+        $this->assertTrue(Auth::guest(), 'User is logged in');
+    }
+
     protected function registerUser()
     {
         $user = factory(User::class, 'form')->make();
