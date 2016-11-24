@@ -29,6 +29,7 @@ class UserTest extends TestCase
     public function it_allows_user_to_login()
     {
         $user = factory(User::class, 'testuser')->create();
+        $user->verified();
 
         // check bcrypt password
         $passwordCorrect = app('hash')->check('testuser', $user->password);
