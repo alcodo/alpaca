@@ -30,11 +30,13 @@ class EmailController extends Controller
             case 'register':
 
                 $mail = new VerifyAccount('SECRET_TOKEN', 'USERNAME');
+
                 return $this->generateNotification($mail);
 
             case 'passwort_reset':
 
                 $mail = new ResetPassword('SECRET_TOKEN');
+
                 return $this->generateNotification($mail);
         }
     }
