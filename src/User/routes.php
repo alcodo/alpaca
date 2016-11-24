@@ -1,7 +1,8 @@
 <?php
 
 Auth::routes();
-Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
+Route::get('/register/verify/{token}', 'Auth\RegisterController@verify');
+
 
 Route::get('/dashboard', 'DashboardController@index');
 

@@ -1,6 +1,7 @@
 <?php
 
 use Alpaca\User\Models\User;
+use Illuminate\Support\Facades\Auth;
 use MailThief\Facades\MailThief;
 
 class RegisterVerificationTest extends TestCase
@@ -8,7 +9,7 @@ class RegisterVerificationTest extends TestCase
     /**
      * @test
      */
-    public function it_send_a_email_after_registration()
+    public function it_allow_to_verificaiton_after_registration()
     {
         MailThief::hijack();
 
@@ -18,7 +19,8 @@ class RegisterVerificationTest extends TestCase
 
         // register a user
         Honeypot::disable();
-        $this->registerUser();
+        $formUser = $this->registerUser();
+        $this->assertTrue(Auth::guest(), 'User is logged in');
 
         // check database
         $user = User::first();
@@ -31,6 +33,22 @@ class RegisterVerificationTest extends TestCase
 
         $emailContent = MailThief::lastMessage()->getBody();
         $this->assertTrue(strpos($emailContent, $user->email_token) !== false);
+
+        // verify
+        $this->visit('/register/verify/'. $user->email_token)
+            ->see('alert-success');
+
+        // check db
+        $this->assertEquals('1', User::first()->verified);
+        $this->assertEquals(null, User::first()->email_token);
+
+        // login
+        $this->visit('/login')
+            ->type($formUser->email, 'email')
+            ->type($formUser->password, 'password')
+            ->press(trans('user::user.login'))
+            ->see('alert-success');
+        $this->assertFalse(Auth::guest(), 'User is NOT logged in');
     }
 
     protected function registerUser()
@@ -45,5 +63,7 @@ class RegisterVerificationTest extends TestCase
             ->type($user->password, 'password_confirmation')
             ->press(trans('user::user.register'))
             ->see('alert-success');
+
+        return $user;
     }
 }
