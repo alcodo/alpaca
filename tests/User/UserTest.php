@@ -1,6 +1,7 @@
 <?php
 
 use Alpaca\User\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserTest extends TestCase
 {
@@ -66,8 +67,14 @@ class UserTest extends TestCase
         $this->actingAs($user)
             ->visit('/')
             ->see('Logout');
-//            ->click('Logout')
-//            ->see('alert-success');
+
+        $this->assertFalse(Auth::guest(), 'User is not logged in');
+
+        $this->actingAs($user)
+            ->post('/logout')
+            ->assertRedirectedTo('/');
+
+        $this->assertTrue(Auth::guest(), 'User is still authenticated');
     }
 
 }
