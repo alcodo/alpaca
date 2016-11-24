@@ -8,7 +8,6 @@ class WebTest extends TestCase
     public function it_allow_see_index()
     {
         $this->visit('/backend/email');
-
     }
 
     /**

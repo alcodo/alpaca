@@ -6,19 +6,19 @@ use Alpaca\Core\Controllers\Controller;
 
 class EmailController extends Controller
 {
-
     public function index()
     {
-        $emailTemplates = array(
+        $emailTemplates = [
             [
                 'text' => trans('user::user.register'),
-                'link' => '/backend/email/register'
+                'link' => '/backend/email/register',
             ],
             [
                 'text' => trans('user::user.reset_password'),
-                'link' => '/backend/email/passwort_reset'
-            ]
-        );
+                'link' => '/backend/email/passwort_reset',
+            ],
+        ];
+
         return view('email::list');
     }
 
@@ -31,5 +31,4 @@ class EmailController extends Controller
     {
         return view('contact::form');
     }
-
 }

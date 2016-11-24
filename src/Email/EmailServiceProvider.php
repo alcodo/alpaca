@@ -17,7 +17,7 @@ class EmailServiceProvider extends Provider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/Views', 'email');
-        
+
         $this->app['router']->group([
             'middleware' => 'web',
             'namespace' => 'Alpaca\Email\Controllers',
