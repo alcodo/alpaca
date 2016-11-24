@@ -19,11 +19,9 @@ class VerifyAccount extends Notification
     private $username;
 
     /**
-     * Create a notification instance.
-     *
+     * VerifyAccount constructor.
      * @param $token
      * @param $username
-     * @internal param string $token
      */
     public function __construct($token, $username)
     {

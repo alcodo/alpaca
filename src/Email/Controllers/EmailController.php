@@ -3,7 +3,8 @@
 namespace Alpaca\Email\Controllers;
 
 use Alpaca\Core\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Alpaca\User\Notifications\ResetPassword;
+use Alpaca\User\Notifications\VerifyAccount;
 
 class EmailController extends Controller
 {
@@ -25,13 +26,13 @@ class EmailController extends Controller
 
     public function register()
     {
-        $mail = new \Illuminate\Auth\Notifications\VerifyAccount('SECRET_TOKEN', 'JOHNdoe');
+        $mail = new VerifyAccount('SECRET_TOKEN', 'JOHNdoe');
         return $this->generateNotification($mail);
     }
 
     public function passwort_reset()
     {
-        $mail = new \Illuminate\Auth\Notifications\ResetPassword('SECRET_TOKEN');
+        $mail = new ResetPassword('SECRET_TOKEN');
         return $this->generateNotification($mail);
     }
 
