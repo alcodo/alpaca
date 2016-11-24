@@ -24,18 +24,19 @@ class EmailController extends Controller
         return view('email::list', compact('emailTemplates'));
     }
 
-    public function register()
+    public function show($template)
     {
-        $mail = new VerifyAccount('SECRET_TOKEN', 'JOHNdoe');
+        switch ($template) {
+            case 'register':
 
-        return $this->generateNotification($mail);
-    }
+                $mail = new VerifyAccount('SECRET_TOKEN', 'USERNAME');
+                return $this->generateNotification($mail);
 
-    public function passwort_reset()
-    {
-        $mail = new ResetPassword('SECRET_TOKEN');
+            case 'passwort_reset':
 
-        return $this->generateNotification($mail);
+                $mail = new ResetPassword('SECRET_TOKEN');
+                return $this->generateNotification($mail);
+        }
     }
 
     /**

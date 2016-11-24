@@ -2,9 +2,9 @@
 
 namespace Alpaca\Email;
 
-use Illuminate\Support\ServiceProvider as Provider;
+use Illuminate\Support\ServiceProvider;
 
-class EmailServiceProvider extends Provider
+class EmailServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
