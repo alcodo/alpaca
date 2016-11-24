@@ -51,12 +51,11 @@ class VerifyAccount extends Notification
         $link = url('/register/verify', $this->token);
 
         return (new MailMessage)
+            ->success()
             ->subject(trans('user::user.verification').' - '.config('app.name'))
-            ->greeting('Welcome to '.config('app.name'))
-            ->line('Hi '.$this->username)
+            ->greeting('Hi '.$this->username)
             ->line(trans('user::user.verification_info_last_step', ['type' => config('app.name')]))
             ->action(trans('user::user.verify_now'), $link)
-            ->line(trans('user::user.verification_link_broken').'<a href="'.$link.'">'.$link.'</a>')
             ->line(trans('user::user.verification_link_advantages', ['type' => config('app.name')]));
     }
 }

@@ -24,7 +24,6 @@ return [
     'verification_successful' => 'You are now verified.',
     'verification_info_last_step' => 'You registered with: type. For your account to be activated, you just have to confirm it in the last step.',
     'verify_now' => 'Account verify',
-    'verification_link_broken' => 'The link does not work? Just copy the following URL into your browser: ',
     'verification_link_advantages' => 'Once you have confirmed your e-mail address, you can use all the features of :type. For example, fill your profile to share with other community members.',
 
 ];
