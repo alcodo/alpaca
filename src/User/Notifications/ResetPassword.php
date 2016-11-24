@@ -46,7 +46,7 @@ class ResetPassword extends Notification
     {
         return (new MailMessage)
             ->line(trans('user::user.you_receive_email_because'))
-            ->action(trans('user::user.reset_password'), url('register/verify', $this->token))
+            ->action(trans('user::user.reset_password'), url('password/reset', $this->token))
             ->line(trans('user::user.if_not_you_requested'));
     }
 }
