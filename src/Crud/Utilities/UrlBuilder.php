@@ -2,8 +2,8 @@
 
 namespace Alpaca\Crud\Utilities;
 
-use Alpaca\Crud\Controllers\CrudContract;
 use Illuminate\Support\Collection;
+use Alpaca\Crud\Controllers\CrudContract;
 
 class UrlBuilder
 {

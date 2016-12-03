@@ -2,10 +2,10 @@
 
 namespace Alpaca\Block\Controllers;
 
-use Alpaca\Block\Models\Block;
 use Alpaca\Menu\Models\Menu;
-use Alpaca\Core\Controllers\Controller;
 use Illuminate\Http\Request;
+use Alpaca\Block\Models\Block;
+use Alpaca\Core\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class BlockController extends Controller

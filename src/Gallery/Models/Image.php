@@ -2,9 +2,9 @@
 
 namespace Alpaca\Gallery\Models;
 
+use Response;
 use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Response;
 
 class Image extends Model
 {

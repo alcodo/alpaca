@@ -1,7 +1,7 @@
 <?php
 
-use Alpaca\Menu\Controllers\ItemBackend;
 use Alpaca\Menu\Models\Menu;
+use Alpaca\Menu\Controllers\ItemBackend;
 
 class ItemCrudTest extends TestCase implements CrudTestContract
 {

@@ -2,8 +2,8 @@
 
 namespace Alpaca\Crud\Controllers;
 
-use Alpaca\Crud\Notification\Notification;
 use Alpaca\Crud\Utilities\UrlBuilder;
+use Alpaca\Crud\Notification\Notification;
 
 trait DependencyTrait
 {

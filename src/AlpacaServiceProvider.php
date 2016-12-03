@@ -2,18 +2,18 @@
 
 namespace Alpaca;
 
-use Alpaca\Contact\ContactServiceProvider;
-use Alpaca\CookieConsent\CookieConsentServiceProvider;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
-use Alpaca\Email\EmailServiceProvider;
-use Alpaca\Gallery\GalleryServiceProvider;
-use Alpaca\Sitemap\SitemapServiceProvider;
-use Alpaca\User\UserServiceProvider;
-use Alpaca\Block\BlockServiceProvider;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
+use Alpaca\User\UserServiceProvider;
+use Alpaca\Block\BlockServiceProvider;
+use Alpaca\Email\EmailServiceProvider;
+use Alpaca\Contact\ContactServiceProvider;
+use Alpaca\Gallery\GalleryServiceProvider;
+use Alpaca\Sitemap\SitemapServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
+use Alpaca\CookieConsent\CookieConsentServiceProvider;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
 {

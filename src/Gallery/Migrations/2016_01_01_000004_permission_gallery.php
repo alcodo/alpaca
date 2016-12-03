@@ -1,7 +1,7 @@
 <?php
 
-use Alpaca\Crud\Utilities\PermissionCreator;
 use Alpaca\User\Models\Role;
+use Alpaca\Crud\Utilities\PermissionCreator;
 use Illuminate\Database\Migrations\Migration;
 
 class PermissionGallery extends Migration

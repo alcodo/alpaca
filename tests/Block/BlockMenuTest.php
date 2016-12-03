@@ -1,8 +1,8 @@
 <?php
 
-use Alpaca\Block\Models\Block;
 use Alpaca\Menu\Models\Menu;
 use Alpaca\User\Models\User;
+use Alpaca\Block\Models\Block;
 
 /**
  * Block testing with menu.

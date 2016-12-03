@@ -2,10 +2,10 @@
 
 namespace Alpaca\User\Controllers\Auth;
 
+use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
 use Alpaca\Core\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
 
 class LoginController extends Controller
 {

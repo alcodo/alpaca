@@ -6,5 +6,4 @@ return [
     'categories' => 'Kategorien',
     'no_category'   => 'Keine Kategorie',
 
-
 ];

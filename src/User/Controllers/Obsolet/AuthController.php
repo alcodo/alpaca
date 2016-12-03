@@ -2,13 +2,13 @@
 
 namespace Alpaca\User\Controllers;
 
-use Alpaca\User\Models\User;
-use Alpaca\Core\Controllers\Controller;
-use Illuminate\Cache\RateLimiter;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
+use Alpaca\User\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Cache\RateLimiter;
+use Illuminate\Support\Facades\Auth;
+use Alpaca\Core\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class AuthController extends Controller
 {

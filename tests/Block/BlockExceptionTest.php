@@ -1,7 +1,7 @@
 <?php
 
-use Alpaca\Block\Builder\Roles\Exception;
 use Alpaca\Block\Models\Block;
+use Alpaca\Block\Builder\Roles\Exception;
 
 /**
  * Block testing with menu.
@@ -47,7 +47,6 @@ class BlockExceptionTest extends TestCase
             'exception_rule' => Block::EXCEPTION_ONLY,
             'exception' => 'blog/*',
         ]);
-
 
         $this->get('demo');
         $ex = new Exception($block);

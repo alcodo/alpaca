@@ -1,9 +1,9 @@
 <?php
 
-use Alpaca\Crud\Controllers\CrudContract;
-use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\User\Models\User;
+use Alpaca\Crud\Utilities\UrlBuilder;
 use Illuminate\Database\Eloquent\Model;
+use Alpaca\Crud\Controllers\CrudContract;
 
 trait CrudTestTrait
 {
@@ -109,7 +109,6 @@ trait CrudTestTrait
 
         $lastEntry = $model::orderBy($columnId, 'desc')->first();
         $url = $urlBuilder->getUrlDestroy($lastEntry->getKey());
-
 
         // check
         $this->delete($url, ['_token' => csrf_token()])

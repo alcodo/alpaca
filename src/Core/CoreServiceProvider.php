@@ -2,10 +2,10 @@
 
 namespace Alpaca\Core;
 
-use Alpaca\Core\Listeners\AdminBlockListener;
-use Alpaca\Core\Listeners\UserBlockListener;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
+use Alpaca\Core\Listeners\UserBlockListener;
+use Alpaca\Core\Listeners\AdminBlockListener;
 
 class CoreServiceProvider extends ServiceProvider
 {

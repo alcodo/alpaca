@@ -2,9 +2,9 @@
 
 namespace Alpaca\Page;
 
-use Alpaca\Page\Listeners\SitemapListener;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
+use Alpaca\Page\Listeners\SitemapListener;
 
 class PageServiceProvider extends ServiceProvider
 {

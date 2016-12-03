@@ -2,16 +2,16 @@
 
 namespace Alpaca\User\Controllers;
 
-use Alpaca\Crud\Controllers\ControllerTrait;
-use Alpaca\Crud\Controllers\CrudContract;
-use Alpaca\Crud\Controllers\DependencyTrait;
-use Alpaca\Crud\Controllers\ModelTrait;
+use Alpaca\User\Models\Role;
+use Alpaca\User\Models\User;
 use Alpaca\Crud\Controllers\TextTrait;
 use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
-use Alpaca\User\Models\Role;
-use Alpaca\User\Models\User;
+use Alpaca\Crud\Controllers\ModelTrait;
 use Illuminate\Database\Eloquent\Model;
+use Alpaca\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\ControllerTrait;
+use Alpaca\Crud\Controllers\DependencyTrait;
 use Illuminate\Routing\Controller as BaseController;
 
 class UserBackend extends BaseController implements CrudContract

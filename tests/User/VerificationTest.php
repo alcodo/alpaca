@@ -1,8 +1,8 @@
 <?php
 
 use Alpaca\User\Models\User;
-use Illuminate\Support\Facades\Auth;
 use MailThief\Facades\MailThief;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationTest extends TestCase
 {

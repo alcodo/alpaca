@@ -2,8 +2,8 @@
 
 namespace Alpaca\Block\Builder;
 
-use Alpaca\Block\Builder\Roles\Html;
 use Alpaca\Block\Models\Block;
+use Alpaca\Block\Builder\Roles\Html;
 
 /**
  * This class gets all blocks.

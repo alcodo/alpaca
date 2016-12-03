@@ -1,8 +1,8 @@
 <?php
 
-use Alpaca\Crud\Utilities\PermissionCreator;
-use Alpaca\User\Models\Permission;
 use Alpaca\User\Models\Role;
+use Alpaca\User\Models\Permission;
+use Alpaca\Crud\Utilities\PermissionCreator;
 use Illuminate\Database\Migrations\Migration;
 
 class PermissionUser extends Migration

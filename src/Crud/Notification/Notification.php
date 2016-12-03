@@ -2,8 +2,8 @@
 
 namespace Alpaca\Crud\Notification;
 
-use Alpaca\Crud\Controllers\CrudContract;
 use Laracasts\Flash\Flash;
+use Alpaca\Crud\Controllers\CrudContract;
 
 class Notification implements NotificationContract
 {

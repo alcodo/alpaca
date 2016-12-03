@@ -1,12 +1,12 @@
 <?php
 
-use Alpaca\User\Models\User;
-use Alpaca\Page\Models\Category;
-use Alpaca\Page\Models\Topic;
-use Alpaca\Page\Models\Page;
-use Alpaca\Menu\Models\Menu;
 use Alpaca\Menu\Models\Item;
+use Alpaca\Menu\Models\Menu;
+use Alpaca\Page\Models\Page;
+use Alpaca\User\Models\User;
+use Alpaca\Page\Models\Topic;
 use Alpaca\Block\Models\Block;
+use Alpaca\Page\Models\Category;
 
 /*
  * User

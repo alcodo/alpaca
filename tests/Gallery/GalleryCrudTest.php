@@ -1,8 +1,8 @@
 <?php
 
+use Alpaca\User\Models\User;
 use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\Gallery\Controllers\GalleryBackend;
-use Alpaca\User\Models\User;
 
 class GalleryCrudTest extends TestCase implements CrudTestContract
 {

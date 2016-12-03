@@ -2,18 +2,18 @@
 
 namespace Alpaca\Page\Controllers;
 
-use Alpaca\Crud\Controllers\ControllerTrait;
-use Alpaca\Crud\Controllers\CrudContract;
-use Alpaca\Crud\Controllers\DependencyTrait;
-use Alpaca\Crud\Controllers\ModelTrait;
+use Alpaca\Page\Models\Page;
+use Alpaca\Page\Models\Category;
+use Illuminate\Routing\Controller;
 use Alpaca\Crud\Controllers\TextTrait;
 use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
-use Alpaca\Page\Models\Category;
-use Alpaca\Page\Models\Page;
-use Alpaca\Page\Utilities\CategoryUrlBuilder;
+use Alpaca\Crud\Controllers\ModelTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Routing\Controller;
+use Alpaca\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\ControllerTrait;
+use Alpaca\Crud\Controllers\DependencyTrait;
+use Alpaca\Page\Utilities\CategoryUrlBuilder;
 
 class CategoryBackend extends Controller implements CrudContract
 {

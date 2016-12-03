@@ -2,10 +2,10 @@
 
 namespace Alpaca\Core\Listeners;
 
+use Response;
 use Alpaca\Block\Models\Block;
 use Alpaca\Sitemap\Models\Sitemap;
 use Illuminate\Support\Facades\Auth;
-use Response;
 
 class UserBlockListener
 {

@@ -3,11 +3,11 @@
 namespace Alpaca\Page\Controllers;
 
 use Alpaca\Page\Models\Page;
-use Alpaca\Core\Controllers\Controller;
 use Alpaca\Page\Models\Topic;
+use Illuminate\Support\Facades\Auth;
+use Alpaca\Core\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Auth;
 
 class PageFront extends Controller
 {

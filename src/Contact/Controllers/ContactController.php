@@ -2,15 +2,15 @@
 
 namespace Alpaca\Contact\Controllers;
 
+use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Illuminate\Support\Facades\Config;
 use Alpaca\Core\Controllers\Controller;
 use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\SEOMeta;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
-use Laracasts\Flash\Flash;
 
 class ContactController extends Controller
 {

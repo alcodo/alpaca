@@ -2,8 +2,8 @@
 
 namespace Alpaca\User;
 
-use Alpaca\User\Listener\AccountVerification;
 use Illuminate\Auth\Events\Registered;
+use Alpaca\User\Listener\AccountVerification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 
 class UserServiceProvider extends EventServiceProvider
