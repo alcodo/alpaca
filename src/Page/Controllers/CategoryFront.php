@@ -36,6 +36,8 @@ class CategoryFront extends Controller
             $query->orderBy('title', 'asc');
         }])->Slug($categorySlug)->firstOrFail();
 
+        SEO::setTitle($category->title);
+
         return view('page::category.show', compact('category'));
     }
 }
