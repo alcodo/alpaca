@@ -1,9 +1,9 @@
 <?php
 
-use Alpaca\User\Models\Permission;
 use Alpaca\User\Models\Role;
 use Alpaca\User\Models\User;
 use Illuminate\Database\Seeder;
+use Alpaca\User\Models\Permission;
 
 class UserTableSeeder extends Seeder
 {

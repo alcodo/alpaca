@@ -2,8 +2,8 @@
 
 namespace Alpaca\Block\Builder;
 
-use Alpaca\Block\Builder\Roles\Html;
 use Alpaca\Block\Models\Block;
+use Alpaca\Block\Builder\Roles\Html;
 
 /**
  * This class gets all blocks.
@@ -61,7 +61,6 @@ trait Desktop
     protected function getDesktopBlockByArea($area)
     {
         $allBlocks = $this->getAllBlocks();
-
 
         if (isset($allBlocks[$area])) {
             $blocks = $allBlocks[$area]->filter(function (Block $block) {

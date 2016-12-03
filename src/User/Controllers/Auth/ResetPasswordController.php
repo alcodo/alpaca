@@ -2,10 +2,10 @@
 
 namespace Alpaca\User\Controllers\Auth;
 
+use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
 use Alpaca\Core\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
 
 class ResetPasswordController extends Controller
 {

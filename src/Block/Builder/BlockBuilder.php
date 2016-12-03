@@ -2,8 +2,8 @@
 
 namespace Alpaca\Block\Builder;
 
-use Alpaca\Block\Builder\Roles\Exception;
 use Alpaca\Block\Models\Block;
+use Alpaca\Block\Builder\Roles\Exception;
 
 /**
  * This class gets all blocks.

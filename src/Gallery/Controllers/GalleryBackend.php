@@ -2,18 +2,18 @@
 
 namespace Alpaca\Gallery\Controllers;
 
-use Alcodo\PowerImage\Jobs\CreateImage;
-use Alcodo\PowerImage\Jobs\DeleteImage;
-use Alpaca\Crud\Controllers\ControllerTrait;
-use Alpaca\Crud\Controllers\DependencyTrait;
-use Alpaca\Crud\Controllers\ModelTrait;
+use Alpaca\Gallery\Models\Image;
+use Illuminate\Routing\Controller;
 use Alpaca\Crud\Controllers\TextTrait;
 use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
-use Alpaca\Gallery\Models\Image;
+use Alcodo\PowerImage\Jobs\CreateImage;
+use Alcodo\PowerImage\Jobs\DeleteImage;
+use Alpaca\Crud\Controllers\ModelTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Routing\Controller;
 use Alpaca\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\ControllerTrait;
+use Alpaca\Crud\Controllers\DependencyTrait;
 
 class GalleryBackend extends Controller implements CrudContract
 {

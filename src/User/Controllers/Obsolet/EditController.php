@@ -2,11 +2,11 @@
 
 namespace Alpaca\User\Controllers;
 
-use Alpaca\Core\Controllers\Controller;
 use App\Model\Auth\User;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laracasts\Flash\Flash;
+use Alpaca\Core\Controllers\Controller;
 
 class EditController extends Controller
 {

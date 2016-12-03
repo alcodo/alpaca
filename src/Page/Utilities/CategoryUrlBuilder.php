@@ -2,8 +2,8 @@
 
 namespace Alpaca\Page\Utilities;
 
-use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\Page\Models\Category;
+use Alpaca\Crud\Utilities\UrlBuilder;
 
 class CategoryUrlBuilder extends UrlBuilder
 {

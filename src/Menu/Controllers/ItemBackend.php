@@ -2,16 +2,16 @@
 
 namespace Alpaca\Menu\Controllers;
 
-use Alpaca\Crud\Controllers\ControllerTrait;
-use Alpaca\Crud\Controllers\CrudContract;
-use Alpaca\Crud\Controllers\DependencyTrait;
-use Alpaca\Crud\Controllers\ModelTrait;
+use Alpaca\Menu\Models\Item;
+use Illuminate\Routing\Controller;
 use Alpaca\Crud\Controllers\TextTrait;
 use Alpaca\Crud\Controllers\ViewTrait;
 use Alpaca\Crud\Permission\Permission;
-use Alpaca\Menu\Models\Item;
+use Alpaca\Crud\Controllers\ModelTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Routing\Controller;
+use Alpaca\Crud\Controllers\CrudContract;
+use Alpaca\Crud\Controllers\ControllerTrait;
+use Alpaca\Crud\Controllers\DependencyTrait;
 
 class ItemBackend extends Controller implements CrudContract
 {

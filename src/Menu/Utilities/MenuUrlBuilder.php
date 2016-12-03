@@ -2,8 +2,8 @@
 
 namespace Alpaca\Menu\Utilities;
 
-use Alpaca\Crud\Utilities\UrlBuilder;
 use Alpaca\Menu\Models\Menu;
+use Alpaca\Crud\Utilities\UrlBuilder;
 
 class MenuUrlBuilder extends UrlBuilder
 {

@@ -19,7 +19,6 @@ class InstallUser extends Migration
             'password' => 'admin',
         ]);
 
-
         // add admin role
         $adminRole = Role::where('name', 'admin')->first();
         $user->attachRole($adminRole);

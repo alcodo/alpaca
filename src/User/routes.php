@@ -3,7 +3,6 @@
 Auth::routes();
 Route::get('/register/verify/{token}', 'Auth\RegisterController@verify');
 
-
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::group(['as' => 'backend.', 'middleware' => 'auth'], function () {

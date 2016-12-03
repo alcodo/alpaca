@@ -2,15 +2,15 @@
 
 namespace Alpaca;
 
-use AdamWathan\BootForms\BootFormsServiceProvider;
+use Laracasts\Flash\FlashServiceProvider;
+use Zizaco\Entrust\EntrustServiceProvider;
+use Msurguy\Honeypot\HoneypotServiceProvider;
 use Alcodo\PowerImage\PowerImageServiceProvider;
+use Illuminate\Support\AggregateServiceProvider;
+use AdamWathan\BootForms\BootFormsServiceProvider;
 use Approached\LaravelDateInternational\ServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
-use Illuminate\Support\AggregateServiceProvider;
-use Laracasts\Flash\FlashServiceProvider;
-use Msurguy\Honeypot\HoneypotServiceProvider;
-use Zizaco\Entrust\EntrustServiceProvider;
 
 class DependencyServiceProvider extends AggregateServiceProvider
 {

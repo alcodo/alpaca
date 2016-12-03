@@ -2,13 +2,13 @@
 
 namespace Alpaca\User\Controllers\Auth;
 
-use Alpaca\User\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 use Validator;
+use Laracasts\Flash\Flash;
+use Alpaca\User\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Alpaca\Core\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Laracasts\Flash\Flash;
 
 class RegisterController extends Controller
 {

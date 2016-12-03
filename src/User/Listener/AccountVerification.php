@@ -3,10 +3,10 @@
 namespace Alpaca\User\Listener;
 
 use Alpaca\User\Models\User;
-use Alpaca\User\Notifications\VerifyAccount;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Alpaca\User\Notifications\VerifyAccount;
 use Illuminate\Support\Facades\Notification;
 
 class AccountVerification implements ShouldQueue

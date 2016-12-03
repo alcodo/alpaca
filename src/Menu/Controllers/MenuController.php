@@ -3,8 +3,8 @@
 namespace Alpaca\Menu\Controllers;
 
 use Alpaca\Menu\Models\Menu;
-use Alpaca\Core\Controllers\Controller;
 use Illuminate\Http\Request;
+use Alpaca\Core\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class MenuController extends Controller
