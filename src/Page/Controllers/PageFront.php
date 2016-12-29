@@ -81,8 +81,13 @@ class PageFront extends Controller
      */
     protected function getReleatedPages(Page $page)
     {
+        $category = $page->category;
+        if(is_null($category)){
+            return null;
+        }
+
         /** @var Collection $releated */
-        $releated = $page->category->pages;
+        $releated = $category->pages;
 
         $releated = $releated->filter(function ($releatedPage, $key) use ($page) {
             return $releatedPage->id !== $page->id;
