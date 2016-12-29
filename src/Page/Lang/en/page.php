@@ -9,5 +9,6 @@ return [
     'meta_robots'      => 'Meta Robots',
     'active'           => 'Active',
     'readmore'           => 'Read more',
+    'releated_pages'           => 'That could also interest you',
 
 ];

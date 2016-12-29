@@ -4,6 +4,7 @@ namespace Alpaca\Page\Controllers;
 
 use Alpaca\Page\Models\Page;
 use Alpaca\Page\Models\Topic;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Alpaca\Core\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
@@ -55,7 +56,7 @@ class PageFront extends Controller
 
     protected function viewPage($page)
     {
-        if (! empty($page->meta_robots)) {
+        if (!empty($page->meta_robots)) {
             SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 
@@ -67,6 +68,27 @@ class PageFront extends Controller
 
         SEO::setDescription($page->meta_description);
 
-        return view('page::show', compact('page'));
+        $releated = $this->getReleatedPages($page);
+
+        return view('page::show', compact('page', 'releated'));
+    }
+    
+    /**
+     * Get releated pages from same category
+     *
+     * @param Page $page
+     * @return Collection
+     */
+    protected function getReleatedPages(Page $page)
+    {
+        /** @var Collection $releated */
+        $releated = $page->category->pages;
+
+        $releated = $releated->filter(function ($releatedPage, $key) use ($page) {
+            return $releatedPage->id !== $page->id;
+        })->shuffle();
+        $releated = $releated->take(5);
+
+        return $releated;
     }
 }
