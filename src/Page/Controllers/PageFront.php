@@ -82,8 +82,8 @@ class PageFront extends Controller
     protected function getReleatedPages(Page $page)
     {
         $category = $page->category;
-        if(is_null($category)){
-            return null;
+        if (is_null($category)) {
+            return;
         }
 
         /** @var Collection $releated */
