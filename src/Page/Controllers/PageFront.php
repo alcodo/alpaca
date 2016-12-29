@@ -56,7 +56,7 @@ class PageFront extends Controller
 
     protected function viewPage($page)
     {
-        if (!empty($page->meta_robots)) {
+        if (! empty($page->meta_robots)) {
             SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 
@@ -72,9 +72,9 @@ class PageFront extends Controller
 
         return view('page::show', compact('page', 'releated'));
     }
-    
+
     /**
-     * Get releated pages from same category
+     * Get releated pages from same category.
      *
      * @param Page $page
      * @return Collection
