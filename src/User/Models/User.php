@@ -63,6 +63,7 @@ class User extends \Illuminate\Foundation\Auth\User
     {
         return $this->roles->implode('display_name', ', ');
     }
+
     public function getVerified()
     {
         if ($this->verified) {
