@@ -63,4 +63,12 @@ class User extends \Illuminate\Foundation\Auth\User
     {
         return $this->roles->implode('display_name', ', ');
     }
+    public function getVerified()
+    {
+        if ($this->verified) {
+            return '<i class="fa fa-check text-success" aria-hidden="true"></i>';
+        }
+
+        return '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
+    }
 }

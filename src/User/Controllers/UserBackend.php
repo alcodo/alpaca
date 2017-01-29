@@ -62,6 +62,12 @@ class UserBackend extends BaseController implements CrudContract
                 'modelValue' => 'getRoles',
             ],
             [
+                'label'      => trans('user::user.verification'),
+                'css'        => 'col-md-1',
+                'html' => true,
+                'modelValue' => 'getVerified',
+            ],
+            [
                 'label'      => trans('crud::crud.updated'),
                 'css'        => 'col-md-2',
                 'modelValue' => 'getUpdated',
