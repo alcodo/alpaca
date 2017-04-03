@@ -1,7 +1,7 @@
 <?php
 
 /**
- * If route is active than the css class will printed
+ * If route is active than the css class will printed.
  * @param $route
  * @param string $output
  * @return string
