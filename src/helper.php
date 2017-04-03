@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * If route is active than the css class will printed
+ * @param $route
+ * @param string $output
+ * @return string
+ */
 function isActiveRoute($route, $output = 'active')
 {
     if (Route::currentRouteName() == $route) {
