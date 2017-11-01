@@ -48,5 +48,12 @@
       "tests/TestHelper"
     ]
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Alpaca\\AlpacaServiceProvider"
+      ]
+    }
+  },
   "minimum-stability": "dev"
 }
