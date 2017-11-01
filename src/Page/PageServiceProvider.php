@@ -45,7 +45,7 @@ class PageServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->publishes([
-            __DIR__ . '/database/seeds/PageTableSeeder.php' => base_path('/database/seeds/PageTableSeeder.php'),
+            __DIR__.'/database/seeds/PageTableSeeder.php' => base_path('/database/seeds/PageTableSeeder.php'),
         ]);
 
         $this->app['router']->group([

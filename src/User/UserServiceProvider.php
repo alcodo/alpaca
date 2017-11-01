@@ -27,22 +27,22 @@ class UserServiceProvider extends EventServiceProvider
     {
         parent::boot();
 
-        $this->loadViewsFrom(__DIR__ . '/Views', 'user');
-        $this->loadTranslationsFrom(__DIR__ . '/Langs', 'user');
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadViewsFrom(__DIR__.'/Views', 'user');
+        $this->loadTranslationsFrom(__DIR__.'/Langs', 'user');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->publishes([
-            __DIR__ . '/config/entrust.php' => config_path('entrust.php'),
+            __DIR__.'/config/entrust.php' => config_path('entrust.php'),
         ]);
         $this->publishes([
-            __DIR__ . '/database/seeds/UserTableSeeder.php' => base_path('/database/seeds/UserTableSeeder.php'),
+            __DIR__.'/database/seeds/UserTableSeeder.php' => base_path('/database/seeds/UserTableSeeder.php'),
         ]);
 
         $this->app['router']->group([
             'middleware' => 'web',
             'namespace' => 'Alpaca\User\Controllers',
         ], function ($router) {
-            require __DIR__ . '/routes.php';
+            require __DIR__.'/routes.php';
         });
     }
 }
