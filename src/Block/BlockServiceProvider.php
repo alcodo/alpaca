@@ -24,9 +24,7 @@ class BlockServiceProvider extends Provider
     {
         $this->loadViewsFrom(__DIR__.'/Views', 'block');
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'block');
-        $this->publishes([
-            __DIR__.'/Migrations/' => base_path('/database/migrations'),
-        ], 'migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->app->instance('block', new BlockBuilder());
 
         $this->app['router']->group([

@@ -13,15 +13,15 @@ class InstallUser extends Migration
      */
     public function up()
     {
-        $user = User::create([
-            'username' => 'admin',
-            'email'    => 'admin@example.com',
-            'password' => 'admin',
-        ]);
-
-        // add admin role
-        $adminRole = Role::where('name', 'admin')->first();
-        $user->attachRole($adminRole);
+//        $user = User::create([
+//            'username' => 'admin',
+//            'email'    => 'admin@example.com',
+//            'password' => 'admin',
+//        ]);
+//
+//        // add admin role
+//        $adminRole = Role::where('name', 'admin')->first();
+//        $user->attachRole($adminRole);
     }
 
     /**

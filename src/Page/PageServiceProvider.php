@@ -43,13 +43,10 @@ class PageServiceProvider extends ServiceProvider
             __DIR__.'/Config/' => base_path('/config'),
         ], 'migrations');
 
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->publishes([
-            __DIR__.'/Migrations/' => base_path('/database/migrations'),
-        ], 'migrations');
-
-        $this->publishes([
-            __DIR__.'/Seeds/' => base_path('/database/seeds'),
-        ], 'seeds');
+            __DIR__ . '/database/seeds/PageTableSeeder.php' => base_path('/database/seeds/PageTableSeeder.php'),
+        ]);
 
         $this->app['router']->group([
             'middleware' => 'web',

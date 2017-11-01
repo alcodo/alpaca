@@ -20,9 +20,7 @@ class MenuServiceProvider extends Provider
     {
         $this->loadViewsFrom(__DIR__.'/Views', 'menu');
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'menu');
-        $this->publishes([
-            __DIR__.'/Migrations/' => base_path('/database/migrations'),
-        ], 'migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->app['router']->group([
             'middleware' => 'web',
