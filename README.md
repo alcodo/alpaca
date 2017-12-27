@@ -1,5 +1,11 @@
 # Alpaca
-Simple laravel CMF System
+Simple CMS System based on Laravel Framework.
 
-Add npm package file:
- "alpaca": "file:./vendor/alcodo/alpaca/resources/javascript"
+Requirements:
+* Laravel Framework
+* Bootstrap 4
+* VueJs
+
+## Installation
+
+*TODO*
