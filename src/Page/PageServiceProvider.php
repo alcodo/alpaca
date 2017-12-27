@@ -13,11 +13,11 @@ class PageServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-        'sitemap' => [
-            SitemapListener::class,
-        ],
-    ];
+//    protected $listen = [
+//        'sitemap' => [
+//            SitemapListener::class,
+//        ],
+//    ];
 
     /**
      * Register the service provider.
@@ -30,29 +30,22 @@ class PageServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        foreach ($this->listen as $event => $listeners) {
-            foreach ($listeners as $listener) {
-                Event::listen($event, $listener);
-            }
-        }
+//        foreach ($this->listen as $event => $listeners) {
+//            foreach ($listeners as $listener) {
+//                Event::listen($event, $listener);
+//            }
+//        }
 
-        $this->loadViewsFrom(__DIR__.'/Views', 'page');
-        $this->loadTranslationsFrom(__DIR__.'/Lang', 'page');
-
-        $this->publishes([
-            __DIR__.'/Config/' => base_path('/config'),
-        ], 'migrations');
-
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
-        $this->publishes([
-            __DIR__.'/database/seeds/PageTableSeeder.php' => base_path('/database/seeds/PageTableSeeder.php'),
-        ]);
+        $this->publishes([__DIR__ . '/Config/page.php' => config_path('page.php'),]);
+        $this->loadViewsFrom(__DIR__ . '/Views', 'page');
+        $this->loadTranslationsFrom(__DIR__ . '/Translations', 'page');
+        $this->loadMigrationsFrom(__DIR__ . '/Migrations');
 
         $this->app['router']->group([
             'middleware' => 'web',
             'namespace' => 'Alpaca\Page\Controllers',
         ], function ($router) {
-            require __DIR__.'/routes.php';
+            $this->loadRoutesFrom(__DIR__ . '/routes.php');
         });
     }
 }
