@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTopicTable extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,15 @@ class CreateTopicTable extends Migration
      */
     public function up()
     {
-        Schema::create('topics', function (Blueprint $table) {
+        Schema::create('page_categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->boolean('active');
 
+
+            $table->string('path')->unique();
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->text('content');
 
             $table->timestamps();
         });
@@ -30,6 +33,6 @@ class CreateTopicTable extends Migration
      */
     public function down()
     {
-        Schema::drop('topics');
+        Schema::drop('categories');
     }
 }

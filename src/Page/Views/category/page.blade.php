@@ -1,0 +1,28 @@
+<hr/>
+
+<h2>
+    <a href="{{ $page->path }}">
+        {{$page->title}}
+    </a>
+</h2>
+
+{{--TODO only teaser text--}}
+{!!  $page->content !!}
+
+<p class="text-right">
+    <a href="{{ $page->path }}" class="read-more">{{ trans('page::page.readmore') }}</a>
+</p>
+
+{{--@if(strpos($page->body, Alpaca\Page\Models\Page::BREAK_TAG) !== false)--}}
+    {{--tag exists--}}
+
+    {{--{!!  strstr($page->body, Alpaca\Page\Models\Page::BREAK_TAG, true) !!}--}}
+    {{--<p class="text-right">--}}
+
+        {{--<a href="{{ $page->getPageLink() }}" class="read-more">{{ trans('page::page.readmore') }}</a>--}}
+    {{--</p>--}}
+
+{{--@else--}}
+    {{--output basic--}}
+    {{--{!!  $page->body !!}--}}
+{{--@endif--}}

@@ -12,29 +12,28 @@ class CreatePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('page_pages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('active');
 
+            $table->string('path')->unique();
             $table->string('title');
-            $table->string('slug');
-            $table->text('body');
+            $table->text('content');
 
-            // seo
-            $table->string('html_title');
-            $table->string('meta_robots');
-            $table->string('meta_description');
+            // user
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
 
             // category
             $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('page_categories');
 
-            // topic
-            $table->integer('topic_id')->unsigned()->nullable();
-            $table->foreign('topic_id')->references('id')->on('topics');
+            // seo
+            $table->string('html_title')->nullable();
+            $table->string('meta_robots')->nullable();
+            $table->string('meta_description')->nullable();
 
-            $table->unique(['slug', 'topic_id']);
             $table->timestamps();
         });
     }

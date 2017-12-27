@@ -23,17 +23,17 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $providers = [
-        DependencyServiceProvider::class,
-        CoreServiceProvider::class,
-        CookieConsentServiceProvider::class,
-        CrudServiceProvider::class,
-        UserServiceProvider::class,
+//        DependencyServiceProvider::class,
+//        CoreServiceProvider::class,
+//        CookieConsentServiceProvider::class,
+//        CrudServiceProvider::class,
+//        UserServiceProvider::class,
 //        BlockServiceProvider::class,
 //        MenuServiceProvider::class,
 //        SitemapServiceProvider::class,
 //        ContactServiceProvider::class,
 //        GalleryServiceProvider::class,
 //        EmailServiceProvider::class,
-//        PageServiceProvider::class,
+        PageServiceProvider::class,
     ];
 }
