@@ -12,6 +12,13 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PageController extends Controller
 {
+
+    public function index()
+    {
+        $pages = Page::paginate(20);
+        return view('page::page.list', compact('pages'));
+    }
+
     public function show(Page $page)
     {
         $releated = $this->getReleatedPages($page);

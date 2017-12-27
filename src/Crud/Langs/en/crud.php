@@ -33,4 +33,6 @@ return [
     'alt'                  => 'Alt',
     'filename'             => 'Filename',
     'active'             => 'Active',
+    'user'             => 'User',
+    'category'             => 'Category',
 ];

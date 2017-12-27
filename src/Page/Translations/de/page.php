@@ -2,6 +2,7 @@
 
 return [
 
+    'create_page'             => 'Seite erstellen',
     'page'             => 'Seite',
     'pages'            => 'Seiten',
     'html_title'       => 'Html titel',

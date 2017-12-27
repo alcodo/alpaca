@@ -1,8 +1,15 @@
 @extends('app')
 
 @section('content')
+
+    <div class="float-right">
+        @include('page::page.action', ['isIndex' => true, 'isShow' => false])
+    </div>
+
     <h1>{{$page->title}}</h1>
     {!!$page->content !!}
+
+
 
     @if(!is_null($page->category))
         <hr/>

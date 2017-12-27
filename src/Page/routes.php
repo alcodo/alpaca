@@ -46,3 +46,5 @@ $pages->map(function ($page) {
         return $controller->show($page);
     });
 });
+
+Route::resource('/backend/page', 'PageController');
