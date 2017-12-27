@@ -9,16 +9,12 @@ class Page extends Model
 {
     protected $table = 'page_pages';
 
-    /*
-     * Body text will be cuttet on this tag
-     */
-//    const BREAK_TAG = '<!--break-->';
-
     protected $fillable = [
         'active',
         'path',
 
         'title',
+        'teaser',
         'content',
 
         // reference

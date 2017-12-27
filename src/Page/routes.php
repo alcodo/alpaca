@@ -20,10 +20,9 @@
 //// front page
 //Route::get('/', ['as' => 'page.frontpage', 'uses' => 'PageFront@showFrontPage']);
 
-//$paths = \Alpaca\Page\Models\Page::get(['path']);
-
-//dd($paths);
-
+/**
+ * Categorie
+ */
 $categories = \Alpaca\Page\Models\Category::all();
 
 $categories->map(function ($category) {
@@ -35,6 +34,9 @@ $categories->map(function ($category) {
 });
 
 
+/**
+ * Page
+ */
 $pages = \Alpaca\Page\Models\Page::all();
 
 $pages->map(function ($page) {
@@ -44,5 +46,3 @@ $pages->map(function ($page) {
         return $controller->show($page);
     });
 });
-
-//dd($categoriesPaths);

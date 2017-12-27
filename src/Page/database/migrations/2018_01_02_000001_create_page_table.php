@@ -19,6 +19,7 @@ class CreatePageTable extends Migration
 
             $table->string('path')->unique();
             $table->string('title');
+            $table->text('teaser');
             $table->text('content');
 
             // user

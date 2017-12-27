@@ -6,8 +6,7 @@
     </a>
 </h2>
 
-{{--TODO only teaser text--}}
-{!!  $page->content !!}
+{!!  $page->teaser !!}
 
 <p class="text-right">
     <a href="{{ $page->path }}" class="read-more">{{ trans('page::page.readmore') }}</a>
