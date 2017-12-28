@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 
+
 class TestCase extends Orchestra\Testbench\TestCase
 {
     /**

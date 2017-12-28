@@ -15,13 +15,12 @@ use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
 class DependencyServiceProvider extends AggregateServiceProvider
 {
     protected $providers = [
-        PowerImageServiceProvider::class,
+//        PowerImageServiceProvider::class,
         FlashServiceProvider::class,
         EntrustServiceProvider::class,
         SEOToolsServiceProvider::class,
         SlugifyServiceProvider::class,
         ServiceProvider::class,
-        BootFormsServiceProvider::class,
         HoneypotServiceProvider::class,
     ];
 

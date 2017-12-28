@@ -40,12 +40,6 @@ class PageServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/Views', 'page');
         $this->loadTranslationsFrom(__DIR__ . '/Translations', 'page');
         $this->loadMigrationsFrom(__DIR__ . '/Migrations');
-
-        $this->app['router']->group([
-            'middleware' => 'web',
-            'namespace' => 'Alpaca\Page\Controllers',
-        ], function ($router) {
-            $this->loadRoutesFrom(__DIR__ . '/routes.php');
-        });
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
     }
 }

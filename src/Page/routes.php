@@ -1,5 +1,8 @@
 <?php
 
+Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function () {
+
+
 //Route::group(['as' => 'backend.', 'middleware' => 'auth'], function () {
 //    Route::resource('/backend/page', 'PageBackend');
 //    Route::resource('/backend/topic', 'TopicBackend');
@@ -20,31 +23,42 @@
 //// front page
 //Route::get('/', ['as' => 'page.frontpage', 'uses' => 'PageFront@showFrontPage']);
 
-/**
- * Categorie
- */
-$categories = \Alpaca\Page\Models\Category::all();
+    /**
+     * Categorie
+     */
+    dump('loaded');
+    try {
+        $categories = \Alpaca\Page\Models\Category::all();
 
-$categories->map(function ($category) {
+        $categories->map(function ($category) {
 
-    Route::get($category->path, function () use ($category) {
-        $controller = new \Alpaca\Page\Controllers\CategoryController();
-        return $controller->show($category);
-    });
+            Route::get($category->path, function () use ($category) {
+                $controller = new \Alpaca\Page\Controllers\CategoryController();
+                return $controller->show($category);
+            });
+        });
+
+
+        /**
+         * Page
+         */
+        $pages = \Alpaca\Page\Models\Page::all();
+
+        $pages->map(function ($page) {
+
+            dump($page->path);
+
+            Route::get($page->path, function () use ($page) {
+                $controller = new \Alpaca\Page\Controllers\PageController();
+                return $controller->show($page);
+            });
+        });
+
+    } catch (Illuminate\Database\QueryException $e) {
+        dump('exception');
+        dump($e->getMessage());
+    }
+
+    Route::resource('/backend/page', 'PageController');
+
 });
-
-
-/**
- * Page
- */
-$pages = \Alpaca\Page\Models\Page::all();
-
-$pages->map(function ($page) {
-
-    Route::get($page->path, function () use ($page) {
-        $controller = new \Alpaca\Page\Controllers\PageController();
-        return $controller->show($page);
-    });
-});
-
-Route::resource('/backend/page', 'PageController');
