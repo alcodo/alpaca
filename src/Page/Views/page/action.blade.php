@@ -2,7 +2,7 @@
       class="btn-group" aria-label="Action">
     @if($isIndex)
         <a href="/backend/page" class="btn btn-default" title="{{ trans('crud::crud.index') }}">
-            <i class="fa fa-external-link" aria-hidden="true"></i>
+            <i class="fa fa-list" aria-hidden="true"></i>
         </a>
     @endif
     @if($isShow)
