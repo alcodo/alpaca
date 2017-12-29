@@ -67,4 +67,19 @@ class PageTest extends IntegrationTest
         ]);
     }
 
+    public function test_destroy_page()
+    {
+        $this->assertDatabaseHas('page_pages', [
+            'title' => 'Hallo Welt!',
+        ]);
+
+        $this->withoutExceptionHandling();
+        $this->delete('/backend/page/1')
+            ->assertRedirect('/backend/page');
+
+        $this->assertDatabaseMissing('page_pages', [
+            'title' => 'Hallo Welt!',
+        ]);
+    }
+
 }
