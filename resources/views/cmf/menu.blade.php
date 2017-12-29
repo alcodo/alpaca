@@ -10,6 +10,6 @@
 </li>
 <li class="block-item {{ isActiveRoute('backend.category.index') }}">
     <a href="{{ route('backend.category.index') }}">
-        {{ trans('alpaca::alpaca.administration_type', ['type' => trans('alpaca::category.categories')]) }}
+        {{ trans('alpaca::alpaca.administration_type', ['type' => trans('alpaca::alpaca.categories')]) }}
     </a>
 </li>

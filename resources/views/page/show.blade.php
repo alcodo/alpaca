@@ -26,7 +26,7 @@
             @endforeach
         </div>
 
-        <p class="text-right">{{ trans('alpaca::category.category') }}: <a href="{{ $page->category->path }}">
+        <p class="text-right">{{ trans('alpaca::alpaca.category') }}: <a href="{{ $page->category->path }}">
                 {{$page->category->title}}
             </a>
         </p>

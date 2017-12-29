@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group">
-    <label for="category">{{ trans('alpaca::category.category') }}</label>
+    <label for="category">{{ trans('alpaca::alpaca.category') }}</label>
     <select id="category" class="form-control" name="category_id">
         @foreach($categories as $value => $text)
             <option value="{{ $value }}">{{ $text }}</option>

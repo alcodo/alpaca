@@ -27,7 +27,7 @@
             <tr>
                 <td>{{ $page->id }}</td>
                 <td>
-                    <a target="_blank" href="{{ $page->path }}">{{ $page->title }}</a>
+                    <a href="{{ $page->path }}">{{ $page->title }}</a>
                 </td>
                 <td>
                     @if($page->active)
@@ -37,7 +37,7 @@
                     @endif
                 </td>
                 <td>
-                    <a target="_blank" href="{{ $page->category->path }}">{{ $page->category->title }}</a>
+                    <a href="{{ $page->category->path }}">{{ $page->category->title }}</a>
                 </td>
                 <td>{{ $page->user_id }}</td>
                 <td>{{ dateintl_full('short', $page->created_at) }}</td>

@@ -34,7 +34,7 @@ class PageController extends Controller
     public function create()
     {
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
-        $categories->prepend(trans('alpaca::category.no_category'), '');
+        $categories->prepend(trans('alpaca::alpaca.no_category'), '');
 
         return view('alpaca::page.create', compact('categories'));
     }

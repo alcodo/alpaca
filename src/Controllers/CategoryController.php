@@ -27,7 +27,7 @@ class CategoryController extends Controller
 //
 //        SEO::setTitle($category->title);
 //
-        return view('page::category.show', compact('category'));
+        return view('alpaca::category.show', compact('category'));
     }
 
 }

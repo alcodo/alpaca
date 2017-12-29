@@ -38,7 +38,7 @@ Route::group([
         $categories->map(function ($category) {
 
             Route::get($category->path, function () use ($category) {
-                $controller = new \Alpaca\Page\Controllers\CategoryController();
+                $controller = new \Alpaca\Controllers\CategoryController();
                 return $controller->show($category);
             });
         });

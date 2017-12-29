@@ -1,4 +1,4 @@
-@extends('app')
+@extends('alpaca::layout')
 
 @section('content')
     <h1>{{ $category->title }}</h1>
