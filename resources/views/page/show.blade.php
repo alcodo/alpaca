@@ -1,9 +1,9 @@
-{{--@extends('app')--}}
+@extends('alpaca::layout')
 
 @section('content')
 
     <div class="float-right">
-        @include('page::page.action', ['isIndex' => true, 'isShow' => false])
+        @include('alpaca::page.action', ['isIndex' => true, 'isShow' => false])
     </div>
 
     <h1>{{$page->title}}</h1>
@@ -26,7 +26,7 @@
             @endforeach
         </div>
 
-        <p class="text-right">{{ trans('page::category.category') }}: <a href="{{ $page->category->path }}">
+        <p class="text-right">{{ trans('alpaca::category.category') }}: <a href="{{ $page->category->path }}">
                 {{$page->category->title}}
             </a>
         </p>

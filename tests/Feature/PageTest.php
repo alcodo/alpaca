@@ -16,7 +16,6 @@ class PageTest extends IntegrationTest
 
         $this->get('hallo-welt')
             ->assertSuccessful()
-            ->dump()
             ->assertSee('Hallo');
     }
 

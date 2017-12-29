@@ -9,16 +9,16 @@
 {!!  $page->teaser !!}
 
 <p class="text-right">
-    <a href="{{ $page->path }}" class="read-more">{{ trans('page::page.readmore') }}</a>
+    <a href="{{ $page->path }}" class="read-more">{{ trans('alpaca::page.readmore') }}</a>
 </p>
 
-{{--@if(strpos($page->body, Alpaca\Page\Models\Page::BREAK_TAG) !== false)--}}
+{{--@if(strpos($page->body, Alpaca\Page\Models\alpaca::BREAK_TAG) !== false)--}}
     {{--tag exists--}}
 
-    {{--{!!  strstr($page->body, Alpaca\Page\Models\Page::BREAK_TAG, true) !!}--}}
+    {{--{!!  strstr($page->body, Alpaca\Page\Models\alpaca::BREAK_TAG, true) !!}--}}
     {{--<p class="text-right">--}}
 
-        {{--<a href="{{ $page->getPageLink() }}" class="read-more">{{ trans('page::page.readmore') }}</a>--}}
+        {{--<a href="{{ $page->getPageLink() }}" class="read-more">{{ trans('alpaca::page.readmore') }}</a>--}}
     {{--</p>--}}
 
 {{--@else--}}

@@ -8,7 +8,7 @@
 </div>
 
 <div class="form-group">
-    <label for="category">{{ trans('page::category.category') }}</label>
+    <label for="category">{{ trans('alpaca::category.category') }}</label>
     <select id="category" class="form-control">
         @foreach($categories as $value => $text)
             <option value="{{ $value }}">{{ $text }}</option>
@@ -36,15 +36,15 @@
     <b-tab title="SEO" >
 
         <div class="form-group">
-            <label for="html_title">{{ trans('page::page.html_title') }}</label>
+            <label for="html_title">{{ trans('alpaca::page.html_title') }}</label>
             <input type="text" class="form-control" id="html_title">
         </div>
         <div class="form-group">
-            <label for="meta_description">{{ trans('page::page.meta_description') }}</label>
+            <label for="meta_description">{{ trans('alpaca::page.meta_description') }}</label>
             <input type="text" class="form-control" id="meta_description">
         </div>
         <div class="form-group">
-            <label for="meta_robots">{{ trans('page::page.meta_robots') }}</label>
+            <label for="meta_robots">{{ trans('alpaca::page.meta_robots') }}</label>
             <input type="text" class="form-control" id="meta_robots">
         </div>
 
@@ -54,7 +54,7 @@
 <div class="form-check">
     <label class="form-check-label">
         <input type="checkbox" class="form-check-input" checked>
-        {{ trans('page::page.active') }}
+        {{ trans('alpaca::page.active') }}
     </label>
 </div>
 

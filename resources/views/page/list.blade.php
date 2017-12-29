@@ -3,10 +3,10 @@
 @section('content')
 
     <a href="/backend/page/create" class="btn btn-info float-right">
-        {{ trans('page::page.create_page') }}
+        {{ trans('alpaca::page.create_page') }}
     </a>
     <h1>
-        {{ trans('page::page.pages') }}
+        {{ trans('alpaca::page.pages') }}
     </h1>
 
     <table class="table">
@@ -43,7 +43,7 @@
                 <td>{{ dateintl_full('short', $page->created_at) }}</td>
                 <td>{{ dateintl_full('short', $page->updated_at) }}</td>
                 <td>
-                    @include('page::page.action', ['isIndex' => false, 'isShow' => true])
+                    @include('alpaca::page.action', ['isIndex' => false, 'isShow' => true])
                 </td>
             </tr>
         @endforeach
