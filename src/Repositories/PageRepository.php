@@ -34,6 +34,8 @@ class PageRepository
             'meta_robots' => 'string',
         ]);
 
+        dd($validatedData);
+
         if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
             $validatedData['teaser'] = ''; // TODO
         }

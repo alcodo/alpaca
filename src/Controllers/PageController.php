@@ -48,6 +48,7 @@ class PageController extends Controller
      */
     public function store(Request $request, PageRepository $repo)
     {
+//        dd($request->all());
         $page = $repo->create($request->all());
         return redirect($page->path);
     }

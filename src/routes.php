@@ -1,6 +1,12 @@
 <?php
 
-Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
+Route::group([
+//    'middleware' => ['web', 'TrimStrings'],
+    'middleware' => ['web'],
+    'namespace' => 'Alpaca\Controllers',
+], function () {
+//Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
+//Route::middleware(['web', 'trimStrings'])->namespace('Alpaca\Controllers')->group(function () {
 
 
 //Route::group(['as' => 'backend.', 'middleware' => 'auth'], function () {

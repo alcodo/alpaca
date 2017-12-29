@@ -17,13 +17,14 @@ use Alpaca\CookieConsent\CookieConsentServiceProvider;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
 {
+    protected $listen = [];
     /**
      * The provider class names.
      *
      * @var array
      */
     protected $providers = [
-        DependencyServiceProvider::class,
+//        DependencyServiceProvider::class,
 //        CoreServiceProvider::class,
 //        CookieConsentServiceProvider::class,
 //        CrudServiceProvider::class,
@@ -37,20 +38,39 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 //        PageServiceProvider::class,
     ];
 
-    public function boot()
+    protected $middlewares = [
+        'TrimStrings' => \Alpaca\Middlewares\TrimStrings::class,
+    ];
+
+    public function boot(\Illuminate\Routing\Router $router)
     {
-//        foreach ($this->listen as $event => $listeners) {
-//            foreach ($listeners as $listener) {
-//                Event::listen($event, $listener);
-//            }
-//        }
+        $this->app->register(DependencyServiceProvider::class);
+        $this->registerMiddleware($router);
+        $this->registerEvents();
 
-        $packageRootPath = __DIR__ . '/..';
-
-        $this->publishes([$packageRootPath . '/config/alpaca.php' => config_path('alpaca.php'),]);
-        $this->loadViewsFrom($packageRootPath . '/resources/views', 'alpaca');
-        $this->loadTranslationsFrom($packageRootPath . '/resources/lang', 'alpaca');
-        $this->loadMigrationsFrom($packageRootPath . '/database/migrations');
+        $this->publishes([__DIR__ . '/../config/alpaca.php' => config_path('alpaca.php'),]);
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
+    }
+
+    /**
+     * @param \Illuminate\Routing\Router $router
+     */
+    public function registerMiddleware(\Illuminate\Routing\Router $router): void
+    {
+        foreach ($this->middlewares as $name => $class) {
+            $router->middleware($name, $class);
+        }
+    }
+
+    public function registerEvents(): void
+    {
+        foreach ($this->listen as $event => $listeners) {
+            foreach ($listeners as $listener) {
+                Event::listen($event, $listener);
+            }
+        }
     }
 }
