@@ -3,10 +3,10 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Models\Category;
+use Alpaca\Repositories\PageRepository;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Http\Request;
 use Alpaca\Models\Page;
-use Alpaca\Models\Topic;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Alpaca\Controllers\Controller;
@@ -43,34 +43,12 @@ class PageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
+     * @param PageRepository $repo
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, PageRepository $repo)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'path' => 'string',
-            'active' => 'required|boolean',
-            // ref
-            'user_id' => 'integer',
-            'category_id' => 'integer',
-            // seo
-            'html_title' => 'string',
-            'meta_description' => 'string',
-            'meta_robots' => 'string',
-        ]);
-
-        if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
-            $validatedData['teaser'] = ''; // TODO
-        }
-
-        if (!isset($validatedData['path']) || empty($validatedData['path'])) {
-            $validatedData['path'] = SlugifyFacade::slugify($validatedData['title']);
-        }
-
-        $page = Page::create($validatedData);
-
+        $page = $repo->create($request->all());
         return redirect($page->path);
     }
 
@@ -78,11 +56,13 @@ class PageController extends Controller
      * Display the specified resource.
      *
      * @param  \Alpaca\Models\Page $page
+     * @param PageRepository $repo
      * @return \Illuminate\Http\Response
      */
     public function show(Page $page)
     {
-        $releated = $this->getReleatedPages($page);
+        $repo = new PageRepository();
+        $releated = $repo->getRelatedPages($page);
 
         return view('alpaca::page.show', compact('page', 'releated'));
     }
@@ -108,33 +88,9 @@ class PageController extends Controller
      * @param  \Alpaca\Models\Page $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, Page $page, PageRepository $repo)
     {
-//        dd($page);
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'path' => 'string',
-            'active' => 'required|boolean',
-            // ref
-            'user_id' => 'integer',
-            'category_id' => 'integer',
-            // seo
-            'html_title' => 'string',
-            'meta_description' => 'string',
-            'meta_robots' => 'string',
-        ]);
-
-        if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
-            $validatedData['teaser'] = ''; // TODO
-        }
-
-        if (!isset($validatedData['path']) || empty($validatedData['path'])) {
-            $validatedData['path'] = SlugifyFacade::slugify($validatedData['title']);
-        }
-
-        $page->update($validatedData);
-
+        $page = $repo->update($page, $request->all());
         return redirect($page->path);
     }
 
@@ -204,28 +160,4 @@ class PageController extends Controller
 //
 //        return view('page::show', compact('page', 'releated'));
 //    }
-
-    /**
-     * Get releated pages from same category.
-     *
-     * @param Page $page
-     * @return Collection
-     */
-    protected function getReleatedPages(Page $page)
-    {
-        $category = $page->category;
-        if (is_null($category)) {
-            return;
-        }
-
-        /** @var Collection $releated */
-        $releated = $category->pages;
-
-        $releated = $releated->filter(function ($releatedPage, $key) use ($page) {
-            return $releatedPage->id !== $page->id;
-        })->shuffle();
-        $releated = $releated->take(5);
-
-        return $releated;
-    }
 }

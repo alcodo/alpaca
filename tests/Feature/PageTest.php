@@ -10,6 +10,7 @@ class PageTest extends IntegrationTest
 
     public function test_show_page()
     {
+        $this->withoutExceptionHandling();
         $this->get('/hallo-welt')
             ->assertSuccessful()
             ->assertSee('Hallo');
@@ -31,6 +32,7 @@ class PageTest extends IntegrationTest
 
     public function test_store_page()
     {
+        $this->withoutExceptionHandling();
         $this->post('/backend/page', [
             'title' => 'My new Page',
             'content' => 'So cool',
