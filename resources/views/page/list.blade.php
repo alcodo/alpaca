@@ -37,7 +37,9 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ $page->category->path }}">{{ $page->category->title }}</a>
+                    @if($page->category)
+                        <a href="{{ $page->category->path }}">{{ $page->category->title }}</a>
+                    @endif
                 </td>
                 <td>{{ $page->user_id }}</td>
                 <td>{{ dateintl_full('short', $page->created_at) }}</td>

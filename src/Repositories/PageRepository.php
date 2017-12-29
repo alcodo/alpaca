@@ -23,18 +23,18 @@ class PageRepository
         $validatedData = $this->validateWith([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'string',
+            'path' => 'nullable|string',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',
             'category_id' => 'nullable|integer',
             // seo
-            'html_title' => 'string',
-            'meta_description' => 'string',
-            'meta_robots' => 'string',
+            'html_title' => 'nullable|string',
+            'meta_description' => 'nullable|string',
+            'meta_robots' => 'nullable|string',
         ]);
 
-        dd($validatedData);
+//        dd($validatedData);
 
         if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
             $validatedData['teaser'] = ''; // TODO

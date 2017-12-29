@@ -1,8 +1,10 @@
 <?php
 
 Route::group([
-//    'middleware' => ['web', 'TrimStrings'],
-    'middleware' => ['web'],
+    'middleware' => [
+        'web',
+        'alpaca',
+    ],
     'namespace' => 'Alpaca\Controllers',
 ], function () {
 //Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {

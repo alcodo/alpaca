@@ -38,9 +38,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 //        PageServiceProvider::class,
     ];
 
-    protected $middlewares = [
-        'TrimStrings' => \Alpaca\Middlewares\TrimStrings::class,
-    ];
+//    protected $middlewares = [
+//        'TrimStrings' => \Alpaca\Middlewares\TrimStrings::class,
+//    ];
 
     public function boot(\Illuminate\Routing\Router $router)
     {
@@ -60,9 +60,13 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      */
     public function registerMiddleware(\Illuminate\Routing\Router $router): void
     {
-        foreach ($this->middlewares as $name => $class) {
-            $router->middleware($name, $class);
-        }
+        $router->middlewareGroup('alpaca', [
+            \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
+            \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        ]);
+//        foreach ($this->middlewares as $name => $class) {
+//            $router->middleware($name, $class);
+//        }
     }
 
     public function registerEvents(): void
