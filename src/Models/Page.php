@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Page\Models;
+namespace Alpaca\Models;
 
 use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;

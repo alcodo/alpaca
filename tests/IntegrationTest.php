@@ -83,6 +83,6 @@ abstract class IntegrationTest extends TestCase
 
     protected function loadRoutesAgain()
     {
-        include(__DIR__ . '/../src/Page/routes.php');
+        include(__DIR__ . '/../src/routes.php');
     }
 }

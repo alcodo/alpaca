@@ -34,6 +34,23 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 //        ContactServiceProvider::class,
 //        GalleryServiceProvider::class,
 //        EmailServiceProvider::class,
-        PageServiceProvider::class,
+//        PageServiceProvider::class,
     ];
+
+    public function boot()
+    {
+//        foreach ($this->listen as $event => $listeners) {
+//            foreach ($listeners as $listener) {
+//                Event::listen($event, $listener);
+//            }
+//        }
+
+        $packageRootPath = __DIR__ . '/..';
+
+        $this->publishes([$packageRootPath . '/config/alpaca.php' => config_path('alpaca.php'),]);
+        $this->loadViewsFrom($packageRootPath . '/resources/views', 'alpaca');
+        $this->loadTranslationsFrom($packageRootPath . '/resources/lang', 'alpaca');
+        $this->loadMigrationsFrom($packageRootPath . '/database/migrations');
+        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+    }
 }

@@ -27,7 +27,7 @@ Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function
      * Categorie
      */
     try {
-        $categories = \Alpaca\Page\Models\Category::all();
+        $categories = \Alpaca\Models\Category::all();
 
         $categories->map(function ($category) {
 
@@ -41,12 +41,12 @@ Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function
         /**
          * Page
          */
-        $pages = \Alpaca\Page\Models\Page::all();
+        $pages = \Alpaca\Models\Page::all();
 
         $pages->map(function ($page) {
 
             Route::get($page->path, function () use ($page) {
-                $controller = new \Alpaca\Page\Controllers\PageController();
+                $controller = new \Alpaca\Controllers\PageController();
                 return $controller->show($page);
             });
         });

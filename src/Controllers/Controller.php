@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Core\Controllers;
+namespace Alpaca\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

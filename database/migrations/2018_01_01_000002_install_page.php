@@ -1,7 +1,7 @@
 <?php
 
-use Alpaca\Page\Models\Category;
-use Alpaca\Page\Models\Page;
+use Alpaca\Models\Category;
+use Alpaca\Models\Page;
 use Illuminate\Database\Migrations\Migration;
 
 class InstallPage extends Migration

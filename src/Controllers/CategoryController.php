@@ -1,13 +1,13 @@
 <?php
 
-namespace Alpaca\Page\Controllers;
+namespace Alpaca\Controllers;
 
-use Alpaca\Page\Models\Category;
+use Alpaca\Models\Category;
 
 //use Alpaca\Core\Controllers\Controller;
 //use Illuminate\Support\Facades\Response;
 //use Artesaos\SEOTools\Facades\SEOTools as SEO;
-use App\Http\Controllers\Controller;
+use Alpaca\Controllers\Controller;
 
 class CategoryController extends Controller
 {

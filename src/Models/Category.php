@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Page\Models;
+namespace Alpaca\Models;
 
 use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;

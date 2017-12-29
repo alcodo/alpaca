@@ -1,14 +1,14 @@
 <?php
 
-namespace Alpaca\Page\Controllers;
+namespace Alpaca\Controllers;
 
-use Alpaca\Page\Models\Category;
+use Alpaca\Models\Category;
 use Illuminate\Http\Request;
-use Alpaca\Page\Models\Page;
-use Alpaca\Page\Models\Topic;
+use Alpaca\Models\Page;
+use Alpaca\Models\Topic;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Alpaca\Core\Controllers\Controller;
+use Alpaca\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -59,7 +59,7 @@ class PageController extends Controller
     {
         $releated = $this->getReleatedPages($page);
 
-        return view('page::page.show', compact('page', 'releated'));
+        return view('alpaca::page.show', compact('page', 'releated'));
     }
 
     /**
