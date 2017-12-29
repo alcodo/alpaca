@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    @if(!App::environment('testing'))
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    @endif
 
     <style>
     </style>
@@ -18,27 +20,38 @@
 
 <div id="app">
 
-    @include('navbar.navbar')
+    @include('alpaca::navbar.navbar')
 
     {{--<br>--}}
 
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                @include('area.left')
-                <br>
-                @include('area.left')
-                <br>
-                @include('area.left')
+                <div class="card">
+                    <div class="card-header">
+                        Featured
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-sm-9">
-                @include('area.content')
+                <div class="card">
+                    <div class="card-body">
+                        @yield('content')
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        @include('area.footer')
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
     </footer>
 
 </div>
@@ -55,6 +68,8 @@
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"--}}
 {{--integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"--}}
 {{--crossorigin="anonymous"></script>--}}
-<script src="{{ asset('js/app.js') }}"></script>
+@if(!App::environment('testing'))
+    <script src="{{ asset('js/app.js') }}"></script>
+@endif
 </body>
 </html>
