@@ -41,6 +41,7 @@
             <div class="col-sm-9">
                 <div class="card">
                     <div class="card-body">
+                        @include('alpaca::error')
                         @yield('content')
                     </div>
                 </div>

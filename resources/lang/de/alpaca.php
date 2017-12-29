@@ -2,6 +2,8 @@
 
 return [
 
+    'error' => 'Fehler',
+    'error_entering' => 'Ein Fehler ist aufgetreten bei der Eingabe',
     'category' => 'Kategorie',
     'categories' => 'Kategorien',
     'no_category' => 'Keine Kategorie',

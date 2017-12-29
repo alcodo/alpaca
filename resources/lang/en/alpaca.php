@@ -2,6 +2,8 @@
 
 return [
 
+    'error' => 'Error',
+    'error_entering' => 'An error occurred while entering',
     'category' => 'Category',
     'categories' => 'Categories',
     'no_category' => 'No category',
