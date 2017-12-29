@@ -7,7 +7,6 @@ use Zizaco\Entrust\EntrustServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Alcodo\PowerImage\PowerImageServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
-use AdamWathan\BootForms\BootFormsServiceProvider;
 use Approached\LaravelDateInternational\ServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
@@ -30,7 +29,6 @@ class DependencyServiceProvider extends AggregateServiceProvider
         'SEO'      => \Artesaos\SEOTools\Facades\SEOTools::class,
         'Slugify'  => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
         'Dateintl' => \Approached\LaravelDateInternational\DateIntlFacade::class,
-        'BootForm' => \AdamWathan\BootForms\Facades\BootForm::class,
         'Honeypot' => \Msurguy\Honeypot\HoneypotFacade::class,
     ];
 
