@@ -15,7 +15,8 @@ abstract class IntegrationTest extends TestCase
     {
         parent::setUp();
         $this->artisan('migrate');
-        $this->showAllRoutes();
+        $this->loadRoutesAgain();
+//        $this->showAllRoutes();
 //        dump(Application::VERSION);
     }
 
@@ -34,6 +35,7 @@ abstract class IntegrationTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
+        $this->setCipherKey($app);
         $this->setSQLLiteDatabaseForTesting($app);
     }
 
@@ -72,5 +74,15 @@ abstract class IntegrationTest extends TestCase
 
         }
 
+    }
+
+    protected function setCipherKey($app)
+    {
+        $app['config']->set('app.key', 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
+    }
+
+    protected function loadRoutesAgain()
+    {
+        include(__DIR__ . '/../src/Page/routes.php');
     }
 }

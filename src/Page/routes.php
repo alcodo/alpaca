@@ -26,7 +26,6 @@ Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function
     /**
      * Categorie
      */
-    dump('loaded');
     try {
         $categories = \Alpaca\Page\Models\Category::all();
 
@@ -46,8 +45,6 @@ Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function
 
         $pages->map(function ($page) {
 
-            dump($page->path);
-
             Route::get($page->path, function () use ($page) {
                 $controller = new \Alpaca\Page\Controllers\PageController();
                 return $controller->show($page);
@@ -55,8 +52,6 @@ Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function
         });
 
     } catch (Illuminate\Database\QueryException $e) {
-        dump('exception');
-        dump($e->getMessage());
     }
 
     Route::resource('/backend/page', 'PageController');
