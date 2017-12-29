@@ -50,6 +50,7 @@ class PageController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'path' => 'string',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'integer',
@@ -76,7 +77,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Alpaca\Page\Models\Page $page
+     * @param  \Alpaca\Models\Page $page
      * @return \Illuminate\Http\Response
      */
     public function show(Page $page)
@@ -89,7 +90,7 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Alpaca\Page\Models\Page $page
+     * @param  \Alpaca\Models\Page $page
      * @return \Illuminate\Http\Response
      */
     public function edit(Page $page)
@@ -104,18 +105,43 @@ class PageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \Alpaca\Page\Models\Page $page
+     * @param  \Alpaca\Models\Page $page
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Page $page)
     {
-        //
+//        dd($page);
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'path' => 'string',
+            'active' => 'required|boolean',
+            // ref
+            'user_id' => 'integer',
+            'category_id' => 'integer',
+            // seo
+            'html_title' => 'string',
+            'meta_description' => 'string',
+            'meta_robots' => 'string',
+        ]);
+
+        if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
+            $validatedData['teaser'] = ''; // TODO
+        }
+
+        if (!isset($validatedData['path']) || empty($validatedData['path'])) {
+            $validatedData['path'] = SlugifyFacade::slugify($validatedData['title']);
+        }
+
+        $page->update($validatedData);
+
+        return redirect($page->path);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Alpaca\Page\Models\Page $page
+     * @param  \Alpaca\Models\Page $page
      * @return \Illuminate\Http\Response
      */
     public function destroy(Page $page)

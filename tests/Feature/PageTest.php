@@ -10,7 +10,7 @@ class PageTest extends IntegrationTest
 
     public function test_show_page()
     {
-        $this->get('hallo-welt')
+        $this->get('/hallo-welt')
             ->assertSuccessful()
             ->assertSee('Hallo');
     }
@@ -41,18 +41,6 @@ class PageTest extends IntegrationTest
         $this->assertDatabaseHas('page_pages', [
             'title' => 'My new Page',
         ]);
-
-
-//        'active' => true,
-//            'path' => '/hallo-welt',
-//            'title' => 'Hallo Welt!',
-//            'teaser' => '<p>Willkommen beim AlpacaCMS System. Dies ist der erste Beitrag. Du kannst ihn bearbeiten oder löschen. Und dann starte mit dem Schreiben!</p>',
-//            'content' => '<p>Willkommen beim AlpacaCMS System. Dies ist der erste Beitrag. Du kannst ihn bearbeiten oder löschen. Und dann starte mit dem Schreiben!</p>',
-//            'user_id' => null,
-//            'category_id' => $category->id,
-//            'html_title' => null,
-//            'meta_robots' => null,
-//            'meta_description' => null,
     }
 
     public function test_edit_page()
@@ -61,6 +49,22 @@ class PageTest extends IntegrationTest
         $this->get('/backend/page/1/edit')
             ->assertSuccessful()
             ->assertSee('Save');
+    }
+
+    public function test_update_page()
+    {
+        $this->withoutExceptionHandling();
+        $this->put('/backend/page/1', [
+            'title' => 'New cool Title',
+            'path' => '/new/path',
+            'content' => 'So cool',
+            'active' => true,
+        ])
+            ->assertRedirect('/new/path');
+
+        $this->assertDatabaseHas('page_pages', [
+            'title' => 'New cool Title',
+        ]);
     }
 
 }
