@@ -1,24 +1,24 @@
-@extends('app')
+@extends('alpaca::layout')
 
 @section('content')
 
     <a href="/backend/page/create" class="btn btn-info float-right">
-        {{ trans('alpaca::page.create_page') }}
+        {{ trans('alpaca::alpaca.create_page') }}
     </a>
     <h1>
-        {{ trans('alpaca::page.pages') }}
+        {{ trans('alpaca::alpaca.pages') }}
     </h1>
 
     <table class="table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>{{ trans('crud::crud.title') }}</th>
-            <th>{{ trans('crud::crud.active') }}</th>
-            <th>{{ trans('crud::crud.category') }}</th>
-            <th>{{ trans('crud::crud.user') }}</th>
-            <th>{{ trans('crud::crud.created') }}</th>
-            <th>{{ trans('crud::crud.updated') }}</th>
+            <th>{{ trans('alpaca::alpaca.title') }}</th>
+            <th>{{ trans('alpaca::alpaca.active') }}</th>
+            <th>{{ trans('alpaca::alpaca.category') }}</th>
+            <th>{{ trans('alpaca::alpaca.user') }}</th>
+            <th>{{ trans('alpaca::alpaca.created') }}</th>
+            <th>{{ trans('alpaca::alpaca.updated') }}</th>
             <th></th>
         </tr>
         </thead>
@@ -43,7 +43,7 @@
                 <td>{{ dateintl_full('short', $page->created_at) }}</td>
                 <td>{{ dateintl_full('short', $page->updated_at) }}</td>
                 <td>
-                    @include('alpaca::page.action', ['isIndex' => false, 'isShow' => true])
+                    @include('alpaca::page.sub.action', ['isIndex' => false, 'isShow' => true])
                 </td>
             </tr>
         @endforeach

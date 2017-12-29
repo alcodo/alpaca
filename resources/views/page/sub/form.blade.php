@@ -3,7 +3,7 @@
 {{--id for update?--}}
 
 <div class="form-group">
-    <label for="title">{{ trans('crud::crud.title') }}</label>
+    <label for="title">{{ trans('alpaca::alpaca.title') }}</label>
     <input type="text" class="form-control" id="title">
 </div>
 
@@ -17,18 +17,18 @@
 </div>
 
 <div class="form-group">
-    <label for="path">{{ trans('crud::crud.path') }}</label>
+    <label for="path">{{ trans('alpaca::alpaca.path') }}</label>
     <input type="text" class="form-control" id="path">
     <small id="pathHelp" class="form-text text-muted">Example: /car/cabrio/bmw</small>
 </div>
 
 {{--tab for body and seo--}}
 <b-tabs>
-    <b-tab title="{{ trans('crud::crud.body') }}" active>
+    <b-tab title="{{ trans('alpaca::alpaca.body') }}" active>
 
         <br>
         <div class="form-group">
-            {{--<label for="content">{{ trans('crud::crud.body') }}</label>--}}
+            {{--<label for="content">{{ trans('alpaca::alpaca.body') }}</label>--}}
             <textarea class="form-control" id="content" rows="15"></textarea>
         </div>
 
@@ -36,15 +36,15 @@
     <b-tab title="SEO" >
 
         <div class="form-group">
-            <label for="html_title">{{ trans('alpaca::page.html_title') }}</label>
+            <label for="html_title">{{ trans('alpaca::alpaca.html_title') }}</label>
             <input type="text" class="form-control" id="html_title">
         </div>
         <div class="form-group">
-            <label for="meta_description">{{ trans('alpaca::page.meta_description') }}</label>
+            <label for="meta_description">{{ trans('alpaca::alpaca.meta_description') }}</label>
             <input type="text" class="form-control" id="meta_description">
         </div>
         <div class="form-group">
-            <label for="meta_robots">{{ trans('alpaca::page.meta_robots') }}</label>
+            <label for="meta_robots">{{ trans('alpaca::alpaca.meta_robots') }}</label>
             <input type="text" class="form-control" id="meta_robots">
         </div>
 
@@ -54,8 +54,8 @@
 <div class="form-check">
     <label class="form-check-label">
         <input type="checkbox" class="form-check-input" checked>
-        {{ trans('alpaca::page.active') }}
+        {{ trans('alpaca::alpaca.active') }}
     </label>
 </div>
 
-<button type="submit" class="btn btn-primary float-right">{{ trans('crud::crud.save') }}</button>
+<button type="submit" class="btn btn-primary float-right">{{ trans('alpaca::alpaca.save') }}</button>

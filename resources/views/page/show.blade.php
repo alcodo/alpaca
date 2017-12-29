@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="float-right">
-        @include('alpaca::page.action', ['isIndex' => true, 'isShow' => false])
+        @include('alpaca::page.sub.action', ['isIndex' => true, 'isShow' => false])
     </div>
 
     <h1>{{$page->title}}</h1>

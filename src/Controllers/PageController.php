@@ -3,6 +3,7 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Models\Category;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Http\Request;
 use Alpaca\Models\Page;
 use Alpaca\Models\Topic;
@@ -22,7 +23,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::paginate(20);
-        return view('page::page.list', compact('pages'));
+        return view('alpaca::page.list', compact('pages'));
     }
 
     /**
@@ -33,9 +34,9 @@ class PageController extends Controller
     public function create()
     {
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
-        $categories->prepend(trans('page::category.no_category'), '');
+        $categories->prepend(trans('alpaca::category.no_category'), '');
 
-        return view('page::page.create', compact('categories'));
+        return view('alpaca::page.create', compact('categories'));
     }
 
     /**
@@ -46,7 +47,30 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'active' => 'required|boolean',
+            // ref
+            'user_id' => 'integer',
+            'category_id' => 'integer',
+            // seo
+            'html_title' => 'string',
+            'meta_description' => 'string',
+            'meta_robots' => 'string',
+        ]);
+
+        if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
+            $validatedData['teaser'] = ''; // TODO
+        }
+
+        if (!isset($validatedData['path']) || empty($validatedData['path'])) {
+            $validatedData['path'] = SlugifyFacade::slugify($validatedData['title']);
+        }
+
+        $page = Page::create($validatedData);
+
+        return redirect($page->path);
     }
 
     /**
@@ -70,7 +94,10 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
+        $categories->prepend(trans('alpaca::category.no_category'), '');
+
+        return view('alpaca::page.edit', compact('categories'));
     }
 
     /**

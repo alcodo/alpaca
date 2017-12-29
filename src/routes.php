@@ -1,6 +1,6 @@
 <?php
 
-Route::middleware(['web'])->namespace('Alpaca\Page\Controllers')->group(function () {
+Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
 
 
 //Route::group(['as' => 'backend.', 'middleware' => 'auth'], function () {
