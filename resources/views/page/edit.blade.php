@@ -2,9 +2,10 @@
 
 @section('content')
 
-    <h1>{{ trans('alpaca::alpaca.edit_page') }}</h1>
+    <h1>{{ trans('alpaca::page.edit_page') }}</h1>
 
     <form action="/backend/page/2" method="post" accept-charset="UTF-8">
+        <input name="_method" type="hidden" value="PUT">
         @include('alpaca::page.sub.form')
     </form>
 

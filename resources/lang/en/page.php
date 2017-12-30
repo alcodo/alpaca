@@ -3,6 +3,7 @@
 return [
 
     'create_page' => 'Create page',
+    'edit_page' => 'Edit page',
     'page' => 'Page',
     'pages' => 'Pages',
     'html_title' => 'Html title',

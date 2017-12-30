@@ -59,12 +59,12 @@ class PageRepository
             'path' => 'string',
             'active' => 'required|boolean',
             // ref
-            'user_id' => 'integer',
-            'category_id' => 'integer',
+            'user_id' => 'nullable|integer',
+            'category_id' => 'nullable|integer',
             // seo
-            'html_title' => 'string',
-            'meta_description' => 'string',
-            'meta_robots' => 'string',
+            'html_title' => 'nullable|string',
+            'meta_description' => 'nullable|string',
+            'meta_robots' => 'nullable|string',
         ]);
 
         if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
@@ -72,7 +72,7 @@ class PageRepository
         }
 
         if (!isset($validatedData['path']) || empty($validatedData['path'])) {
-            $validatedData['path'] = SlugifyFacade::slugify($validatedData['title']);
+            $validatedData['path'] = '/' . SlugifyFacade::slugify($validatedData['title']);
         }
 
         $page->update($validatedData);

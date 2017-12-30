@@ -5,7 +5,8 @@
 
 <div class="form-group">
     <label for="title">{{ trans('alpaca::page.title') }}</label>
-    <input type="text" class="form-control" id="title" name="title">
+    <input type="text" class="form-control" id="title" name="title"
+           value="{{ old('title', isset($page) ? $page->title : '') }}">
 </div>
 
 <div class="form-group">
@@ -19,7 +20,8 @@
 
 <div class="form-group">
     <label for="path">{{ trans('alpaca::page.path') }}</label>
-    <input type="text" class="form-control" id="path" name="path">
+    <input type="text" class="form-control" id="path" name="path"
+           value="{{ old('path', isset($page) ? $page->path : '') }}">
     <small id="pathHelp" class="form-text text-muted">Example: /car/cabrio/bmw</small>
 </div>
 
@@ -29,8 +31,9 @@
 
         <br>
         <div class="form-group">
-            {{--<label for="content">{{ trans('alpaca::alpaca.body') }}</label>--}}
-            <textarea class="form-control" id="content" rows="15" name="content"></textarea>
+            <textarea class="form-control" id="content" rows="15" name="content">
+                {{ old('content', isset($page) ? $page->content : '') }}
+            </textarea>
         </div>
 
     </b-tab>
@@ -38,15 +41,18 @@
 
         <div class="form-group">
             <label for="html_title">{{ trans('alpaca::page.html_title') }}</label>
-            <input type="text" class="form-control" id="html_title" name="html_title">
+            <input type="text" class="form-control" id="html_title" name="html_title"
+                   value="{{ old('html_title', isset($page) ? $page->html_title : '') }}">
         </div>
         <div class="form-group">
             <label for="meta_description">{{ trans('alpaca::page.meta_description') }}</label>
-            <input type="text" class="form-control" id="meta_description" name="meta_description">
+            <input type="text" class="form-control" id="meta_description" name="meta_description"
+                   value="{{ old('meta_description', isset($page) ? $page->meta_description : '') }}">
         </div>
         <div class="form-group">
             <label for="meta_robots">{{ trans('alpaca::page.meta_robots') }}</label>
-            <input type="text" class="form-control" id="meta_robots" name="meta_robots">
+            <input type="text" class="form-control" id="meta_robots" name="meta_robots"
+                   value="{{ old('meta_robots', isset($page) ? $page->meta_robots : '') }}">
         </div>
 
     </b-tab>

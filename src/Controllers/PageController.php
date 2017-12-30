@@ -36,6 +36,8 @@ class PageController extends Controller
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
         $categories->prepend(trans('alpaca::category.no_category'), '');
 
+//        $page = new Page();
+
         return view('alpaca::page.create', compact('categories'));
     }
 
@@ -79,7 +81,7 @@ class PageController extends Controller
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
         $categories->prepend(trans('alpaca::category.no_category'), '');
 
-        return view('alpaca::page.edit', compact('categories'));
+        return view('alpaca::page.edit', compact('page', 'categories'));
     }
 
     /**
