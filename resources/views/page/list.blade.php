@@ -3,19 +3,19 @@
 @section('content')
 
     <a href="/backend/page/create" class="btn btn-info float-right">
-        {{ trans('alpaca::alpaca.create_page') }}
+        {{ trans('alpaca::page.create_page') }}
     </a>
     <h1>
-        {{ trans('alpaca::alpaca.pages') }}
+        {{ trans('alpaca::page.pages') }}
     </h1>
 
     <table class="table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>{{ trans('alpaca::alpaca.title') }}</th>
-            <th>{{ trans('alpaca::alpaca.active') }}</th>
-            <th>{{ trans('alpaca::alpaca.category') }}</th>
+            <th>{{ trans('alpaca::page.title') }}</th>
+            <th>{{ trans('alpaca::page.active') }}</th>
+            <th>{{ trans('alpaca::category.category') }}</th>
             <th>{{ trans('alpaca::alpaca.user') }}</th>
             <th>{{ trans('alpaca::alpaca.created') }}</th>
             <th>{{ trans('alpaca::alpaca.updated') }}</th>

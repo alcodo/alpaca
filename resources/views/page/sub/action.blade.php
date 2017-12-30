@@ -1,4 +1,4 @@
-<form method="POST" action="/backend/page/destroy/{{ $page->id }}" accept-charset="UTF-8"
+<form method="POST" action="/backend/page/{{ $page->id }}" accept-charset="UTF-8"
       class="btn-group" aria-label="Action">
     @if($isIndex)
         <a href="/backend/page" class="btn btn-default" title="{{ trans('alpaca::alpaca.index') }}">
@@ -10,7 +10,7 @@
             <i class="fa fa-external-link" aria-hidden="true"></i>
         </a>
     @endif
-    <a href="/backend/page/edit/{{ $page->id }}" class="btn btn-info"
+    <a href="/backend/page/{{ $page->id }}/edit" class="btn btn-info"
        title="{{ trans('alpaca::alpaca.edit') }}">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </a>

@@ -41,7 +41,7 @@ class PageRepository
         }
 
         if (!isset($validatedData['path']) || empty($validatedData['path'])) {
-            $validatedData['path'] = SlugifyFacade::slugify($validatedData['title']);
+            $validatedData['path'] = '/' . SlugifyFacade::slugify($validatedData['title']);
         }
 
         // TODO user id ?
