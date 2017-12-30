@@ -12,7 +12,6 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID</th>
             <th>{{ trans('alpaca::page.title') }}</th>
             <th>{{ trans('alpaca::page.active') }}</th>
             <th>{{ trans('alpaca::category.category') }}</th>
@@ -25,7 +24,6 @@
         <tbody>
         @foreach($pages as $page)
             <tr>
-                <td>{{ $page->id }}</td>
                 <td>
                     <a href="{{ $page->path }}">{{ $page->title }}</a>
                 </td>

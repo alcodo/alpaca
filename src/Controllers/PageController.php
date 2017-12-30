@@ -36,8 +36,6 @@ class PageController extends Controller
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
         $categories->prepend(trans('alpaca::category.no_category'), '');
 
-//        $page = new Page();
-
         return view('alpaca::page.create', compact('categories'));
     }
 
@@ -50,7 +48,6 @@ class PageController extends Controller
      */
     public function store(Request $request, PageRepository $repo)
     {
-//        dd($request->all());
         $page = $repo->create($request->all());
         return redirect($page->path);
     }

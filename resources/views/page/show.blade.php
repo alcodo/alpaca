@@ -15,7 +15,8 @@
         <hr/>
         <p>
             <strong>
-                Das könnte dich auch Interessieren:
+                {{ trans('alpaca::page.also_interest') }}:
+
             </strong>
         </p>
         <div class="list-group">

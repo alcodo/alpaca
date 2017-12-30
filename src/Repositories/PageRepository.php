@@ -23,7 +23,7 @@ class PageRepository
         $validatedData = $this->validateWith([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string',
+            'path' => 'string|unique:page_pages,path',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',
@@ -33,8 +33,6 @@ class PageRepository
             'meta_description' => 'nullable|string',
             'meta_robots' => 'nullable|string',
         ]);
-
-//        dd($validatedData);
 
         if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
             $validatedData['teaser'] = ''; // TODO
@@ -56,7 +54,7 @@ class PageRepository
         $validatedData = $this->validateWith([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'string',
+            'path' => 'nullable|string|unique:page_pages,path,' . $page->id . ',id',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',
@@ -75,6 +73,7 @@ class PageRepository
             $validatedData['path'] = '/' . SlugifyFacade::slugify($validatedData['title']);
         }
 
+//        dd($validatedData);
         $page->update($validatedData);
 
         return $page;

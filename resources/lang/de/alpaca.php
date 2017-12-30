@@ -41,5 +41,6 @@ return [
     'active' => 'Aktiv',
     'user' => 'Benutzer',
     'category' => 'Kategorie',
+    'also_interest' => 'Das könnte dich auch Interessieren',
 
 ];

@@ -17,5 +17,7 @@ return [
     'url' => 'Url',
     'content' => 'Body',
     'name' => 'Name',
+    'path_example' => 'Example: /car/cabrio/bmw',
+    'also_interest' => 'That could also interest you',
 
 ];

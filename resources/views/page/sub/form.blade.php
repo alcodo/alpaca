@@ -1,7 +1,6 @@
 {{ csrf_field() }}
 
 <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
-{{--id for update?--}}
 
 <div class="form-group">
     <label for="title">{{ trans('alpaca::page.title') }}</label>
@@ -12,8 +11,12 @@
 <div class="form-group">
     <label for="category">{{ trans('alpaca::category.category') }}</label>
     <select id="category" class="form-control" name="category_id">
-        @foreach($categories as $value => $text)
-            <option value="{{ $value }}">{{ $text }}</option>
+        @foreach($categories as $key => $value)
+            <option value="{{ $key }}"
+                    @if ($key == old('category_id', isset($page) ? $page->category_id : ''))
+                    selected="selected"
+                    @endif
+            >{{ $value }}</option>
         @endforeach
     </select>
 </div>
@@ -22,7 +25,7 @@
     <label for="path">{{ trans('alpaca::page.path') }}</label>
     <input type="text" class="form-control" id="path" name="path"
            value="{{ old('path', isset($page) ? $page->path : '') }}">
-    <small id="pathHelp" class="form-text text-muted">Example: /car/cabrio/bmw</small>
+    <small id="pathHelp" class="form-text text-muted">{{ trans('alpaca::page.path_example') }}</small>
 </div>
 
 {{--tab for body and seo--}}
@@ -39,6 +42,7 @@
     </b-tab>
     <b-tab title="SEO">
 
+        <br>
         <div class="form-group">
             <label for="html_title">{{ trans('alpaca::page.html_title') }}</label>
             <input type="text" class="form-control" id="html_title" name="html_title"
@@ -60,7 +64,9 @@
 
 <div class="form-check">
     <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="active" value="1" checked>
+        <input type="hidden" name="active" value="0">
+        <input type="checkbox" class="form-check-input" name="active" value="1"
+               @if(old('active', isset($page) ? $page->active : true) == true) checked @endif>
         {{ trans('alpaca::page.active') }}
     </label>
 </div>
