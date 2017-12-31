@@ -90,9 +90,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, CategoryRepository $repo)
     {
-        $category->delete();
+        $repo->delete($category);
         return redirect('/backend/category');
     }
 

@@ -2,6 +2,10 @@
 
 namespace Tests\Feature;
 
+use Alpaca\Events\Category\CategoryWasCreated;
+use Alpaca\Events\Category\CategoryWasDeleted;
+use Alpaca\Events\Category\CategoryWasUpdated;
+use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
 
 class CategoryTest extends IntegrationTest
@@ -31,6 +35,8 @@ class CategoryTest extends IntegrationTest
 
     public function test_store_category()
     {
+        Event::fake();
+
         $this->withoutExceptionHandling();
         $this->post('/backend/category', [
             'title' => 'General category',
@@ -42,6 +48,8 @@ class CategoryTest extends IntegrationTest
         $this->assertDatabaseHas('page_categories', [
             'title' => 'General category',
         ]);
+
+        Event::assertDispatched(CategoryWasCreated::class);
     }
 
     public function test_edit_category()
@@ -54,6 +62,8 @@ class CategoryTest extends IntegrationTest
 
     public function test_update_category()
     {
+        Event::fake();
+
         $this->withoutExceptionHandling();
         $this->put('/backend/category/1', [
             'title' => 'New cool Title',
@@ -66,10 +76,14 @@ class CategoryTest extends IntegrationTest
         $this->assertDatabaseHas('page_categories', [
             'title' => 'New cool Title',
         ]);
+
+        Event::assertDispatched(CategoryWasUpdated::class);
     }
 
     public function test_destroy_category()
     {
+        Event::fake();
+
         $this->assertDatabaseHas('page_categories', [
             'title' => 'Beiträge',
         ]);
@@ -81,6 +95,8 @@ class CategoryTest extends IntegrationTest
         $this->assertDatabaseMissing('page_categories', [
             'title' => 'Beiträge',
         ]);
+
+        Event::assertDispatched(CategoryWasDeleted::class);
     }
 
 }

@@ -97,11 +97,13 @@ class PageController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \Alpaca\Models\Page $page
+     * @param PageRepository $repo
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy(Page $page)
+    public function destroy(Page $page, PageRepository $repo)
     {
-        $page->delete();
+        $repo->delete($page);
         return redirect('/backend/page');
     }
 

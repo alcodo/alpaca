@@ -3,8 +3,12 @@
 namespace Alpaca\Repositories;
 
 
+use Alpaca\Events\Category\CategoryWasCreated;
+use Alpaca\Events\Category\CategoryWasDeleted;
+use Alpaca\Events\Category\CategoryWasUpdated;
 use Alpaca\Models\Category;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryRepository
@@ -31,6 +35,8 @@ class CategoryRepository
 
         $category = Category::create($data);
 
+        event(new CategoryWasCreated($category, Auth::user()));
+
         return $category;
     }
 
@@ -49,7 +55,22 @@ class CategoryRepository
 
         $category->update($data);
 
+        event(new CategoryWasUpdated($category, Auth::user()));
+
         return $category;
     }
 
+    /**
+     * @param Category $category
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(Category $category)
+    {
+        $category->delete();
+
+        event(new CategoryWasDeleted($category, Auth::user()));
+
+        return true;
+    }
 }

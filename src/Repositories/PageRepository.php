@@ -2,10 +2,14 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Events\Page\PageWasCreated;
+use Alpaca\Events\Page\PageWasDeleted;
+use Alpaca\Events\Page\PageWasUpdated;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Alpaca\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class PageRepository
 {
@@ -46,6 +50,8 @@ class PageRepository
 
         $page = Page::create($validatedData);
 
+        event(new PageWasCreated($page, Auth::user()));
+
         return $page;
     }
 
@@ -73,10 +79,20 @@ class PageRepository
             $validatedData['path'] = '/' . SlugifyFacade::slugify($validatedData['title']);
         }
 
-//        dd($validatedData);
         $page->update($validatedData);
 
+        event(new PageWasUpdated($page, Auth::user()));
+
         return $page;
+    }
+
+    public function delete(Page $page)
+    {
+        $page->delete();
+
+        event(new PageWasDeleted($page, Auth::user()));
+
+        return true;
     }
 
     public function getRelatedPages(Page $page): Collection
