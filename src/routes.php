@@ -5,7 +5,7 @@ Route::group([
         'web',
         'alpaca',
     ],
-    'namespace' => 'Alpaca\Controllers',
+//    'namespace' => 'Alpaca\Controllers',
 ], function () {
 //Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
 //Route::middleware(['web', 'trimStrings'])->namespace('Alpaca\Controllers')->group(function () {
@@ -62,6 +62,7 @@ Route::group([
     } catch (Illuminate\Database\QueryException $e) {
     }
 
-    Route::resource('/backend/page', 'PageController');
+    Route::resource('/backend/page', \Alpaca\Controllers\PageController::class);
+    Route::resource('/backend/category', \Alpaca\Controllers\CategoryController::class);
 
 });

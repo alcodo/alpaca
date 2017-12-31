@@ -8,26 +8,90 @@ use Alpaca\Models\Category;
 //use Illuminate\Support\Facades\Response;
 //use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Alpaca\Controllers\Controller;
+use http\Env\Request;
 
 class CategoryController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $categories = Category::paginate(20);
+        return view('alpaca::category.list', compact('categories'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('alpaca::category.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param PageRepository $repo
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, CategoryRepository $repo)
+    {
+        $page = $repo->create($request->all());
+        return redirect($page->path);
+    }
+
+    /**
      * Not implementet.
      *
+     * @param Category $category
      * @return Response
      */
     public function show(Category $category)
     {
-//        dd($category);
-//        return 3433;
-//        dd(34);
-//        $category = Category::with(['pages' => function ($query) {
-//            $query->orderBy('title', 'asc');
-//        }])->Slug($categorySlug)->firstOrFail();
-//
-//        SEO::setTitle($category->title);
-//
         return view('alpaca::category.show', compact('category'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Category $category
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Category $category)
+    {
+        return view('alpaca::category.edit', compact('category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param Category $category
+     * @param CategoryRepository $repo
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Category $category, CategoryRepository $repo)
+    {
+        $category = $repo->update($category, $request->all());
+        return redirect($category->path);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Alpaca\Models\Page $page
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return redirect('/backend/page');
     }
 
 }

@@ -9,15 +9,10 @@ return [
     'html_title' => 'Html title',
     'meta_description' => 'Meta description',
     'meta_robots' => 'Meta Robots',
-    'active' => 'Active',
     'readmore' => 'Read more',
     'releated_pages' => 'That could also interest you',
-    'title' => 'Title',
-    'path' => 'Path',
     'url' => 'Url',
-    'content' => 'Body',
     'name' => 'Name',
-    'path_example' => 'Example: /car/cabrio/bmw',
     'also_interest' => 'That could also interest you',
 
 ];

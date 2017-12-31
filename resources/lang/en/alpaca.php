@@ -2,6 +2,11 @@
 
 return [
 
+    'active' => 'Active',
+    'title' => 'Title',
+    'content' => 'Body',
+    'path' => 'Path',
+    'path_example' => 'Example: /car/cabrio/bmw',
     'error' => 'Error',
     'error_entering' => 'An error occurred while entering',
     'user' => 'User',
@@ -23,5 +28,6 @@ return [
 //    'file' => 'File',
 //    'alt' => 'Alt',
 //    'filename' => 'Filename',
+
 
 ];

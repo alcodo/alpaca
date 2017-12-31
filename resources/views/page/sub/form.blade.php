@@ -3,7 +3,7 @@
 <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
 <div class="form-group">
-    <label for="title">{{ trans('alpaca::page.title') }}</label>
+    <label for="title">{{ trans('alpaca::alpaca.title') }}</label>
     <input type="text" class="form-control" id="title" name="title"
            value="{{ old('title', isset($page) ? $page->title : '') }}">
 </div>
@@ -22,15 +22,15 @@
 </div>
 
 <div class="form-group">
-    <label for="path">{{ trans('alpaca::page.path') }}</label>
+    <label for="path">{{ trans('alpaca::alpaca.path') }}</label>
     <input type="text" class="form-control" id="path" name="path"
            value="{{ old('path', isset($page) ? $page->path : '') }}">
-    <small id="pathHelp" class="form-text text-muted">{{ trans('alpaca::page.path_example') }}</small>
+    <small id="pathHelp" class="form-text text-muted">{{ trans('alpaca::alpaca.path_example') }}</small>
 </div>
 
 {{--tab for body and seo--}}
 <b-tabs>
-    <b-tab title="{{ trans('alpaca::page.content') }}" active>
+    <b-tab title="{{ trans('alpaca::alpaca.content') }}" active>
 
         <br>
         <div class="form-group">
@@ -67,7 +67,7 @@
         <input type="hidden" name="active" value="0">
         <input type="checkbox" class="form-check-input" name="active" value="1"
                @if(old('active', isset($page) ? $page->active : true) == true) checked @endif>
-        {{ trans('alpaca::page.active') }}
+        {{ trans('alpaca::alpaca.active') }}
     </label>
 </div>
 
