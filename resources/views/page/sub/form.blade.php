@@ -65,7 +65,7 @@
 <div class="form-check">
     <label class="form-check-label">
         <input type="hidden" name="active" value="0">
-        <input type="checkbox" class="form-check-input" name="active" value="1"
+        <input type="checkbox" class="form-check-input" name="active" value="1" placeholder="Example: noindex, nofollow"
                @if(old('active', isset($page) ? $page->active : true) == true) checked @endif>
         {{ trans('alpaca::alpaca.active') }}
     </label>

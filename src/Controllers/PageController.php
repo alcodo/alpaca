@@ -21,7 +21,10 @@ class PageController extends Controller
      */
     public function index()
     {
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
         $pages = Page::paginate(20);
+
         return view('alpaca::page.list', compact('pages'));
     }
 
@@ -32,6 +35,8 @@ class PageController extends Controller
      */
     public function create()
     {
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
         $categories->prepend(trans('alpaca::category.no_category'), '');
 
@@ -61,7 +66,25 @@ class PageController extends Controller
     public function show(Page $page)
     {
         $repo = new PageRepository();
+
+        // TODO check is active
+        //        if (Auth::check() === false || Auth::user()->hasRole('admin') === false) {
+//            $query->whereActive(true);
+//        }
+
         $releated = $repo->getRelatedPages($page);
+
+        if (!empty($page->meta_robots)) {
+            SEO::metatags()->addMeta('robots', $page->meta_robots);
+        }
+
+        if (empty($page->html_title)) {
+            SEO::setTitle($page->title);
+        } else {
+            SEO::setTitle($page->html_title);
+        }
+
+        SEO::setDescription($page->meta_description);
 
         return view('alpaca::page.show', compact('page', 'releated'));
     }
@@ -74,6 +97,8 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
         $categories->prepend(trans('alpaca::category.no_category'), '');
 
@@ -141,24 +166,5 @@ class PageController extends Controller
 //        }
 //
 //        return $page;
-//    }
-//
-//    protected function viewPage($page)
-//    {
-//        if (! empty($page->meta_robots)) {
-//            SEO::metatags()->addMeta('robots', $page->meta_robots);
-//        }
-//
-//        if (empty($page->html_title)) {
-//            SEO::setTitle($page->title);
-//        } else {
-//            SEO::setTitle($page->html_title);
-//        }
-//
-//        SEO::setDescription($page->meta_description);
-//
-//        $releated = $this->getReleatedPages($page);
-//
-//        return view('page::show', compact('page', 'releated'));
 //    }
 }

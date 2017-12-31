@@ -10,6 +10,7 @@ use Alpaca\Models\Category;
 use Alpaca\Controllers\Controller;
 use Illuminate\Http\Request;
 use Alpaca\Repositories\CategoryRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class CategoryController extends Controller
 {
@@ -20,7 +21,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
         $categories = Category::paginate(20);
+
         return view('alpaca::category.list', compact('categories'));
     }
 
@@ -31,6 +35,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
         return view('alpaca::category.create');
     }
 
@@ -55,6 +61,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        SEO::setTitle($category->title);
+
         return view('alpaca::category.show', compact('category'));
     }
 
@@ -66,6 +74,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
         return view('alpaca::category.edit', compact('category'));
     }
 
