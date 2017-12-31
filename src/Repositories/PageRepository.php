@@ -23,7 +23,7 @@ class PageRepository
         $validatedData = $this->validateWith([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'string|unique:page_pages,path',
+            'path' => 'nullable|string|unique:page_pages,path',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',

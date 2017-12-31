@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\IntegrationTest;
-use Alpaca\Models\Page;
 
 class PageTest extends IntegrationTest
 {

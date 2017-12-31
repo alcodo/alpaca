@@ -4,7 +4,6 @@ namespace Alpaca\Controllers;
 
 use Alpaca\Models\Category;
 use Alpaca\Repositories\PageRepository;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Http\Request;
 use Alpaca\Models\Page;
 use Illuminate\Support\Collection;

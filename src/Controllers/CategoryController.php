@@ -8,7 +8,8 @@ use Alpaca\Models\Category;
 //use Illuminate\Support\Facades\Response;
 //use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Alpaca\Controllers\Controller;
-use http\Env\Request;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
 {
@@ -36,8 +37,8 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param PageRepository $repo
+     * @param Request $request
+     * @param CategoryRepository $repo
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, CategoryRepository $repo)
@@ -85,13 +86,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Alpaca\Models\Page $page
+     * @param Category $category
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('/backend/page');
+        return redirect('/backend/category');
     }
 
 }
