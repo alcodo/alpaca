@@ -10,6 +10,7 @@ use Alpaca\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PageRepository
 {
@@ -23,8 +24,7 @@ class PageRepository
      */
     public function create(array $data): Page
     {
-//        $validatedData = $request->validate([
-        $validatedData = $this->validateWith([
+        Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'path' => 'nullable|string|unique:page_pages,path',
@@ -36,19 +36,19 @@ class PageRepository
             'html_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
             'meta_robots' => 'nullable|string',
-        ]);
+        ])->validate();
 
-        if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
-            $validatedData['teaser'] = ''; // TODO
+        if (!isset($data['teaser']) || empty($data['teaser'])) {
+            $data['teaser'] = ''; // TODO
         }
 
-        if (!isset($validatedData['path']) || empty($validatedData['path'])) {
-            $validatedData['path'] = '/' . SlugifyFacade::slugify($validatedData['title']);
+        if (!isset($data['path']) || empty($data['path'])) {
+            $data['path'] = '/' . SlugifyFacade::slugify($data['title']);
         }
 
         // TODO user id ?
 
-        $page = Page::create($validatedData);
+        $page = Page::create($data);
 
         event(new PageWasCreated($page, Auth::user()));
 
@@ -57,7 +57,7 @@ class PageRepository
 
     public function update(Page $page, array $data): Page
     {
-        $validatedData = $this->validateWith([
+        Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'path' => 'nullable|string|unique:page_pages,path,' . $page->id . ',id',
@@ -69,24 +69,29 @@ class PageRepository
             'html_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
             'meta_robots' => 'nullable|string',
-        ]);
+        ])->validate();
 
-        if (!isset($validatedData['teaser']) || empty($validatedData['teaser'])) {
-            $validatedData['teaser'] = ''; // TODO
+        if (!isset($data['teaser']) || empty($data['teaser'])) {
+            $data['teaser'] = ''; // TODO
         }
 
-        if (!isset($validatedData['path']) || empty($validatedData['path'])) {
-            $validatedData['path'] = '/' . SlugifyFacade::slugify($validatedData['title']);
+        if (!isset($data['path']) || empty($data['path'])) {
+            $data['path'] = '/' . SlugifyFacade::slugify($data['title']);
         }
 
-        $page->update($validatedData);
+        $page->update($data);
 
         event(new PageWasUpdated($page, Auth::user()));
 
         return $page;
     }
 
-    public function delete(Page $page)
+    /**
+     * @param Page $page
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(Page $page) : bool
     {
         $page->delete();
 

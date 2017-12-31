@@ -65,7 +65,7 @@ class CategoryRepository
      * @return bool
      * @throws \Exception
      */
-    public function delete(Category $category)
+    public function delete(Category $category) : bool
     {
         $category->delete();
 
