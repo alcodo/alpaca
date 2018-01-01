@@ -60,6 +60,7 @@
 </div>
 
 
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"--}}
@@ -74,5 +75,6 @@
 @if(!App::environment('testing'))
     <script src="{{ asset('js/app.js') }}"></script>
 @endif
+@include('alpaca::cookieconsent')
 </body>
 </html>
