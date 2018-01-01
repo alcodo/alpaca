@@ -25,7 +25,7 @@ class CategoryRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'string|unique:page_categories,path',
+            'path' => 'nullable|string|unique:page_categories,path',
             'active' => 'required|boolean',
         ])->validate();
 

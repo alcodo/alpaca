@@ -12,7 +12,7 @@
     <label for="path">{{ trans('alpaca::alpaca.path') }}</label>
     <input type="text" class="form-control" id="path" name="path"
            value="{{ old('path', isset($category) ? $category->path : '') }}">
-    <small id="pathHelp" class="form-text text-muted">{{ trans('alpaca::page.path_example') }}</small>
+    <small id="pathHelp" class="form-text text-muted">{{ trans('alpaca::alpaca.path_example') }}</small>
 </div>
 
 <div class="form-group">

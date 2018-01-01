@@ -4,13 +4,10 @@ namespace Alpaca\Controllers;
 
 use Alpaca\Models\Category;
 
-//use Alpaca\Core\Controllers\Controller;
-//use Illuminate\Support\Facades\Response;
-//use Artesaos\SEOTools\Facades\SEOTools as SEO;
-use Alpaca\Controllers\Controller;
 use Illuminate\Http\Request;
 use Alpaca\Repositories\CategoryRepository;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
+use Laracasts\Flash\Flash;
 
 class CategoryController extends Controller
 {
@@ -21,6 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        SEO::setTitle(trans('alpaca::category.category_index'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         $categories = Category::paginate(20);
@@ -35,6 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        SEO::setTitle(trans('alpaca::category.create_category'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         return view('alpaca::category.create');
@@ -50,6 +49,9 @@ class CategoryController extends Controller
     public function store(Request $request, CategoryRepository $repo)
     {
         $page = $repo->create($request->all());
+
+        Flash::success(trans('alpaca::category.category_successfully_created'));
+
         return redirect($page->path);
     }
 
@@ -74,6 +76,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        SEO::setTitle(trans('alpaca::category.edit_category'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         return view('alpaca::category.edit', compact('category'));
@@ -90,6 +93,9 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category, CategoryRepository $repo)
     {
         $category = $repo->update($category, $request->all());
+
+        Flash::success(trans('alpaca::category.category_successfully_updated'));
+
         return redirect($category->path);
     }
 
@@ -103,6 +109,9 @@ class CategoryController extends Controller
     public function destroy(Category $category, CategoryRepository $repo)
     {
         $repo->delete($category);
+
+        Flash::success(trans('alpaca::category.category_successfully_deleted'));
+
         return redirect('/backend/category');
     }
 

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Alpaca\Models\Page;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Alpaca\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Laracasts\Flash\Flash;
 
 class PageController extends Controller
 {
@@ -21,6 +21,7 @@ class PageController extends Controller
      */
     public function index()
     {
+        SEO::setTitle(trans('alpaca::page.page_index'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         $pages = Page::paginate(20);
@@ -35,6 +36,7 @@ class PageController extends Controller
      */
     public function create()
     {
+        SEO::setTitle(trans('alpaca::page.create_page'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
@@ -53,6 +55,9 @@ class PageController extends Controller
     public function store(Request $request, PageRepository $repo)
     {
         $page = $repo->create($request->all());
+
+        Flash::success(trans('alpaca::page.page_successfully_created'));
+
         return redirect($page->path);
     }
 
@@ -97,6 +102,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
+        SEO::setTitle(trans('alpaca::page.edit_page'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         $categories = Category::orderBy('title', 'asc')->pluck('title', 'id');
@@ -115,6 +121,10 @@ class PageController extends Controller
     public function update(Request $request, Page $page, PageRepository $repo)
     {
         $page = $repo->update($page, $request->all());
+
+
+        Flash::success(trans('alpaca::page.page_successfully_updated'));
+
         return redirect($page->path);
     }
 
@@ -129,42 +139,9 @@ class PageController extends Controller
     public function destroy(Page $page, PageRepository $repo)
     {
         $repo->delete($page);
+
+        Flash::success(trans('alpaca::page.page_successfully_deleted'));
+
         return redirect('/backend/page');
     }
-
-//
-//    public function showTopic($topicSlug, $pageSlug)
-//    {
-//        $page = $this->getPage($pageSlug, $topicSlug);
-//
-//        return $this->viewPage($page);
-//    }
-//
-//    public function showFrontPage()
-//    {
-//        $page = $this->getPage('');
-//
-//        return $this->viewPage($page);
-//    }
-//
-//    protected function getPage($pageSlug, $topicSlug = null)
-//    {
-//        if (is_null($topicSlug)) {
-//            $query = Page::whereSlug($pageSlug);
-//        } else {
-//            $query = Topic::slug($topicSlug)->firstOrFail()->pages()->whereSlug($pageSlug);
-//        }
-//
-//        if (Auth::check() === false || Auth::user()->hasRole('admin') === false) {
-//            $query->whereActive(true);
-//        }
-//
-//        $page = $query->get()->first();
-//
-//        if (is_null($page)) {
-//            throw (new ModelNotFoundException())->setModel(Page::class);
-//        }
-//
-//        return $page;
-//    }
 }

@@ -6,7 +6,7 @@
         {{ trans('alpaca::category.create_category') }}
     </a>
     <h1>
-        {{ trans('alpaca::category.categories') }}
+        {{ trans('alpaca::category.category_index') }}
     </h1>
 
     <table class="table">

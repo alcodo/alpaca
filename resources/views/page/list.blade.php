@@ -6,7 +6,7 @@
         {{ trans('alpaca::page.create_page') }}
     </a>
     <h1>
-        {{ trans('alpaca::page.pages') }}
+        {{ trans('alpaca::page.page_index') }}
     </h1>
 
     <table class="table">
