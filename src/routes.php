@@ -5,8 +5,13 @@ Route::group([
         'web',
         'alpaca',
     ],
-//    'namespace' => 'Alpaca\Controllers',
 ], function () {
+
+    // Sitemap
+    Route::get('/sitemap', '\Alpaca\Controllers\SitemapController@html');
+    Route::get('/sitemap.xml', '\Alpaca\Controllers\SitemapController@xml');
+
+
 //Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
 //Route::middleware(['web', 'trimStrings'])->namespace('Alpaca\Controllers')->group(function () {
 

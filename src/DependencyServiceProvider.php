@@ -14,22 +14,22 @@ use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
 class DependencyServiceProvider extends AggregateServiceProvider
 {
     protected $providers = [
-//        PowerImageServiceProvider::class,
         FlashServiceProvider::class,
-        EntrustServiceProvider::class,
         SEOToolsServiceProvider::class,
         SlugifyServiceProvider::class,
         ServiceProvider::class,
         HoneypotServiceProvider::class,
+        EntrustServiceProvider::class,
+//        PowerImageServiceProvider::class,
     ];
 
     protected $aliases = [
         'Flash'    => \Laracasts\Flash\Flash::class,
-        'Entrust'  => \Zizaco\Entrust\EntrustFacade::class,
         'SEO'      => \Artesaos\SEOTools\Facades\SEOTools::class,
         'Slugify'  => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
         'Dateintl' => \Approached\LaravelDateInternational\DateIntlFacade::class,
         'Honeypot' => \Msurguy\Honeypot\HoneypotFacade::class,
+        'Entrust'  => \Zizaco\Entrust\EntrustFacade::class,
     ];
 
     protected $middlewares = [

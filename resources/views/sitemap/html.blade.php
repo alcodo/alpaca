@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-md-12">
             <h1>
-                {{ trans('sitemap::sitemap.sitemap') }}
+                Sitemap
             </h1>
 
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                 <tr>
-                    <th class="col-md-1">#</th>
-                    <th class="col-md-5">{{ trans('crud::crud.title') }}</th>
+                    <th>#</th>
+                    <th>{{ trans('alpaca::alpaca.title') }}</th>
                 </tr>
                 </thead>
                 @foreach ($sitemaps as $index => $sitemap)

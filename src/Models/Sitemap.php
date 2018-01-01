@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Sitemap\Models;
+namespace Alpaca\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

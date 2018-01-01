@@ -4,6 +4,9 @@ namespace Alpaca;
 
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
+use Alpaca\Events\Sitemap\SitemapIsRequested;
+use Alpaca\Listeners\Category\CategorySitemapListener;
+use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
 use Alpaca\User\UserServiceProvider;
@@ -14,10 +17,16 @@ use Alpaca\Gallery\GalleryServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 use Alpaca\CookieConsent\CookieConsentServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
 {
-    protected $listen = [];
+    protected $listen = [
+        SitemapIsRequested::class => [
+            PageSitemapListener::class,
+            CategorySitemapListener::class,
+        ]
+    ];
     /**
      * The provider class names.
      *
