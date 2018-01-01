@@ -15,6 +15,11 @@ Route::group([
     Route::get('/contact', ['as' => 'contact.show', 'uses' => '\Alpaca\Controllers\ContactController@show']);
     Route::post('/contact', ['as' => 'contact.send', 'uses' => '\Alpaca\Controllers\ContactController@send']);
 
+    // Email Template
+    Route::resource('/backend/email-template', '\Alpaca\Controllers\EmailTemplateController', ['only' => [
+        'index', 'show',
+    ]]);
+
 
 //Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
 //Route::middleware(['web', 'trimStrings'])->namespace('Alpaca\Controllers')->group(function () {

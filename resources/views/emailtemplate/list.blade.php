@@ -1,15 +1,11 @@
-@extends('app')
-
-@section('scripts')
-    <script defer src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-@endsection
+@extends('alpaca::layout')
 
 @section('content')
 
     <div class="row">
 
         <div class="col-md-12">
-            <h1>{{ trans('email::email.email-templates') }}</h1>
+            <h1>{{ trans('alpaca::emailtemplate.email-templates') }}</h1>
 
             <div class="row">
                 <div class="col-md-12">

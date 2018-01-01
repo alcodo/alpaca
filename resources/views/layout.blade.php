@@ -34,6 +34,8 @@
                     <ul class="list-group list-group-flush">
                         <a class="list-group-item" href="/backend/page">Page</a>
                         <a class="list-group-item" href="/backend/category">Category</a>
+                        <a class="list-group-item" href="/contact">Contact</a>
+                        <a class="list-group-item" href="/backend/email-template">E-Mail Templates</a>
                         <li class="list-group-item">Dapibus ac facilisis in</li>
                         <li class="list-group-item">Vestibulum at eros</li>
                     </ul>

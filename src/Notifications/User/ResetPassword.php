@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\User\Notifications;
+namespace Alpaca\Notifications\User;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
