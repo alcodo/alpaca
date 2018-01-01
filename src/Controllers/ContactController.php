@@ -1,13 +1,12 @@
 <?php
 
-namespace Alpaca\Contact\Controllers;
+namespace Alpaca\Controllers;
 
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Config;
-use Alpaca\Core\Controllers\Controller;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -22,7 +21,7 @@ class ContactController extends Controller
     public function show()
     {
         // Meta
-        $title = trans('contact::contact.contact');
+        $title = trans('alpaca::contact.contact');
         SEOMeta::setTitle($title);
         SEOMeta::addMeta('robots', 'noindex, nofollow');
         SEOMeta::addMeta('name', $title, 'itemprop');
@@ -30,7 +29,7 @@ class ContactController extends Controller
         OpenGraph::setUrl(\Request::url());
         OpenGraph::addProperty('locale', 'de_DE');
 
-        return view('contact::form');
+        return view('alpaca::contact.form');
     }
 
     /**
@@ -42,11 +41,11 @@ class ContactController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email',
-            'subject' => 'required',
-            'text' => 'required',
+            'email' => 'nullable|email',
+            'subject' => 'nullable',
+            'text' => 'required|string',
             'form_name' => 'honeypot',
-            'form_time' => 'required|honeytime:5',
+            'form_time' => 'required|honeytime:3',
         ]);
 
         if ($validator->fails()) {
@@ -57,14 +56,14 @@ class ContactController extends Controller
 
         // Send mail
         $input = $request->all();
-        Mail::send('contact::email', $input, function ($message) use ($input) {
+        Mail::send('alpaca::contact.email', $input, function ($message) use ($input) {
             $to = Config::get('mail.from');
             $message->to($to['address'], $to['name'])
                 ->from($input['email'], $input['name'])
                 ->subject($input['subject']);
         });
 
-        Flash::success(trans('contact::contact.send_successfully'));
+        Flash::success(trans('alpaca::contact.send_successfully'));
 
         return redirect(route('contact.show'));
     }

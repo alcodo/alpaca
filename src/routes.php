@@ -11,6 +11,10 @@ Route::group([
     Route::get('/sitemap', '\Alpaca\Controllers\SitemapController@html');
     Route::get('/sitemap.xml', '\Alpaca\Controllers\SitemapController@xml');
 
+    // Contact
+    Route::get('/contact', ['as' => 'contact.show', 'uses' => '\Alpaca\Controllers\ContactController@show']);
+    Route::post('/contact', ['as' => 'contact.send', 'uses' => '\Alpaca\Controllers\ContactController@send']);
+
 
 //Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
 //Route::middleware(['web', 'trimStrings'])->namespace('Alpaca\Controllers')->group(function () {
