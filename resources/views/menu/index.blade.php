@@ -30,13 +30,18 @@
                     @else
                         <ul class="list-group list-group-flush">
                             @foreach($menu->links as $link)
-                                @include('alpaca::menu.link.link', ['link' => $link])
+
+                                <div class="list-group-item">
+                                    @include('alpaca::menu.link.link', ['link' => $link, 'class' => ''])
+                                    @include('alpaca::menu.link.action')
+                                </div>
+
                             @endforeach
                         </ul>
                     @endif
                     <div class="card-footer">
 
-                        <a href="#" class="btn btn-info float-right" title="{{ trans('alpaca::alpaca.link') }}"
+                        <a href="#" class="btn btn-info btn-sm float-right" title="{{ trans('alpaca::alpaca.link') }}"
                            v-b-modal.modalcreatelink{{ $menu->id }}>
                             <i class="fa fa-plus" aria-hidden="true"></i> {{ trans('alpaca::alpaca.link') }}
                         </a>

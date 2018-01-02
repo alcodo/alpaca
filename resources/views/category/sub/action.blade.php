@@ -18,7 +18,7 @@
     </a>
 </div>
 
-<!-- Delete Component -->
+{{--Delete Component--}}
 <b-modal id="modalcategory{{ $category->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
     <form method="POST" action="/backend/category/{{ $category->id }}" accept-charset="UTF-8" aria-label="Action">

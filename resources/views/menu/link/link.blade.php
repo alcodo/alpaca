@@ -3,8 +3,8 @@
    rel="{{ $link->rel }}"
    @endif
    @if(!empty($link->target))
-   rel="{{ $link->target }}"
+   target="{{ $link->target }}"
    @endif
-   class="list-group-item">
+   class="{{ $class or '' }}">
     {{ $link->text }}
 </a>

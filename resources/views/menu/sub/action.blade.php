@@ -11,7 +11,7 @@
 </div>
 
 
-<!-- Edit Component -->
+{{--Edit Component--}}
 <b-modal id="modalmenuedit{{ $menu->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
     <form method="POST" action="/backend/menu/{{ $menu->id }}" accept-charset="UTF-8">
@@ -21,7 +21,7 @@
 
 </b-modal>
 
-<!-- Delete Component -->
+{{--Delete Component--}}
 <b-modal id="modalmenudelete{{ $menu->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
     <form method="POST" action="/backend/menu/{{ $menu->id }}" accept-charset="UTF-8" aria-label="Action">

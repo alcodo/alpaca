@@ -18,7 +18,7 @@
     </a>
 </div>
 
-<!-- Delete Component -->
+{{--Delete Component--}}
 <b-modal id="modalpage{{ $page->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
     <form method="POST" action="/backend/page/{{ $page->id }}" accept-charset="UTF-8" aria-label="Action">
