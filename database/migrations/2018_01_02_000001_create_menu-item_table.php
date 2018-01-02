@@ -18,12 +18,12 @@ class CreateMenuItemTable extends Migration
             $table->string('text');
             $table->integer('position');
             $table->string('href');
-            $table->string('title');
-            $table->string('rel');
-            $table->string('target');
+            $table->string('title')->nullable();
+            $table->string('rel')->nullable();
+            $table->string('target')->nullable();
 
-            $table->integer('menu_id')->unsigned()->index();
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->integer('menu_id')->unsigned();
+            $table->foreign('menu_id')->references('id')->on('al_menus')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -36,6 +36,6 @@ class CreateMenuItemTable extends Migration
      */
     public function down()
     {
-        Schema::drop('items');
+        Schema::drop('al_menu_links');
     }
 }

@@ -21,7 +21,9 @@ Route::group([
     ]]);
 
     // Menu
-//    Route::resource('/backend/menu/{menuId}/item', 'ItemBackend');
+    Route::resource('/backend/menu/{menu}/link', \Alpaca\Controllers\MenuLinkController::class, ['except' => [
+        'index', 'show', 'create', 'edit'
+    ]]);
     Route::resource('/backend/menu', \Alpaca\Controllers\MenuController::class, ['except' => [
         'show', 'create', 'edit'
     ]]);
