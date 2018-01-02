@@ -53,7 +53,7 @@ class PageController extends Controller
     {
         $page = $repo->create($request->all());
 
-        Flash::success(trans('alpaca::page.page_successfully_created'));
+        Flash::success(trans('alpaca::alpaca.successfully_created'));
 
         return redirect($page->path);
     }
@@ -120,7 +120,7 @@ class PageController extends Controller
         $page = $repo->update($page, $request->all());
 
 
-        Flash::success(trans('alpaca::page.page_successfully_updated'));
+        Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
         return redirect($page->path);
     }
@@ -137,7 +137,7 @@ class PageController extends Controller
     {
         $repo->delete($page);
 
-        Flash::success(trans('alpaca::page.page_successfully_deleted'));
+        Flash::success(trans('alpaca::alpaca.successfully_deleted'));
 
         return redirect('/backend/page');
     }

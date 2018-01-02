@@ -23,7 +23,7 @@ class MenuLinkController extends Controller
     {
         $repo->create($menu, $request->all());
 
-        Flash::success(trans('alpaca::menu.menu_successfully_created'));
+        Flash::success(trans('alpaca::alpaca.successfully_created'));
 
         return redirect('/backend/menu');
     }
@@ -42,7 +42,7 @@ class MenuLinkController extends Controller
     {
         $repo->update($menu, $link, $request->all());
 
-        Flash::success(trans('alpaca::menu.menu_successfully_updated'));
+        Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
         return redirect('/backend/menu');
     }
@@ -59,7 +59,7 @@ class MenuLinkController extends Controller
     {
         $repo->delete($menu, $link);
 
-        Flash::success(trans('alpaca::menu.menu_successfully_deleted'));
+        Flash::success(trans('alpaca::alpaca.successfully_deleted'));
 
         return redirect('/backend/menu');
     }

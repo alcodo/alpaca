@@ -50,7 +50,7 @@ class CategoryController extends Controller
     {
         $page = $repo->create($request->all());
 
-        Flash::success(trans('alpaca::category.category_successfully_created'));
+        Flash::success(trans('alpaca::alpaca.successfully_created'));
 
         return redirect($page->path);
     }
@@ -94,7 +94,7 @@ class CategoryController extends Controller
     {
         $category = $repo->update($category, $request->all());
 
-        Flash::success(trans('alpaca::category.category_successfully_updated'));
+        Flash::success(trans('alpaca::category.alpaca.successfully_updated'));
 
         return redirect($category->path);
     }
@@ -110,7 +110,7 @@ class CategoryController extends Controller
     {
         $repo->delete($category);
 
-        Flash::success(trans('alpaca::category.category_successfully_deleted'));
+        Flash::success(trans('alpaca::alpaca.successfully_deleted'));
 
         return redirect('/backend/category');
     }

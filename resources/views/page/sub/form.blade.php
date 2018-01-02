@@ -3,9 +3,9 @@
 <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
 <div class="form-group">
-    <label for="title">{{ trans('alpaca::alpaca.title') }}</label>
+    <label for="title">{{ trans('alpaca::alpaca.title') }}<span class="text-danger">*</span></label>
     <input type="text" class="form-control" id="title" name="title"
-           value="{{ old('title', isset($page) ? $page->title : '') }}">
+           value="{{ old('title', isset($page) ? $page->title : '') }}" required>
 </div>
 
 <div class="form-group">
@@ -32,9 +32,8 @@
 <b-tabs>
     <b-tab title="{{ trans('alpaca::alpaca.content') }}" active>
 
-        <br>
         <div class="form-group">
-            <textarea class="form-control" id="content" rows="15" name="content">
+            <span class="text-danger">*</span><textarea class="form-control" id="content" rows="15" name="content" required>
                 {{ old('content', isset($page) ? $page->content : '') }}
             </textarea>
         </div>

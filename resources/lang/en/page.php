@@ -14,8 +14,5 @@ return [
     'name' => 'Name',
     'also_interest' => 'That could also interest you',
     'page_index' => 'Page index',
-    'page_successfully_created' => 'Page was successfully created',
-    'page_successfully_updated' => 'Page was successfully updated',
-    'page_successfully_deleted' => 'Page was successfully deleted',
 
 ];

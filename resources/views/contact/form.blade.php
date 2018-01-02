@@ -8,7 +8,7 @@
         {{ csrf_field() }}
 
         <div class="form-group">
-            <label for="name">{{ trans('alpaca::contact.name') }}</label>
+            <label for="name">{{ trans('alpaca::contact.name') }}<span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
         </div>
 
@@ -24,7 +24,7 @@
 
 
         <div class="form-group">
-            <label for="text">{{ trans('alpaca::contact.message') }}</label>
+            <label for="text">{{ trans('alpaca::contact.message') }}<span class="text-danger">*</span></label>
             <textarea class="form-control" id="text" rows="15" name="text" required>
                 {{ old('text') }}
             </textarea>
