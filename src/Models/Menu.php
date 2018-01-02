@@ -1,21 +1,23 @@
 <?php
 
-namespace Alpaca\Menu\Models;
+namespace Alpaca\Models;
 
 use Alpaca\Block\Models\Block;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
+    protected $table = 'al_menus';
+
     protected $fillable = [
         'title',
+        'slug',
         'class',
-        'html',
     ];
 
-    public function items()
+    public function links()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany( MenuLink::class);
     }
 
     public function block()

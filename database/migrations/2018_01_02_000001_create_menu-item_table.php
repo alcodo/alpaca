@@ -11,11 +11,12 @@ class CreateMenuItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function ($table) {
+        Schema::create('al_menu_links', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
 
             $table->string('text');
+            $table->integer('position');
             $table->string('href');
             $table->string('title');
             $table->string('rel');

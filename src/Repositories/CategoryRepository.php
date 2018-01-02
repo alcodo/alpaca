@@ -25,7 +25,7 @@ class CategoryRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string|unique:page_categories,path',
+            'path' => 'nullable|string|unique:al_categories,path',
             'active' => 'required|boolean',
         ])->validate();
 
@@ -45,7 +45,7 @@ class CategoryRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string|unique:page_categories,path,' . $category->id . ',id',
+            'path' => 'nullable|string|unique:al_categories,path,' . $category->id . ',id',
             'active' => 'required|boolean',
         ])->validate();
 

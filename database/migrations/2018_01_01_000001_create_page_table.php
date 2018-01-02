@@ -12,7 +12,7 @@ class CreatePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_pages', function (Blueprint $table) {
+        Schema::create('al_pages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('active');

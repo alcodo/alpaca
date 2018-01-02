@@ -2,6 +2,7 @@
 
 return [
 
+    'create_menu'             => 'Create menu',
     'menu'             => 'Menu',
     'menus'            => 'Menus',
     'no_menu'            => 'No menu',

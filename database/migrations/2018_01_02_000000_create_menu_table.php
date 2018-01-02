@@ -11,13 +11,13 @@ class CreateMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function ($table) {
+        Schema::create('al_menus', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
 
             $table->string('title');
+            $table->string('slug');
             $table->string('class')->nullable();
-            $table->text('html')->nullable();
 
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateMenuTable extends Migration
      */
     public function down()
     {
-        Schema::drop('menus');
+        Schema::drop('al_menus');
     }
 }

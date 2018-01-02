@@ -20,6 +20,12 @@ Route::group([
         'index', 'show',
     ]]);
 
+    // Menu
+//    Route::resource('/backend/menu/{menuId}/item', 'ItemBackend');
+    Route::resource('/backend/menu', \Alpaca\Controllers\MenuController::class, ['except' => [
+        'show', 'create', 'edit'
+    ]]);
+
 
 //Route::middleware(['web'])->namespace('Alpaca\Controllers')->group(function () {
 //Route::middleware(['web', 'trimStrings'])->namespace('Alpaca\Controllers')->group(function () {

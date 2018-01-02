@@ -2,12 +2,11 @@
 
 namespace Alpaca\Models;
 
-use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'page_categories';
+    protected $table = 'al_categories';
 
     protected $fillable = [
         'active',

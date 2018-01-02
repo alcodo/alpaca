@@ -6,10 +6,7 @@ use Alpaca\Models\Category;
 use Alpaca\Repositories\PageRepository;
 use Illuminate\Http\Request;
 use Alpaca\Models\Page;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laracasts\Flash\Flash;
 
 class PageController extends Controller

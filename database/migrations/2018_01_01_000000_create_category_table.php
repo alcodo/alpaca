@@ -12,7 +12,7 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_categories', function (Blueprint $table) {
+        Schema::create('al_categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('active');
@@ -33,6 +33,6 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('al_categories');
     }
 }
