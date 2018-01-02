@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateMenuItemTable extends Migration
@@ -11,8 +12,7 @@ class CreateMenuItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('al_menu_links', function ($table) {
-            $table->engine = 'InnoDB';
+        Schema::create('al_menu_links', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('text');

@@ -13,10 +13,8 @@ class CreateCategoryTable extends Migration
     public function up()
     {
         Schema::create('al_categories', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('active');
-
 
             $table->string('path')->unique();
             $table->string('title');
