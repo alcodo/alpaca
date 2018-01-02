@@ -27,7 +27,7 @@ class CreatePageTable extends Migration
 
             // category
             $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('page_categories');
+            $table->foreign('category_id')->references('id')->on('al_categories');
 
             // seo
             $table->string('html_title')->nullable();
