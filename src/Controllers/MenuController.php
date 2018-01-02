@@ -20,23 +20,13 @@ class MenuController extends Controller
         SEO::setTitle(trans('alpaca::menu.menu_index'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $menus = Menu::with('links')->get();
+        $menus = Menu::with(['links' => function ($query) {
+            $query->orderBy('position', 'ASC');
+        }])
+            ->orderBy('updated_at', 'DESC')->get();
 
         return view('alpaca::menu.index', compact('menus'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-//    public function create()
-//    {
-//        SEO::setTitle(trans('alpaca::menu.create_menu'));
-//        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
-//
-//        return view('alpaca::menu.create');
-//    }
 
     /**
      * Store a newly created resource in storage.
@@ -55,20 +45,6 @@ class MenuController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Menu $menu
-     * @return \Illuminate\Http\Response
-     */
-//    public function edit(Menu $menu)
-//    {
-//        SEO::setTitle(trans('alpaca::menu.edit_menu'));
-//        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
-//
-//        return view('alpaca::menu.edit', compact('menu'));
-//    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
@@ -78,8 +54,7 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu, MenuRepository $repo)
     {
-        $menu = $repo->update($menu, $request->all());
-
+        $repo->update($menu, $request->all());
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
