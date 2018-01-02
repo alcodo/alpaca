@@ -17,6 +17,7 @@ return [
     'show' => 'Show',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'sure_delete' => 'Are you sure you want to delete it?',
 //    'actions' => 'Actions',
 //    'unauthorized_access' => 'Unauthorized access',
 //    'class' => 'Class',
