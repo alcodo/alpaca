@@ -20,7 +20,7 @@ class MenuController extends Controller
         SEO::setTitle(trans('alpaca::menu.menu_index'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $menus = Menu::all();
+        $menus = Menu::with('links')->get();
 
         return view('alpaca::menu.index', compact('menus'));
     }

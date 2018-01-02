@@ -3,6 +3,7 @@
 return [
 
     'active' => 'Active',
+    'link' => 'Link',
     'title' => 'Title',
     'content' => 'Body',
     'path' => 'Path',
@@ -24,11 +25,6 @@ return [
 //    'actions' => 'Actions',
 //    'unauthorized_access' => 'Unauthorized access',
 //    'class' => 'Class',
-//    'link' => 'Link',
-//    'href' => 'Href',
-//    'rel' => 'Rel',
-//    'target' => 'Target',
-//    'text' => 'Text',
 //    'file' => 'File',
 //    'alt' => 'Alt',
 //    'filename' => 'Filename',
