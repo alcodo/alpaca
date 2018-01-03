@@ -2,6 +2,7 @@
 
 return [
 
+    'create_block' => 'Create block',
     'block' => 'Block',
     'blocks' => 'Blocks',
     'range' => 'Range',

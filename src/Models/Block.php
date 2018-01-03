@@ -1,12 +1,13 @@
 <?php
 
-namespace Alpaca\Block\Models;
+namespace Alpaca\Models;
 
-use Alpaca\Menu\Models\Menu;
 use Illuminate\Database\Eloquent\Model;
 
 class Block extends Model
 {
+    protected $table = 'al_blocks';
+
     /**
      * Possible areas.
      */

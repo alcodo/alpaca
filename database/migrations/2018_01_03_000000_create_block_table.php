@@ -12,7 +12,7 @@ class CreateBlockTable extends Migration
      */
     public function up()
     {
-        Schema::create('blocks', function (Blueprint $table) {
+        Schema::create('al_blocks', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('active');
@@ -30,7 +30,7 @@ class CreateBlockTable extends Migration
             $table->mediumText('exception');
 
             $table->integer('menu_id')->unsigned()->nullable();
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('al_menus')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -43,6 +43,6 @@ class CreateBlockTable extends Migration
      */
     public function down()
     {
-        Schema::drop('blocks');
+        Schema::drop('al_blocks');
     }
 }
