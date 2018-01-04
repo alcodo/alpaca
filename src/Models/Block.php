@@ -35,19 +35,22 @@ class Block extends Model
     const EXCEPTION_ONLY = 1;
 
     protected $fillable = [
-        'active',
-        'name',
         'title',
-        'range',
+        'slug',
+        'html',
+
+        // options
         'area',
-        'menu_id',
+        'active',
+        'position',
         'exception_rule', // true =  exclude false = only
         'exception',
-        'html',
-        'mobile_view',
-        'desktop_view',
-        'desktop_view_force', // 'mobile_view_on_desktop',
+
+        // reference
+        'menu_id',
+        'user_id',
     ];
+
 
     public static function getAreaChoice()
     {

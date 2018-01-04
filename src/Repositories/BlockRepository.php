@@ -24,7 +24,18 @@ class BlockRepository
     {
         Validator::make($data, [
             'title' => 'required|string|max:255',
-            'class' => 'nullable|string',
+            'html' => 'nullable|string',
+
+            // options
+            'area' => 'required|string|max:255',
+            'active' => 'required|boolean',
+            'position' => 'required|integer',
+            'exception_rule' => 'required|boolean',
+            'exception' => 'nullable|string',
+
+            // reference
+            'user_id' => 'nullable|integer',
+            'category_id' => 'nullable|integer',
         ])->validate();
 
         $data['slug'] = SlugifyFacade::slugify($data['title']);
@@ -40,7 +51,18 @@ class BlockRepository
     {
         Validator::make($data, [
             'title' => 'required|string|max:255',
-            'class' => 'nullable|string',
+            'html' => 'nullable|string',
+
+            // options
+            'area' => 'required|string|max:255',
+            'active' => 'required|boolean',
+            'position' => 'required|integer',
+            'exception_rule' => 'required|boolean',
+            'exception' => 'nullable|string',
+
+            // reference
+            'user_id' => 'nullable|integer',
+            'category_id' => 'nullable|integer',
         ])->validate();
 
         $data['slug'] = SlugifyFacade::slugify($data['title']);

@@ -39,7 +39,7 @@ class BlockController extends Controller
      */
     public function store(Request $request, BlockRepository $repo)
     {
-        $page = $repo->create($request->all());
+        $repo->create($request->all());
 
         Flash::success(trans('alpaca::alpaca.successfully_created'));
 
@@ -50,13 +50,13 @@ class BlockController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Menu $menu
+     * @param Block $block
      * @param BlockRepository $repo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu, BlockRepository $repo)
+    public function update(Request $request, Block $block, BlockRepository $repo)
     {
-        $repo->update($menu, $request->all());
+        $repo->update($block, $request->all());
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
@@ -66,14 +66,13 @@ class BlockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Menu $menu
-     * @param MenuRepository $repo
+     * @param Block $block
+     * @param BlockRepository $repo
      * @return \Illuminate\Http\Response
-     * @throws \Exception
      */
-    public function destroy(Menu $menu, BlockRepository $repo)
+    public function destroy(Block $block, BlockRepository $repo)
     {
-        $repo->delete($menu);
+        $repo->delete($block);
 
         Flash::success(trans('alpaca::alpaca.successfully_deleted'));
 

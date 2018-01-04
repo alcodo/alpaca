@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Alpaca\Events\Block\BlockWasCreated;
 use Alpaca\Events\Block\BlockWasDeleted;
 use Alpaca\Events\Block\BlockWasUpdated;
-use Alpaca\Repositories\MenuRepository;
+use Alpaca\Repositories\BlockRepository;
 use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
 
@@ -26,13 +26,16 @@ class BlockTest extends IntegrationTest
 
         $this->withoutExceptionHandling();
         $this->post('/backend/block', [
-            'title' => 'Footer Menu',
-            'class' => 'menu-footer',
+            'title' => 'Frontblock',
+            'area' => 'left',
+            'active' => true,
+            'position' => 0,
+            'exception_rule' => true,
         ])
             ->assertRedirect('/backend/block');
 
         $this->assertDatabaseHas('al_blocks', [
-            'title' => 'Footer Menu',
+            'title' => 'Frontblock',
         ]);
 
         Event::assertDispatched(BlockWasCreated::class);
@@ -42,20 +45,20 @@ class BlockTest extends IntegrationTest
     {
         Event::fake();
 
-        $repo = new MenuRepository();
-        $repo->create([
-            'title' => 'Cazy'
-        ]);
-
-
         $this->withoutExceptionHandling();
+        $this->createBlock();
+
         $this->put('/backend/block/1', [
-            'title' => 'Crazy Menu',
+            'title' => 'Crazy block',
+            'area' => 'right',
+            'active' => false,
+            'position' => 1,
+            'exception_rule' => false,
         ])
             ->assertRedirect('/backend/block');
 
         $this->assertDatabaseHas('al_blocks', [
-            'title' => 'Crazy Menu',
+            'title' => 'Crazy block',
         ]);
 
         Event::assertDispatched(BlockWasUpdated::class);
@@ -65,24 +68,33 @@ class BlockTest extends IntegrationTest
     {
         Event::fake();
 
-        $repo = new MenuRepository();
-        $repo->create([
-            'title' => 'Demo Menu'
-        ]);
+        $this->withoutExceptionHandling();
+        $this->createBlock();
 
         $this->assertDatabaseHas('al_blocks', [
-            'title' => 'Demo Menu',
+            'title' => 'Test',
         ]);
 
-        $this->withoutExceptionHandling();
         $this->delete('/backend/block/1')
             ->assertRedirect('/backend/block');
 
         $this->assertDatabaseMissing('al_blocks', [
-            'title' => 'Demo Menu',
+            'title' => 'Test',
         ]);
 
         Event::assertDispatched(BlockWasDeleted::class);
+    }
+
+    private function createBlock()
+    {
+        $repo = new BlockRepository();
+        $repo->create([
+            'title' => 'Test',
+            'area' => 'left',
+            'active' => true,
+            'position' => 0,
+            'exception_rule' => true,
+        ]);
     }
 
 }

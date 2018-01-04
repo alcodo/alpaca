@@ -13,24 +13,23 @@ class CreateBlockTable extends Migration
     public function up()
     {
         Schema::create('al_blocks', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->boolean('active');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('html')->nullable();
+
+            // options
             $table->string('area', 20)->index();
-
-            $table->string('name');
-            $table->string('title')->nullable();
-            $table->tinyInteger('range')->unsigned();
-            $table->boolean('mobile_view')->default(1);
-            $table->boolean('desktop_view')->default(1);
-            $table->boolean('desktop_view_force')->default(0);
-
-            $table->text('html');
+            $table->boolean('active');
+            $table->integer('position')->unsigned();
             $table->boolean('exception_rule');
-            $table->mediumText('exception');
+            $table->mediumText('exception')->nullable();
 
+            // reference
             $table->integer('menu_id')->unsigned()->nullable();
             $table->foreign('menu_id')->references('id')->on('al_menus')->onDelete('cascade');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });
