@@ -27,7 +27,23 @@ class BlockController extends Controller
         }])
             ->orderBy('updated_at', 'DESC')->get();
 
-        return view('alpaca::block.index', compact('block'));
+        return view('alpaca::block.index', compact('blocks'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        SEO::setTitle(trans('alpaca::block.create_block'));
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
+        $menues = Menu::orderBy('title', 'asc')->pluck('title', 'id');
+        $menues->prepend(trans('alpaca::menu.no_menu'), '');
+
+        return view('alpaca::block.create', compact('menues'));
     }
 
     /**
@@ -44,6 +60,23 @@ class BlockController extends Controller
         Flash::success(trans('alpaca::alpaca.successfully_created'));
 
         return redirect('/backend/block');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Block $block
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Block $block)
+    {
+        SEO::setTitle(trans('alpaca::block.edit_block'));
+        SEO::metatags()->addMeta('robots', 'noindex,nofollow');
+
+        $menues = Menu::orderBy('title', 'asc')->pluck('title', 'id');
+        $menues->prepend(trans('alpaca::menu.no_menu'), '');
+
+        return view('alpaca::block.edit', compact('block', 'menues'));
     }
 
     /**

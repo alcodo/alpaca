@@ -12,7 +12,7 @@
     @endif
     <link rel="shortcut icon" href="/favicon.ico"/>
     {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
-    <!-- Bootstrap CSS -->
+<!-- Bootstrap CSS -->
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"--}}
     {{--integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">--}}
 </head>
@@ -35,10 +35,9 @@
                         <a class="list-group-item" href="/backend/page">Page</a>
                         <a class="list-group-item" href="/backend/category">Category</a>
                         <a class="list-group-item" href="/backend/menu">Menu</a>
-                        <a class="list-group-item" href="/contact">Contact</a>
+                        <a class="list-group-item" href="/backend/block">Block</a>
                         <a class="list-group-item" href="/backend/email-template">E-Mail Templates</a>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <a class="list-group-item" href="/contact">Contact</a>
                     </ul>
                 </div>
             </div>
@@ -61,7 +60,6 @@
     </footer>
 
 </div>
-
 
 
 <!-- Optional JavaScript -->

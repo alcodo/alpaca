@@ -23,7 +23,7 @@ class PageController extends Controller
 
         $pages = Page::paginate(20);
 
-        return view('alpaca::page.list', compact('pages'));
+        return view('alpaca::page.index', compact('pages'));
     }
 
     /**

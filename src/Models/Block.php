@@ -12,13 +12,13 @@ class Block extends Model
      * Possible areas.
      */
     const AREAS = [
-        'header',
-        'top',
-        'bottom',
-        'left',
-        'right',
-        'content-top',
-        'content-bottom',
+        'header' => 'Header',
+        'top' => 'Top',
+        'bottom' => 'Bottom',
+        'left' => 'Left',
+        'right' => 'Right',
+        'content-top' => 'Content top',
+        'content-bottom' => 'Content bottom',
     ];
 
     /**
@@ -58,7 +58,7 @@ class Block extends Model
         $areas = array_flip($areas);
 
         foreach ($areas as $id => $number) {
-            $areas[$id] = trans('block::block.'.$id);
+            $areas[$id] = trans('block::block.' . $id);
         }
 
         return $areas;

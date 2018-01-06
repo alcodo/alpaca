@@ -29,9 +29,7 @@ Route::group([
     ]]);
 
     // Block
-    Route::resource('/backend/block', \Alpaca\Controllers\BlockController::class, ['except' => [
-        'show', 'create', 'edit'
-    ]]);
+    Route::resource('/backend/block', \Alpaca\Controllers\BlockController::class, ['except' => ['show']]);
 
     // Page
     Route::resource('/backend/page', \Alpaca\Controllers\PageController::class);

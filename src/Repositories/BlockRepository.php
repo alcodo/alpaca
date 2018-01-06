@@ -35,7 +35,7 @@ class BlockRepository
 
             // reference
             'user_id' => 'nullable|integer',
-            'category_id' => 'nullable|integer',
+            'menu_id' => 'nullable|integer',
         ])->validate();
 
         $data['slug'] = SlugifyFacade::slugify($data['title']);
@@ -62,7 +62,7 @@ class BlockRepository
 
             // reference
             'user_id' => 'nullable|integer',
-            'category_id' => 'nullable|integer',
+            'menu_id' => 'nullable|integer',
         ])->validate();
 
         $data['slug'] = SlugifyFacade::slugify($data['title']);
