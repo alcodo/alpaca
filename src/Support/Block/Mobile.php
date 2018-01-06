@@ -1,9 +1,8 @@
 <?php
 
-namespace Alpaca\Block\Builder;
+namespace Alpaca\Support\Block;
 
-use Alpaca\Block\Models\Block;
-use Alpaca\Block\Builder\Roles\Html;
+use Alpaca\Models\Block;
 
 /**
  * This class gets all blocks.

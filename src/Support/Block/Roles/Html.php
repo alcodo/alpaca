@@ -1,8 +1,8 @@
 <?php
 
-namespace Alpaca\Block\Builder\Roles;
+namespace Alpaca\Support\Block\Roles;
 
-use Alpaca\Block\Models\Block;
+use Alpaca\Models\Block;
 
 /**
  * Generate html for a block.

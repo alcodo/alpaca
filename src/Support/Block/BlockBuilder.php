@@ -1,9 +1,9 @@
 <?php
 
-namespace Alpaca\Block\Builder;
+namespace Alpaca\Support\Block;
 
-use Alpaca\Block\Models\Block;
-use Alpaca\Block\Builder\Roles\Exception;
+use Alpaca\Models\Block;
+use Exception;
 
 /**
  * This class gets all blocks.

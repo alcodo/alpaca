@@ -22,36 +22,43 @@
 
     @include('alpaca::navbar.navbar')
 
-    {{--<br>--}}
-
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <a class="list-group-item" href="/backend/page">Page</a>
-                        <a class="list-group-item" href="/backend/category">Category</a>
-                        <a class="list-group-item" href="/backend/menu">Menu</a>
-                        <a class="list-group-item" href="/backend/block">Block</a>
-                        <a class="list-group-item" href="/backend/email-template">E-Mail Templates</a>
-                        <a class="list-group-item" href="/contact">Contact</a>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-9">
-                <div class="card">
-                    <div class="card-body">
-                        @include('alpaca::error')
-                        @include('flash::message')
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+        @include('alpaca::error')
+        @include('flash::message')
+        @include('alpaca::content')
+
     </div>
+
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-sm-3">--}}
+                {{--<div class="card">--}}
+                    {{--<div class="card-header">--}}
+                        {{--Featured--}}
+                    {{--</div>--}}
+                    {{--<ul class="list-group list-group-flush">--}}
+                        {{--<a class="list-group-item" href="/backend/page">Page</a>--}}
+                        {{--<a class="list-group-item" href="/backend/category">Category</a>--}}
+                        {{--<a class="list-group-item" href="/backend/menu">Menu</a>--}}
+                        {{--<a class="list-group-item" href="/backend/block">Block</a>--}}
+                        {{--<a class="list-group-item" href="/backend/email-template">E-Mail Templates</a>--}}
+                        {{--<a class="list-group-item" href="/contact">Contact</a>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-sm-9">--}}
+                {{--<div class="card">--}}
+                    {{--<div class="card-body">--}}
+                        {{--@include('alpaca::error')--}}
+                        {{--@include('flash::message')--}}
+                        {{--@yield('content')--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <footer class="footer">
         <div class="container">

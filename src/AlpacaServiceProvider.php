@@ -9,6 +9,7 @@ use Alpaca\Listeners\Category\CategorySitemapListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
+use Alpaca\Support\Block\BlockFacade;
 use Alpaca\User\UserServiceProvider;
 use Alpaca\Block\BlockServiceProvider;
 use Alpaca\Email\EmailServiceProvider;
@@ -51,6 +52,19 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 //        'TrimStrings' => \Alpaca\Middlewares\TrimStrings::class,
 //    ];
 
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+
+        // facade
+        $loader->alias('Block', BlockFacade::class);
+    }
+
     public function boot(\Illuminate\Routing\Router $router)
     {
         $this->app->register(DependencyServiceProvider::class);
@@ -62,6 +76,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
+
+
+        $this->app->instance('block', new BlockBuilder());
     }
 
     /**

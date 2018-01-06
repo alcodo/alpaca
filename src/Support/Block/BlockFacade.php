@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Block\Builder;
+namespace Alpaca\Support\Block;
 
 use Illuminate\Support\Facades\Facade;
 
