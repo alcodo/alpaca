@@ -2,6 +2,7 @@
 
 namespace Alpaca\Support\Block;
 
+use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Models\Block;
 use Alpaca\Support\Block\Roles\Exception;
 use Alpaca\Support\Block\Roles\Html;
@@ -28,7 +29,7 @@ class BlockBuilder
     {
         // get block
         $databaseBlocks = Block::with(['menu', 'menu.links'])->orderBy('position', 'asc')->get();
-        $eventBlocks = event('loadEventBlocks'); // TODO maybe use here the filter function
+        $eventBlocks = event(BlockIsRequested::class); // TODO maybe use here the filter function
 
         // merge event blocks
         foreach ($eventBlocks as $eventBlock) {

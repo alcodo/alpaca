@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Core\Listeners;
+namespace Alpaca\Listeners\User;
 
 use Response;
 use Alpaca\Block\Models\Block;

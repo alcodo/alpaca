@@ -4,7 +4,9 @@ namespace Alpaca;
 
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
+use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
+use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\Category\CategorySitemapListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Menu\MenuServiceProvider;
@@ -27,7 +29,11 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         SitemapIsRequested::class => [
             PageSitemapListener::class,
             CategorySitemapListener::class,
-        ]
+        ],
+        BlockIsRequested::class => [
+            AlpacaBlockListener::class,
+//            UserBlockListener::class,
+        ],
     ];
     /**
      * The provider class names.

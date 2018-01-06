@@ -14,6 +14,6 @@ return [
      |
      */
 
-    'categoryPrefix' => 'category',
+//    'categoryPrefix' => 'category',
 
 ];
