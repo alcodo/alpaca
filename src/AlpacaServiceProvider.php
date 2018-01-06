@@ -9,6 +9,7 @@ use Alpaca\Listeners\Category\CategorySitemapListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
+use Alpaca\Support\Block\BlockBuilder;
 use Alpaca\Support\Block\BlockFacade;
 use Alpaca\User\UserServiceProvider;
 use Alpaca\Block\BlockServiceProvider;

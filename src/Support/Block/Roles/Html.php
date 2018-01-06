@@ -19,39 +19,8 @@ class Html
         $this->block = $block;
     }
 
-    public function getDesktopHtml()
+    public function getHtml()
     {
-        return $this->getHtml(false);
-    }
-
-    public function getMobileHtml()
-    {
-        return $this->getHtml(true);
-    }
-
-    private function isMenu()
-    {
-        return is_null($this->block->menu_id) === false;
-    }
-
-    private function getHtml($isMobileView)
-    {
-        // menu
-        if ($this->isMenu()) {
-            $template = $isMobileView ? 'menu::menuMobile' : 'menu::menu';
-
-            return view($template, [
-                'menu' => $this->block->menu,
-                'isMobileView' => $isMobileView,
-            ])->render();
-        }
-
-        // block
-        $template = $isMobileView ? 'block::blockMobile' : 'block::block';
-
-        return view($template, [
-            'block' => $this->block,
-            'isMobileView' => $isMobileView,
-        ])->render();
+        return view('alpaca::block.show', ['block' => $this->block])->render();
     }
 }

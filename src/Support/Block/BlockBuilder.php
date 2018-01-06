@@ -3,7 +3,8 @@
 namespace Alpaca\Support\Block;
 
 use Alpaca\Models\Block;
-use Exception;
+use Alpaca\Support\Block\Roles\Exception;
+use Alpaca\Support\Block\Roles\Html;
 
 /**
  * This class gets all blocks.
@@ -11,7 +12,7 @@ use Exception;
  */
 class BlockBuilder
 {
-    use Desktop, Mobile;
+
     /**
      * @var \Illuminate\Support\Collection
      */
@@ -26,8 +27,7 @@ class BlockBuilder
     private function initBlocks()
     {
         // get block
-//        $databaseBlocks = Block::with(['menu', 'menu.items'])->whereActive(true)->orderBy('range', 'asc')->get();
-        $databaseBlocks = Block::with(['menu', 'menu.items'])->orderBy('range', 'asc')->get();
+        $databaseBlocks = Block::with(['menu', 'menu.links'])->orderBy('position', 'asc')->get();
         $eventBlocks = event('loadEventBlocks'); // TODO maybe use here the filter function
 
         // merge event blocks
@@ -55,7 +55,7 @@ class BlockBuilder
 
                 return $ex->isViewable();
             })
-            ->sortBy('range')
+            ->sortBy('position')
             ->groupBy('area');
     }
 
@@ -71,5 +71,60 @@ class BlockBuilder
         }
 
         return $this->blocks;
+    }
+
+
+    /**
+     * Returns a html with all blocks for the area.
+     *
+     * @param $area
+     * @return mixed
+     */
+    public function getBlocks($area)
+    {
+        $areaBlocks = $this->getDesktopBlockByArea($area);
+
+        if (is_null($areaBlocks)) {
+            return;
+        }
+
+        return $areaBlocks->map(function (Block $block, $key) {
+
+            // each block
+            $html = new Html($block);
+
+            return $html->getHtml();
+
+        })->implode('');
+    }
+
+    /**
+     * Check if any block exists for the area.
+     *
+     * @param $area
+     * @return bool
+     */
+    public function existsBlocks($area)
+    {
+        $blocks = $this->getDesktopBlockByArea($area);
+
+        return ! is_null($blocks);
+    }
+
+    /**
+     * Return all blocks for this area.
+     *
+     * @param $area
+     * @return mixed
+     */
+    protected function getDesktopBlockByArea($area)
+    {
+        $allBlocks = $this->getAllBlocks();
+
+        if (isset($allBlocks[$area]) && $allBlocks[$area]->isNotEmpty()) {
+            return $allBlocks[$area];
+        }
+
+        return null;
     }
 }
