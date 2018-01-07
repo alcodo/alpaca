@@ -11,8 +11,7 @@ class CreateImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function ($table) {
-            $table->engine = 'InnoDB';
+        Schema::create('al_images', function ($table) {
             $table->increments('id');
 
             $table->string('title')->nullable();
@@ -39,6 +38,6 @@ class CreateImageTable extends Migration
      */
     public function down()
     {
-        Schema::drop('images');
+        Schema::drop('al_images');
     }
 }

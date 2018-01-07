@@ -5,7 +5,6 @@ namespace Alpaca\Controllers;
 use Alpaca\Models\Block;
 use Alpaca\Models\Menu;
 use Alpaca\Repositories\BlockRepository;
-use Alpaca\Repositories\MenuRepository;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;

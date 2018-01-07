@@ -12,7 +12,7 @@ use Tests\IntegrationTest;
 class BlockTest extends IntegrationTest
 {
 
-    public function test_index_menu()
+    public function test_index_block()
     {
         $this->withoutExceptionHandling();
         $this->get('/backend/block')
@@ -20,7 +20,7 @@ class BlockTest extends IntegrationTest
             ->assertSee('Create block');
     }
 
-    public function test_store_menu()
+    public function test_store_block()
     {
         Event::fake();
 
@@ -41,7 +41,7 @@ class BlockTest extends IntegrationTest
         Event::assertDispatched(BlockWasCreated::class);
     }
 
-    public function test_update_menu()
+    public function test_update_block()
     {
         Event::fake();
 
@@ -64,7 +64,7 @@ class BlockTest extends IntegrationTest
         Event::assertDispatched(BlockWasUpdated::class);
     }
 
-    public function test_destroy_menu()
+    public function test_destroy_block()
     {
         Event::fake();
 

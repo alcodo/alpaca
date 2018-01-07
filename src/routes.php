@@ -31,6 +31,11 @@ Route::group([
     // Block
     Route::resource('/backend/block', \Alpaca\Controllers\BlockController::class, ['except' => ['show']]);
 
+    // Gallery
+    Route::resource('/backend/image', \Alpaca\Controllers\ImageController::class, ['except' => [
+        'show', 'create', 'edit'
+    ]]);
+
     // Page
     Route::resource('/backend/page', \Alpaca\Controllers\PageController::class);
     Route::resource('/backend/category', \Alpaca\Controllers\CategoryController::class);

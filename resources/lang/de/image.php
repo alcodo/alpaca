@@ -2,6 +2,7 @@
 
 return [
 
+    'add_image' => 'Add image',
     'gallery' => 'Gallerie',
     'bind' => 'Einbinden',
     'close' => 'Schließen',
