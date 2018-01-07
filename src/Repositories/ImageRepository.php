@@ -9,6 +9,7 @@ use Alpaca\Models\Block;
 use Alpaca\Models\Image;
 use Alpaca\Models\Menu;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ImageRepository
@@ -23,7 +24,8 @@ class ImageRepository
     public function create(array $data): Image
     {
         Validator::make($data, [
-            'filepath' => 'required|string|max:255',
+            'file' => 'required|image',
+//            'filepath' => 'required|string|max:255',
 
             'title' => 'nullable|string',
             'alt' => 'nullable|string',
@@ -37,6 +39,9 @@ class ImageRepository
             'copyright_license_tag' => 'nullable|string',
             'copyright_modification' => 'nullable|string',
         ])->validate();
+
+
+        $data['filepath'] = Storage::putFile('images', $data['file']);
 
         $image = Image::create($data);
 
@@ -48,7 +53,7 @@ class ImageRepository
     public function update(Image $image, array $data): Image
     {
         Validator::make($data, [
-            'filepath' => 'required|string|max:255',
+            'file' => 'nullable|image',
 
             'title' => 'nullable|string',
             'alt' => 'nullable|string',
@@ -62,6 +67,14 @@ class ImageRepository
             'copyright_license_tag' => 'nullable|string',
             'copyright_modification' => 'nullable|string',
         ])->validate();
+
+        if (!isset($data['file']) && !empty($data['file'])) {
+            $data['filepath'] = Storage::putFile('images', $data['file']);
+
+            Storage::delete($image->filepath);
+        } else {
+            unset($data['filepath']);
+        }
 
         $image->update($data);
 
@@ -77,6 +90,7 @@ class ImageRepository
      */
     public function delete(Image $image): bool
     {
+        Storage::delete($image->filepath);
         $image->delete();
 
         event(new ImageWasDeleted($image, Auth::user()));
