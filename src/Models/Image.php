@@ -29,38 +29,4 @@ class Image extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function getHtmlOutput()
-    {
-        // blade render
-        $html = Response::view('gallery::wrapperBind', ['image' => $this])->getContent();
-        $html = trim($html);
-
-        // html prettify
-        return $this->getPrettyHtml($html);
-    }
-
-    /**
-     * Return pretty html.
-     *
-     * @param $html
-     * @return mixed
-     */
-    public function getPrettyHtml($html)
-    {
-
-        // TODO without tidy support
-
-        $params = [
-            'show-body-only' => true,
-            'indent' => true,
-            'output-html' => true,
-            'wrap' => 200, ];
-        $tidy = tidy_parse_string($html, $params, 'UTF8');
-        $tidy->cleanRepair();
-
-        $this->htmlOutput = $tidy;
-
-        return $tidy;
-    }
 }

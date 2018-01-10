@@ -22,11 +22,11 @@ return [
     'successfully_created' => 'Successfully created',
     'successfully_updated' => 'Successfully updated',
     'successfully_deleted' => 'Successfully deleted',
+    'file' => 'File',
+    'alt' => 'Alt',
 //    'actions' => 'Actions',
 //    'unauthorized_access' => 'Unauthorized access',
 //    'class' => 'Class',
-//    'file' => 'File',
-//    'alt' => 'Alt',
 //    'filename' => 'Filename',
 
 

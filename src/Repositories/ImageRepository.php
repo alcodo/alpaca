@@ -25,7 +25,6 @@ class ImageRepository
     {
         Validator::make($data, [
             'file' => 'required|image',
-//            'filepath' => 'required|string|max:255',
 
             'title' => 'nullable|string',
             'alt' => 'nullable|string',
@@ -40,8 +39,7 @@ class ImageRepository
             'copyright_modification' => 'nullable|string',
         ])->validate();
 
-
-        $data['filepath'] = Storage::putFile('images', $data['file']);
+        $data['filepath'] = Storage::disk('public')->putFile('images', $data['file']);
 
         $image = Image::create($data);
 
@@ -69,9 +67,9 @@ class ImageRepository
         ])->validate();
 
         if (!isset($data['file']) && !empty($data['file'])) {
-            $data['filepath'] = Storage::putFile('images', $data['file']);
+            $data['filepath'] = Storage::disk('public')->putFile('images', $data['file']);
 
-            Storage::delete($image->filepath);
+            Storage::disk('public')->delete($image->filepath);
         } else {
             unset($data['filepath']);
         }
@@ -90,7 +88,7 @@ class ImageRepository
      */
     public function delete(Image $image): bool
     {
-        Storage::delete($image->filepath);
+        Storage::disk('public')->delete($image->filepath);
         $image->delete();
 
         event(new ImageWasDeleted($image, Auth::user()));

@@ -35,5 +35,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
 @endif
 @include('alpaca::cookieconsent')
+@yield('scripts')
 </body>
 </html>
