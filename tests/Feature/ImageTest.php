@@ -6,7 +6,6 @@ use Alpaca\Events\Image\ImageWasCreated;
 use Alpaca\Events\Image\ImageWasDeleted;
 use Alpaca\Events\Image\ImageWasUpdated;
 use Alpaca\Models\Image;
-use Alpaca\Repositories\BlockRepository;
 use Alpaca\Repositories\ImageRepository;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
@@ -26,7 +25,7 @@ class ImageTest extends IntegrationTest
 
     public function test_store_image()
     {
-        Storage::fake('images');
+        Storage::fake('public');
         Event::fake();
 
         $this->withoutExceptionHandling();
@@ -40,20 +39,20 @@ class ImageTest extends IntegrationTest
         $this->assertDatabaseHas('al_images', [
             'title' => 'Example image',
         ]);
-        Storage::disk('images')->assertExists(Image::first()->filepath);
+        Storage::disk('public')->assertExists(Image::first()->filepath);
 
         Event::assertDispatched(ImageWasCreated::class);
     }
 
     public function test_update_image()
     {
-        Storage::fake('images');
+        Storage::fake('public');
         Event::fake();
 
         $this->withoutExceptionHandling();
         $this->createImage();
         $filepathBefore = Image::first()->filepath;
-        Storage::disk('images')->assertExists($filepathBefore);
+        Storage::disk('public')->assertExists($filepathBefore);
 
         $this->put('/backend/image/1', [
             'title' => 'Updated title',
@@ -65,7 +64,7 @@ class ImageTest extends IntegrationTest
             'title' => 'Updated title',
         ]);
         $filepathAfter = Image::first()->filepath;
-        Storage::disk('images')->assertExists($filepathAfter);
+        Storage::disk('public')->assertExists($filepathAfter);
         $this->assertNotEquals($filepathBefore, $filepathAfter);
 
         Event::assertDispatched(ImageWasUpdated::class);
@@ -73,16 +72,16 @@ class ImageTest extends IntegrationTest
 
     public function test_destroy_image()
     {
-        Storage::fake('images');
+        Storage::fake('public');
         Event::fake();
 
         $this->withoutExceptionHandling();
         $this->createImage();
         $filepath = Image::first()->filepath;
-        Storage::disk('images')->assertExists($filepath);
+        Storage::disk('public')->assertExists($filepath);
 
         $this->assertDatabaseHas('al_images', [
-            'filepath' => 'test.jpg',
+            'filepath' => $filepath,
         ]);
 
         $this->delete('/backend/image/1')
@@ -91,7 +90,7 @@ class ImageTest extends IntegrationTest
         $this->assertDatabaseMissing('al_images', [
             'filepath' => 'test.jpg',
         ]);
-        Storage::disk('images')->assertMissing($filepath);
+        Storage::disk('public')->assertMissing($filepath);
 
         Event::assertDispatched(ImageWasDeleted::class);
     }
