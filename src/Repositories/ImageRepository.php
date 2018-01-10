@@ -66,10 +66,10 @@ class ImageRepository
             'copyright_modification' => 'nullable|string',
         ])->validate();
 
-        if (!isset($data['file']) && !empty($data['file'])) {
-            $data['filepath'] = Storage::disk('public')->putFile('images', $data['file']);
-
+        if (isset($data['file']) && !empty($data['file'])) {
             Storage::disk('public')->delete($image->filepath);
+
+            $data['filepath'] = Storage::disk('public')->putFile('images', $data['file']);
         } else {
             unset($data['filepath']);
         }
