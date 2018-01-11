@@ -17,16 +17,16 @@ class EmailTemplateController extends Controller
 
         $emailTemplates = [
             [
-                'text' => trans('user::user.register'),
+                'text' => trans('alpaca::user.register'),
                 'link' => '/backend/email-template/register',
             ],
             [
-                'text' => trans('user::user.reset_password'),
+                'text' => trans('alpaca::user.reset_password'),
                 'link' => '/backend/email-template/passwort_reset',
             ],
         ];
 
-        return view('alpaca::emailtemplate.list', compact('emailTemplates'));
+        return view('alpaca::emailtemplate.index', compact('emailTemplates'));
     }
 
     public function show($template)

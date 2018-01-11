@@ -2,6 +2,13 @@
 
 return [
 
+    'permission'  => 'Berichtigung',
+    'permissions' => 'Berichtigungen',
+    'role'         => 'Rolle',
+    'roles'        => 'Rollen',
+    'name'         => 'Name',
+    'description'  => 'Beschreibung',
+    'display-name' => 'Angezeigter Name',
     'user'                        => 'Benutzer',
     'users'                       => 'Benutzer',
     'username'                    => 'Username',

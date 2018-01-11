@@ -2,6 +2,13 @@
 
 return [
 
+    'permission'  => 'Permission',
+    'permissions' => 'Permissions',
+    'role'         => 'Role',
+    'roles'        => 'Roles',
+    'name'         => 'Name',
+    'description'  => 'Description',
+    'display-name' => 'Display name',
     'user'                        => 'User',
     'users'                       => 'Users',
     'username'                    => 'Username',

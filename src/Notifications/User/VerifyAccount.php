@@ -52,10 +52,10 @@ class VerifyAccount extends Notification
 
         return (new MailMessage)
             ->success()
-            ->subject(trans('user::user.verification').' - '.config('app.name'))
+            ->subject(trans('alpaca::user.verification').' - '.config('app.name'))
             ->greeting('Hi '.$this->username)
-            ->line(trans('user::user.verification_info_last_step', ['type' => config('app.name')]))
-            ->action(trans('user::user.verify_now'), $link)
-            ->line(trans('user::user.verification_link_advantages', ['type' => config('app.name')]));
+            ->line(trans('alpaca::user.verification_info_last_step', ['type' => config('app.name')]))
+            ->action(trans('alpaca::user.verify_now'), $link)
+            ->line(trans('alpaca::user.verification_link_advantages', ['type' => config('app.name')]));
     }
 }
