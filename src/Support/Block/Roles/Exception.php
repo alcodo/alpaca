@@ -26,20 +26,24 @@ class Exception
         $this->block = $block;
     }
 
-    public function isViewable()
+    public function isViewable($path = null)
     {
         if (empty($this->block->exception)) {
             return true;
         }
 
+        if (is_null($path)) {
+            $path = Request::path();
+        }
+
         if ($this->block->exception_rule) {
-            return $this->hasAccess();
+            return $this->hasAccess($path);
         } else {
-            return ! $this->hasAccess();
+            return !$this->hasAccess($path);
         }
     }
 
-    private function hasAccess()
+    protected function hasAccess($path)
     {
         $patterns_quoted = preg_quote($this->block->exception, '/');
         $to_replace = [
@@ -51,9 +55,9 @@ class Exception
             '.*',
         ];
 
-        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
+        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
 
-        return (bool) preg_match($regexpPatter, Request::path());
+        return (bool)preg_match($regexpPatter, $path);
 
         return true;
     }

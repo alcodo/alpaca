@@ -1,19 +1,21 @@
 <?php
 
-use Alpaca\Block\Models\Block;
-use Alpaca\Block\Builder\Roles\Exception;
+namespace Tests\Unit\Block;
 
-/**
- * Block testing with menu.
- */
-class BlockExceptionTest extends TestCase
+use Alpaca\Models\Block;
+use Alpaca\Support\Block\Roles\Exception;
+use Tests\UnitTest;
+
+class BlockExceptionTest extends UnitTest
 {
     /**
      * @test
      */
     public function it_viewable_without_exception_rules()
     {
-        $block = factory(\Alpaca\Block\Models\Block::class)->make();
+        $block = new Block([
+            'exception' => '',
+        ]);
 
         $ex = new Exception($block);
         $this->assertTrue($ex->isViewable());
@@ -24,18 +26,16 @@ class BlockExceptionTest extends TestCase
      */
     public function it_has_no_access_on()
     {
-        $block = factory(\Alpaca\Block\Models\Block::class)->make([
+        $block = new Block([
             'exception_rule' => Block::EXCEPTION_EXCLUDE,
             'exception' => 'video/*',
         ]);
 
-        $this->get('demo');
         $ex = new Exception($block);
-        $this->assertTrue($ex->isViewable());
+        $this->assertTrue($ex->isViewable('demo'));
 
-        $this->get('video/alpaca');
         $ex = new Exception($block);
-        $this->assertFalse($ex->isViewable());
+        $this->assertFalse($ex->isViewable('video/alpaca'));
     }
 
     /**
@@ -43,17 +43,15 @@ class BlockExceptionTest extends TestCase
      */
     public function it_has_only_access_on()
     {
-        $block = factory(\Alpaca\Block\Models\Block::class)->make([
+        $block = new Block([
             'exception_rule' => Block::EXCEPTION_ONLY,
             'exception' => 'blog/*',
         ]);
 
-        $this->get('demo');
         $ex = new Exception($block);
-        $this->assertFalse($ex->isViewable());
+        $this->assertFalse($ex->isViewable('demo'));
 
-        $this->get('blog/alpaca');
         $ex = new Exception($block);
-        $this->assertTrue($ex->isViewable());
+        $this->assertTrue($ex->isViewable('blog/alpaca'));
     }
 }
