@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Block;
+namespace Tests\Unit;
 
 use Alpaca\Models\Block;
 use Alpaca\Support\Block\Roles\Exception;
