@@ -3,69 +3,56 @@
 namespace Alpaca\Repositories;
 
 
+use Alpaca\Events\User\UserWasCreated;
+use Alpaca\Events\User\UserWasDeleted;
+use Alpaca\Events\User\UserWasUpdated;
+use Alpaca\Models\User;
+use Illuminate\Support\Facades\Validator;
+
 class UserRepository
 {
 
-
-    public function create(array $data): Block
+    public function create(array $data): User
     {
         Validator::make($data, [
-            'title' => 'required|string|max:255',
-            'html' => 'nullable|string',
-
-            // options
-            'area' => 'required|string|max:255',
-            'active' => 'required|boolean',
-            'position' => 'required|integer',
-            'exception_rule' => 'required|boolean',
-            'exception' => 'nullable|string',
-
-            // reference
-            'user_id' => 'nullable|integer',
-            'menu_id' => 'nullable|integer',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['title']);
+        $data['password'] = bcrypt($data['password']);
 
-        $block = Block::create($data);
+        $user = User::create($data);
 
-        event(new BlockWasCreated($block, Auth::user()));
+        event(new UserWasCreated($user));
 
-        return $block;
+        return $user;
     }
 
-    public function update(Block $block, array $data): Block
+    public function update(User $user, array $data): User
     {
         Validator::make($data, [
-            'title' => 'required|string|max:255',
-            'html' => 'nullable|string',
-
-            // options
-            'area' => 'required|string|max:255',
-            'active' => 'required|boolean',
-            'position' => 'required|integer',
-            'exception_rule' => 'required|boolean',
-            'exception' => 'nullable|string',
-
-            // reference
-            'user_id' => 'nullable|integer',
-            'menu_id' => 'nullable|integer',
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|string|email|max:255|unique:users',
+//            'password' => 'required|string|min:6|confirmed',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['title']);
+        if(isset($data['password'])){
+            $data['password'] = bcrypt($data['password']);
+        }
 
-        $block->update($data);
+        $user->update($data);
 
-        event(new BlockWasUpdated($block, Auth::user()));
+        event(new UserWasUpdated($user));
 
-        return $block;
+        return $user;
     }
 
-    public function delete(Block $block): bool
+    public function delete(User $user): bool
     {
-        $block->delete();
+        $user->delete();
 
-        event(new BlockWasDeleted($block, Auth::user()));
+        event(new UserWasDeleted($user));
 
         return true;
     }

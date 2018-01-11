@@ -22,7 +22,7 @@ class User extends \Illuminate\Foundation\Auth\User
      *
      * @var array
      */
-    protected $fillable = ['username', 'email', 'password', 'verified', 'email_token'];
+    protected $fillable = ['name', 'email', 'password', 'verified', 'email_token'];
 
     /**
      * The attributes excluded from the model's JSON form.

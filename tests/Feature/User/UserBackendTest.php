@@ -15,6 +15,7 @@ class UserBackendTest extends IntegrationTest
     public function test_index_user()
     {
         $this->withoutExceptionHandling();
+
         $this->get('/backend/user')
             ->assertSuccessful()
             ->assertSee('Add user');
@@ -26,16 +27,15 @@ class UserBackendTest extends IntegrationTest
         Event::fake();
 
         $this->post('/backend/user', [
-//            'title' => 'Frontblock',
-//            'area' => 'left',
-//            'active' => true,
-//            'position' => 0,
-//            'exception_rule' => true,
+            'name' => 'JohnDoe',
+            'email' => 'john@example.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
         ])
             ->assertRedirect('/backend/user');
 
-        $this->assertDatabaseHas('al_users', [
-//            'title' => 'Frontblock',
+        $this->assertDatabaseHas('users', [
+            'name' => 'JohnDoe',
         ]);
 
         Event::assertDispatched(UserWasCreated::class);
@@ -49,16 +49,13 @@ class UserBackendTest extends IntegrationTest
         $this->createUser();
 
         $this->put('/backend/user/1', [
-//            'title' => 'Crazy block',
-//            'area' => 'right',
-//            'active' => false,
-//            'position' => 1,
-//            'exception_rule' => false,
+            'name' => 'Max'
         ])
             ->assertRedirect('/backend/user');
 
-        $this->assertDatabaseHas('al_users', [
-//            'title' => 'Crazy block',
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'Max',
         ]);
 
         Event::assertDispatched(UserWasUpdated::class);
@@ -69,17 +66,17 @@ class UserBackendTest extends IntegrationTest
         $this->withoutExceptionHandling();
         Event::fake();
 
-        $this->createBlock();
-
-        $this->assertDatabaseHas('al_users', [
-//            'title' => 'Test',
+        $this->createUser();
+        $this->assertDatabaseHas('users', [
+            'name' => 'JohnDoe',
         ]);
 
         $this->delete('/backend/user/1')
             ->assertRedirect('/backend/user');
 
-        $this->assertDatabaseMissing('al_users', [
-//            'title' => 'Test',
+
+        $this->assertDatabaseMissing('users', [
+            'name' => 'JohnDoe',
         ]);
 
         Event::assertDispatched(UserWasDeleted::class);
@@ -89,11 +86,10 @@ class UserBackendTest extends IntegrationTest
     {
         $repo = new UserRepository();
         $repo->create([
-            'title' => 'Test',
-            'area' => 'left',
-            'active' => true,
-            'position' => 0,
-            'exception_rule' => true,
+            'name' => 'JohnDoe',
+            'email' => 'john@example.com',
+            'password' => '123456',
+            'password_confirmation' => '123456',
         ]);
     }
 
