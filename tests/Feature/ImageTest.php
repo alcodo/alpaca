@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Alpaca\Events\Image\ImageWasCreated;
-use Alpaca\Events\Image\ImageWasDeleted;
-use Alpaca\Events\Image\ImageWasUpdated;
+use Alpaca\Events\Image\UserWasCreated;
+use Alpaca\Events\Image\UserWasDeleted;
+use Alpaca\Events\Image\UserWasUpdated;
 use Alpaca\Models\Image;
 use Alpaca\Repositories\ImageRepository;
 use Illuminate\Http\UploadedFile;
@@ -41,7 +41,7 @@ class ImageTest extends IntegrationTest
         ]);
         Storage::disk('public')->assertExists(Image::first()->filepath);
 
-        Event::assertDispatched(ImageWasCreated::class);
+        Event::assertDispatched(UserWasCreated::class);
     }
 
     public function test_update_image()
@@ -67,7 +67,7 @@ class ImageTest extends IntegrationTest
         Storage::disk('public')->assertExists($filepathAfter);
         $this->assertNotEquals($filepathBefore, $filepathAfter);
 
-        Event::assertDispatched(ImageWasUpdated::class);
+        Event::assertDispatched(UserWasUpdated::class);
     }
 
     public function test_destroy_image()
@@ -92,7 +92,7 @@ class ImageTest extends IntegrationTest
         ]);
         Storage::disk('public')->assertMissing($filepath);
 
-        Event::assertDispatched(ImageWasDeleted::class);
+        Event::assertDispatched(UserWasDeleted::class);
     }
 
     private function createImage()

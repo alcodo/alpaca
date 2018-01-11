@@ -13,6 +13,7 @@ class ExtendUsersVerified extends Migration
     public function up()
     {
 
+        // TODO
 //        if (!Schema::hasTable('users')) {
 //
 //            Schema::create('users', function (Blueprint $table) {

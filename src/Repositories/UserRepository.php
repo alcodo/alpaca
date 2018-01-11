@@ -2,17 +2,10 @@
 
 namespace Alpaca\Repositories;
 
-use Alpaca\Events\Block\BlockWasCreated;
-use Alpaca\Events\Block\BlockWasDeleted;
-use Alpaca\Events\Block\BlockWasUpdated;
-use Alpaca\Models\Block;
-use Alpaca\Models\Menu;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
-class BlockRepository
+class UserRepository
 {
+
 
     public function create(array $data): Block
     {
@@ -76,4 +69,5 @@ class BlockRepository
 
         return true;
     }
+
 }

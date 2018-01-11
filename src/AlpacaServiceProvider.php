@@ -9,16 +9,17 @@ use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\Category\CategorySitemapListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
+use Alpaca\Listeners\User\AccountVerification;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
 use Alpaca\Support\Block\BlockBuilder;
 use Alpaca\Support\Block\BlockFacade;
-use Alpaca\User\UserServiceProvider;
 use Alpaca\Block\BlockServiceProvider;
 use Alpaca\Email\EmailServiceProvider;
 use Alpaca\Contact\ContactServiceProvider;
 use Alpaca\Gallery\GalleryServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\AggregateServiceProvider;
 use Alpaca\CookieConsent\CookieConsentServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -26,6 +27,9 @@ use Illuminate\Support\Facades\Event;
 class AlpacaServiceProvider extends AggregateServiceProvider
 {
     protected $listen = [
+        Registered::class => [
+            AccountVerification::class,
+        ],
         SitemapIsRequested::class => [
             PageSitemapListener::class,
             CategorySitemapListener::class,
@@ -82,7 +86,8 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_backend.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_fronted.php');
 
 
         $this->app->instance('block', new BlockBuilder());

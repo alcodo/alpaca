@@ -1,10 +1,10 @@
 <?php
 
-namespace Alpaca\User\Models;
+namespace Alpaca\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use Alpaca\User\Notifications\ResetPassword;
+use Alpaca\Notifications\ResetPassword;
 
 class User extends \Illuminate\Foundation\Auth\User
 {

@@ -47,6 +47,8 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
             'meta_robots' => null,
             'meta_description' => null,
         ]);
+
+        // create guest, registered and administrator role with permission
     }
 
     /**

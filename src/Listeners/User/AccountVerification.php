@@ -1,12 +1,12 @@
 <?php
 
-namespace Alpaca\User\Listener;
+namespace Alpaca\Listeners\User;
 
-use Alpaca\User\Models\User;
+use Alpaca\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Alpaca\User\Notifications\VerifyAccount;
+use Alpaca\Notifications\VerifyAccount;
 use Illuminate\Support\Facades\Notification;
 
 class AccountVerification implements ShouldQueue
