@@ -2,9 +2,9 @@
 
 namespace Alpaca\Repositories;
 
-use Alpaca\Events\Image\UserWasCreated;
-use Alpaca\Events\Image\UserWasDeleted;
-use Alpaca\Events\Image\UserWasUpdated;
+use Alpaca\Events\Image\ImageWasCreated;
+use Alpaca\Events\Image\ImageWasDeleted;
+use Alpaca\Events\Image\ImageWasUpdated;
 use Alpaca\Models\Block;
 use Alpaca\Models\Image;
 use Alpaca\Models\Menu;
@@ -43,7 +43,7 @@ class ImageRepository
 
         $image = Image::create($data);
 
-        event(new UserWasCreated($image, Auth::user()));
+        event(new ImageWasCreated($image, Auth::user()));
 
         return $image;
     }
@@ -76,7 +76,7 @@ class ImageRepository
 
         $image->update($data);
 
-        event(new UserWasUpdated($image, Auth::user()));
+        event(new ImageWasUpdated($image, Auth::user()));
 
         return $image;
     }
@@ -91,7 +91,7 @@ class ImageRepository
         Storage::disk('public')->delete($image->filepath);
         $image->delete();
 
-        event(new UserWasDeleted($image, Auth::user()));
+        event(new ImageWasDeleted($image, Auth::user()));
 
         return true;
     }
