@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use Alpaca\Mail\ContactFormWasFilled;
+use Illuminate\Support\Facades\Mail;
 use Msurguy\Honeypot\HoneypotFacade as Honeypot;
 use Tests\IntegrationTest;
 
@@ -20,7 +22,7 @@ class ContactTest extends IntegrationTest
      */
     public function test_it_send_email()
     {
-        // TODO check email
+        Mail::fake();
         $this->withoutExceptionHandling();
         Honeypot::disable();
 
@@ -28,20 +30,13 @@ class ContactTest extends IntegrationTest
             'name' => 'John Doe',
             'subject' => 'Welcome',
             'text' => 'Hi Alpaca User',
+            'form_time' => 'honeypot',
         ])
             ->assertRedirect('/contact');
 
-        $to = config('mail.from');
-
-        // TODO
-
-//        $to = Config::get('mail.from');
-//        $message->to($to['address'], $to['name'])
-//            ->from($input['email'], $input['name'])
-//            ->subject($input['subject']);
-//
-//        $this->assertTrue(MailThief::hasMessageFor('info@example.com'));
-//        $this->assertEquals('Contract', MailThief::lastMessage()->subject);
-//        $this->assertEquals('john@example.com.io', MailThief::lastMessage()->data['email']);
+        Mail::assertSent(ContactFormWasFilled::class, function (ContactFormWasFilled $mail) {
+            $to = config('mail.from');
+            return $mail->hasTo($to['address']);
+        });
     }
 }

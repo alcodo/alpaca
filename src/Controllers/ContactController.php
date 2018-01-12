@@ -2,6 +2,7 @@
 
 namespace Alpaca\Controllers;
 
+use Alpaca\Mail\ContactFormWasFilled;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -39,29 +40,18 @@ class ContactController extends Controller
      */
     public function send(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'nullable|email',
             'subject' => 'nullable',
             'text' => 'required|string',
             'form_name' => 'honeypot',
             'form_time' => 'required|honeytime:3',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect(route('contact.show'))
-                ->withErrors($validator)
-                ->withInput();
-        }
+        ])->validate();
 
         // Send mail
         $input = $request->all();
-        Mail::send('alpaca::contact.email', $input, function ($message) use ($input) {
-            $to = Config::get('mail.from');
-            $message->to($to['address'], $to['name'])
-                ->from($input['email'], $input['name'])
-                ->subject($input['subject']);
-        });
+        Mail::to(config('mail.from'))->send(new ContactFormWasFilled($input));
 
         Flash::success(trans('alpaca::contact.send_successfully'));
 
