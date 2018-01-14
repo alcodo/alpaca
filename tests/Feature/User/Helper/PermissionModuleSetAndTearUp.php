@@ -9,16 +9,17 @@ class PermissionModuleSetAndTearUp extends IntegrationTest
 
     public function setUp()
     {
-        parent::setUp();
-//        $this->publishPermissionMigration();
-//        $this->loadLaravelMigrations(['--database' => 'testbench']);
-        $this->showAllTables();
+        \Orchestra\Testbench\TestCase::setUp();
+        $this->publishPermissionMigration();
+        $this->loadLaravelMigrations(['--database' => 'testbench']);
+        $this->artisan('migrate');
+//        $this->showAllTables();
     }
 
     public function tearDown()
     {
-//        parent::tearDown();
-//        $this->deleteMigrationFiles();
+        parent::tearDown();
+        $this->deleteMigrationFiles();
     }
 
 

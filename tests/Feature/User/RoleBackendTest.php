@@ -2,28 +2,11 @@
 
 namespace Tests\Feature\User;
 
-use Alpaca\Repositories\UserRepository;
 use Spatie\Permission\Models\Role;
-use Tests\IntegrationTest;
+use Tests\Feature\User\Helper\PermissionModuleSetAndTearUp;
 
-class RoleBackendTest extends IntegrationTest
+class RoleBackendTest extends PermissionModuleSetAndTearUp
 {
-
-    /**
-     * Setup the test environment.
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->publishPermissionMigration();
-        $this->loadLaravelMigrations(['--database' => 'testbench']);
-    }
-
-    public function tearDown()
-    {
-        parent::tearDown();
-        $this->deleteMigrationFiles();
-    }
 
     public function test_index_role()
     {

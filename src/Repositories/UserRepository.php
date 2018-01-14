@@ -43,10 +43,12 @@ class UserRepository
         ])->validate();
 
         // password
-        if (is_null($data['password'])) {
-            unset($data['password']);
-        } elseif (isset($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
+        if (isset($data['password'])) {
+            if (is_null($data['password'])) {
+                unset($data['password']);
+            } elseif (!empty($data['password'])) {
+                $data['password'] = bcrypt($data['password']);
+            }
         }
 
         $user->update($data);
