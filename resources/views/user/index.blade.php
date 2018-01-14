@@ -18,7 +18,7 @@
         <tr>
             <th>{{ trans('alpaca::alpaca.title') }}</th>
             <th>{{ trans('alpaca::user.roles') }}</th>
-            <th>{{ trans('alpaca::alpaca.active') }}</th>
+            <th>{{ trans('alpaca::user.confirm') }}</th>
             <th>{{ trans('alpaca::alpaca.created') }}</th>
             <th>{{ trans('alpaca::alpaca.updated') }}</th>
             <th></th>
@@ -26,7 +26,7 @@
         </thead>
         <tbody>
         @foreach($users as $user)
-                    {{--{{ dump($user) }}--}}
+            {{--{{ dump($user) }}--}}
             <tr>
                 <td>
                     {{ $user->id }}: {{ $user->name }}
@@ -34,15 +34,16 @@
                     {{ $user->email }}
                 </td>
                 <td>
-                    {{--@if($page->active)--}}
-                        {{--<i class="fa fa-check text-success" aria-hidden="true"></i>--}}
-                    {{--@else--}}
-                        {{--<i class="fa fa-times text-danger" aria-hidden="true"></i>--}}
-                    {{--@endif--}}
+                    @foreach($user->roles as $role)
+                        <span class="badge badge-primary">{{ $role->name }}</span>
+                    @endforeach
                 </td>
                 <td>
-                    {{--@if($page->category)--}}
-                        {{--<a href="{{ $page->category->path }}">{{ $page->category->title }}</a>--}}
+
+                    {{--@if($page->active)--}}
+                    {{--<i class="fa fa-check text-success" aria-hidden="true"></i>--}}
+                    {{--@else--}}
+                    <i class="fa fa-times text-danger" aria-hidden="true"></i>
                     {{--@endif--}}
                 </td>
                 {{--<td>{{ $page->user_id }}</td>--}}

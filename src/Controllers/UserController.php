@@ -2,6 +2,7 @@
 
 namespace Alpaca\Controllers;
 
+use Alpaca\Models\Role;
 use Alpaca\Models\User;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -20,9 +21,10 @@ class UserController extends Controller
         SEO::setTitle(trans('alpaca::user.users'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $users = User::paginate(50);
+        $users = User::with('roles')->paginate(50);
+        $roles = Role::orderBy('name', 'asc')->pluck('name', 'id');
 
-        return view('alpaca::user.index', compact('users'));
+        return view('alpaca::user.index', compact('users', 'roles'));
     }
 
     /**

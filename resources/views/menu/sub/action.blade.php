@@ -12,7 +12,7 @@
 
 
 {{--Edit Component--}}
-<b-modal id="modalmenuedit{{ $menu->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
+<b-modal id="modalmenuedit{{ $menu->id }}" title="{{ trans('alpaca::alpaca.edit') }}" hide-footer>
 
     <form method="POST" action="/backend/menu/{{ $menu->id }}" accept-charset="UTF-8">
         <input name="_method" type="hidden" value="PUT">

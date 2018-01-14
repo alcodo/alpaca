@@ -24,7 +24,7 @@
 </b-modal>
 
 {{--Edit Component--}}
-<b-modal id="modalimageedit{{ $image->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
+<b-modal id="modalimageedit{{ $image->id }}" title="{{ trans('alpaca::alpaca.edit') }}" hide-footer>
 
     <form method="POST" action="/backend/image/{{ $image->id }}" accept-charset="UTF-8" enctype="multipart/form-data">
         <input name="_method" type="hidden" value="PUT">

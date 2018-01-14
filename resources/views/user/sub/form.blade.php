@@ -30,6 +30,23 @@
 
 @endif
 
-<button type="submit" class="btn btn-info btn-block" name="{{ trans('alpaca::alpaca.create') }}">
-    {{ trans('alpaca::alpaca.save') }}
-</button>
+<div class="form-group row">
+    <div class="col-sm-2">{{ trans('alpaca::user.roles') }}</div>
+    <div class="col-sm-10">
+        @foreach($roles as $id => $roleName)
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="role{{ $id }}" name="roles[]" value="{{ $id }}"
+                       @if(is_array(old('roles')))
+                       @if(in_array($id, old('roles')))
+                       checked
+                       @endif
+                       @elseif(isset($user) && $user->hasRole($roleName))
+                       checked
+                        @endif>
+                <label class="form-check-label" for="role{{ $id }}">{{ $roleName }}</label>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+<button type="submit" class="btn btn-info btn-block">{{ trans('alpaca::alpaca.save') }}</button>

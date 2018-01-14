@@ -5,10 +5,11 @@ namespace Alpaca\Models;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Alpaca\Notifications\ResetPassword;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 //    use Notifiable, EntrustUserTrait;
 
     /**

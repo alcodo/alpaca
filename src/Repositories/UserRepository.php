@@ -24,6 +24,11 @@ class UserRepository
 
         $user = User::create($data);
 
+
+        if (isset($data['roles']) && !empty($data['roles'])) {
+            $user->assignRole($data['roles']);
+        }
+
         event(new UserWasCreated($user));
 
         return $user;
@@ -38,16 +43,17 @@ class UserRepository
         ])->validate();
 
         // password
-        if (isset($data['password'])) {
-
-            if (is_null($data['password'])) {
-                unset($data['password']);
-            } else {
-                $data['password'] = bcrypt($data['password']);
-            }
-
+        if (is_null($data['password'])) {
+            unset($data['password']);
+        } elseif (isset($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
         }
+
         $user->update($data);
+
+        if (isset($data['roles']) && !empty($data['roles'])) {
+            $user->syncRoles($data['roles']);
+        }
 
         event(new UserWasUpdated($user));
 

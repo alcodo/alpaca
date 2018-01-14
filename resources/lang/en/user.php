@@ -2,6 +2,7 @@
 
 return [
 
+    'confirm'  => 'Confirm',
     'add_permission'  => 'Add permission',
     'add_role'  => 'Add role',
     'add_user'  => 'Add user',
