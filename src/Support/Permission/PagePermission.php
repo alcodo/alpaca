@@ -17,12 +17,12 @@ class PagePermission implements ModulePermissionContract
     const UPDATE = 'update_page';
     const DELETE = 'delete_page';
 
-    public function getModuleName()
+    static public function getModuleName()
     {
         return self::MODULE;
     }
 
-    public function getAllPermissions()
+    static public function getAllPermissions()
     {
         return [
             self::VIEW,
