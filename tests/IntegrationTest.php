@@ -16,7 +16,7 @@ abstract class IntegrationTest extends TestCase
     {
         parent::setUp();
         $this->loadLaravelMigrations(['--database' => 'testbench']);
-//        $this->artisan('migrate');
+        $this->artisan('migrate');
         $this->loadRoutesAgain();
 //        $this->showAllRoutes();
 //        dump(Application::VERSION);
@@ -97,14 +97,6 @@ abstract class IntegrationTest extends TestCase
     protected function loadRoutesAgain()
     {
         include(__DIR__ . '/../src/routes_fronted.php');
-    }
-
-    protected function publishPermissionMigration()
-    {
-        $this->artisan('vendor:publish', [
-            '--provider' => 'Spatie\Permission\PermissionServiceProvider',
-            '--tag' => 'migrations',
-        ]);
     }
 
     protected function deleteMigrationFiles()

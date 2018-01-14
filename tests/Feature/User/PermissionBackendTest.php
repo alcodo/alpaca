@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\User;
 
 use Alpaca\Repositories\UserRepository;
 use Spatie\Permission\Models\Permission;

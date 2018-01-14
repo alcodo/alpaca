@@ -7,9 +7,9 @@ use Alpaca\Events\User\UserWasDeleted;
 use Alpaca\Events\User\UserWasUpdated;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
+use Tests\Feature\User\Helper\PermissionModuleSetAndTearUp;
 
-class UserBackendTest extends IntegrationTest
+class UserBackendTest extends PermissionModuleSetAndTearUp
 {
 
     public function test_index_user()
