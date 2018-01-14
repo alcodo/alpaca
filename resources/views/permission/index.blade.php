@@ -4,7 +4,7 @@
 
     {{--create--}}
     <a href="#" class="btn btn-info float-right" v-b-modal.modalcreateuser>
-        {{ trans('alpaca::user.add_role') }}
+        {{ trans('alpaca::user.add_permission') }}
     </a>
     @include('alpaca::user.sub.create')
 

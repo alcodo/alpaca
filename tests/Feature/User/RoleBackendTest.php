@@ -15,29 +15,15 @@ class RoleBackendTest extends IntegrationTest
     public function setUp()
     {
         parent::setUp();
-
-        $this->artisan('vendor:publish', [
-            '--provider' => 'Spatie\Permission\PermissionServiceProvider',
-            '--tag' => 'migrations',
-        ]);
+        $this->publishPermissionMigration();
         $this->loadLaravelMigrations(['--database' => 'testbench']);
     }
-
 
     public function tearDown()
     {
         parent::tearDown();
-
-        // delete migration file
-        $path = base_path('database/migrations');
-        $files = glob($path . '/*_create_permission_tables.php'); // get all file names
-
-        foreach ($files as $file) { // iterate files
-            if (is_file($file))
-                unlink($file); // delete file
-        }
+        $this->deleteMigrationFiles();
     }
-
 
     public function test_index_role()
     {
@@ -94,17 +80,6 @@ class RoleBackendTest extends IntegrationTest
 
         $this->assertDatabaseMissing('roles', [
             'name' => 'Beta tester',
-        ]);
-    }
-
-    private function createUser()
-    {
-        $repo = new UserRepository();
-        $repo->create([
-            'name' => 'JohnDoe',
-            'email' => 'john@example.com',
-            'password' => '123456',
-            'password_confirmation' => '123456',
         ]);
     }
 

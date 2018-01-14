@@ -98,4 +98,23 @@ abstract class IntegrationTest extends TestCase
     {
         include(__DIR__ . '/../src/routes_fronted.php');
     }
+
+    protected function publishPermissionMigration()
+    {
+        $this->artisan('vendor:publish', [
+            '--provider' => 'Spatie\Permission\PermissionServiceProvider',
+            '--tag' => 'migrations',
+        ]);
+    }
+
+    protected function deleteMigrationFiles()
+    {
+        $path = base_path('database/migrations');
+        $files = glob($path . '/*.php'); // get all file names
+
+        foreach ($files as $file) { // iterate files
+            if (is_file($file))
+                unlink($file); // delete file
+        }
+    }
 }
