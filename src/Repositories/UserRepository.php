@@ -33,11 +33,14 @@ class UserRepository
     {
         Validator::make($data, [
             'name' => 'nullable|string|max:255',
-            'email' => 'nullable|string|email|max:255|unique:users',
-//            'password' => 'required|string|min:6|confirmed',
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id . ',id',
+            'password' => 'nullable|string|min:6',
         ])->validate();
 
-        if(isset($data['password'])){
+        // password
+        if (is_null($data['password'])) {
+            unset($data['password']);
+        } else {
             $data['password'] = bcrypt($data['password']);
         }
 

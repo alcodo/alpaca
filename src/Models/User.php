@@ -8,7 +8,8 @@ use Alpaca\Notifications\ResetPassword;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
-    use Notifiable, EntrustUserTrait;
+    use Notifiable;
+//    use Notifiable, EntrustUserTrait;
 
     /**
      * The database table used by the model.
