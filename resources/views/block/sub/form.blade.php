@@ -99,6 +99,4 @@
     </label>
 </div>
 
-<button type="submit" class="btn btn-info btn-block" title="{{ trans('alpaca::alpaca.create') }}">
-    {{ trans('alpaca::alpaca.save') }}
-</button>
+<button type="submit" class="btn btn-info btn-block">{{ trans('alpaca::alpaca.save') }}</button>

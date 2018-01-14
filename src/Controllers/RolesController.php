@@ -22,7 +22,7 @@ class RolesController extends Controller
 
         $roles = Role::paginate(50);
 
-        return view('alpaca::roles.index', compact('roles'));
+        return view('alpaca::role.index', compact('roles'));
     }
 
     /**

@@ -24,6 +24,7 @@ return [
     'successfully_deleted' => 'Successfully deleted',
     'file' => 'File',
     'alt' => 'Alt',
+    'name' => 'Name',
 //    'actions' => 'Actions',
 //    'unauthorized_access' => 'Unauthorized access',
 //    'class' => 'Class',
