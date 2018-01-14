@@ -25,7 +25,8 @@
     "cocur/slugify": "dev-master",
     "approached/laravel-date-international": "^1.1",
     "laracasts/flash": "^2.0",
-    "msurguy/honeypot": "^1.0"
+    "msurguy/honeypot": "^1.0",
+    "spatie/laravel-permission": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0",

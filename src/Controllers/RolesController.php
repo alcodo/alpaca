@@ -2,11 +2,11 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Models\User;
-use Alpaca\Repositories\UserRepository;
+use Alpaca\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
@@ -20,7 +20,7 @@ class RolesController extends Controller
         SEO::setTitle(trans('alpaca::user.roles'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $roles = User::paginate(50);
+        $roles = Role::paginate(50);
 
         return view('alpaca::roles.index', compact('roles'));
     }
@@ -29,48 +29,48 @@ class RolesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param UserRepository $repo
+     * @param RoleRepository $repo
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, UserRepository $repo)
+    public function store(Request $request, RoleRepository $repo)
     {
         $repo->create($request->all());
 
         Flash::success(trans('alpaca::alpaca.successfully_created'));
 
-        return redirect('/backend/user');
+        return redirect('/backend/role');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param User $user
-     * @param UserRepository $repo
+     * @param Role $role
+     * @param RoleRepository $repo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user, UserRepository $repo)
+    public function update(Request $request, Role $role, RoleRepository $repo)
     {
-        $repo->update($user, $request->all());
+        $repo->update($role, $request->all());
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
-        return redirect('/backend/user');
+        return redirect('/backend/role');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param User $user
-     * @param UserRepository $repo
+     * @param Role $role
+     * @param RoleRepository $repo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user, UserRepository $repo)
+    public function destroy(Role $role, RoleRepository $repo)
     {
-        $repo->delete($user);
+        $repo->delete($role);
 
         Flash::success(trans('alpaca::alpaca.successfully_deleted'));
 
-        return redirect('/backend/user');
+        return redirect('/backend/role');
     }
 }

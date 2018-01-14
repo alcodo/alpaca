@@ -3,6 +3,7 @@
 namespace Alpaca;
 
 use Laracasts\Flash\FlashServiceProvider;
+use Spatie\Permission\PermissionServiceProvider;
 use Zizaco\Entrust\EntrustServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Alcodo\PowerImage\PowerImageServiceProvider;
@@ -20,6 +21,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         ServiceProvider::class,
         HoneypotServiceProvider::class,
         EntrustServiceProvider::class,
+        PermissionServiceProvider::class,
 //        PowerImageServiceProvider::class,
     ];
 

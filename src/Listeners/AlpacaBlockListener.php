@@ -53,7 +53,7 @@ class AlpacaBlockListener
             new MenuLink(['text' => 'Menu', 'title' => 'Menu administration', 'href' => '/backend/menu',]),
             new MenuLink(['text' => 'Block', 'title' => 'Block administration', 'href' => '/backend/block',]),
             new MenuLink(['text' => 'User', 'title' => 'User administration', 'href' => '/backend/user',]),
-            new MenuLink(['text' => 'Roles', 'title' => 'Roles administration', 'href' => '/backend/roles',]),
+            new MenuLink(['text' => 'Roles', 'title' => 'Roles administration', 'href' => '/backend/role',]),
             new MenuLink(['text' => 'Permission', 'title' => 'Permission administration', 'href' => '/backend/permission',]),
             new MenuLink(['text' => 'Image', 'title' => 'Image administration', 'href' => '/backend/image',]),
             new MenuLink(['text' => 'E-Mail Templates', 'title' => 'E-Mail Templates', 'href' => '/backend/email-template',]),

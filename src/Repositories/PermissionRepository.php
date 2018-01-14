@@ -9,7 +9,7 @@ use Alpaca\Events\User\UserWasUpdated;
 use Alpaca\Models\User;
 use Illuminate\Support\Facades\Validator;
 
-class UserRepository
+class PermissionRepository
 {
 
     public function create(array $data): User
@@ -38,15 +38,12 @@ class UserRepository
         ])->validate();
 
         // password
-        if (isset($data['password'])) {
-
-            if (is_null($data['password'])) {
-                unset($data['password']);
-            } else {
-                $data['password'] = bcrypt($data['password']);
-            }
-
+        if (is_null($data['password'])) {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
         }
+
         $user->update($data);
 
         event(new UserWasUpdated($user));

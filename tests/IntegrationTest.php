@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase;
 
@@ -14,7 +15,8 @@ abstract class IntegrationTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->artisan('migrate');
+        $this->loadLaravelMigrations(['--database' => 'testbench']);
+//        $this->artisan('migrate');
         $this->loadRoutesAgain();
 //        $this->showAllRoutes();
 //        dump(Application::VERSION);
@@ -72,6 +74,17 @@ abstract class IntegrationTest extends TestCase
                 dump('URL: ' . $uri . ' Action: ' . $actionName);
             }
 
+        }
+
+    }
+
+    protected function showAllTables()
+    {
+        $tables = DB::select('SELECT name FROM sqlite_master  WHERE type=\'table\''); // for mysql use 'SHOW TABLES'
+
+        foreach ($tables as $table) {
+            foreach ($table as $key => $value)
+                dump($value);
         }
 
     }

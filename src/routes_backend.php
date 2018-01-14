@@ -34,7 +34,7 @@ Route::group([
     Route::resource('/backend/user', \Alpaca\Controllers\UserController::class, ['except' => [
         'show', 'create', 'edit'
     ]]);
-    Route::resource('/backend/roles', \Alpaca\Controllers\RolesController::class, ['except' => [
+    Route::resource('/backend/role', \Alpaca\Controllers\RolesController::class, ['except' => [
         'show', 'create', 'edit'
     ]]);
     Route::resource('/backend/permission', \Alpaca\Controllers\PermissionController::class, ['except' => [
