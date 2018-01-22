@@ -5,6 +5,7 @@ namespace Alpaca;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Events\Block\BlockIsRequested;
+use Alpaca\Events\Sitemap\PermissionsIsRequested;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\Category\CategorySitemapListener;
@@ -27,6 +28,9 @@ use Illuminate\Support\Facades\Event;
 class AlpacaServiceProvider extends AggregateServiceProvider
 {
     protected $listen = [
+        PermissionsIsRequested::class => [
+
+        ],
         Registered::class => [
             AccountVerification::class,
         ],
