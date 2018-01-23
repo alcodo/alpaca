@@ -5,10 +5,12 @@ namespace Alpaca;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Events\Block\BlockIsRequested;
-use Alpaca\Events\Sitemap\PermissionsIsRequested;
+use Alpaca\Events\Permission\PermissionsIsRequested;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
+use Alpaca\Listeners\Category\CategoryPermissionListener;
 use Alpaca\Listeners\Category\CategorySitemapListener;
+use Alpaca\Listeners\Page\PagePermissionListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Listeners\User\AccountVerification;
 use Alpaca\Menu\MenuServiceProvider;
@@ -29,7 +31,8 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 {
     protected $listen = [
         PermissionsIsRequested::class => [
-
+            CategoryPermissionListener::class,
+            PagePermissionListener::class,
         ],
         Registered::class => [
             AccountVerification::class,

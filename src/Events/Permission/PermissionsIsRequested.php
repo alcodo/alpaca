@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Events\Sitemap;
+namespace Alpaca\Events\Permission;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;

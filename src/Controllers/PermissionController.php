@@ -2,7 +2,7 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Models\User;
+use Alpaca\Events\Permission\PermissionsIsRequested;
 use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -22,7 +22,9 @@ class PermissionController extends Controller
         SEO::setTitle(trans('alpaca::user.permissions'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $permissions = Permission::get();
+        $permissions = event(new PermissionsIsRequested());
+//        dd($permissions);
+//        $permissions = Permission::get();
 
         return view('alpaca::permission.index', compact('permissions'));
     }

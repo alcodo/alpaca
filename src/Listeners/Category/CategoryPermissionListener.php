@@ -23,7 +23,6 @@ class CategoryPermissionListener
      */
     public function handle()
     {
-
         $module = new PermissionModule([
             'title' => 'Category',
             'slug' => 'category',
@@ -32,23 +31,23 @@ class CategoryPermissionListener
 
         $module->permissions = [
             new Permission([
-                'name' => 'Administer categories',
-                'slug' => 'administer',
+                'name' => 'Administer category',
+                'slug' => 'administer_category',
                 'description' => '',
             ]),
             new Permission([
-                'name' => 'Create categories',
-                'slug' => 'create_categories',
+                'name' => 'Create category',
+                'slug' => 'create_category',
                 'description' => '',
             ]),
             new Permission([
-                'name' => 'Edit categories',
-                'slug' => 'edit_categories',
+                'name' => 'Edit category',
+                'slug' => 'edit_category',
                 'description' => '',
             ]),
             new Permission([
-                'name' => 'Delete categories',
-                'slug' => 'delete_categories',
+                'name' => 'Delete category',
+                'slug' => 'delete_category',
                 'description' => '',
             ]),
         ];
