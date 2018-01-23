@@ -3,6 +3,7 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Events\Permission\PermissionsIsRequested;
+use Alpaca\Models\Role;
 use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -23,10 +24,11 @@ class PermissionController extends Controller
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         $permissions = event(new PermissionsIsRequested());
+        $roles = Role::get();
 //        dd($permissions);
 //        $permissions = Permission::get();
 
-        return view('alpaca::permission.index', compact('permissions'));
+        return view('alpaca::permission.index', compact('permissions', 'roles'));
     }
 
     /**
