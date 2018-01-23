@@ -13,13 +13,15 @@
                         <li class="list-group-item">
 
                             <div class="media">
-                                <label class="media-body " for="{{ $module->slug }}.{{ $perm->name }}">
+                                <label class="media-body " for="{{ $role->id }}.{{ $module->slug }}.{{ $perm->name }}">
                                     {{ $perm->name }}
                                 </label>
                                 <div class="ml-4 form-check">
+                                    <input type="hidden" value="0" name="{{ $module->slug }}[{{ $perm->slug }}]">
                                     <input class="form-check-input" type="checkbox"
-                                           name="{{ $module->slug }}.{{ $perm->name }}"
-                                           id="{{ $module->slug }}.{{ $perm->name }}">
+                                           id="{{ $role->id }}.{{ $module->slug }}.{{ $perm->name }}"
+                                           name="{{ $module->slug }}[{{ $perm->slug }}]"
+                                            value="1">
                                 </div>
                             </div>
 

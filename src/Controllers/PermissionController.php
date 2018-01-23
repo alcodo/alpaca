@@ -25,7 +25,7 @@ class PermissionController extends Controller
 
         $permissions = event(new PermissionsIsRequested());
         $roles = Role::get();
-//        dd($permissions);
+
 //        $permissions = Permission::get();
 
         return view('alpaca::permission.index', compact('permissions', 'roles'));
