@@ -2,9 +2,7 @@
 
 namespace Alpaca\Models;
 
-use Zizaco\Entrust\EntrustRole;
-
-class Role extends EntrustRole
+class Role extends \Spatie\Permission\Models\Role
 {
     protected $fillable = ['name', 'display_name', 'description'];
 }

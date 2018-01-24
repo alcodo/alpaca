@@ -26,8 +26,6 @@ class PermissionController extends Controller
         $permissions = event(new PermissionsIsRequested());
         $roles = Role::get();
 
-//        $permissions = Permission::get();
-
         return view('alpaca::permission.index', compact('permissions', 'roles'));
     }
 
@@ -79,48 +77,10 @@ class PermissionController extends Controller
 
         // sync with role
         $role = Role::find($input['role_id']);
-//        dd($syncPermissions);
-//        $role->attachPermissions([1,2,3]);
         $role->syncPermissions($syncPermissions);
-//        $role->attachPermissions($syncPermissions);
-//        $role->attachPermission('page.edit_page');
-//        $role->savePermissions($syncPermissions);
 
-
-        Flash::success(trans('alpaca::alpaca.successfully_created'));
-
-        return redirect('/backend/permission');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param Permission $permission
-     * @param PermissionRepository $repo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Permission $permission, PermissionRepository $repo)
-    {
-        $repo->update($permission, $request->all());
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
-
-        return redirect('/backend/permission');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Permission $permission
-     * @param PermissionRepository $repo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Permission $permission, PermissionRepository $repo)
-    {
-        $repo->delete($permission);
-
-        Flash::success(trans('alpaca::alpaca.successfully_deleted'));
 
         return redirect('/backend/permission');
     }

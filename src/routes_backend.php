@@ -38,7 +38,7 @@ Route::group([
         'show', 'create', 'edit'
     ]]);
     Route::resource('/backend/permission', \Alpaca\Controllers\PermissionController::class, ['except' => [
-        'show', 'create', 'edit'
+        'show', 'create', 'edit', 'update', 'destroy',
     ]]);
 
     // Page

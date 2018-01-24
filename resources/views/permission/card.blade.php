@@ -21,7 +21,10 @@
                                     <input class="form-check-input" type="checkbox"
                                            id="{{ $role->id }}.{{ $module->slug }}.{{ $perm->name }}"
                                            name="{{ $module->slug }}[{{ $perm->slug }}]"
-                                            value="1">
+                                           value="1"
+                                           @if($role->hasPermissionTo($module->slug . '.' . $perm->slug))
+                                           checked
+                                            @endif>
                                 </div>
                             </div>
 

@@ -2,14 +2,13 @@
 
 namespace Alpaca\Models;
 
-use Spatie\Permission\Models\Permission as SpatiePermission;
+use Illuminate\Database\Eloquent\Model;
 
-class Permission extends SpatiePermission
+class Permission extends Model
 {
     protected $fillable = [
         'name',
         'slug',
-        'display_name',
         'description'
     ];
 }
