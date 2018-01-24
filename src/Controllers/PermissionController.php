@@ -40,7 +40,52 @@ class PermissionController extends Controller
      */
     public function store(Request $request, PermissionRepository $repo)
     {
-        $repo->create($request->all());
+        $input = $request->all();
+
+
+        // transform
+        $permissions = collect($input)
+            ->filter(function ($value, $key) { // extract only permissions array
+                return is_array($value);
+            })
+            ->map(function ($permissions, $module) { // transform array key
+
+                $modulePerms = array();
+
+                foreach ($permissions as $permissionName => $value) {
+
+                    $modulePerms[$module . '.' . $permissionName] = $value;
+
+                }
+
+                return $modulePerms;
+            })
+            ->mapWithKeys(function ($item) { // merge array
+                return $item;
+            });
+
+        // save
+        $syncPermissions = $permissions->map(function ($value, $permissionName) use ($repo) {
+
+            $permissionModel = $repo->findOrCreate(['name' => $permissionName]);
+
+            if ($value == 0) {
+                return null;
+            }
+
+            return $permissionModel;
+        })->filter()
+            ->values();
+
+        // sync with role
+        $role = Role::find($input['role_id']);
+//        dd($syncPermissions);
+//        $role->attachPermissions([1,2,3]);
+//        $role->attachPermissions($syncPermissions);
+//        $role->attachPermissions($syncPermissions);
+        $role->attachPermission('page.edit_page');
+//        $role->savePermissions($syncPermissions);
+
 
         Flash::success(trans('alpaca::alpaca.successfully_created'));
 
