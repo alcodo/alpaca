@@ -81,9 +81,9 @@ class PermissionController extends Controller
         $role = Role::find($input['role_id']);
 //        dd($syncPermissions);
 //        $role->attachPermissions([1,2,3]);
+        $role->syncPermissions($syncPermissions);
 //        $role->attachPermissions($syncPermissions);
-//        $role->attachPermissions($syncPermissions);
-        $role->attachPermission('page.edit_page');
+//        $role->attachPermission('page.edit_page');
 //        $role->savePermissions($syncPermissions);
 
 

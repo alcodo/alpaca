@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
-        @include('alpaca::error')
-        @include('flash::message')
+        @include('alpaca::partials.error')
+        @include('alpaca::partials.message')
         @yield('content')
     </div>
 </div>
