@@ -20,7 +20,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         SlugifyServiceProvider::class,
         ServiceProvider::class,
         HoneypotServiceProvider::class,
-        EntrustServiceProvider::class,
+//        EntrustServiceProvider::class,
         PermissionServiceProvider::class,
 //        PowerImageServiceProvider::class,
     ];
@@ -31,13 +31,13 @@ class DependencyServiceProvider extends AggregateServiceProvider
         'Slugify'  => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
         'Dateintl' => \Approached\LaravelDateInternational\DateIntlFacade::class,
         'Honeypot' => \Msurguy\Honeypot\HoneypotFacade::class,
-        'Entrust'  => \Zizaco\Entrust\EntrustFacade::class,
+//        'Entrust'  => \Zizaco\Entrust\EntrustFacade::class,
     ];
 
     protected $middlewares = [
-        'role'       => \Zizaco\Entrust\Middleware\EntrustRole::class,
-        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-        'ability'    => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+//        'role'       => \Zizaco\Entrust\Middleware\EntrustRole::class,
+//        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+//        'ability'    => \Zizaco\Entrust\Middleware\EntrustAbility::class,
     ];
 
     /**

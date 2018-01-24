@@ -21,12 +21,11 @@
     "illuminate/support": "~5.2",
     "alcodo/powerimage": "dev-master",
     "artesaos/seotools": "^0.9",
-    "zizaco/entrust": "5.2.x-dev",
-    "cocur/slugify": "dev-master",
     "approached/laravel-date-international": "^1.1",
-    "laracasts/flash": "^2.0",
+    "laracasts/flash": "^3.0",
     "msurguy/honeypot": "^1.0",
-    "spatie/laravel-permission": "dev-master"
+    "spatie/laravel-permission": "^2.7.0",
+    "cocur/slugify": "^3.1"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0",
@@ -51,6 +50,5 @@
         "Alpaca\\AlpacaServiceProvider"
       ]
     }
-  },
-  "minimum-stability": "dev"
+  }
 }

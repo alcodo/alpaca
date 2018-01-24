@@ -3,7 +3,7 @@
 namespace Alpaca\Repositories;
 
 use Illuminate\Support\Facades\Validator;
-use Zizaco\Entrust\EntrustPermission as Permission;
+use Spatie\Permission\Models\Permission;
 
 class PermissionRepository
 {
