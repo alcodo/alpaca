@@ -3,6 +3,7 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Events\Permission\PermissionsIsRequested;
+use Alpaca\Interactions\CheckAllPermissionsExists;
 use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -25,6 +26,10 @@ class PermissionController extends Controller
 
         $permissions = event(new PermissionsIsRequested());
         $roles = Role::get();
+
+        // check that all keys exists
+        $check = new CheckAllPermissionsExists();
+        $check->handle($permissions);
 
         return view('alpaca::permission.index', compact('permissions', 'roles'));
     }

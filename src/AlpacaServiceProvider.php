@@ -8,11 +8,19 @@ use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Events\Permission\PermissionsIsRequested;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
+use Alpaca\Listeners\Block\BlockPermissionListener;
 use Alpaca\Listeners\Category\CategoryPermissionListener;
 use Alpaca\Listeners\Category\CategorySitemapListener;
+use Alpaca\Listeners\Contact\ContactPermissionListener;
+use Alpaca\Listeners\EmailTemplate\EmailTemplatePermissionListener;
+use Alpaca\Listeners\Image\ImagePermissionListener;
+use Alpaca\Listeners\Menu\MenuPermissionListener;
 use Alpaca\Listeners\Page\PagePermissionListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
+use Alpaca\Listeners\Permission\PermissionPermissionListener;
+use Alpaca\Listeners\Role\RolePermissionListener;
 use Alpaca\Listeners\User\AccountVerification;
+use Alpaca\Listeners\User\UserPermissionListener;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
 use Alpaca\Support\Block\BlockBuilder;
@@ -31,7 +39,15 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 {
     protected $listen = [
         PermissionsIsRequested::class => [
+            BlockPermissionListener::class,
             CategoryPermissionListener::class,
+            ContactPermissionListener::class,
+            EmailTemplatePermissionListener::class,
+            ImagePermissionListener::class,
+            MenuPermissionListener::class,
+            PermissionPermissionListener::class,
+            RolePermissionListener::class,
+            UserPermissionListener::class,
             PagePermissionListener::class,
         ],
         Registered::class => [
