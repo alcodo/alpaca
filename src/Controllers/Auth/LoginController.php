@@ -1,10 +1,10 @@
 <?php
 
-namespace Alpaca\User\Controllers\Auth;
+namespace Alpaca\Controllers\Auth;
 
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
-use Alpaca\Core\Controllers\Controller;
+use Alpaca\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('user::login');
+        return view('alpaca::auth.login');
     }
 
     /**

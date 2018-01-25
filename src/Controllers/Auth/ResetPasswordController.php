@@ -1,10 +1,10 @@
 <?php
 
-namespace Alpaca\User\Controllers\Auth;
+namespace Alpaca\Controllers\Auth;
 
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
-use Alpaca\Core\Controllers\Controller;
+use Alpaca\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -36,7 +36,7 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('user::passwords.reset')->with(
+        return view('alpaca::auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }

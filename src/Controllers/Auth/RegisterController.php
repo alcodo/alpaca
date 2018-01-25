@@ -1,13 +1,13 @@
 <?php
 
-namespace Alpaca\User\Controllers\Auth;
+namespace Alpaca\Controllers\Auth;
 
 use Validator;
 use Laracasts\Flash\Flash;
 use Alpaca\User\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-use Alpaca\Core\Controllers\Controller;
+use Alpaca\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -68,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $redirect = request('redirect');
-        if (! empty($redirect)) {
+        if (!empty($redirect)) {
             $this->redirectTo = $redirect;
         }
 
@@ -85,7 +85,7 @@ class RegisterController extends Controller
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
@@ -101,7 +101,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('user::register');
+        return view('alpaca::auth.register');
     }
 
     public function verify($token)

@@ -10,7 +10,7 @@ Route::group([
 ], function () {
 
     // Email Template
-    Route::resource('/backend/email-template', '\Alpaca\Controllers\EmailTemplateController', ['only' => [
+    Route::resource('/backend/email-template', \Alpaca\Controllers\EmailTemplateController::class, ['only' => [
         'index', 'show',
     ]]);
 

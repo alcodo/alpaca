@@ -1,8 +1,8 @@
 <?php
 
-namespace Alpaca\User\Controllers\Auth;
+namespace Alpaca\Controllers\Auth;
 
-use Alpaca\Core\Controllers\Controller;
+use Alpaca\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
@@ -34,6 +34,6 @@ class ForgotPasswordController extends Controller
 
     public function showLinkRequestForm()
     {
-        return view('user::passwords.email');
+        return view('alpaca::auth.passwords.email');
     }
 }
