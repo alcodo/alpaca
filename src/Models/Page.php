@@ -2,13 +2,10 @@
 
 namespace Alpaca\Models;
 
-use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $table = 'al_pages';
-
     protected $fillable = [
         'active',
         'path',

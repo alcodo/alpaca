@@ -12,7 +12,7 @@ class CreateMenuItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('al_menu_links', function (Blueprint $table) {
+        Schema::create('menu_links', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('text');
@@ -23,7 +23,7 @@ class CreateMenuItemTable extends Migration
             $table->string('target')->nullable();
 
             $table->integer('menu_id')->unsigned();
-            $table->foreign('menu_id')->references('id')->on('al_menus')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -36,6 +36,6 @@ class CreateMenuItemTable extends Migration
      */
     public function down()
     {
-        Schema::drop('al_menu_links');
+        Schema::drop('menu_links');
     }
 }

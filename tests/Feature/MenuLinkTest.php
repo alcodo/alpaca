@@ -26,7 +26,7 @@ class MenuLinkTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseHas('al_menu_links', [
+        $this->assertDatabaseHas('menu_links', [
             'text' => 'First link',
         ]);
 
@@ -48,7 +48,7 @@ class MenuLinkTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseHas('al_menu_links', [
+        $this->assertDatabaseHas('menu_links', [
             'text' => 'Back',
             'position' => 1,
             'href' => '/back',
@@ -65,14 +65,14 @@ class MenuLinkTest extends IntegrationTest
         $this->createMenu();
         $this->createLink();
 
-        $this->assertDatabaseHas('al_menu_links', [
+        $this->assertDatabaseHas('menu_links', [
             'text' => 'Menulink',
         ]);
 
         $this->delete('/backend/menu/1/link/1')
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseMissing('al_menu_links', [
+        $this->assertDatabaseMissing('menu_links', [
             'title' => 'Menulink',
         ]);
 

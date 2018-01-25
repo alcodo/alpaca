@@ -12,7 +12,7 @@ class CreatePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('al_pages', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('active');
 
@@ -27,7 +27,7 @@ class CreatePageTable extends Migration
 
             // category
             $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('al_categories');
+            $table->foreign('category_id')->references('id')->on('categories');
 
             // seo
             $table->string('html_title')->nullable();

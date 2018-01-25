@@ -45,7 +45,7 @@ class CategoryTest extends IntegrationTest
         ])
             ->assertRedirect('/general-category');
 
-        $this->assertDatabaseHas('al_categories', [
+        $this->assertDatabaseHas('categories', [
             'title' => 'General category',
         ]);
 
@@ -73,7 +73,7 @@ class CategoryTest extends IntegrationTest
         ])
             ->assertRedirect('/new/path');
 
-        $this->assertDatabaseHas('al_categories', [
+        $this->assertDatabaseHas('categories', [
             'title' => 'New cool Title',
         ]);
 
@@ -84,7 +84,7 @@ class CategoryTest extends IntegrationTest
     {
         Event::fake();
 
-        $this->assertDatabaseHas('al_categories', [
+        $this->assertDatabaseHas('categories', [
             'title' => 'Beiträge',
         ]);
 
@@ -92,7 +92,7 @@ class CategoryTest extends IntegrationTest
         $this->delete('/backend/category/1')
             ->assertRedirect('/backend/category');
 
-        $this->assertDatabaseMissing('al_categories', [
+        $this->assertDatabaseMissing('categories', [
             'title' => 'Beiträge',
         ]);
 

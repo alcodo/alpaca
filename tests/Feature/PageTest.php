@@ -45,7 +45,7 @@ class PageTest extends IntegrationTest
         ])
             ->assertRedirect('/my-new-page');
 
-        $this->assertDatabaseHas('al_pages', [
+        $this->assertDatabaseHas('pages', [
             'title' => 'My new Page',
         ]);
 
@@ -73,7 +73,7 @@ class PageTest extends IntegrationTest
         ])
             ->assertRedirect('/new/path');
 
-        $this->assertDatabaseHas('al_pages', [
+        $this->assertDatabaseHas('pages', [
             'title' => 'New cool Title',
         ]);
 
@@ -84,7 +84,7 @@ class PageTest extends IntegrationTest
     {
         Event::fake();
 
-        $this->assertDatabaseHas('al_pages', [
+        $this->assertDatabaseHas('pages', [
             'title' => 'Hallo Welt!',
         ]);
 
@@ -92,7 +92,7 @@ class PageTest extends IntegrationTest
         $this->delete('/backend/page/1')
             ->assertRedirect('/backend/page');
 
-        $this->assertDatabaseMissing('al_pages', [
+        $this->assertDatabaseMissing('pages', [
             'title' => 'Hallo Welt!',
         ]);
 

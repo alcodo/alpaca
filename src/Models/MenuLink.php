@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuLink extends Model
 {
-    protected $table = 'al_menu_links';
-
     protected $fillable = [
         'text',
         'position',

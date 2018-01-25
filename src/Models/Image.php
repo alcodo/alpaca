@@ -2,14 +2,11 @@
 
 namespace Alpaca\Models;
 
-use Response;
 use Alpaca\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $table = 'al_images';
-
     protected $fillable = [
         'title',
         'filepath',

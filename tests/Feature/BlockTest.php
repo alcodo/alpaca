@@ -34,7 +34,7 @@ class BlockTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/block');
 
-        $this->assertDatabaseHas('al_blocks', [
+        $this->assertDatabaseHas('blocks', [
             'title' => 'Frontblock',
         ]);
 
@@ -57,7 +57,7 @@ class BlockTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/block');
 
-        $this->assertDatabaseHas('al_blocks', [
+        $this->assertDatabaseHas('blocks', [
             'title' => 'Crazy block',
         ]);
 
@@ -71,14 +71,14 @@ class BlockTest extends IntegrationTest
         $this->withoutExceptionHandling();
         $this->createBlock();
 
-        $this->assertDatabaseHas('al_blocks', [
+        $this->assertDatabaseHas('blocks', [
             'title' => 'Test',
         ]);
 
         $this->delete('/backend/block/1')
             ->assertRedirect('/backend/block');
 
-        $this->assertDatabaseMissing('al_blocks', [
+        $this->assertDatabaseMissing('blocks', [
             'title' => 'Test',
         ]);
 

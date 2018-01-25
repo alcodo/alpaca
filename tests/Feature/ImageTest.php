@@ -36,7 +36,7 @@ class ImageTest extends IntegrationTest
             ->assertRedirect('/backend/image');
 
 
-        $this->assertDatabaseHas('al_images', [
+        $this->assertDatabaseHas('images', [
             'title' => 'Example image',
         ]);
         Storage::disk('public')->assertExists(Image::first()->filepath);
@@ -60,7 +60,7 @@ class ImageTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/image');
 
-        $this->assertDatabaseHas('al_images', [
+        $this->assertDatabaseHas('images', [
             'title' => 'Updated title',
         ]);
         $filepathAfter = Image::first()->filepath;
@@ -80,14 +80,14 @@ class ImageTest extends IntegrationTest
         $filepath = Image::first()->filepath;
         Storage::disk('public')->assertExists($filepath);
 
-        $this->assertDatabaseHas('al_images', [
+        $this->assertDatabaseHas('images', [
             'filepath' => $filepath,
         ]);
 
         $this->delete('/backend/image/1')
             ->assertRedirect('/backend/image');
 
-        $this->assertDatabaseMissing('al_images', [
+        $this->assertDatabaseMissing('images', [
             'filepath' => 'test.jpg',
         ]);
         Storage::disk('public')->assertMissing($filepath);

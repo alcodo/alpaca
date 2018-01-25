@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'al_categories';
-
     protected $fillable = [
         'active',
         'path',

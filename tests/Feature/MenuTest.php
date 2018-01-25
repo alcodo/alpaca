@@ -31,7 +31,7 @@ class MenuTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseHas('al_menus', [
+        $this->assertDatabaseHas('menus', [
             'title' => 'Footer Menu',
         ]);
 
@@ -54,7 +54,7 @@ class MenuTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseHas('al_menus', [
+        $this->assertDatabaseHas('menus', [
             'title' => 'Crazy Menu',
         ]);
 
@@ -70,7 +70,7 @@ class MenuTest extends IntegrationTest
             'title' => 'Demo Menu'
         ]);
 
-        $this->assertDatabaseHas('al_menus', [
+        $this->assertDatabaseHas('menus', [
             'title' => 'Demo Menu',
         ]);
 
@@ -78,7 +78,7 @@ class MenuTest extends IntegrationTest
         $this->delete('/backend/menu/1')
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseMissing('al_menus', [
+        $this->assertDatabaseMissing('menus', [
             'title' => 'Demo Menu',
         ]);
 

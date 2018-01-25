@@ -12,7 +12,7 @@ class CreateBlockTable extends Migration
      */
     public function up()
     {
-        Schema::create('al_blocks', function (Blueprint $table) {
+        Schema::create('blocks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
@@ -27,7 +27,7 @@ class CreateBlockTable extends Migration
 
             // reference
             $table->integer('menu_id')->unsigned()->nullable();
-            $table->foreign('menu_id')->references('id')->on('al_menus')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
@@ -42,6 +42,6 @@ class CreateBlockTable extends Migration
      */
     public function down()
     {
-        Schema::drop('al_blocks');
+        Schema::drop('blocks');
     }
 }
