@@ -4,7 +4,7 @@ use Alpaca\Models\Category;
 use Alpaca\Models\Page;
 use Illuminate\Database\Migrations\Migration;
 
-class InstallAlpaca extends Migration
+class InstallAlpacaPage extends Migration
 {
     /**
      * Run the migrations.
