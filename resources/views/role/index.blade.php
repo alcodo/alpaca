@@ -17,6 +17,7 @@
         <thead>
         <tr>
             <th>{{ trans('alpaca::alpaca.name') }}</th>
+            <th>{{ trans('alpaca::user.permissions') }}</th>
             <th>{{ trans('alpaca::alpaca.created') }}</th>
             <th>{{ trans('alpaca::alpaca.updated') }}</th>
             <th></th>
@@ -26,8 +27,9 @@
         @foreach($roles as $role)
             <tr>
                 <td>
-                    {{ $role->id }}: {{ $role->name }}
+                    {{ $role->name }}
                 </td>
+                <td>{{ $role->permissions->count() }}</td>
                 <td>{{ dateintl_full('short', $role->created_at) }}</td>
                 <td>{{ dateintl_full('short', $role->updated_at) }}</td>
                 <td>

@@ -20,7 +20,8 @@ class RolesController extends Controller
         SEO::setTitle(trans('alpaca::user.roles'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $roles = Role::paginate(50);
+        $roles = Role::get();
+//        dd($roles->first()->permissions->count());
 
         return view('alpaca::role.index', compact('roles'));
     }
