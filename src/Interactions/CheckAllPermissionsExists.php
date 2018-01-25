@@ -12,6 +12,11 @@ class CheckAllPermissionsExists
         $this->repo = new PermissionRepository();
     }
 
+    /**
+     * Check that every permission exists
+     *
+     * @param $data
+     */
     public function handle($data)
     {
 

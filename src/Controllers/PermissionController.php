@@ -4,6 +4,7 @@ namespace Alpaca\Controllers;
 
 use Alpaca\Events\Permission\PermissionsIsRequested;
 use Alpaca\Interactions\CheckAllPermissionsExists;
+use Alpaca\Interactions\GetPermissionsFromForm;
 use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -43,47 +44,12 @@ class PermissionController extends Controller
      */
     public function store(Request $request, PermissionRepository $repo)
     {
-        $input = $request->all();
-
-
-        // transform
-        $permissions = collect($input)
-            ->filter(function ($value, $key) { // extract only permissions array
-                return is_array($value);
-            })
-            ->map(function ($permissions, $module) { // transform array key
-
-                $modulePerms = array();
-
-                foreach ($permissions as $permissionName => $value) {
-
-                    $modulePerms[$module . '.' . $permissionName] = $value;
-
-                }
-
-                return $modulePerms;
-            })
-            ->mapWithKeys(function ($item) { // merge array
-                return $item;
-            });
-
-        // save
-        $syncPermissions = $permissions->map(function ($value, $permissionName) use ($repo) {
-
-            $permissionModel = $repo->findOrCreate(['name' => $permissionName]);
-
-            if ($value == 0) {
-                return null;
-            }
-
-            return $permissionModel;
-        })->filter()
-            ->values();
+        $transform = new GetPermissionsFromForm();
+        $syncPermissions = $transform->handle($request->all())->getActivePermissions();
 
         // sync with role
-        $role = Role::find($input['role_id']);
+        $role = Role::find($request->get('role_id'));
         $role->syncPermissions($syncPermissions);
-
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
