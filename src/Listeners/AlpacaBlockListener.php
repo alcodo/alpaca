@@ -57,7 +57,6 @@ class AlpacaBlockListener
             new MenuLink(['text' => 'Permission', 'title' => 'Permission administration', 'href' => '/backend/permission',]),
             new MenuLink(['text' => 'Image', 'title' => 'Image administration', 'href' => '/backend/image',]),
             new MenuLink(['text' => 'E-Mail Templates', 'title' => 'E-Mail Templates', 'href' => '/backend/email-template',]),
-            new MenuLink(['text' => 'Contact', 'title' => 'Contact', 'href' => '/contact',]),
         ]);
 
         return $block;

@@ -1,9 +1,6 @@
 <?php
 
 use Alpaca\Models\Block;
-use Alpaca\Models\Category;
-use Alpaca\Models\Menu;
-use Alpaca\Models\Page;
 use Illuminate\Database\Migrations\Migration;
 
 class InstallAlpacaMenu extends Migration
