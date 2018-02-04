@@ -14,7 +14,9 @@
 
                             <div class="media">
                                 <label class="media-body " for="{{ $role->id }}.{{ $module->slug }}.{{ $perm->name }}">
-                                    {{ $perm->name }}
+                                    {{ $perm->name }} <i v-b-tooltip.hover
+                                                         title="ID: {{ $module->slug . '.' . $perm->slug }}"
+                                                         class="fa fa-info-circle text-info"></i>
                                 </label>
                                 <div class="ml-4 form-check">
                                     <input type="hidden" value="0" name="{{ $module->slug }}[{{ $perm->slug }}]">
