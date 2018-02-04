@@ -10,6 +10,15 @@ use Laracasts\Flash\Flash;
 
 class MenuController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:menu.administer', ['only' => ['index']]);
+        $this->middleware('permission:menu.create', ['only' => ['store',]]);
+        $this->middleware('permission:menu.edit', ['only' => ['update',]]);
+        $this->middleware('permission:menu.delete', ['only' => ['destroy',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

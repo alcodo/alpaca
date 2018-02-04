@@ -15,6 +15,13 @@ use Spatie\Permission\Models\Role;
 
 class PermissionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:permission.administer', ['only' => ['index']]);
+        $this->middleware('permission:permission.edit', ['only' => ['store',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

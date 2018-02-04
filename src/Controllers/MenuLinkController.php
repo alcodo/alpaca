@@ -12,6 +12,13 @@ use Laracasts\Flash\Flash;
 class MenuLinkController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('permission:menu.add_link', ['only' => ['store',]]);
+        $this->middleware('permission:menu.edit_link', ['only' => ['update',]]);
+        $this->middleware('permission:menu.delete_link', ['only' => ['destroy',]]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

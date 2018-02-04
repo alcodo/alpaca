@@ -121,10 +121,17 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      */
     public function registerMiddleware(\Illuminate\Routing\Router $router): void
     {
+        /**
+         * Add middlewares
+         */
         $router->middlewareGroup('alpaca', [
             \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
             \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         ]);
+
+        $router->aliasMiddleware('permission', \Spatie\Permission\Middlewares\PermissionMiddleware::class);
+        $router->aliasMiddleware('role', \Spatie\Permission\Middlewares\RoleMiddleware::class);
+
 //        foreach ($this->middlewares as $name => $class) {
 //            $router->middleware($name, $class);
 //        }

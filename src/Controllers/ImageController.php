@@ -10,6 +10,15 @@ use Laracasts\Flash\Flash;
 
 class ImageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:image.administer', ['only' => ['index']]);
+        $this->middleware('permission:image.create', ['only' => ['store',]]);
+        $this->middleware('permission:image.edit', ['only' => ['update',]]);
+        $this->middleware('permission:image.delete', ['only' => ['destroy',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

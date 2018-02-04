@@ -11,6 +11,15 @@ use Laracasts\Flash\Flash;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:user.administer', ['only' => ['index']]);
+        $this->middleware('permission:user.create', ['only' => ['store',]]);
+        $this->middleware('permission:user.edit', ['only' => ['update',]]);
+        $this->middleware('permission:user.delete', ['only' => ['destroy',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -11,6 +11,15 @@ use Laracasts\Flash\Flash;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:catgory.administer', ['only' => ['index']]);
+        $this->middleware('permission:catgory.create', ['only' => ['create', 'store',]]);
+        $this->middleware('permission:catgory.edit', ['only' => ['edit', 'update',]]);
+        $this->middleware('permission:catgory.delete', ['only' => ['destroy',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

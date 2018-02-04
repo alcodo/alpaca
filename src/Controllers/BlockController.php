@@ -11,6 +11,15 @@ use Laracasts\Flash\Flash;
 
 class BlockController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:block.administer', ['only' => ['index']]);
+        $this->middleware('permission:block.create', ['only' => ['create', 'store',]]);
+        $this->middleware('permission:block.edit', ['only' => ['edit', 'update',]]);
+        $this->middleware('permission:block.delete', ['only' => ['destroy',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *

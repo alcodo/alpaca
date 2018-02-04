@@ -9,6 +9,12 @@ use Laracasts\Flash\Flash;
 
 class EmailTemplateController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:emailtemplate.show_template');
+    }
+
     public function index()
     {
         if (!View::exists('vendor.notifications.email')) {

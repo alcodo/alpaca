@@ -11,6 +11,15 @@ use Laracasts\Flash\Flash;
 
 class PageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:page.administer', ['only' => ['index']]);
+        $this->middleware('permission:page.create', ['only' => ['create', 'store',]]);
+        $this->middleware('permission:page.edit', ['only' => ['edit', 'update',]]);
+        $this->middleware('permission:page.delete', ['only' => ['destroy',]]);
+    }
+
     /**
      * Display a listing of the resource.
      *
