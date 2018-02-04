@@ -31,23 +31,23 @@ class RolePermissionListener
 
         $module->permissions = [
             new Permission([
-                'name' => 'Administer role',
-                'slug' => 'administer_role',
+                'name' => 'Administer roles',
+                'slug' => 'administer',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Create role',
-                'slug' => 'create_role',
+                'slug' => 'create',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Edit role',
-                'slug' => 'edit_role',
+                'slug' => 'edit',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Delete role',
-                'slug' => 'delete_role',
+                'slug' => 'delete',
                 'description' => '',
             ]),
         ];

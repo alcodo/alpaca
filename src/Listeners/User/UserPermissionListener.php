@@ -31,23 +31,23 @@ class UserPermissionListener
 
         $module->permissions = [
             new Permission([
-                'name' => 'Administer user',
-                'slug' => 'administer_user',
+                'name' => 'Administer users',
+                'slug' => 'administer',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Create user',
-                'slug' => 'create_user',
+                'slug' => 'create',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Edit user',
-                'slug' => 'edit_user',
+                'slug' => 'edit',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Delete user',
-                'slug' => 'delete_user',
+                'slug' => 'delete',
                 'description' => '',
             ]),
         ];

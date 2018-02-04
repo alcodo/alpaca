@@ -2,9 +2,13 @@
 
 @section('content')
 
+    @can('page.create')
     <a href="/backend/page/create" class="btn btn-info float-right">
         {{ trans('alpaca::page.create_page') }}
     </a>
+    @endcan
+
+
     <h1>
         {{ trans('alpaca::page.page_index') }}
     </h1>

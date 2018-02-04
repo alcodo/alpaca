@@ -7,10 +7,12 @@
 @section('content')
 
     {{--create--}}
-    <a href="#" class="btn btn-info float-right" v-b-modal.modalcreateimage>
-        {{ trans('alpaca::image.add_image') }}
-    </a>
-    @include('alpaca::image.sub.create')
+    @can('image.create')
+        <a href="#" class="btn btn-info float-right" v-b-modal.modalcreateimage>
+            {{ trans('alpaca::image.add_image') }}
+        </a>
+        @include('alpaca::image.sub.create')
+    @endcan
 
 
     <h1>

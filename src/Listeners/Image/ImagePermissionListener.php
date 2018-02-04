@@ -31,23 +31,23 @@ class ImagePermissionListener
 
         $module->permissions = [
             new Permission([
-                'name' => 'Administer image',
-                'slug' => 'administer_image',
+                'name' => 'Administer images',
+                'slug' => 'administer',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Create image',
-                'slug' => 'create_image',
+                'slug' => 'create',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Edit image',
-                'slug' => 'edit_image',
+                'slug' => 'edit',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Delete image',
-                'slug' => 'delete_image',
+                'slug' => 'delete',
                 'description' => '',
             ]),
         ];

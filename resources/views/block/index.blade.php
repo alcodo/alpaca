@@ -2,9 +2,11 @@
 
 @section('content')
 
-    <a href="/backend/block/create" class="btn btn-info float-right">
-        {{ trans('alpaca::block.create_block') }}
-    </a>
+    @can('block.create')
+        <a href="/backend/block/create" class="btn btn-info float-right">
+            {{ trans('alpaca::block.create_block') }}
+        </a>
+    @endcan
 
 
     <h1>

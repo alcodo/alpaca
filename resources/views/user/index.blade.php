@@ -3,10 +3,12 @@
 @section('content')
 
     {{--create--}}
-    <a href="#" class="btn btn-info float-right" v-b-modal.modalcreateuser>
-        {{ trans('alpaca::user.add_user') }}
-    </a>
-    @include('alpaca::user.sub.create')
+    @can('user.create_user')
+        <a href="#" class="btn btn-info float-right" v-b-modal.modalcreateuser>
+            {{ trans('alpaca::user.add_user') }}
+        </a>
+        @include('alpaca::user.sub.create')
+    @endcan
 
 
     <h1>
@@ -26,7 +28,6 @@
         </thead>
         <tbody>
         @foreach($users as $user)
-            {{--{{ dump($user) }}--}}
             <tr>
                 <td>
                     {{ $user->id }}: {{ $user->name }}

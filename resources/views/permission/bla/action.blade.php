@@ -16,7 +16,7 @@
 
     <form method="POST" action="/backend/permission/{{ $permission->id }}" accept-charset="UTF-8">
         <input name="_method" type="hidden" value="PUT">
-        @include('alpaca::permission.sub.form')
+        @include('alpaca::permission.bla.form')
     </form>
 
 </b-modal>

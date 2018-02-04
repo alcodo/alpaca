@@ -3,10 +3,13 @@
 @section('content')
 
     {{--create--}}
-    <a href="#" class="btn btn-info float-right" v-b-modal.modalcreaterole>
-        {{ trans('alpaca::user.add_role') }}
-    </a>
-    @include('alpaca::role.sub.create')
+    @can('role.create')
+        <a href="#" class="btn btn-info float-right" v-b-modal.modalcreaterole>
+            {{ trans('alpaca::user.add_role') }}
+        </a>
+        @include('alpaca::role.sub.create')
+    @endcan
+
 
 
     <h1>

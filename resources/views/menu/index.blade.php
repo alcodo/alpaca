@@ -3,10 +3,12 @@
 @section('content')
 
     {{--create--}}
-    <a href="#" class="btn btn-info float-right" v-b-modal.modalcreatemenu>
-        {{ trans('alpaca::menu.create_menu') }}
-    </a>
-    @include('alpaca::menu.sub.create')
+    @can('menu.create')
+        <a href="#" class="btn btn-info float-right" v-b-modal.modalcreatemenu>
+            {{ trans('alpaca::menu.create') }}
+        </a>
+        @include('alpaca::menu.sub.create')
+    @endcan
 
     <h1>
         {{ trans('alpaca::menu.menu_index') }}
@@ -41,11 +43,14 @@
                     @endif
                     <div class="card-footer">
 
-                        <a href="#" class="btn btn-info btn-sm float-right" title="{{ trans('alpaca::alpaca.link') }}"
-                           v-b-modal.modalcreatelink{{ $menu->id }}>
-                            <i class="fa fa-plus" aria-hidden="true"></i> {{ trans('alpaca::alpaca.link') }}
-                        </a>
-                        @include('alpaca::menu.link.create', ['menu' => $menu])
+                        @can('menu.add_link')
+                            <a href="#" class="btn btn-info btn-sm float-right"
+                               title="{{ trans('alpaca::alpaca.link') }}"
+                               v-b-modal.modalcreatelink{{ $menu->id }}>
+                                <i class="fa fa-plus" aria-hidden="true"></i> {{ trans('alpaca::alpaca.link') }}
+                            </a>
+                            @include('alpaca::menu.link.create', ['menu' => $menu])
+                        @endcan
 
                     </div>
                 </div>

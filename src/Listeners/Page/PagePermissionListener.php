@@ -33,22 +33,22 @@ class PagePermissionListener
         $module->permissions = [
             new Permission([
                 'name' => 'Administer pages',
-                'slug' => 'administer_pages',
+                'slug' => 'administer',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Create page',
-                'slug' => 'create_page',
+                'slug' => 'create',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Edit page',
-                'slug' => 'edit_page',
+                'slug' => 'edit',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Delete page',
-                'slug' => 'delete_page',
+                'slug' => 'delete',
                 'description' => '',
             ]),
         ];

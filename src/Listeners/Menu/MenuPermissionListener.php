@@ -31,23 +31,38 @@ class MenuPermissionListener
 
         $module->permissions = [
             new Permission([
-                'name' => 'Administer menu',
-                'slug' => 'administer_menu',
+                'name' => 'Administer menus',
+                'slug' => 'administer',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Create menu',
-                'slug' => 'create_menu',
+                'slug' => 'create',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Edit menu',
-                'slug' => 'edit_menu',
+                'slug' => 'edit',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Delete menu',
-                'slug' => 'delete_menu',
+                'slug' => 'delete',
+                'description' => '',
+            ]),
+            new Permission([
+                'name' => 'Add link',
+                'slug' => 'add_link',
+                'description' => '',
+            ]),
+            new Permission([
+                'name' => 'Edit link',
+                'slug' => 'edit_link',
+                'description' => '',
+            ]),
+            new Permission([
+                'name' => 'Delete link',
+                'slug' => 'delete_link',
                 'description' => '',
             ]),
         ];

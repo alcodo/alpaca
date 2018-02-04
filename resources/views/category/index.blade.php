@@ -2,9 +2,12 @@
 
 @section('content')
 
-    <a href="/backend/category/create" class="btn btn-info float-right">
-        {{ trans('alpaca::category.create_category') }}
-    </a>
+    @can('category.create')
+        <a href="/backend/category/create" class="btn btn-info float-right">
+            {{ trans('alpaca::category.create_category') }}
+        </a>
+    @endcan
+
     <h1>
         {{ trans('alpaca::category.category_index') }}
     </h1>

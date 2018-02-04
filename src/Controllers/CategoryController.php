@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
         $categories = Category::paginate(20);
 
-        return view('alpaca::category.list', compact('categories'));
+        return view('alpaca::category.index', compact('categories'));
     }
 
     /**

@@ -31,23 +31,23 @@ class BlockPermissionListener
 
         $module->permissions = [
             new Permission([
-                'name' => 'Administer block',
-                'slug' => 'administer_block',
+                'name' => 'Administer blocks',
+                'slug' => 'administer',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Create block',
-                'slug' => 'create_block',
+                'slug' => 'create',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Edit block',
-                'slug' => 'edit_block',
+                'slug' => 'edit',
                 'description' => '',
             ]),
             new Permission([
                 'name' => 'Delete block',
-                'slug' => 'delete_block',
+                'slug' => 'delete',
                 'description' => '',
             ]),
         ];
