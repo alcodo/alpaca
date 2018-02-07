@@ -11,6 +11,11 @@ use Tests\IntegrationTest;
 
 class MenuTest extends IntegrationTest
 {
+    public function setUp()
+    {
+        parent::setUp();
+        $this->loginAsAdmin();
+    }
 
     public function test_index_menu()
     {

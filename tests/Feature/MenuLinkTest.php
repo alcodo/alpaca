@@ -12,6 +12,12 @@ use Tests\IntegrationTest;
 class MenuLinkTest extends IntegrationTest
 {
 
+    public function setUp()
+    {
+        parent::setUp();
+        $this->loginAsAdmin();
+    }
+
     public function test_store_menu_link()
     {
         Event::fake();

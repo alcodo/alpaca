@@ -10,6 +10,11 @@ use Tests\IntegrationTest;
 
 class CategoryTest extends IntegrationTest
 {
+    public function setUp()
+    {
+        parent::setUp();
+        $this->loginAsAdmin();
+    }
 
     public function test_show_category()
     {

@@ -11,6 +11,12 @@ use Tests\IntegrationTest;
 class PageTest extends IntegrationTest
 {
 
+    public function setUp()
+    {
+        parent::setUp();
+        $this->loginAsAdmin();
+    }
+
     public function test_show_page()
     {
         $this->withoutExceptionHandling();
