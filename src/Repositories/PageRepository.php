@@ -9,7 +9,6 @@ use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Alpaca\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PageRepository
@@ -50,7 +49,7 @@ class PageRepository
 
         $page = Page::create($data);
 
-        event(new PageWasCreated($page, Auth::user()));
+        event(new PageWasCreated($page));
 
         return $page;
     }
@@ -81,7 +80,7 @@ class PageRepository
 
         $page->update($data);
 
-        event(new PageWasUpdated($page, Auth::user()));
+        event(new PageWasUpdated($page));
 
         return $page;
     }
@@ -95,7 +94,7 @@ class PageRepository
     {
         $page->delete();
 
-        event(new PageWasDeleted($page, Auth::user()));
+        event(new PageWasDeleted($page));
 
         return true;
     }

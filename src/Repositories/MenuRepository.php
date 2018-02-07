@@ -8,7 +8,6 @@ use Alpaca\Events\Menu\MenuWasUpdated;
 use Alpaca\Models\Category;
 use Alpaca\Models\Menu;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MenuRepository
@@ -31,7 +30,7 @@ class MenuRepository
 
         $menu = Menu::create($data);
 
-        event(new MenuWasCreated($menu, Auth::user()));
+        event(new MenuWasCreated($menu));
 
         return $menu;
     }
@@ -47,7 +46,7 @@ class MenuRepository
 
         $menu->update($data);
 
-        event(new MenuWasUpdated($menu, Auth::user()));
+        event(new MenuWasUpdated($menu));
 
         return $menu;
     }
@@ -61,7 +60,7 @@ class MenuRepository
     {
         $menu->delete();
 
-        event(new MenuWasDeleted($menu, Auth::user()));
+        event(new MenuWasDeleted($menu));
 
         return true;
     }

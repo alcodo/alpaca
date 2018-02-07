@@ -8,7 +8,6 @@ use Alpaca\Events\Image\ImageWasUpdated;
 use Alpaca\Models\Block;
 use Alpaca\Models\Image;
 use Alpaca\Models\Menu;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,7 +42,7 @@ class ImageRepository
 
         $image = Image::create($data);
 
-        event(new ImageWasCreated($image, Auth::user()));
+        event(new ImageWasCreated($image));
 
         return $image;
     }
@@ -76,7 +75,7 @@ class ImageRepository
 
         $image->update($data);
 
-        event(new ImageWasUpdated($image, Auth::user()));
+        event(new ImageWasUpdated($image));
 
         return $image;
     }
@@ -91,7 +90,7 @@ class ImageRepository
         Storage::disk('public')->delete($image->filepath);
         $image->delete();
 
-        event(new ImageWasDeleted($image, Auth::user()));
+        event(new ImageWasDeleted($image));
 
         return true;
     }

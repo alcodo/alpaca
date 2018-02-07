@@ -6,9 +6,7 @@ use Alpaca\Events\Block\BlockWasCreated;
 use Alpaca\Events\Block\BlockWasDeleted;
 use Alpaca\Events\Block\BlockWasUpdated;
 use Alpaca\Models\Block;
-use Alpaca\Models\Menu;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class BlockRepository
@@ -36,7 +34,7 @@ class BlockRepository
 
         $block = Block::create($data);
 
-        event(new BlockWasCreated($block, Auth::user()));
+        event(new BlockWasCreated($block));
 
         return $block;
     }
@@ -63,7 +61,7 @@ class BlockRepository
 
         $block->update($data);
 
-        event(new BlockWasUpdated($block, Auth::user()));
+        event(new BlockWasUpdated($block));
 
         return $block;
     }
@@ -72,7 +70,7 @@ class BlockRepository
     {
         $block->delete();
 
-        event(new BlockWasDeleted($block, Auth::user()));
+        event(new BlockWasDeleted($block));
 
         return true;
     }

@@ -5,14 +5,9 @@ namespace Alpaca\Repositories;
 use Alpaca\Events\Menu\MenuLinkWasCreated;
 use Alpaca\Events\Menu\MenuLinkWasDeleted;
 use Alpaca\Events\Menu\MenuLinkWasUpdated;
-use Alpaca\Events\Menu\MenuWasCreated;
-use Alpaca\Events\Menu\MenuWasDeleted;
-use Alpaca\Events\Menu\MenuWasUpdated;
 use Alpaca\Models\Category;
 use Alpaca\Models\Menu;
 use Alpaca\Models\MenuLink;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MenuLinkRepository
@@ -37,7 +32,7 @@ class MenuLinkRepository
 
         $link = $menu->links()->create($data);
 
-        event(new MenuLinkWasCreated($menu, $link, Auth::user()));
+        event(new MenuLinkWasCreated($menu, $link));
 
         return $link;
     }
@@ -55,7 +50,7 @@ class MenuLinkRepository
 
         $link->update($data);
 
-        event(new MenuLinkWasUpdated($menu, $link, Auth::user()));
+        event(new MenuLinkWasUpdated($menu, $link));
 
         return $link;
     }
@@ -69,7 +64,7 @@ class MenuLinkRepository
     {
         $link->delete();
 
-        event(new MenuLinkWasDeleted($menu, $link, Auth::user()));
+        event(new MenuLinkWasDeleted($menu, $link));
 
         return true;
     }
