@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Illuminate\Foundation\Application;
+use Alpaca\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase;
@@ -108,5 +108,10 @@ abstract class IntegrationTest extends TestCase
             if (is_file($file))
                 unlink($file); // delete file
         }
+    }
+
+    protected function loginAsAdmin()
+    {
+        $this->actingAs(User::first());
     }
 }

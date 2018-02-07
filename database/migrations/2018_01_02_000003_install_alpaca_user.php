@@ -12,12 +12,13 @@ class InstallAlpacaUser extends Migration
     public function up()
     {
         $repo = new \Alpaca\Repositories\UserRepository();
-        $repo->create([
+        $user = $repo->create([
             'name' => 'alpaca',
             'email' => 'admin@alpaca.com',
             'password' => 'alpaca',
             'password_confirmation' => 'alpaca',
         ]);
+        $user->assignRole('Administrator');
     }
 
     /**
