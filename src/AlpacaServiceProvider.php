@@ -37,6 +37,9 @@ use Illuminate\Support\Facades\Event;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
 {
+    /**
+     * @var array
+     */
     protected $listen = [
         PermissionsIsRequested::class => [
             BlockPermissionListener::class,
@@ -62,29 +65,14 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 //            UserBlockListener::class,
         ],
     ];
+
     /**
-     * The provider class names.
-     *
      * @var array
      */
-    protected $providers = [
-//        DependencyServiceProvider::class,
-//        CoreServiceProvider::class,
-//        CookieConsentServiceProvider::class,
-//        CrudServiceProvider::class,
-//        UserServiceProvider::class,
-//        BlockServiceProvider::class,
-//        MenuServiceProvider::class,
-//        SitemapServiceProvider::class,
-//        ContactServiceProvider::class,
-//        GalleryServiceProvider::class,
-//        EmailServiceProvider::class,
-//        PageServiceProvider::class,
+    protected $middlewares = [
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
     ];
-
-//    protected $middlewares = [
-//        'TrimStrings' => \Alpaca\Middlewares\TrimStrings::class,
-//    ];
 
     /**
      * Register the service provider.
@@ -117,26 +105,25 @@ class AlpacaServiceProvider extends AggregateServiceProvider
     }
 
     /**
+     * Add middlewares
+     *
      * @param \Illuminate\Routing\Router $router
      */
     public function registerMiddleware(\Illuminate\Routing\Router $router): void
     {
-        /**
-         * Add middlewares
-         */
         $router->middlewareGroup('alpaca', [
             \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
             \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         ]);
 
-        $router->aliasMiddleware('permission', \Spatie\Permission\Middlewares\PermissionMiddleware::class);
-        $router->aliasMiddleware('role', \Spatie\Permission\Middlewares\RoleMiddleware::class);
-
-//        foreach ($this->middlewares as $name => $class) {
-//            $router->middleware($name, $class);
-//        }
+        foreach ($this->middlewares as $name => $class) {
+            $router->aliasMiddleware($name, $class);
+        }
     }
 
+    /**
+     * Add events
+     */
     public function registerEvents(): void
     {
         foreach ($this->listen as $event => $listeners) {
