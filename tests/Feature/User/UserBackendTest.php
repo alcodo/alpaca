@@ -6,6 +6,7 @@ use Alpaca\Events\User\UserWasCreated;
 use Alpaca\Events\User\UserWasDeleted;
 use Alpaca\Events\User\UserWasUpdated;
 use Alpaca\Repositories\UserRepository;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
 
@@ -70,20 +71,12 @@ class UserBackendTest extends IntegrationTest
     {
         $this->withoutExceptionHandling();
         Event::fake();
-
-        $this->createUser();
-        $this->assertDatabaseHas('users', [
-            'name' => 'JohnDoe',
-        ]);
+        $this->assertEquals(1, User::count());
 
         $this->delete('/backend/user/1')
             ->assertRedirect('/backend/user');
 
-
-        $this->assertDatabaseMissing('users', [
-            'name' => 'JohnDoe',
-        ]);
-
+        $this->assertEquals(0, User::count());
         Event::assertDispatched(UserWasDeleted::class);
     }
 

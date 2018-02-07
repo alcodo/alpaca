@@ -3,7 +3,7 @@
 @section('content')
 
     {{--create--}}
-    @can('user.create_user')
+    @can('user.create')
         <a href="#" class="btn btn-info float-right" v-b-modal.modalcreateuser>
             {{ trans('alpaca::user.add_user') }}
         </a>

@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Approached\LaravelDateInternational\ServiceProvider as LaravelDateInternationalServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
@@ -17,6 +18,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         SlugifyServiceProvider::class,
         HoneypotServiceProvider::class,
         PermissionServiceProvider::class,
+        LaravelDateInternationalServiceProvider::class,
     ];
 
     protected $aliases = [
