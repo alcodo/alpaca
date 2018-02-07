@@ -3,7 +3,6 @@
 namespace Alpaca\Events\Image;
 
 use Alpaca\Models\Image;
-use Alpaca\User\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -11,6 +10,7 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Support\Facades\Auth;
 
 class ImageWasUpdated
 {
@@ -29,11 +29,10 @@ class ImageWasUpdated
      * Create a new event instance.
      *
      * @param Image $image
-     * @param User|null $user
      */
-    public function __construct(Image $image, User $user = null)
+    public function __construct(Image $image)
     {
+        $this->user = Auth::user();
         $this->image = $image;
-        $this->user = $user;
     }
 }

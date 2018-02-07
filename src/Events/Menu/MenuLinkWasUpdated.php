@@ -4,7 +4,6 @@ namespace Alpaca\Events\Menu;
 
 use Alpaca\Models\Menu;
 use Alpaca\Models\MenuLink;
-use Alpaca\User\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -12,6 +11,7 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Support\Facades\Auth;
 
 class MenuLinkWasUpdated
 {
@@ -35,12 +35,11 @@ class MenuLinkWasUpdated
      *
      * @param Menu $menu
      * @param MenuLink $link
-     * @param User|null $user
      */
-    public function __construct(Menu $menu, MenuLink $link, User $user = null)
+    public function __construct(Menu $menu, MenuLink $link)
     {
+        $this->user = Auth::user();
         $this->menu = $menu;
         $this->link = $link;
-        $this->user = $user;
     }
 }

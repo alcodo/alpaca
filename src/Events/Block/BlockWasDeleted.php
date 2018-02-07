@@ -3,7 +3,6 @@
 namespace Alpaca\Events\Block;
 
 use Alpaca\Models\Block;
-use Alpaca\User\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -29,11 +28,10 @@ class BlockWasDeleted
      * Create a new event instance.
      *
      * @param Block $block
-     * @param User|null $user
      */
-    public function __construct(Block $block, User $user = null)
+    public function __construct(Block $block)
     {
-        $this->user = $user;
+        $this->user = Auth::user();
         $this->block = $block;
     }
 }

@@ -3,7 +3,6 @@
 namespace Alpaca\Events\Page;
 
 use Alpaca\Models\Page;
-use Alpaca\User\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -11,6 +10,7 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Support\Facades\Auth;
 
 class PageWasUpdated
 {
@@ -31,9 +31,9 @@ class PageWasUpdated
      * @param Page $page
      * @param User|null $user
      */
-    public function __construct(Page $page, User $user = null)
+    public function __construct(Page $page)
     {
+        $this->user = Auth::user();
         $this->page = $page;
-        $this->user = $user;
     }
 }

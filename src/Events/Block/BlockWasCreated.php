@@ -3,7 +3,6 @@
 namespace Alpaca\Events\Block;
 
 use Alpaca\Models\Block;
-use Alpaca\User\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -11,6 +10,7 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Support\Facades\Auth;
 
 class BlockWasCreated
 {
@@ -29,11 +29,10 @@ class BlockWasCreated
      * Create a new event instance.
      *
      * @param Block $block
-     * @param User|null $user
      */
-    public function __construct(Block $block, User $user = null)
+    public function __construct(Block $block)
     {
-        $this->user = $user;
+        $this->user = Auth::user();
         $this->block = $block;
     }
 
