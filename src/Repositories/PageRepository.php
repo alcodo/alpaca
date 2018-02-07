@@ -26,7 +26,7 @@ class PageRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string|unique:al_pages,path',
+            'path' => 'nullable|string|unique:pages,path',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',
@@ -59,7 +59,7 @@ class PageRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string|unique:al_pages,path,' . $page->id . ',id',
+            'path' => 'nullable|string|unique:pages,path,' . $page->id . ',id',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',

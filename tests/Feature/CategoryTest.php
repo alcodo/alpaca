@@ -26,6 +26,7 @@ class CategoryTest extends IntegrationTest
 
     public function test_index_category()
     {
+        $this->withoutExceptionHandling();
         $this->get('/backend/category')
             ->assertSuccessful()
             ->assertSee('Create category');
@@ -33,6 +34,7 @@ class CategoryTest extends IntegrationTest
 
     public function test_create_category()
     {
+        $this->withoutExceptionHandling();
         $this->get('/backend/category/create')
             ->assertSuccessful()
             ->assertSee('Save');

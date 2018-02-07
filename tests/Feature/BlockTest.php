@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Alpaca\Events\Block\BlockWasCreated;
 use Alpaca\Events\Block\BlockWasDeleted;
 use Alpaca\Events\Block\BlockWasUpdated;
+use Alpaca\Models\Block;
 use Alpaca\Repositories\BlockRepository;
 use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
@@ -74,18 +75,12 @@ class BlockTest extends IntegrationTest
         Event::fake();
 
         $this->withoutExceptionHandling();
-        $this->createBlock();
-
-        $this->assertDatabaseHas('blocks', [
-            'title' => 'Test',
-        ]);
+        $this->assertEquals(1, Block::count());
 
         $this->delete('/backend/block/1')
             ->assertRedirect('/backend/block');
 
-        $this->assertDatabaseMissing('blocks', [
-            'title' => 'Test',
-        ]);
+        $this->assertEquals(0, Block::count());
 
         Event::assertDispatched(BlockWasDeleted::class);
     }

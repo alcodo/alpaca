@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Alpaca\Events\Menu\MenuWasCreated;
 use Alpaca\Events\Menu\MenuWasDeleted;
 use Alpaca\Events\Menu\MenuWasUpdated;
+use Alpaca\Models\Menu;
 use Alpaca\Repositories\MenuRepository;
 use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
@@ -69,24 +70,13 @@ class MenuTest extends IntegrationTest
     public function test_destroy_menu()
     {
         Event::fake();
-
-        $repo = new MenuRepository();
-        $repo->create([
-            'title' => 'Demo Menu'
-        ]);
-
-        $this->assertDatabaseHas('menus', [
-            'title' => 'Demo Menu',
-        ]);
+        $this->assertEquals(1, Menu::count());
 
         $this->withoutExceptionHandling();
         $this->delete('/backend/menu/1')
             ->assertRedirect('/backend/menu');
 
-        $this->assertDatabaseMissing('menus', [
-            'title' => 'Demo Menu',
-        ]);
-
+        $this->assertEquals(0, Menu::count());
         Event::assertDispatched(MenuWasDeleted::class);
     }
 

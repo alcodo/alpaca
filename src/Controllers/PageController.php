@@ -122,12 +122,12 @@ class PageController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Alpaca\Models\Page $page
+     * @param PageRepository $repo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Page $page, PageRepository $repo)
     {
         $page = $repo->update($page, $request->all());
-
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 

@@ -27,6 +27,7 @@ class PageTest extends IntegrationTest
 
     public function test_index_page()
     {
+        $this->withoutExceptionHandling();
         $this->get('/backend/page')
             ->assertSuccessful()
             ->assertSee('Create page');
