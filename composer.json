@@ -19,9 +19,7 @@
   ],
   "require": {
     "illuminate/support": "~5.2",
-    "alcodo/powerimage": "dev-master",
     "artesaos/seotools": "^0.9",
-    "approached/laravel-date-international": "^1.1",
     "laracasts/flash": "^3.0",
     "msurguy/honeypot": "^1.0",
     "spatie/laravel-permission": "^2.7.0",
