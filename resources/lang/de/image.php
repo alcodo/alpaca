@@ -1,9 +1,9 @@
 <?php
 
 return [
-
-    'add_image' => 'Add image',
-    'gallery' => 'Gallerie',
+    'images' => 'Bilder',
+    'add_image' => 'Bild hinzufügen',
+    'gallery' => 'Gallery',
     'bind' => 'Einbinden',
     'close' => 'Schließen',
     'html' => 'Html',
@@ -15,5 +15,4 @@ return [
     'copyright_license_url' => 'Creative Commons Lizens URL',
     'copyright_license_tag' => 'Creative Commons Tag',
     'copyright_modification' => 'Durchgeführte Änderungen',
-
 ];

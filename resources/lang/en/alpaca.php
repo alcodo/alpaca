@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'active' => 'Active',
     'link' => 'Link',
     'title' => 'Title',
@@ -25,10 +24,4 @@ return [
     'file' => 'File',
     'alt' => 'Alt',
     'name' => 'Name',
-//    'actions' => 'Actions',
-//    'unauthorized_access' => 'Unauthorized access',
-//    'class' => 'Class',
-//    'filename' => 'Filename',
-
-
 ];

@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'create_page' => 'Create page',
     'edit_page' => 'Edit page',
     'page' => 'Page',
@@ -13,4 +14,5 @@ return [
     'name' => 'Name',
     'also_interest' => 'That could also interest you',
     'page_index' => 'Page index',
+
 ];

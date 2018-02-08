@@ -1,14 +1,17 @@
 <?php
 
 return [
-
-    'permission'  => 'Berichtigung',
-    'permissions' => 'Berichtigungen',
+    'confirm'  => 'Bestätigen',
+    'add_permission'  => 'Berechtigung hinzufügen',
+    'add_role'  => 'Rolle hinzufügen',
+    'add_user'  => 'Benutzer hinzufügen',
+    'permission'  => 'Berechtigung',
+    'permissions' => 'Berechtigungen',
     'role'         => 'Rolle',
     'roles'        => 'Rollen',
     'name'         => 'Name',
     'description'  => 'Beschreibung',
-    'display-name' => 'Angezeigter Name',
+    'display-name' => 'Display name',
     'user'                        => 'Benutzer',
     'users'                       => 'Benutzer',
     'username'                    => 'Username',
@@ -32,5 +35,4 @@ return [
     'verification_info_last_step' => 'Du hast dich bei :type registriert. Damit dein Account aktiviert wird, musst du es nur noch bestätigen im letzten Schritt.',
     'verify_now' => 'Konto Verifizieren',
     'verification_link_advantages' => 'Sobald du deine E-Mail-Adresse bestätigt hast, kannst du alle Funktionen von :type nutzen. Fülle zum Beispiel dein Profil aus, um dich mit anderen Community-Mitgliedern auszutauschen.',
-
 ];

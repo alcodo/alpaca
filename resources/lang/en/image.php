@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'images' => 'Images',
     'add_image' => 'Add image',
     'gallery' => 'Gallery',
@@ -16,5 +15,4 @@ return [
     'copyright_license_url' => 'Creative Commons Lizens URL',
     'copyright_license_tag' => 'Creative Commons Tag',
     'copyright_modification' => 'Modification',
-
 ];

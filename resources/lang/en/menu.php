@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'create_menu' => 'Create menu',
     'create_link' => 'Create link',
     'menu_index' => 'Menu index',
@@ -18,5 +17,4 @@ return [
     'target' => 'Target',
     'position' => 'Position',
     'no_links_exists' => 'No links exists',
-
 ];
