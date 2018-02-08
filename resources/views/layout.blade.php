@@ -17,11 +17,9 @@
 
     @include('alpaca::navbar.navbar')
 
-    <div class="container">
-
+    <main class="container py-4">
         @include('alpaca::blockWrapper')
-
-    </div>
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -32,7 +30,7 @@
 </div>
 
 @if(!App::environment('testing'))
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
 @endif
 @include('alpaca::cookieconsent')
 @yield('scripts')

@@ -1,6 +1,6 @@
 @if(!isset($_COOKIE['cookieconsent']) || $_COOKIE['cookieconsent'] !== 'yes')
 
-    <nav id="cookieconsent" v-if="showCookieConsent" class="navbar fixed-bottom navbar-light bg-light">
+    <nav id="cookieconsent" v-if="showCookieConsent" class="navbar fixed-bottom navbar-light navbar-laravel">
         <div class="container">
             <div class="col-sm-11 col-xs-10">
                 {{ trans('alpaca::cookieconsent.description') }}

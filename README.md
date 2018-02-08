@@ -25,14 +25,35 @@ Install [laravel](https://laravel.com/docs/5.5/installation#installing-laravel)
  laravel new blog
 ```
 
-Install *alpaca*
+Install *alpaca* and dependecies
 ```bash
  composer require alcodo/alpaca
+ yarn
 ```
 
 Start create tables
 ```bash
  php artisan migrate
+```
+
+Remove welcome route from
+ ```
+ routes/web.php
+ 
+ Route::get('/', function () {
+     return view('welcome');
+ });
+ ```
+
+Create laravel basic login and registration auth
+```bash
+ php artisan make:auth
+```
+
+Try to login with
+```
+email: admin@alpaca.com
+password: alpaca
 ```
 
 *TODO*
