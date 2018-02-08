@@ -22,32 +22,37 @@ https://trends.google.de/trends/explore?q=Wordpress,Drupal,typo3,joomla,octoberc
 
 Install [laravel](https://laravel.com/docs/5.5/installation#installing-laravel)
 ```bash
- laravel new blog
+laravel new blog
 ```
 
 Install *alpaca* and dependecies
 ```bash
- composer require alcodo/alpaca
- yarn
+composer require alcodo/alpaca
+yarn
 ```
 
 Start create tables
 ```bash
- php artisan migrate
+php artisan migrate
 ```
 
 Remove welcome route from
  ```
- routes/web.php
+routes/web.php
  
- Route::get('/', function () {
-     return view('welcome');
- });
+Route::get('/', function () {
+    return view('welcome');
+});
  ```
 
 Create laravel basic login and registration auth
 ```bash
- php artisan make:auth
+php artisan make:auth
+```
+
+Export the template
+```bash
+php artisan vendor:publish --provider Alpaca\AlpacaServiceProvider
 ```
 
 Try to login with

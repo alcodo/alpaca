@@ -93,14 +93,26 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->registerMiddleware($router);
         $this->registerEvents();
 
+        // config
         $this->publishes([__DIR__ . '/../config/alpaca.php' => config_path('alpaca.php'),]);
+
+        // view
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/alpaca'),
+        ]);
+
+        // lang
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
+
+        // migratiom
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        // routes
         $this->loadRoutesFrom(__DIR__ . '/routes_backend.php');
         $this->loadRoutesFrom(__DIR__ . '/routes_fronted.php');
 
-
+        // facade
         $this->app->instance('block', new BlockBuilder());
     }
 
