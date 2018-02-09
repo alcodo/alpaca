@@ -6,27 +6,44 @@
  * @param string $output
  * @return string
  */
-//function isActiveRoute($route, $output = 'active')
+function isActiveRoute($route, $output = 'active')
+{
+    if (Route::currentRouteName() == $route) {
+        return $output;
+    }
+}
+
+function isActiveUrlExact($exactPath, $output = 'active')
+{
+    if (\Illuminate\Support\Facades\Request::getPathInfo() == $exactPath) {
+        return $output;
+    }
+}
+
+function isActiveUrl($similarPath, $output = 'active')
+{
+    $actualPath = \Illuminate\Support\Facades\Request::getPathInfo();
+
+    if (strpos($actualPath, $similarPath) !== false) {
+        return $output;
+    }
+}
+
+//function removeFirstSlash($path)
 //{
-//    if (Route::currentRouteName() == $route) {
-//        return $output;
+//    // frontpage except rule
+//    if ($path == '/') {
+//        return $path;
 //    }
+//
+//    // remove first slash
+//    if ($path[0] == '/') {
+//        return trim($path, '/');;
+//    }
+//
+//    return $path;
 //}
-//
-//function isActiveUrl($path, $output = 'active')
-//{
-//    if ($path !== '/') {
-//        // not a frontpage
-//        $path = trim($path, '/');
-//    }
-//
-//    $actualPath = \Illuminate\Support\Facades\Request::path();
-//
-//    if (strpos($actualPath, $path) !== false) {
-//        return $output;
-//    }
-//}
-//
+
 //if (! function_exists('alpacaFactory')) {
 //    /**
 //     * Create a model factory builder for a given class, name, and amount.

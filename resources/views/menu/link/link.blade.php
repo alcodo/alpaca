@@ -5,6 +5,6 @@
    @if(!empty($link->target))
    target="{{ $link->target }}"
    @endif
-   class="{{ $class or '' }}">
+   class="list-group-item list-group-item-action {{ $class or '' }} {{ isActiveUrlExact($link->href) }}">
     {{ $link->text }}
 </a>

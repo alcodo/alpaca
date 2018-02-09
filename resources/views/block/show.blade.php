@@ -10,9 +10,7 @@
         <ul class="list-group list-group-flush">
             @foreach($block->menu->links as $link)
 
-                <div class="list-group-item">
-                    @include('alpaca::menu.link.link', ['link' => $link, 'class' => ''])
-                </div>
+                @include('alpaca::menu.link.link', ['link' => $link, 'class' => ''])
 
             @endforeach
         </ul>
