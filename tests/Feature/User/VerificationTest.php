@@ -3,8 +3,9 @@
 use Alpaca\User\Models\User;
 use MailThief\Facades\MailThief;
 use Illuminate\Support\Facades\Auth;
+use Tests\IntegrationTest;
 
-class VerificationTest extends TestCase
+class VerificationTest extends IntegrationTest
 {
     /**
      * @test

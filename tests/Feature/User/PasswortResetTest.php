@@ -3,8 +3,9 @@
 use Alpaca\User\Models\User;
 use MailThief\Facades\MailThief;
 use Illuminate\Support\Facades\Auth;
+use Tests\IntegrationTest;
 
-class PasswortResetTest extends TestCase
+class PasswortResetTest extends IntegrationTest
 {
     /**
      * @test

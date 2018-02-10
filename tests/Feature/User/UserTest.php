@@ -2,8 +2,9 @@
 
 use Alpaca\User\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Tests\IntegrationTest;
 
-class UserTest extends TestCase
+class UserTest extends IntegrationTest
 {
     /**
      * @test
