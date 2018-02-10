@@ -1,5 +1,6 @@
 <?php
 
+use Alpaca\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 
 class InstallAlpacaUser extends Migration
@@ -18,7 +19,8 @@ class InstallAlpacaUser extends Migration
             'password' => 'alpaca',
             'password_confirmation' => 'alpaca',
         ]);
-//        $user->assignRole('Administrator');
+        $adminRole = Role::whereSlug('administrator')->first();
+        $adminRole->users()->sync($user);
     }
 
     /**

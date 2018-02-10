@@ -12,7 +12,7 @@ class PermissionModuleSetAndTearUp extends IntegrationTest
         \Orchestra\Testbench\TestCase::setUp();
         $this->publishPermissionMigration();
         $this->loadLaravelMigrations(['--database' => 'testbench']);
-        $this->showAllTables();
+//        $this->showAllTables();
         $this->artisan('migrate');
     }
 

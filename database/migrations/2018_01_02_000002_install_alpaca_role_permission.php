@@ -23,7 +23,8 @@ class InstallAlpacaRolePermission extends Migration
         $allPermissions = $check->handle($permissions);
 
         // attach all permissions the admin role
-//        $adminRole->syncPermissions($allPermissions);
+        $ids = collect($allPermissions)->pluck('id')->all();
+        $adminRole->permissions()->sync($ids);
     }
 
     /**

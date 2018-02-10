@@ -9,6 +9,8 @@ class PermissionMiddleware
 {
     public function handle($request, Closure $next, $permission)
     {
+        // TODO check permission
+
         return $next($request);
 
 //        if (app('auth')->guest()) {

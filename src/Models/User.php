@@ -73,4 +73,9 @@ class User extends \Illuminate\Foundation\Auth\User
 
         return '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }
