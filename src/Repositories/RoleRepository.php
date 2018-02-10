@@ -2,8 +2,9 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Role;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Role;
 
 class RoleRepository
 {
@@ -13,6 +14,8 @@ class RoleRepository
         Validator::make($data, [
             'name' => 'required|string|max:255',
         ])->validate();
+
+        $data['slug'] = SlugifyFacade::slugify($data['name']);
 
         $role = Role::create($data);
 
@@ -24,6 +27,8 @@ class RoleRepository
         Validator::make($data, [
             'name' => 'nullable|string|max:255',
         ])->validate();
+
+        $data['slug'] = SlugifyFacade::slugify($data['name']);
 
         $role->update($data);
 

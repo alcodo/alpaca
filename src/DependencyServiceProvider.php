@@ -4,7 +4,6 @@ namespace Alpaca;
 
 use Approached\LaravelDateInternational\ServiceProvider as LaravelDateInternationalServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
-use Spatie\Permission\PermissionServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
@@ -17,7 +16,6 @@ class DependencyServiceProvider extends AggregateServiceProvider
         SEOToolsServiceProvider::class,
         SlugifyServiceProvider::class,
         HoneypotServiceProvider::class,
-        PermissionServiceProvider::class,
         LaravelDateInternationalServiceProvider::class,
     ];
 

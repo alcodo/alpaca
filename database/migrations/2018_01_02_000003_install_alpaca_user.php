@@ -18,7 +18,7 @@ class InstallAlpacaUser extends Migration
             'password' => 'alpaca',
             'password_confirmation' => 'alpaca',
         ]);
-        $user->assignRole('Administrator');
+//        $user->assignRole('Administrator');
     }
 
     /**

@@ -70,8 +70,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $middlewares = [
-        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Alpaca\Middlewares\PermissionMiddleware::class,
     ];
 
     /**

@@ -2,8 +2,9 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Permission;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Permission;
 
 class PermissionRepository
 {
@@ -13,7 +14,11 @@ class PermissionRepository
             'name' => 'required|string|max:255',
         ])->validate();
 
-        return Permission::findOrCreate($data['name']);
+        $data['slug'] = SlugifyFacade::slugify($data['name']);
+
+
+//        return Permission::find($data['name']);
+        return Permission::firstOrCreate($data);
         $permission = Permission::findOrCreate($data['name']);
 
         if (!is_null($permission)) {
@@ -29,6 +34,8 @@ class PermissionRepository
             'name' => 'required|string|max:255',
         ])->validate();
 
+        $data['slug'] = SlugifyFacade::slugify($data['name']);
+
         $permission = Permission::create($data);
 
         return $permission;
@@ -39,6 +46,8 @@ class PermissionRepository
         Validator::make($data, [
             'name' => 'nullable|string|max:255',
         ])->validate();
+
+        $data['slug'] = SlugifyFacade::slugify($data['name']);
 
         $permission->update($data);
 

@@ -2,7 +2,13 @@
 
 namespace Alpaca\Models;
 
-class Role extends \Spatie\Permission\Models\Role
+use Illuminate\Database\Eloquent\Model;
+
+class Role extends Model
 {
-    protected $fillable = ['name', 'display_name', 'description'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+    ];
 }

@@ -2,11 +2,11 @@
 
 namespace Alpaca\Controllers;
 
+use Alpaca\Models\Role;
 use Alpaca\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
-use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {

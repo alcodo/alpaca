@@ -4,11 +4,10 @@ namespace Alpaca\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Alpaca\Notifications\ResetPassword;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
-    use Notifiable, HasRoles;
+    use Notifiable;
 
     protected $guard_name = 'web';
 
@@ -73,33 +72,5 @@ class User extends \Illuminate\Foundation\Auth\User
         }
 
         return '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
-    }
-
-
-    /**
-     * Assign the given role to the model.
-     *
-     * @param array|string|\Spatie\Permission\Contracts\Role ...$roles
-     *
-     * @return $this
-     */
-    public function assignRole(...$roles)
-    {
-        $roles = collect($roles)
-            ->flatten()
-            ->map(function ($role) {
-                return $this->getStoredRole($role);
-            })
-            ->each(function ($role) {
-//                dd($role);
-                $this->ensureModelSharesGuard($role);
-            })
-            ->all();
-
-        $this->roles()->saveMany($roles);
-
-        $this->forgetCachedPermissions();
-
-        return $this;
     }
 }
