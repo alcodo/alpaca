@@ -36,6 +36,6 @@ class InstallAlpacaRolePermission extends Migration
     {
         DB::table('roles')->truncate();
         DB::table('permissions')->truncate();
-        DB::table('role_has_permissions')->truncate();
+        DB::table('permission_role')->truncate();
     }
 }

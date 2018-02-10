@@ -1,1 +1,0 @@
-$(".navbar-fixed-top").autoHidingNavbar();

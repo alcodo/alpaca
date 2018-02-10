@@ -31,5 +31,6 @@ class InstallAlpacaUser extends Migration
     public function down()
     {
         DB::table('users')->truncate();
+        DB::table('role_user')->truncate();
     }
 }
