@@ -2,10 +2,11 @@
 
 namespace Tests\Feature\User;
 
-use Spatie\Permission\Models\Role;
-use Tests\Feature\User\Helper\PermissionModuleSetAndTearUp;
+use Alpaca\Models\Role;
+use Alpaca\Repositories\RoleRepository;
+use Tests\IntegrationTest;
 
-class RoleBackendTest extends PermissionModuleSetAndTearUp
+class RoleBackendTest extends IntegrationTest
 {
     public function setUp()
     {
@@ -56,24 +57,19 @@ class RoleBackendTest extends PermissionModuleSetAndTearUp
     public function test_destroy_block()
     {
         $this->withoutExceptionHandling();
-
         $this->createRole();
-        $this->assertDatabaseHas('roles', [
-            'name' => 'Beta tester',
-        ]);
+        $this->assertEquals(4, Role::count());
 
         $this->delete('/backend/role/1')
             ->assertRedirect('/backend/role');
 
-
-        $this->assertDatabaseMissing('roles', [
-            'name' => 'Beta tester',
-        ]);
+        $this->assertEquals(3, Role::count());
     }
 
     protected function createRole()
     {
-        return Role::create(['name' => 'Beta tester']);
+        $repo = new RoleRepository();
+        return $repo->create(['name' => 'Beta tester']);
     }
 
 }

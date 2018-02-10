@@ -12,7 +12,14 @@ class UnauthorizedException extends HttpException
 
     public static function forRoles(array $roles): self
     {
-        $exception = new static(403, 'User does not have the right roles.', null, []);
+        $message = 'User does not have the right roles.';
+
+        if (self::isExtendedException()) {
+            $permStr = implode(', ', $roles);
+            $message = 'User does not have the right roles. Necessary roles are ' . $permStr;
+        }
+
+        $exception = new static(403, $message, null, []);
         $exception->requiredRoles = $roles;
 
         return $exception;
@@ -20,7 +27,14 @@ class UnauthorizedException extends HttpException
 
     public static function forPermissions(array $permissions): self
     {
-        $exception = new static(403, 'User does not have the right permissions.', null, []);
+        $message = 'User does not have the right permissions.';
+
+        if (self::isExtendedException()) {
+            $permStr = implode(', ', $permissions);
+            $message = 'User does not have the right permissions. Necessary permissions are ' . $permStr;
+        }
+
+        $exception = new static(403, $message, null, []);
         $exception->requiredPermissions = $permissions;
 
         return $exception;
@@ -39,5 +53,10 @@ class UnauthorizedException extends HttpException
     public function getRequiredPermissions(): array
     {
         return $this->requiredPermissions;
+    }
+
+    protected static function isExtendedException()
+    {
+        return \App::environment() !== 'production';
     }
 }

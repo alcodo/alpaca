@@ -25,9 +25,10 @@ class CheckAllPermissionsExists
 
             foreach ($permissionModule->permissions as $permission) {
 
-                $permissionKey = $permissionModule->slug . '.' . $permission->slug;
-
-                $this->allPermissions[] = $this->repo->findOrCreate(['name' => $permissionKey]);
+                $this->allPermissions[] = $this->repo->findOrCreate([
+                    'name' => $permission->name,
+                    'slug' => $permissionModule->slug . '.' . $permission->slug,
+                ]);
 
             }
 

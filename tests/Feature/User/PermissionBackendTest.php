@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\User;
 
-use Spatie\Permission\Models\Permission;
-use Tests\Feature\User\Helper\PermissionModuleSetAndTearUp;
+use Alpaca\Repositories\PermissionRepository;
+use Tests\IntegrationTest;
 
-class PermissionBackendTest extends PermissionModuleSetAndTearUp
+class PermissionBackendTest extends IntegrationTest
 {
     public function setUp()
     {
@@ -73,7 +73,8 @@ class PermissionBackendTest extends PermissionModuleSetAndTearUp
 
     protected function createPermission()
     {
-        return Permission::create(['name' => 'Edit article']);
+        $repo = new PermissionRepository();
+        return $repo->create(['name' => 'Edit article']);
     }
 
 }

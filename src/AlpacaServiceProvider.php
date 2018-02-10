@@ -30,6 +30,7 @@ use Alpaca\Email\EmailServiceProvider;
 use Alpaca\Contact\ContactServiceProvider;
 use Alpaca\Gallery\GalleryServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
+use Alpaca\Support\Guard;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\AggregateServiceProvider;
 use Alpaca\CookieConsent\CookieConsentServiceProvider;
@@ -86,7 +87,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $loader->alias('Block', BlockFacade::class);
     }
 
-    public function boot(\Illuminate\Routing\Router $router)
+    public function boot(\Illuminate\Routing\Router $router, Guard $guard)
     {
         $this->app->register(DependencyServiceProvider::class);
         $this->registerMiddleware($router);
@@ -113,6 +114,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 
         // facade
         $this->app->instance('block', new BlockBuilder());
+
+        // gate
+        $guard->registerPermissions();
     }
 
     /**

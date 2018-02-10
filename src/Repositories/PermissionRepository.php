@@ -12,29 +12,26 @@ class PermissionRepository
     {
         Validator::make($data, [
             'name' => 'required|string|max:255',
+            'slug' => 'string|max:255',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['name']);
-
-
-//        return Permission::find($data['name']);
-        return Permission::firstOrCreate($data);
-        $permission = Permission::findOrCreate($data['name']);
-
-        if (!is_null($permission)) {
-            return $permission;
+        if(empty($data['slug'])){
+            $data['slug'] = SlugifyFacade::slugify($data['name']);
         }
 
-        return $this->create($data);
+        return Permission::firstOrCreate($data);
     }
 
     public function create(array $data): Permission
     {
         Validator::make($data, [
             'name' => 'required|string|max:255',
+            'slug' => 'string|max:255',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['name']);
+        if(empty($data['slug'])){
+            $data['slug'] = SlugifyFacade::slugify($data['name']);
+        }
 
         $permission = Permission::create($data);
 
@@ -45,9 +42,12 @@ class PermissionRepository
     {
         Validator::make($data, [
             'name' => 'nullable|string|max:255',
+            'slug' => 'string|max:255',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['name']);
+        if(empty($data['slug'])){
+            $data['slug'] = SlugifyFacade::slugify($data['name']);
+        }
 
         $permission->update($data);
 
