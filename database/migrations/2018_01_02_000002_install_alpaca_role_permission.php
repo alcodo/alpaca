@@ -14,7 +14,7 @@ class InstallAlpacaRolePermission extends Migration
     {
         $repo = new \Alpaca\Repositories\RoleRepository();
         $repo->create(['name' => 'Guest']);
-        $repo->create(['name' => 'Registered user']);
+        $repo->create(['name' => 'Registered user', 'slug' => 'registered']);
         $adminRole = $repo->create(['name' => 'Administrator']);
 
         // create all possible permissions

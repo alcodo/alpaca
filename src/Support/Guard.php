@@ -28,6 +28,11 @@ class Guard
     {
         $this->gate->before(function (Authenticatable $user, string $permissionSlug) {
 
+            // user has registered role
+            if (is_null($user->roles)) {
+                return $this->hasPermission('registered' . '.' . $permissionSlug);
+            }
+
             foreach ($user->roles->pluck('slug') as $roleSlug) {
 
                 $ability = $roleSlug . '.' . $permissionSlug;

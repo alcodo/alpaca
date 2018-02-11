@@ -16,9 +16,12 @@ class RoleRepository
     {
         Validator::make($data, [
             'name' => 'required|string|max:255',
+            'slug' => 'string|max:255',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['name']);
+        if (empty($data['slug'])) {
+            $data['slug'] = SlugifyFacade::slugify($data['name']);
+        }
 
         $role = Role::create($data);
         event(new RoleWasCreated($role));
@@ -30,9 +33,12 @@ class RoleRepository
     {
         Validator::make($data, [
             'name' => 'nullable|string|max:255',
+            'slug' => 'string|max:255',
         ])->validate();
 
-        $data['slug'] = SlugifyFacade::slugify($data['name']);
+        if (empty($data['slug'])) {
+            $data['slug'] = SlugifyFacade::slugify($data['name']);
+        }
 
         $role->update($data);
         event(new RoleWasUpdated($role));

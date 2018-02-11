@@ -55,6 +55,18 @@ Export the template
 php artisan vendor:publish --provider Alpaca\AlpacaServiceProvider
 ```
 
+Add to your User model the permission trait:
+```php
+use Alpaca\Traits\Permission;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable, Permission;
+    ...
+```
+
 Try to login with
 ```
 email: admin@alpaca.com
