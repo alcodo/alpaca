@@ -105,7 +105,7 @@ class AlpacaBlockListener
             );
         }
 
-        if ($user->can('emailtemplates.administer')) {
+        if ($user->can('emailtemplate.show_template')) {
             $block->menu->links->push(
                 new MenuLink(['text' => 'E-Mail Templates', 'title' => 'E-Mail Templates', 'href' => '/backend/email-template',])
             );
