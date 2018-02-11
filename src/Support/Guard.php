@@ -3,12 +3,9 @@
 namespace Alpaca\Support;
 
 use Alpaca\Models\Role;
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Contracts\Cache\Repository;
-use Spatie\Permission\Contracts\Permission;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 
 class Guard
 {
@@ -50,8 +47,12 @@ class Guard
 
     public function refreshCache()
     {
-        $this->cache->forget($this->cacheKey);
-        $this->getPermissionFromCache();
+        if ($this->cache->has($this->cacheKey)) {
+
+            $this->cache->forget($this->cacheKey);
+            $this->getPermissionFromCache();
+
+        }
     }
 
     public function getPermissionFromCache(): array
@@ -65,18 +66,20 @@ class Guard
     {
         $roles = Role::with('permissions')->get();
 
-        return $roles->map(function ($rol) {
+        $allPermissions = $roles->map(function ($role) {
 
             // get all permissions
-            return $rol->permissions
-                ->map(function ($perm) use ($rol) {
-                    return $rol->slug . '.' . $perm->slug;
+            return $role->permissions
+                ->map(function ($perm) use ($role) {
+                    return $role->slug . '.' . $perm->slug;
                 })
                 ->all();
 
         })
             ->collapse()
             ->all();
+
+        return $allPermissions;
     }
 
 

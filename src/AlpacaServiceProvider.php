@@ -6,6 +6,12 @@ use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Events\Permission\PermissionsIsRequested;
+use Alpaca\Events\Permission\PermissionWasCreated;
+use Alpaca\Events\Permission\PermissionWasDeleted;
+use Alpaca\Events\Permission\PermissionWasUpdated;
+use Alpaca\Events\Role\RoleWasCreated;
+use Alpaca\Events\Role\RoleWasDeleted;
+use Alpaca\Events\Role\RoleWasUpdated;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\Block\BlockPermissionListener;
@@ -18,6 +24,7 @@ use Alpaca\Listeners\Menu\MenuPermissionListener;
 use Alpaca\Listeners\Page\PagePermissionListener;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Listeners\Permission\PermissionPermissionListener;
+use Alpaca\Listeners\Permission\RefreshPermissionCacheListener;
 use Alpaca\Listeners\Role\RolePermissionListener;
 use Alpaca\Listeners\User\AccountVerification;
 use Alpaca\Listeners\User\UserPermissionListener;
@@ -64,6 +71,24 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         BlockIsRequested::class => [
             AlpacaBlockListener::class,
 //            UserBlockListener::class,
+        ],
+        RoleWasCreated::class => [
+            RefreshPermissionCacheListener::class,
+        ],
+        RoleWasUpdated::class => [
+            RefreshPermissionCacheListener::class,
+        ],
+        RoleWasDeleted::class => [
+            RefreshPermissionCacheListener::class,
+        ],
+        PermissionWasCreated::class => [
+            RefreshPermissionCacheListener::class,
+        ],
+        PermissionWasUpdated::class => [
+            RefreshPermissionCacheListener::class,
+        ],
+        PermissionWasDeleted::class => [
+            RefreshPermissionCacheListener::class,
         ],
     ];
 
