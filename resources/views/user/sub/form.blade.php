@@ -40,7 +40,7 @@
                        @if(in_array($id, old('roles')))
                        checked
                        @endif
-                       @elseif(isset($user) && $user->roles->whereName($roleName)->isNotEmpty())
+                       @elseif(isset($user) && $user->hasRole($roleName))
                        checked
                         @endif>
                 <label class="form-check-label" for="role{{ $id }}">{{ $roleName }}</label>

@@ -21,4 +21,10 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class);
     }
+
+    public function hasPermissionTo($permission): bool
+    {
+        $key = $this->slug . '.' . $permission;
+        return app('Alpaca\Support\Guard')->hasPermission($key);
+    }
 }

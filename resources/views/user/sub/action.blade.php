@@ -22,7 +22,7 @@
 
         <form method="POST" action="/backend/user/{{ $user->id }}" accept-charset="UTF-8">
             <input name="_method" type="hidden" value="PUT">
-            @include('alpaca::user.sub.form', ['isCreate' => false])
+            @include('alpaca::user.sub.form', ['user' => $user, 'isCreate' => false])
         </form>
 
     </b-modal>

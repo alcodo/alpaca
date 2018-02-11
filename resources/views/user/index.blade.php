@@ -41,6 +41,7 @@
                 </td>
                 <td>
 
+                    {{--todo--}}
                     {{--@if($page->active)--}}
                     {{--<i class="fa fa-check text-success" aria-hidden="true"></i>--}}
                     {{--@else--}}
@@ -51,7 +52,7 @@
                 <td>{{ dateintl_full('short', $user->created_at) }}</td>
                 <td>{{ dateintl_full('short', $user->updated_at) }}</td>
                 <td>
-                    @include('alpaca::user.sub.action', ['isIndex' => false, 'isShow' => true])
+                    @include('alpaca::user.sub.action', ['user' => $user, 'isIndex' => false, 'isShow' => true])
                 </td>
             </tr>
         @endforeach

@@ -2,12 +2,13 @@
 
 namespace Alpaca\Models;
 
+use Alpaca\Traits\Permission;
 use Illuminate\Notifications\Notifiable;
 use Alpaca\Notifications\ResetPassword;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
-    use Notifiable;
+    use Notifiable, Permission;
 
     protected $guard_name = 'web';
 
@@ -74,8 +75,4 @@ class User extends \Illuminate\Foundation\Auth\User
         return '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }

@@ -3,7 +3,7 @@
     @foreach($permissions as $module)
 
         <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card" style="border: 1px solid silver;">
+            <div class="card mb-3" style="border: 1px solid silver;">
                 <div class="card-header">
                     {{ $module->title }}
                 </div>
