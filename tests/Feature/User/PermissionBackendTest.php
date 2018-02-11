@@ -2,7 +2,11 @@
 
 namespace Tests\Feature\User;
 
+use Alpaca\Events\Permission\PermissionWasCreated;
+use Alpaca\Events\Permission\PermissionWasDeleted;
+use Alpaca\Events\Permission\PermissionWasUpdated;
 use Alpaca\Repositories\PermissionRepository;
+use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
 
 class PermissionBackendTest extends IntegrationTest
@@ -22,8 +26,10 @@ class PermissionBackendTest extends IntegrationTest
             ->assertSee('Add permission');
     }
 
-    public function test_store_user()
+    public function test_store_permission()
     {
+        Event::fake();
+
         $this->withoutExceptionHandling();
 
         $this->post('/backend/permission', [
@@ -34,10 +40,14 @@ class PermissionBackendTest extends IntegrationTest
         $this->assertDatabaseHas('permissions', [
             'name' => 'Hogwords',
         ]);
+
+        Event::assertDispatched(PermissionWasCreated::class);
     }
 
     public function test_update_permission()
     {
+        Event::fake();
+
         $this->withoutExceptionHandling();
 
         $this->createPermission();
@@ -51,10 +61,13 @@ class PermissionBackendTest extends IntegrationTest
         $this->assertDatabaseHas('permissions', [
             'name' => 'Delete article'
         ]);
+        Event::assertDispatched(PermissionWasUpdated::class);
     }
 
     public function test_destroy_block()
     {
+        Event::fake();
+
         $this->withoutExceptionHandling();
 
         $this->createPermission();
@@ -69,6 +82,7 @@ class PermissionBackendTest extends IntegrationTest
         $this->assertDatabaseMissing('permissions', [
             'name' => 'Edit article',
         ]);
+        Event::assertDispatched(PermissionWasDeleted::class);
     }
 
     protected function createPermission()

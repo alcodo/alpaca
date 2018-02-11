@@ -2,6 +2,9 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Events\Permission\PermissionWasCreated;
+use Alpaca\Events\Permission\PermissionWasDeleted;
+use Alpaca\Events\Permission\PermissionWasUpdated;
 use Alpaca\Models\Permission;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +18,7 @@ class PermissionRepository
             'slug' => 'string|max:255',
         ])->validate();
 
-        if(empty($data['slug'])){
+        if (empty($data['slug'])) {
             $data['slug'] = SlugifyFacade::slugify($data['name']);
         }
 
@@ -29,11 +32,12 @@ class PermissionRepository
             'slug' => 'string|max:255',
         ])->validate();
 
-        if(empty($data['slug'])){
+        if (empty($data['slug'])) {
             $data['slug'] = SlugifyFacade::slugify($data['name']);
         }
 
         $permission = Permission::create($data);
+        event(new PermissionWasCreated($permission));
 
         return $permission;
     }
@@ -45,11 +49,12 @@ class PermissionRepository
             'slug' => 'string|max:255',
         ])->validate();
 
-        if(empty($data['slug'])){
+        if (empty($data['slug'])) {
             $data['slug'] = SlugifyFacade::slugify($data['name']);
         }
 
         $permission->update($data);
+        event(new PermissionWasUpdated($permission));
 
         return $permission;
     }
@@ -57,6 +62,7 @@ class PermissionRepository
     public function delete(Permission $permission): bool
     {
         $permission->delete();
+        event(new PermissionWasDeleted($permission));
 
         return true;
     }
