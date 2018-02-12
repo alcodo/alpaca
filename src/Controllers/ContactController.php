@@ -55,6 +55,6 @@ class ContactController extends Controller
 
         Flash::success(trans('alpaca::contact.send_successfully'));
 
-        return redirect(route('contact.show'));
+        return redirect(config('alpaca.contact.path'));
     }
 }

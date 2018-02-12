@@ -12,7 +12,7 @@ class ContactTest extends IntegrationTest
 
     public function test_show_contact_page()
     {
-        $this->get('/contact')
+        $this->get(config('alpaca.contact.path'))
             ->assertSuccessful()
             ->assertSee('Contact');
     }
@@ -26,7 +26,7 @@ class ContactTest extends IntegrationTest
         $this->withoutExceptionHandling();
         Honeypot::disable();
 
-        $this->post('/contact', [
+        $this->post(config('alpaca.contact.path'), [
             'name' => 'John Doe',
             'subject' => 'Welcome',
             'text' => 'Hi Alpaca User',

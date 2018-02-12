@@ -8,12 +8,16 @@ Route::group([
 ], function () {
 
     // Sitemap
-    Route::get('/sitemap', '\Alpaca\Controllers\SitemapController@html');
+    Route::get(config('alpaca.sitemap.path'), '\Alpaca\Controllers\SitemapController@html');
     Route::get('/sitemap.xml', '\Alpaca\Controllers\SitemapController@xml');
 
     // Contact
-    Route::get('/contact', ['as' => 'contact.show', 'uses' => '\Alpaca\Controllers\ContactController@show']);
-    Route::post('/contact', ['as' => 'contact.send', 'uses' => '\Alpaca\Controllers\ContactController@send']);
+    Route::get(config('alpaca.contact.path'), [
+        'as' => 'contact.show', 'uses' => '\Alpaca\Controllers\ContactController@show'
+    ]);
+    Route::post(config('alpaca.contact.path'), [
+        'as' => 'contact.send', 'uses' => '\Alpaca\Controllers\ContactController@send'
+    ]);
 
     // Authentication Routes...
     Route::get('login', '\Alpaca\Controllers\Auth\LoginController@showLoginForm')->name('login');

@@ -127,7 +127,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->registerEvents();
 
         // config
-        $this->publishes([__DIR__ . '/../config/alpaca.php' => config_path('alpaca.php'),]);
+        $this->mergeConfigFrom(__DIR__ . '/../config/alpaca.php', 'alpaca');
 
         // view
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
