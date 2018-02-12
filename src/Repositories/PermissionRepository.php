@@ -4,6 +4,7 @@ namespace Alpaca\Repositories;
 
 use Alpaca\Events\Permission\PermissionWasCreated;
 use Alpaca\Events\Permission\PermissionWasDeleted;
+use Alpaca\Events\Permission\PermissionWasSaved;
 use Alpaca\Events\Permission\PermissionWasUpdated;
 use Alpaca\Models\Permission;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
@@ -67,4 +68,13 @@ class PermissionRepository
         return true;
     }
 
+    public function attachPermissionsToRole($role, $syncPermissions)
+    {
+        $ids = collect($syncPermissions)->pluck('id')->all();
+
+        // sync with role
+        $role->permissions()->sync($ids);
+
+        event(new PermissionWasSaved());
+    }
 }

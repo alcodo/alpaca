@@ -5,16 +5,23 @@ namespace Tests\Feature\User;
 use Alpaca\Events\Permission\PermissionWasCreated;
 use Alpaca\Events\Permission\PermissionWasDeleted;
 use Alpaca\Events\Permission\PermissionWasUpdated;
+use Alpaca\Models\Permission;
 use Alpaca\Repositories\PermissionRepository;
 use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
 
 class PermissionBackendTest extends IntegrationTest
 {
+    /**
+     * @var PermissionRepository
+     */
+    protected $repo;
+
     public function setUp()
     {
         parent::setUp();
         $this->loginAsAdmin();
+        $this->repo = new PermissionRepository();
     }
 
     public function test_index_permission()
@@ -22,8 +29,7 @@ class PermissionBackendTest extends IntegrationTest
         $this->withoutExceptionHandling();
 
         $this->get('/backend/permission')
-            ->assertSuccessful()
-            ->assertSee('Add permission');
+            ->assertSuccessful();
     }
 
     public function test_store_permission()
@@ -32,10 +38,9 @@ class PermissionBackendTest extends IntegrationTest
 
         $this->withoutExceptionHandling();
 
-        $this->post('/backend/permission', [
+        $this->repo->create([
             'name' => 'Hogwords',
-        ])
-            ->assertRedirect('/backend/permission');
+        ]);
 
         $this->assertDatabaseHas('permissions', [
             'name' => 'Hogwords',
@@ -50,12 +55,11 @@ class PermissionBackendTest extends IntegrationTest
 
         $this->withoutExceptionHandling();
 
-        $this->createPermission();
+        $permission = $this->createPermission();
 
-        $this->put('/backend/permission/1', [
+        $this->repo->update($permission, [
             'name' => 'Delete article'
-        ])
-            ->assertRedirect('/backend/permission');
+        ]);
 
 
         $this->assertDatabaseHas('permissions', [
@@ -70,14 +74,9 @@ class PermissionBackendTest extends IntegrationTest
 
         $this->withoutExceptionHandling();
 
-        $this->createPermission();
-        $this->assertDatabaseHas('permissions', [
-            'name' => 'Edit article',
-        ]);
+        $permission = $this->createPermission();
 
-        $this->delete('/backend/permission/1')
-            ->assertRedirect('/backend/permission');
-
+        $this->repo->delete($permission);
 
         $this->assertDatabaseMissing('permissions', [
             'name' => 'Edit article',
@@ -87,8 +86,7 @@ class PermissionBackendTest extends IntegrationTest
 
     protected function createPermission()
     {
-        $repo = new PermissionRepository();
-        return $repo->create(['name' => 'Edit article']);
+        return $this->repo->create(['name' => 'Edit article']);
     }
 
 }

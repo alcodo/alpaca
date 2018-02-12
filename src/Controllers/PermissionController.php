@@ -45,17 +45,17 @@ class PermissionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param UserRepository $repo
+     * @param PermissionRepository $repo
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, PermissionRepository $repo)
     {
+        // prepare form
         $transform = new GetPermissionsFromForm();
         $syncPermissions = $transform->handle($request->all())->getActivePermissions();
 
-        // sync with role
         $role = Role::find($request->get('role_id'));
-        $role->syncPermissions($syncPermissions);
+        $repo->attachPermissionsToRole($role, $syncPermissions);
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 

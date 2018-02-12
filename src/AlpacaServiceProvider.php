@@ -9,6 +9,7 @@ use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Events\Permission\PermissionsIsRequested;
 use Alpaca\Events\Permission\PermissionWasCreated;
 use Alpaca\Events\Permission\PermissionWasDeleted;
+use Alpaca\Events\Permission\PermissionWasSaved;
 use Alpaca\Events\Permission\PermissionWasUpdated;
 use Alpaca\Events\Role\RoleWasCreated;
 use Alpaca\Events\Role\RoleWasDeleted;
@@ -89,6 +90,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             RefreshPermissionCacheListener::class,
         ],
         PermissionWasDeleted::class => [
+            RefreshPermissionCacheListener::class,
+        ],
+        PermissionWasSaved::class => [
             RefreshPermissionCacheListener::class,
         ],
     ];
