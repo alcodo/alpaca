@@ -18,7 +18,7 @@
         @foreach($menus as $menu)
 
             <div class="col-sm-6">
-                <div class="card" style="border: 1px solid silver">
+                <div class="card">
                     <div class="card-header">
                         {{ $menu->title }}
                         @include('alpaca::menu.sub.action')
@@ -34,14 +34,14 @@
                             @foreach($menu->links as $link)
 
                                 <div class="list-group-item">
-                                    @include('alpaca::menu.link.link', ['link' => $link, 'class' => ''])
+                                    @include('alpaca::menu.link.link', ['isBlockView' => false, 'link' => $link, 'class' => ''])
                                     @include('alpaca::menu.link.action')
                                 </div>
 
                             @endforeach
                         </ul>
                     @endif
-                    <div class="card-footer">
+                    <div class="card-footer border-light">
 
                         @can('menu.add_link')
                             <a href="#" class="btn btn-info btn-sm float-right"
