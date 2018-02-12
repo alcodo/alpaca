@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Commands\PublishTranslationCommand;
 use Alpaca\Core\CoreServiceProvider;
 use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Events\Block\BlockIsRequested;
@@ -110,6 +111,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 
         // facade
         $loader->alias('Block', BlockFacade::class);
+
+        // commands
+        $this->commands(PublishTranslationCommand::class);
     }
 
     public function boot(\Illuminate\Routing\Router $router, Guard $guard)

@@ -4,9 +4,10 @@ Package is under development!
 Simple CMS System based on Laravel Framework.
 
 Requirements:
-* Laravel Framework
-* Bootstrap 4
-* VueJs
+* [Laravel Framework](https://github.com/laravel/laravel) ([Doc](https://laravel.com/docs/5.6))
+* [Vue.js](https://github.com/vuejs/vue) ([Doc](https://vuejs.org/v2/guide/))
+* [Bootstrap 4](https://github.com/twbs/bootstrap) ([Doc](https://getbootstrap.com/docs/4.0/))
+* [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue) ([Doc](https://bootstrap-vue.js.org/docs))
 
 ## Why a new CMS system again?
 
@@ -74,6 +75,11 @@ class User extends Authenticatable
     ...
 ```
 
+Add translation files for your language:
+```bash
+art alpaca:publish_transaltion de
+```
+
 Try to login with
 ```
 email: admin@alpaca.com
@@ -81,3 +87,12 @@ password: alpaca
 ```
 
 *TODO*
+
+## Projects which alpaca uses
+
+* [artesaos/seotools](https://github.com/artesaos/seotools)
+* [laracasts/flash](https://github.com/laracasts/flash)
+* [msurguy/honeypot](https://github.com/msurguy/honeypot)
+* [cocur/slugify](https://github.com/cocur/slugify)
+* [caouecs/Laravel-lang](https://github.com/caouecs/Laravel-lang)
+* [orchestra/testbench](https://github.com/orchestra/testbench)
