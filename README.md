@@ -28,7 +28,8 @@ laravel new blog
 Install *alpaca* and dependecies
 ```bash
 composer require alcodo/alpaca
-yarn
+npm install file:./vendor/alcodo/alpaca/resources/js --save-dev
+yarn or with npm install
 ```
 
 Start create tables
