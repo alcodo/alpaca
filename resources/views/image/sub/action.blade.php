@@ -20,7 +20,7 @@
 </div>
 
 {{--html code--}}
-<b-modal id="modalcode{{ $image->id }}" title="{{ trans('alpaca::image.html') }}" hide-footer>
+<b-modal v-cloak id="modalcode{{ $image->id }}" title="{{ trans('alpaca::image.html') }}" hide-footer>
 
     <pre class="prettyprint lang-html">
 {{ \Alpaca\Support\Image\ImageAsHtmlCode::render($image) }}
@@ -30,7 +30,7 @@
 
 {{--Edit Component--}}
 @can('image.edit')
-    <b-modal id="modalimageedit{{ $image->id }}" title="{{ trans('alpaca::alpaca.edit') }}" hide-footer>
+    <b-modal v-cloak id="modalimageedit{{ $image->id }}" title="{{ trans('alpaca::alpaca.edit') }}" hide-footer>
 
         <form method="POST" action="/backend/image/{{ $image->id }}" accept-charset="UTF-8"
               enctype="multipart/form-data">
@@ -43,7 +43,7 @@
 
 {{--Delete Component--}}
 @can('image.delete')
-    <b-modal id="modalimagedelete{{ $image->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
+    <b-modal v-cloak id="modalimagedelete{{ $image->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
         <form method="POST" action="/backend/image/{{ $image->id }}" accept-charset="UTF-8" aria-label="Action">
             <input name="_method" type="hidden" value="DELETE">

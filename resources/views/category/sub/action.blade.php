@@ -29,7 +29,7 @@
 
 {{--Delete Component--}}
 @can('category.delete')
-    <b-modal id="modalcategory{{ $category->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
+    <b-modal v-cloak id="modalcategory{{ $category->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
         <form method="POST" action="/backend/category/{{ $category->id }}" accept-charset="UTF-8" aria-label="Action">
             <input name="_method" type="hidden" value="DELETE">

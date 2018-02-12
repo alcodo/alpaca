@@ -7,7 +7,7 @@
     </h1>
 
 
-    <b-tabs>
+    <b-tabs v-cloak>
 
         @foreach($roles as $role)
 

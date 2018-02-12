@@ -17,7 +17,7 @@
 
 {{--Edit Component--}}
 @can('menu.edit_link')
-    <b-modal id="modalmenulinkedit{{ $menu->id }}{{ $link->id }}" title="{{ trans('alpaca::alpaca.edit') }}"
+    <b-modal v-cloak id="modalmenulinkedit{{ $menu->id }}{{ $link->id }}" title="{{ trans('alpaca::alpaca.edit') }}"
              hide-footer>
 
         <form method="POST" action="/backend/menu/{{ $menu->id }}/link/{{ $link->id }}" accept-charset="UTF-8">
@@ -31,7 +31,7 @@
 
 {{--Delete Component--}}
 @can('menu.delete_link')
-    <b-modal id="modalmenulinkdelete{{ $menu->id }}{{ $link->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}"
+    <b-modal v-cloak id="modalmenulinkdelete{{ $menu->id }}{{ $link->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}"
              hide-footer>
 
         <form method="POST" action="/backend/menu/{{ $menu->id }}/link/{{ $link->id }}" accept-charset="UTF-8"

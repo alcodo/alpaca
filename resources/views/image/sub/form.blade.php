@@ -28,7 +28,7 @@
            value="{{ old('alt', isset($image) ? $image->alt : '') }}">
 </div>
 
-<b-tabs>
+<b-tabs v-cloak>
     <b-tab title="Copyright Simple" active>
 
         <div class="form-group">

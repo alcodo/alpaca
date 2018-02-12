@@ -29,7 +29,7 @@
 </div>
 
 {{--tab for body and seo--}}
-<b-tabs>
+<b-tabs v-cloak>
     <b-tab title="{{ trans('alpaca::alpaca.content') }}" active>
 
         <div class="form-group">

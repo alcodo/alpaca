@@ -25,7 +25,7 @@
            value="{{ old('position', isset($block) ? $block->position : '') }}" required>
 </div>
 
-<b-tabs>
+<b-tabs v-cloak>
     <b-tab title="Menu" active>
 
         <div class="form-group">

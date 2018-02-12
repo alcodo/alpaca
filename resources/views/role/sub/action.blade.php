@@ -17,7 +17,7 @@
 
 {{--Edit Component--}}
 @can('role.edit')
-    <b-modal id="modalroleedit{{ $role->id }}" title="{{ trans('alpaca::alpaca.edit') }}" hide-footer>
+    <b-modal v-cloak id="modalroleedit{{ $role->id }}" title="{{ trans('alpaca::alpaca.edit') }}" hide-footer>
 
         <form method="POST" action="/backend/role/{{ $role->id }}" accept-charset="UTF-8">
             <input name="_method" type="hidden" value="PUT">
@@ -29,7 +29,7 @@
 
 {{--Delete Component--}}
 @can('role.delete')
-    <b-modal id="modalroledelete{{ $role->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
+    <b-modal v-cloak id="modalroledelete{{ $role->id }}" title="{{ trans('alpaca::alpaca.sure_delete') }}" hide-footer>
 
         <form method="POST" action="/backend/role/{{ $role->id }}" accept-charset="UTF-8" aria-label="Action">
             <input name="_method" type="hidden" value="DELETE">
