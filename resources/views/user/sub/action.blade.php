@@ -3,7 +3,7 @@
     @can('user.edit')
         <a href="#" class="btn btn-info" title="{{ trans('alpaca::alpaca.edit') }}"
            v-b-modal.modaluseredit{{ $user->id }}>
-            <i class="fas fa-pencedito" aria-hidden="true"></i>
+            <i class="fas fa-edit" aria-hidden="true"></i>
         </a>
     @endcan
 

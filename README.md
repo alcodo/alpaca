@@ -54,6 +54,12 @@ php artisan make:auth
 Export the template
 ```bash
 php artisan vendor:publish --provider Alpaca\AlpacaServiceProvider
+
+Add in resources/assets/js/app.js:
+require('../../../vendor/alcodo/alpaca/resources/js/alpaca.js');
+
+Add in resources/assets/sass/app.scss:
+@import 'vendor/alcodo/alpaca/resources/sass/alpaca.scss';
 ```
 
 Add to your User model the permission trait:
