@@ -86,6 +86,13 @@ email: admin@alpaca.com
 password: alpaca
 ```
 
+### Optional
+
+Copy translated auth blade template files:
+```bash
+cp -r vendor/alcodo/alpaca/resources/views/auth/ resources/views/auth/
+```
+
 *TODO*
 
 ## Projects which alpaca uses
