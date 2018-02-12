@@ -30,8 +30,9 @@
 </div>
 
 @if(!App::environment('testing'))
-    <script src="{{ asset('/js/app.js') }}"></script>
+    <script defer src="{{ asset('/js/app.js') }}"></script>
 @endif
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 @include('alpaca::cookieconsent')
 @yield('scripts')
 </body>

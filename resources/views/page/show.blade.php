@@ -22,7 +22,7 @@
         <div class="list-group">
             @foreach($releated as $page)
                 <a href="{{ $page->path }}" class="list-group-item">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i> {{ $page->title }}
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i> {{ $page->title }}
                 </a>
             @endforeach
         </div>

@@ -2,25 +2,25 @@
     @if($isIndex)
         @can('page.administer')
             <a href="/backend/page" class="btn btn-default" title="{{ trans('alpaca::alpaca.index') }}">
-                <i class="fa fa-list" aria-hidden="true"></i>
+                <i class="fas fa-list" aria-hidden="true"></i>
             </a>
         @endcan
     @endif
     @if($isShow)
         <a href="{{ $page->path }}" class="btn btn-default" title="{{ trans('alpaca::alpaca.show') }}">
-            <i class="fa fa-external-link" aria-hidden="true"></i>
+            <i class="fas fa-eye" aria-hidden="true"></i>
         </a>
     @endif
     @can('page.edit')
         <a href="/backend/page/{{ $page->id }}/edit" class="btn btn-info" title="{{ trans('alpaca::alpaca.edit') }}">
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <i class="fas fa-edit" aria-hidden="true"></i>
         </a>
     @endcan
 
     @can('page.delete')
         <a href="#" class="btn btn-danger" title="{{ trans('alpaca::alpaca.delete') }}"
            v-b-modal.modalpage{{ $page->id }}>
-            <i class="fa fa-trash" aria-hidden="true"></i>
+            <i class="fas fa-trash" aria-hidden="true"></i>
         </a>
     @endcan
 </div>
@@ -33,7 +33,7 @@
             <input name="_method" type="hidden" value="DELETE">
             {{ csrf_field() }}
             <button type="submit" class="btn btn-danger btn-block" title="{{ trans('alpaca::alpaca.delete') }}">
-                <i class="fa fa-trash" aria-hidden="true"></i> {{ trans('alpaca::alpaca.delete') }}
+                <i class="fas fa-trash" aria-hidden="true"></i> {{ trans('alpaca::alpaca.delete') }}
             </button>
         </form>
 

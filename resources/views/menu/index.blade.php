@@ -47,7 +47,7 @@
                             <a href="#" class="btn btn-info btn-sm float-right"
                                title="{{ trans('alpaca::alpaca.link') }}"
                                v-b-modal.modalcreatelink{{ $menu->id }}>
-                                <i class="fa fa-plus" aria-hidden="true"></i> {{ trans('alpaca::alpaca.link') }}
+                                <i class="fas fa-plus" aria-hidden="true"></i> {{ trans('alpaca::alpaca.link') }}
                             </a>
                             @include('alpaca::menu.link.create', ['menu' => $menu])
                         @endcan
