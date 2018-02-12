@@ -5,7 +5,7 @@
     {{--create--}}
     @can('menu.create')
         <a href="#" class="btn btn-info float-right" v-b-modal.modalcreatemenu>
-            {{ trans('alpaca::menu.create') }}
+            {{ trans('alpaca::menu.create_menu') }}
         </a>
         @include('alpaca::menu.sub.create')
     @endcan
