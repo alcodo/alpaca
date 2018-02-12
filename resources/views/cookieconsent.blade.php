@@ -17,37 +17,41 @@
 
     <script defer>
 
-        new Vue({
-            el: '#cookieconsent',
-            data: {
-                showCookieConsent: true,
-            },
-            methods: {
-                acceptCookieConsent: function () {
-                    this.setCookie();
-                    this.showCookieConsent = false;
+        window.onload = function () {
+
+            new Vue({
+                el: '#cookieconsent',
+                data: {
+                    showCookieConsent: true,
                 },
-                setCookie: function () {
-                    // Resolve top domain
-                    var parsed_host = document.location.hostname.split('.').reverse();
-                    var domain = parsed_host[1] + '.' + parsed_host[0];
+                methods: {
+                    acceptCookieConsent: function () {
+                        this.setCookie();
+                        this.showCookieConsent = false;
+                    },
+                    setCookie: function () {
+                        // Resolve top domain
+                        var parsed_host = document.location.hostname.split('.').reverse();
+                        var domain = parsed_host[1] + '.' + parsed_host[0];
 
-                    // Expiration date
-                    var expDuration = 365 * 24 * 60 * 60 * 1000;
-                    var expDate = new Date();
-                    expDate.setTime(expDate.getTime() + expDuration);
+                        // Expiration date
+                        var expDuration = 365 * 24 * 60 * 60 * 1000;
+                        var expDate = new Date();
+                        expDate.setTime(expDate.getTime() + expDuration);
 
-                    // Cookie string
-                    var cookieString = "";
-                    cookieString += "cookieconsent=yes; ";
-                    cookieString += "expires=" + expDate.toGMTString() + "; "
-                    cookieString += "domain=" + domain + "; ";
-                    cookieString += "path=/";
+                        // Cookie string
+                        var cookieString = "";
+                        cookieString += "cookieconsent=yes; ";
+                        cookieString += "expires=" + expDate.toGMTString() + "; "
+                        cookieString += "domain=" + domain + "; ";
+                        cookieString += "path=/";
 
-                    document.cookie = cookieString;
-                },
-            }
-        });
+                        document.cookie = cookieString;
+                    },
+                }
+            });
+
+        };
 
     </script>
 
