@@ -45,8 +45,10 @@ class InstallAlpacaMenu extends Migration
             'area' => 'right',
             'active' => true,
             'position' => 1,
-            'exception_rule' => true,
-            'exception' => '',
+            'exception_rule' => Block::EXCEPTION_EXCLUDE,
+            'exception' => 'login
+register
+password/reset',
 
             'menu_id' => $menu->id,
             'user_id' => null,

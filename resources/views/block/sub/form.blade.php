@@ -84,7 +84,8 @@
 
 <div class="form-group">
     <label for="exception">{{ trans('alpaca::block.exception') }}</label>
-    <textarea class="form-control" id="exception" rows="3" name="exception"></textarea>
+    <textarea class="form-control" id="exception" rows="3" name="exception">
+{{ old('exception', isset($block) ? $block->exception : '') }}</textarea>
     <small id="passwordHelpBlock" class="form-text text-muted">
         {{ trans('alpaca::block.exception_help_text') }}
     </small>
