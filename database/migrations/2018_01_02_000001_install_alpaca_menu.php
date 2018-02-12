@@ -25,8 +25,13 @@ class InstallAlpacaMenu extends Migration
             'href' => '/',
         ]);
         $linkRepo->create($menu, [
-            'text' => 'Contact',
+            'text' => 'Sitemap',
             'position' => 10,
+            'href' => '/sitemap',
+        ]);
+        $linkRepo->create($menu, [
+            'text' => 'Contact',
+            'position' => 11,
             'href' => '/contact',
         ]);
 
