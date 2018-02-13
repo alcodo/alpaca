@@ -24,7 +24,8 @@
     "msurguy/honeypot": "^1.0",
     "cocur/slugify": "^3.1",
     "approached/laravel-date-international": "^1.3",
-    "caouecs/laravel-lang": "~3.0"
+    "caouecs/laravel-lang": "~3.0",
+    "guzzlehttp/guzzle": "~6.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0",
