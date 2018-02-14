@@ -2,7 +2,7 @@
 
 namespace Alpaca\Controllers\Auth;
 
-use App\User;
+use Alpaca\Models\User;
 use Alpaca\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
