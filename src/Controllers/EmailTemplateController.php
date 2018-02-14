@@ -2,8 +2,8 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Notifications\User\ResetPassword;
-use Alpaca\Notifications\User\VerifyAccount;
+use Alpaca\Notifications\ResetPassword;
+use Alpaca\Notifications\VerifyAccount;
 use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 

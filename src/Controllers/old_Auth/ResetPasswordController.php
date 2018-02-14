@@ -1,7 +1,9 @@
 <?php
 
-namespace Alpaca\Controllers\Auth;
+namespace Alpaca\Controllers\old_Auth;
 
+use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
 use Alpaca\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -20,12 +22,7 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -35,5 +32,26 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('alpaca::auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
+    /**
+     * Get the response for a successful password reset.
+     *
+     * @param  string $response
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendResetResponse($response)
+    {
+        Flash::success(trans('user::user.login_successful'));
+
+        return redirect($this->redirectPath())
+            ->with('status', trans($response));
     }
 }

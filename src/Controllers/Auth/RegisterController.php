@@ -2,12 +2,9 @@
 
 namespace Alpaca\Controllers\Auth;
 
-use Validator;
-use Laracasts\Flash\Flash;
-use Alpaca\User\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
+use App\User;
 use Alpaca\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -26,11 +23,11 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -45,71 +42,30 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array $data
+     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'form_name' => 'honeypot',
-            'form_time' => 'required|honeytime:5',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array $data
-     * @return User
+     * @param  array  $data
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        $redirect = request('redirect');
-        if (!empty($redirect)) {
-            $this->redirectTo = $redirect;
-        }
-
-        Flash::success(trans('user::user.registered_successful'));
-
         return User::create([
-            'username' => $data['username'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'email_token' => str_random(18),
         ]);
-    }
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-//        $this->guard()->login($user);
-
-        return redirect($this->redirectPath());
-    }
-
-    public function showRegistrationForm()
-    {
-        return view('alpaca::auth.register');
-    }
-
-    public function verify($token)
-    {
-        User::where('email_token', $token)->firstOrFail()->verified();
-
-        Flash::success(trans('user::user.verification_successful'));
-
-        return redirect('login');
     }
 }

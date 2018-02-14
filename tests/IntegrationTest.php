@@ -55,6 +55,12 @@ abstract class IntegrationTest extends TestCase
             'database' => ':memory:',
             'prefix' => '',
         ]);
+        $app['config']->set('auth.providers', [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => \Alpaca\Models\User::class,
+            ],
+        ]);
     }
 
     protected function showAllRoutes()

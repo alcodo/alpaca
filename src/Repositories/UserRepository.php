@@ -18,6 +18,7 @@ class UserRepository
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'verified' => 'nullable|boolean',
         ])->validate();
 
         $data['password'] = bcrypt($data['password']);
@@ -40,6 +41,7 @@ class UserRepository
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id . ',id',
             'password' => 'nullable|string|min:6',
+            'verified' => 'nullable|boolean',
         ])->validate();
 
         // password

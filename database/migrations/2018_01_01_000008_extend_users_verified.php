@@ -14,7 +14,11 @@ class ExtendUsersVerified extends Migration
     {
         $user_model = config('auth.providers.users.model', App\User::class);
 
-        return (new $user_model)->getTable();
+        if (class_exists($user_model)) {
+            return (new $user_model)->getTable();
+        }
+
+        return (new \Alpaca\Models\User())->getTable();
     }
 
     /**

@@ -18,6 +18,7 @@ class InstallAlpacaUser extends Migration
             'email' => 'admin@alpaca.com',
             'password' => 'alpaca',
             'password_confirmation' => 'alpaca',
+            'verified' => '1',
         ]);
         $adminRole = Role::whereSlug('administrator')->first();
         $adminRole->users()->sync($user);
