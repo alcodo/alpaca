@@ -3,8 +3,6 @@
 namespace Alpaca;
 
 use Alpaca\Commands\PublishTranslationCommand;
-use Alpaca\Core\CoreServiceProvider;
-use Alpaca\Crud\CrudServiceProvider;
 use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Events\Permission\PermissionsIsRequested;
 use Alpaca\Events\Permission\PermissionWasCreated;
@@ -31,20 +29,12 @@ use Alpaca\Listeners\Role\RolePermissionListener;
 use Alpaca\Listeners\User\AccountVerification;
 use Alpaca\Listeners\User\IsUserVerified;
 use Alpaca\Listeners\User\UserPermissionListener;
-use Alpaca\Menu\MenuServiceProvider;
-use Alpaca\Page\PageServiceProvider;
 use Alpaca\Support\Block\BlockBuilder;
 use Alpaca\Support\Block\BlockFacade;
-use Alpaca\Block\BlockServiceProvider;
-use Alpaca\Email\EmailServiceProvider;
-use Alpaca\Contact\ContactServiceProvider;
-use Alpaca\Gallery\GalleryServiceProvider;
-use Alpaca\Sitemap\SitemapServiceProvider;
 use Alpaca\Support\Guard;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\AggregateServiceProvider;
-use Alpaca\CookieConsent\CookieConsentServiceProvider;
 use Illuminate\Support\Facades\Event;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
