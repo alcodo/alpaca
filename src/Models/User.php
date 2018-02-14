@@ -24,7 +24,9 @@ class User extends \Illuminate\Foundation\Auth\User
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'verified', 'email_token'];
+    protected $fillable = ['name', 'email', 'password', 'verified'];
+
+    // verification_token
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -33,12 +35,16 @@ class User extends \Illuminate\Foundation\Auth\User
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function verified()
-    {
-        $this->verified = 1;
-        $this->email_token = null;
-        $this->save();
-    }
+    protected $casts = [
+        'verified' => 'boolean',
+    ];
+
+//    public function verified()
+//    {
+//        $this->verified = 1;
+//        $this->email_token = null;
+//        $this->save();
+//    }
 
     /**
      * Send the password reset notification.

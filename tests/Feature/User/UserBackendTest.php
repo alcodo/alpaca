@@ -80,7 +80,7 @@ class UserBackendTest extends IntegrationTest
         Event::assertDispatched(UserWasDeleted::class);
     }
 
-    private function createUser()
+    protected function createUser()
     {
         $repo = new UserRepository();
         $repo->create([

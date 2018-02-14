@@ -36,4 +36,5 @@ return [
     'verify_now' => 'Konto Verifizieren',
     'verification_link_advantages' => 'Sobald du deine E-Mail-Adresse bestätigt hast, kannst du alle Funktionen von :type nutzen. Fülle zum Beispiel dein Profil aus, um dich mit anderen Community-Mitgliedern auszutauschen.',
     'send_passwort_reset_link' => 'Link zum Zurücksetzen des Passworts senden',
+    'not_verified' => 'Du bist nicht verifiziert. Bitte verifizieren Sie sich zuerst.',
 ];

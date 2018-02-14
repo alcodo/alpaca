@@ -29,6 +29,7 @@ use Alpaca\Listeners\Permission\PermissionPermissionListener;
 use Alpaca\Listeners\Permission\RefreshPermissionCacheListener;
 use Alpaca\Listeners\Role\RolePermissionListener;
 use Alpaca\Listeners\User\AccountVerification;
+use Alpaca\Listeners\User\IsUserVerified;
 use Alpaca\Listeners\User\UserPermissionListener;
 use Alpaca\Menu\MenuServiceProvider;
 use Alpaca\Page\PageServiceProvider;
@@ -40,6 +41,7 @@ use Alpaca\Contact\ContactServiceProvider;
 use Alpaca\Gallery\GalleryServiceProvider;
 use Alpaca\Sitemap\SitemapServiceProvider;
 use Alpaca\Support\Guard;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\AggregateServiceProvider;
 use Alpaca\CookieConsent\CookieConsentServiceProvider;
@@ -94,6 +96,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         PermissionWasSaved::class => [
             RefreshPermissionCacheListener::class,
+        ],
+        Authenticated::class => [
+            IsUserVerified::class
         ],
     ];
 
