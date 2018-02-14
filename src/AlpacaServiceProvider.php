@@ -26,8 +26,8 @@ use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Listeners\Permission\PermissionPermissionListener;
 use Alpaca\Listeners\Permission\RefreshPermissionCacheListener;
 use Alpaca\Listeners\Role\RolePermissionListener;
-use Alpaca\Listeners\User\AccountVerification;
 use Alpaca\Listeners\User\IsUserVerified;
+use Alpaca\Listeners\User\SendVerificationEmail;
 use Alpaca\Listeners\User\UserPermissionListener;
 use Alpaca\Support\Block\BlockBuilder;
 use Alpaca\Support\Block\BlockFacade;
@@ -86,6 +86,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         PermissionWasSaved::class => [
             RefreshPermissionCacheListener::class,
+        ],
+        Registered::class => [
+            SendVerificationEmail::class
         ],
         Authenticated::class => [
             IsUserVerified::class

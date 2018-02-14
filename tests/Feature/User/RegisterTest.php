@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Alpaca\Listeners\User\SendVerificationEmail;
 use Alpaca\Models\User;
 use Illuminate\Auth\Events\Attempting;
 use Illuminate\Auth\Events\Authenticated;
@@ -31,8 +32,8 @@ class RegisterTest extends IntegrationTest
     public function testRegister()
     {
         Event::fake();
-
         $this->withoutExceptionHandling();
+
         $this->assertGuest();
         $this->equalTo(1, User::count());
 
@@ -42,12 +43,15 @@ class RegisterTest extends IntegrationTest
             'password' => 'mySecretPassword',
             'password_confirmation' => 'mySecretPassword',
         ])
-            ->assertRedirect('/');
+//            ->assertRedirect('/');
+            ->assertRedirect('/home');
 
+//        $this->assertGuest();
 //        $this->assertAuthenticated();
 //        $this->equalTo(2, User::count());
 
         Event::assertDispatched(\Illuminate\Auth\Events\Registered::class);
+        Event::assertDispatched(SendVerificationEmail::class);
     }
 
 }

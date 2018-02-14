@@ -7,10 +7,8 @@ use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class IsUserVerified implements ShouldQueue
+class IsUserVerified
 {
-    use InteractsWithQueue;
-
     /**
      * Handle the event.
      *

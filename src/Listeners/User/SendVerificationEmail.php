@@ -4,26 +4,26 @@ namespace Alpaca\Listeners\User;
 
 use Alpaca\Models\User;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Alpaca\Notifications\VerifyAccount;
 use Illuminate\Support\Facades\Notification;
 
-class AccountVerification implements ShouldQueue
+class SendVerificationEmail
 {
-    use InteractsWithQueue;
 
     /**
      * Handle the event.
      *
-     * @param  FooEvent $event
+     * @param Registered $event
      * @return void
      */
     public function handle(Registered $event)
     {
+        dd(444);
         /** @var User $user */
         $user = $event->user;
 
         Notification::send($user, new VerifyAccount($user->email_token, $user->username));
+
+        dd(1);
     }
 }
