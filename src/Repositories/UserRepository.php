@@ -9,6 +9,7 @@ use Alpaca\Events\User\UserWasUpdated;
 use Alpaca\Events\User\UserIsVerified;
 use Alpaca\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Alpaca\Models\Role;
 
 class UserRepository
 {
@@ -96,6 +97,22 @@ class UserRepository
         event(new UserIsVerified($user));
 dd(3);
         return $user;
+    }
+
+
+    public function syncRole($roleSlug, $user): void
+    {
+        $role = Role::whereSlug($roleSlug)->first();
+        if (is_null($role)) {
+            throw new \Exception('role not found: ' . $roleSlug);
+        }
+
+        self::syncRoleByIds($user, [$role->id]);
+    }
+
+    public function syncRoleByIds($user, array $roleIds): void
+    {
+        $user->roles()->sync($roleIds);
     }
 
 }

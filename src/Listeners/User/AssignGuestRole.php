@@ -3,10 +3,7 @@
 namespace Alpaca\Listeners\User;
 
 use Alpaca\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Alpaca\Notifications\VerifyAccount;
-use Illuminate\Support\Facades\Notification;
-use Alpaca\Repositories\RoleRepository;
+use Alpaca\Repositories\UserRepository;
 
 class AssignGuestRole
 {
@@ -16,6 +13,7 @@ class AssignGuestRole
      *
      * @param $event
      * @return void
+     * @throws \Exception
      */
     public function handle($event)
     {
@@ -23,7 +21,7 @@ class AssignGuestRole
         /** @var User $user */
         $user = $event->user;
 
-        $repo = new RoleRepository();
+        $repo = new UserRepository();
         $repo->syncRole('guest', $user);
 
     }

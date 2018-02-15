@@ -4,8 +4,6 @@ namespace Alpaca\Listeners\User;
 
 use Alpaca\Exceptions\UserIsNotVerified;
 use Illuminate\Auth\Events\Authenticated;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class IsUserVerified
 {
@@ -24,6 +22,6 @@ class IsUserVerified
             throw new UserIsNotVerified();
 
         }
-        
+
     }
 }

@@ -1,8 +1,7 @@
 <?php
 
-use Alpaca\Models\Role;
 use Illuminate\Database\Migrations\Migration;
-use Alpaca\Repositories\RoleRepository;
+use Alpaca\Repositories\UserRepository;
 
 class InstallAlpacaUser extends Migration
 {
@@ -22,7 +21,7 @@ class InstallAlpacaUser extends Migration
             'verified' => '1',
         ]);
 
-        $repo = new RoleRepository();
+        $repo = new UserRepository();
         $repo->syncRole('administrator', $user);
     }
 
