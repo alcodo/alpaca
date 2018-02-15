@@ -2,6 +2,7 @@
 
 namespace Alpaca\Listeners\User;
 
+use Alpaca\Repositories\UserRepository;
 use Alpaca\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Alpaca\Notifications\VerifyAccount;

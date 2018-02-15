@@ -19,11 +19,11 @@ class BlockWasUpdated
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
     /**
      * @var Block
      */
-    private $block;
+    public $block;
 
     /**
      * Create a new event instance.

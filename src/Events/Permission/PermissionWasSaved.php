@@ -19,7 +19,7 @@ class PermissionWasSaved
     /**
      * @var User
      */
-    private $user;
+    public $user;
 
     /**
      * Create a new event instance.

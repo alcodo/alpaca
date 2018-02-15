@@ -20,15 +20,15 @@ class MenuLinkWasCreated
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
     /**
      * @var Menu
      */
-    private $menu;
+    public $menu;
     /**
      * @var MenuLink
      */
-    private $link;
+    public $link;
 
     /**
      * Create a new event instance.

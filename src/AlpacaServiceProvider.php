@@ -26,6 +26,7 @@ use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Listeners\Permission\PermissionPermissionListener;
 use Alpaca\Listeners\Permission\RefreshPermissionCacheListener;
 use Alpaca\Listeners\Role\RolePermissionListener;
+use Alpaca\Events\User\UserIsVerified;
 use Alpaca\Listeners\User\IsUserVerified;
 use Alpaca\Listeners\User\StartVerificationProcess;
 use Alpaca\Listeners\User\AssignRegisterRole;
@@ -49,9 +50,11 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             IsUserVerified::class
         ],
         Registered::class => [
-            StartVerificationProcess::class,
             AssignGuestRole::class,
-//            AssignRegisterRole::class,
+            StartVerificationProcess::class,
+        ],
+        UserIsVerified::class => [
+            AssignRegisterRole::class,
         ],
         PermissionsIsRequested::class => [
             BlockPermissionListener::class,

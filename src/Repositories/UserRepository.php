@@ -6,6 +6,7 @@ namespace Alpaca\Repositories;
 use Alpaca\Events\User\UserWasCreated;
 use Alpaca\Events\User\UserWasDeleted;
 use Alpaca\Events\User\UserWasUpdated;
+use Alpaca\Events\User\UserIsVerified;
 use Alpaca\Models\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -74,26 +75,26 @@ class UserRepository
         return true;
     }
 
-    public function generateVerifyToken(User $user)
+    public function generateVerifyToken($user)
     {
         $token = hash_hmac('sha256', str_random(40), config('app.key'));
 
         $user->verification_token = $token;
         $user->save();
-        event(new UserWasUpdated($user));
 
         return $token;
     }
 
-    public function verify($token): User
+    public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
 
-        $user->verified = 1;
-        $user->verification_token = null;
-        $user->save();
-        event(new UserWasUpdated($user));
+//        $user->verified = 1;
+//        $user->verification_token = null;
+//        $user->save();
 
+        event(new UserIsVerified($user));
+dd(3);
         return $user;
     }
 

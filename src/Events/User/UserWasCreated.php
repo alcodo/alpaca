@@ -19,11 +19,11 @@ class UserWasCreated
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
     /**
      * @var User
      */
-    private $authUser;
+    public $authUser;
 
     /**
      * Create a new event instance.

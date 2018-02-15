@@ -19,11 +19,11 @@ class ImageWasUpdated
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
     /**
      * @var Image
      */
-    private $image;
+    public $image;
 
     /**
      * Create a new event instance.

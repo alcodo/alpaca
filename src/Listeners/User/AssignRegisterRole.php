@@ -19,12 +19,10 @@ class AssignRegisterRole
      */
     public function handle($event)
     {
-
         /** @var User $user */
         $user = $event->user;
 
         $repo = new RoleRepository();
         $repo->syncRole('registered', $user);
-
     }
 }

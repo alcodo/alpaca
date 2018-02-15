@@ -1,9 +1,8 @@
 <?php
 
-namespace Alpaca\Events\Menu;
+namespace Alpaca\Events\User;
 
-use Alpaca\Models\Menu;
-use Alpaca\Models\MenuLink;
+use Alpaca\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -13,33 +12,22 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Support\Facades\Auth;
 
-class MenuLinkWasUpdated
+class UserIsVerified
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var User|null
+     * @var User
      */
     public $user;
-    /**
-     * @var Menu
-     */
-    public $menu;
-    /**
-     * @var MenuLink
-     */
-    public $link;
 
     /**
      * Create a new event instance.
      *
-     * @param Menu $menu
-     * @param MenuLink $link
+     * @param User|null $user
      */
-    public function __construct(Menu $menu, MenuLink $link)
+    public function __construct(User $user)
     {
-        $this->user = Auth::user();
-        $this->menu = $menu;
-        $this->link = $link;
+        $this->user = $user;
     }
 }

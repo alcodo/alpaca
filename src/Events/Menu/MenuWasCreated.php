@@ -19,11 +19,11 @@ class MenuWasCreated
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
     /**
      * @var Menu
      */
-    private $menu;
+    public $menu;
 
     /**
      * Create a new event instance.

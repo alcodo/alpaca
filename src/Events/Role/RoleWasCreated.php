@@ -19,11 +19,11 @@ class RoleWasCreated
     /**
      * @var Role
      */
-    private $role;
+    public $role;
     /**
      * @var User
      */
-    private $user;
+    public $user;
 
     /**
      * Create a new event instance.

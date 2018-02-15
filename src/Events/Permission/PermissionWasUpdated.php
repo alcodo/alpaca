@@ -19,11 +19,11 @@ class PermissionWasUpdated
     /**
      * @var Permission
      */
-    private $permission;
+    public $permission;
     /**
      * @var User
      */
-    private $user;
+    public $user;
 
     /**
      * Create a new event instance.

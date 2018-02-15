@@ -19,11 +19,11 @@ class PageWasUpdated
     /**
      * @var Page
      */
-    private $page;
+    public $page;
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
 
     /**
      * Create a new event instance.

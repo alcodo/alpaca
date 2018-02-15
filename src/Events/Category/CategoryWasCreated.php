@@ -20,11 +20,11 @@ class CategoryWasCreated
     /**
      * @var User|null
      */
-    private $user;
+    public $user;
     /**
      * @var Category
      */
-    private $category;
+    public $category;
 
     /**
      * Create a new event instance.
