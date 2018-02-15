@@ -39,13 +39,6 @@ class User extends \Illuminate\Foundation\Auth\User
         'verified' => 'boolean',
     ];
 
-//    public function verified()
-//    {
-//        $this->verified = 1;
-//        $this->email_token = null;
-//        $this->save();
-//    }
-
     /**
      * Send the password reset notification.
      *

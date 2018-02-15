@@ -36,13 +36,8 @@ Route::group([
         Route::post('password/reset', '\Alpaca\Controllers\Auth\ResetPasswordController@reset');
     }
 
-//    Auth::routes();
-//    Route::get('/register/verify/{token}', 'Auth\RegisterController@verify');
-//    Route::get('/dashboard', 'DashboardController@index');
-
-
-    // User
-
+    // Verify
+    Route::get('/register/verify/{token}', '\Alpaca\Controllers\VerifyController@verify');
 
     // Page
     try {

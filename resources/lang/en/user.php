@@ -36,5 +36,5 @@ return [
     'verify_now' => 'Account verify',
     'verification_link_advantages' => 'Once you have confirmed your e-mail address, you can use all the features of :type. For example, fill your profile to share with other community members.',
     'send_passwort_reset_link' => 'Send Password Reset Link',
-    'not_verified' => 'You are not verified. Please verifie your account first.',
+    'not_verified' => 'You are not verified. Please verifier your account first.',
 ];

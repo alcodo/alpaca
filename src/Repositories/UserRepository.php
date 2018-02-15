@@ -74,4 +74,27 @@ class UserRepository
         return true;
     }
 
+    public function generateVerifyToken(User $user)
+    {
+        $token = hash_hmac('sha256', str_random(40), config('app.key'));
+
+        $user->verification_token = $token;
+        $user->save();
+        event(new UserWasUpdated($user));
+
+        return $token;
+    }
+
+    public function verify($token): User
+    {
+        $user = User::where('verification_token', $token)->firstOrFail();
+
+        $user->verified = 1;
+        $user->verification_token = null;
+        $user->save();
+        event(new UserWasUpdated($user));
+
+        return $user;
+    }
+
 }

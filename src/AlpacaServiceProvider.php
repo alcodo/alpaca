@@ -45,6 +45,14 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      * @var array
      */
     protected $listen = [
+        Authenticated::class => [
+            IsUserVerified::class
+        ],
+        Registered::class => [
+            StartVerificationProcess::class,
+            AssignGuestRole::class,
+//            AssignRegisterRole::class,
+        ],
         PermissionsIsRequested::class => [
             BlockPermissionListener::class,
             CategoryPermissionListener::class,
@@ -56,9 +64,6 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             RolePermissionListener::class,
             UserPermissionListener::class,
             PagePermissionListener::class,
-        ],
-        Registered::class => [
-            AccountVerification::class,
         ],
         SitemapIsRequested::class => [
             PageSitemapListener::class,
@@ -88,14 +93,6 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         PermissionWasSaved::class => [
             RefreshPermissionCacheListener::class,
-        ],
-        Registered::class => [
-            StartVerificationProcess::class,
-            AssignGuestRole::class,
-//            AssignRegisterRole::class,
-        ],
-        Authenticated::class => [
-            IsUserVerified::class
         ],
     ];
 

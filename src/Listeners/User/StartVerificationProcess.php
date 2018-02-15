@@ -16,6 +16,7 @@ class StartVerificationProcess
      *
      * @param Registered $event
      * @return void
+     * @throws UserStartVerificationProcess
      */
     public function handle(Registered $event)
     {
@@ -24,10 +25,11 @@ class StartVerificationProcess
         $user = $event->user;
 
         // generate token
-        // TODO
+        $repo = new UserRepository();
+        $token = $repo->generateVerifyToken($user);
 
         // send mail
-        Notification::send($user, new VerifyAccount($user->verification_token, $user->name));
+        Notification::send($user, new VerifyAccount($token, $user->name));
 
         // output
         throw new UserStartVerificationProcess();
