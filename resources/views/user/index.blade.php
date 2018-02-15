@@ -40,15 +40,12 @@
                     @endforeach
                 </td>
                 <td>
-
-                    {{--todo--}}
-                    {{--@if($page->active)--}}
-                    {{--<i class="fas fa-check text-success" aria-hidden="true"></i>--}}
-                    {{--@else--}}
-                    <i class="fas fa-times text-danger" aria-hidden="true"></i>
-                    {{--@endif--}}
+                    @if($user->verified)
+                        <i class="fas fa-check text-success" aria-hidden="true"></i>
+                    @else
+                        <i class="fas fa-times text-danger" aria-hidden="true"></i>
+                    @endif
                 </td>
-                {{--<td>{{ $page->user_id }}</td>--}}
                 <td>{{ dateintl_full('short', $user->created_at) }}</td>
                 <td>{{ dateintl_full('short', $user->updated_at) }}</td>
                 <td>

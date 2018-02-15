@@ -56,7 +56,8 @@ class UserRepository
         $user->update($data);
 
         if (isset($data['roles']) && !empty($data['roles'])) {
-            $user->syncRoles($data['roles']);
+            $roleRepo = new RoleRepository();
+            $roleRepo->syncRoleByIds($user, $data['roles']);
         }
 
         event(new UserWasUpdated($user));

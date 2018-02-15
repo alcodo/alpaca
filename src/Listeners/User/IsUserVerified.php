@@ -18,10 +18,12 @@ class IsUserVerified
      */
     public function handle(Authenticated $event)
     {
-        if ($event->user->verified === false) {
+
+        if ($event->user->verified === false || $event->user->verified === 0) {
 
             throw new UserIsNotVerified();
 
         }
+        
     }
 }

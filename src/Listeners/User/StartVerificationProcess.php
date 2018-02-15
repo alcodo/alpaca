@@ -5,9 +5,10 @@ namespace Alpaca\Listeners\User;
 use Alpaca\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Alpaca\Notifications\VerifyAccount;
+use Alpaca\Exceptions\UserStartVerificationProcess;
 use Illuminate\Support\Facades\Notification;
 
-class SendVerificationEmail
+class StartVerificationProcess
 {
 
     /**
@@ -18,12 +19,18 @@ class SendVerificationEmail
      */
     public function handle(Registered $event)
     {
-        dd(444);
+
         /** @var User $user */
         $user = $event->user;
 
-        Notification::send($user, new VerifyAccount($user->email_token, $user->username));
+        // generate token
+        // TODO
 
-        dd(1);
+        // send mail
+        Notification::send($user, new VerifyAccount($user->verification_token, $user->name));
+
+        // output
+        throw new UserStartVerificationProcess();
+
     }
 }

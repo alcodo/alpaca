@@ -54,4 +54,19 @@ class RoleRepository
         return true;
     }
 
+    public function syncRole($roleSlug, $user): void
+    {
+        $role = Role::whereSlug($roleSlug)->first();
+        if (is_null($role)) {
+            throw new \Exception('role not found: ' . $roleSlug);
+        }
+
+        $role->users()->sync($user);
+    }
+
+    public function syncRoleByIds($user, array $roleIds): void
+    {
+        $user->roles()->sync($roleIds);
+    }
+
 }

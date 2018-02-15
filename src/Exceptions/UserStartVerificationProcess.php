@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Auth;
 
-class UserIsNotVerified extends \Exception
+class UserStartVerificationProcess extends \Exception
 {
 
     public function render(Request $request)
@@ -14,7 +14,9 @@ class UserIsNotVerified extends \Exception
         Auth::guard()->logout();
         $request->session()->invalidate();
 
-        Flash::success(trans('alpaca::user.not_verified'));
+        Flash::success(
+            trans('alpaca::user.registered_successful')
+        );
 
         return redirect('/');
     }

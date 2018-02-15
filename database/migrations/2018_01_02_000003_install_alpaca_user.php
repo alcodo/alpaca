@@ -2,6 +2,7 @@
 
 use Alpaca\Models\Role;
 use Illuminate\Database\Migrations\Migration;
+use Alpaca\Repositories\RoleRepository;
 
 class InstallAlpacaUser extends Migration
 {
@@ -20,8 +21,9 @@ class InstallAlpacaUser extends Migration
             'password_confirmation' => 'alpaca',
             'verified' => '1',
         ]);
-        $adminRole = Role::whereSlug('administrator')->first();
-        $adminRole->users()->sync($user);
+
+        $repo = new RoleRepository();
+        $repo->syncRole('administrator', $user);
     }
 
     /**
