@@ -120,4 +120,21 @@ abstract class IntegrationTest extends TestCase
     {
         $this->actingAs(User::first());
     }
+
+    protected function makeAuth()
+    {
+        // create directories
+        $controllersPath = base_path('app/Http/Controllers');
+        if (!file_exists($controllersPath)) {
+            mkdir($controllersPath, 0777, true);
+        }
+
+        $routesPath = base_path('routes');
+        if (!file_exists($routesPath)) {
+            mkdir($routesPath, 0777, true);
+        }
+
+        // execute command
+        $this->artisan('make:auth');
+    }
 }

@@ -3,9 +3,6 @@
 namespace Tests\Feature;
 
 use Alpaca\Models\User;
-use Illuminate\Auth\Events\Attempting;
-use Illuminate\Auth\Events\Authenticated;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
 
@@ -14,6 +11,7 @@ class LoginTest extends IntegrationTest
     public function setUp()
     {
         parent::setUp();
+        $this->makeAuth();
     }
 
     public function testShowLoginPage()
