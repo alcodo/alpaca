@@ -80,16 +80,6 @@ class RoleBackendTest extends IntegrationTest
         Event::assertDispatched(RoleWasDeleted::class);
     }
 
-    public function test_assign_role()
-    {
-        $repo = new RoleRepository();
-        $repo->syncRole('guest', User::first());
-
-        $roles = User::first()->roles;
-        $this->assertCount(2, $roles);
-        $this->assertEquals('guest', $roles->where('slug', 'guest')->first()->slug);
-    }
-
     protected function createRole()
     {
         $repo = new RoleRepository();

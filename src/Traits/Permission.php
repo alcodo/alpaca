@@ -10,7 +10,7 @@ trait Permission
     /**
      * Determine if the model has (one of) the given role(s).
      *
-     * @param string|array|\Spatie\Permission\Contracts\Role|\Illuminate\Support\Collection $roles
+     * @param string|array|\Alpaca\Models\Role|\Illuminate\Support\Collection $roles
      *
      * @return bool
      */

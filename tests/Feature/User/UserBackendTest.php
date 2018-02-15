@@ -80,6 +80,18 @@ class UserBackendTest extends IntegrationTest
         Event::assertDispatched(UserWasDeleted::class);
     }
 
+    public function test_assign_role()
+    {
+        // TODO
+        
+        $repo = new UserRepository();
+        $repo->syncRole('guest', User::first());
+
+        $roles = User::first()->roles;
+        $this->assertCount(2, $roles);
+        $this->assertEquals('guest', $roles->where('slug', 'guest')->first()->slug);
+    }
+
     protected function createUser()
     {
         $repo = new UserRepository();

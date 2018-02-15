@@ -90,12 +90,12 @@ class UserRepository
     {
         $user = User::where('verification_token', $token)->firstOrFail();
 
-//        $user->verified = 1;
-//        $user->verification_token = null;
-//        $user->save();
+        $user->verified = 1;
+        $user->verification_token = null;
+        $user->save();
 
         event(new UserIsVerified($user));
-dd(3);
+
         return $user;
     }
 

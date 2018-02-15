@@ -10,8 +10,6 @@ class User extends \Illuminate\Foundation\Auth\User
 {
     use Notifiable, Permission;
 
-    protected $guard_name = 'web';
-
     /**
      * The database table used by the model.
      *
@@ -42,7 +40,7 @@ class User extends \Illuminate\Foundation\Auth\User
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
