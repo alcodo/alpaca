@@ -15,7 +15,7 @@
         <hr/>
         <p>
             <strong>
-                {{ trans('alpaca::page.also_interest') }}:
+                {{ trans('alpaca::page.releated_pages') }}:
 
             </strong>
         </p>

@@ -11,6 +11,5 @@ return [
     'releated_pages' => 'That could also interest you',
     'url' => 'Url',
     'name' => 'Name',
-    'also_interest' => 'That could also interest you',
     'page_index' => 'Page index',
 ];

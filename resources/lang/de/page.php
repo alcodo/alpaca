@@ -8,11 +8,10 @@ return [
     'html_title' => 'Html title',
     'meta_description' => 'Meta description',
     'meta_robots' => 'Meta Robots',
-    'readmore' => 'Read more',
-    'releated_pages' => 'That could also interest you',
+    'readmore' => 'Weiterlesen',
+    'releated_pages' => 'Das könnte dich auch interessieren',
     'url' => 'Url',
     'name' => 'Name',
-    'also_interest' => 'That could also interest you',
     'page_index' => 'Page index',
 
 ];
