@@ -73,9 +73,9 @@ abstract class IntegrationTest extends TestCase
 
             if (in_array(['GET', 'POST'], $route->methods())) {
                 $url = action($actionName);
-                dump('URL: '.$url.' URL: '.$uri.' Action: '.$actionName);
+                dump('URL: ' . $url . ' URL: ' . $uri . ' Action: ' . $actionName);
             } else {
-                dump('URL: '.$uri.' Action: '.$actionName);
+                dump('URL: ' . $uri . ' Action: ' . $actionName);
             }
         }
     }
@@ -98,13 +98,13 @@ abstract class IntegrationTest extends TestCase
 
     protected function loadRoutesAgain()
     {
-        include __DIR__.'/../src/routes_fronted.php';
+        include __DIR__ . '/../src/routes_fronted.php';
     }
 
     protected function deleteMigrationFiles()
     {
         $path = base_path('database/migrations');
-        $files = glob($path.'/*.php'); // get all file names
+        $files = glob($path . '/*.php'); // get all file names
 
         foreach ($files as $file) { // iterate files
             if (is_file($file)) {
@@ -122,16 +122,18 @@ abstract class IntegrationTest extends TestCase
     {
         // create directories
         $controllersPath = base_path('app/Http/Controllers');
-        if (! file_exists($controllersPath)) {
+        if (!file_exists($controllersPath)) {
             mkdir($controllersPath, 0777, true);
         }
 
         $routesPath = base_path('routes');
-        if (! file_exists($routesPath)) {
+        if (!file_exists($routesPath)) {
             mkdir($routesPath, 0777, true);
         }
 
         // execute command
-        $this->artisan('make:auth');
+        $this->artisan('make:auth', [
+            '--force' => '--force',
+        ]);
     }
 }
