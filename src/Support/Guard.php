@@ -30,18 +30,16 @@ class Guard
 
             // user has registered role
             if (is_null($user->roles)) {
-                return $this->hasPermission('registered' . '.' . $permissionSlug);
+                return $this->hasPermission('registered'.'.'.$permissionSlug);
             }
 
             foreach ($user->roles->pluck('slug') as $roleSlug) {
-
-                $ability = $roleSlug . '.' . $permissionSlug;
+                $ability = $roleSlug.'.'.$permissionSlug;
 
                 if ($this->hasPermission($ability)) {
                     return true;
                 }
             }
-
         });
     }
 
@@ -53,10 +51,8 @@ class Guard
     public function refreshCache()
     {
         if ($this->cache->has($this->cacheKey)) {
-
             $this->cache->forget($this->cacheKey);
             $this->getPermissionFromCache();
-
         }
     }
 
@@ -76,16 +72,13 @@ class Guard
             // get all permissions
             return $role->permissions
                 ->map(function ($perm) use ($role) {
-                    return $role->slug . '.' . $perm->slug;
+                    return $role->slug.'.'.$perm->slug;
                 })
                 ->all();
-
         })
             ->collapse()
             ->all();
 
         return $allPermissions;
     }
-
-
 }

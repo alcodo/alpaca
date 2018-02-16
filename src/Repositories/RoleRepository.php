@@ -2,16 +2,15 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Role;
 use Alpaca\Events\Role\RoleWasCreated;
 use Alpaca\Events\Role\RoleWasDeleted;
 use Alpaca\Events\Role\RoleWasUpdated;
-use Alpaca\Models\Role;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Support\Facades\Validator;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 
 class RoleRepository
 {
-
     public function create(array $data): Role
     {
         Validator::make($data, [
@@ -53,5 +52,4 @@ class RoleRepository
 
         return true;
     }
-
 }

@@ -2,19 +2,18 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Menu;
+use Alpaca\Models\Category;
+use Alpaca\Models\MenuLink;
+use Illuminate\Support\Facades\Validator;
 use Alpaca\Events\Menu\MenuLinkWasCreated;
 use Alpaca\Events\Menu\MenuLinkWasDeleted;
 use Alpaca\Events\Menu\MenuLinkWasUpdated;
-use Alpaca\Models\Category;
-use Alpaca\Models\Menu;
-use Alpaca\Models\MenuLink;
-use Illuminate\Support\Facades\Validator;
 
 class MenuLinkRepository
 {
-
     /**
-     * Create a page
+     * Create a page.
      *
      * @param array $data
      * @return MenuLink

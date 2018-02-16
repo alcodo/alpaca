@@ -2,9 +2,8 @@
 
 namespace Alpaca\Listeners\Category;
 
-use Alpaca\Models\Category;
-use Alpaca\Models\Page;
 use Alpaca\Models\Sitemap;
+use Alpaca\Models\Category;
 
 class CategorySitemapListener
 {
@@ -28,12 +27,10 @@ class CategorySitemapListener
         $sitemaps = [];
 
         foreach ($categories as $category) {
-
             $sitemaps[] = new Sitemap([
                 'title' => $category->title,
-                'url' => config('app.url') . $category->path,
+                'url' => config('app.url').$category->path,
             ]);
-
         }
 
         return $sitemaps;

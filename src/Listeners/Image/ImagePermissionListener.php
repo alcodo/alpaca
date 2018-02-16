@@ -28,7 +28,6 @@ class ImagePermissionListener
             'slug' => 'image',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Administer images',

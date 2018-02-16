@@ -28,7 +28,6 @@ class ContactPermissionListener
             'slug' => 'contact',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Send',

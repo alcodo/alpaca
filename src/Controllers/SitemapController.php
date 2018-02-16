@@ -2,9 +2,9 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Sitemap\Models\Sitemap;
 use Illuminate\Routing\Controller;
+use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class SitemapController extends Controller

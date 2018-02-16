@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
+use Alpaca\Models\Block;
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Block\BlockWasCreated;
 use Alpaca\Events\Block\BlockWasDeleted;
 use Alpaca\Events\Block\BlockWasUpdated;
-use Alpaca\Models\Block;
 use Alpaca\Repositories\BlockRepository;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class BlockTest extends IntegrationTest
 {
@@ -96,5 +96,4 @@ class BlockTest extends IntegrationTest
             'exception_rule' => true,
         ]);
     }
-
 }

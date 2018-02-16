@@ -2,20 +2,19 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Menu;
+use Alpaca\Models\Block;
+use Alpaca\Models\Image;
+use Illuminate\Support\Facades\Storage;
 use Alpaca\Events\Image\ImageWasCreated;
 use Alpaca\Events\Image\ImageWasDeleted;
 use Alpaca\Events\Image\ImageWasUpdated;
-use Alpaca\Models\Block;
-use Alpaca\Models\Image;
-use Alpaca\Models\Menu;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ImageRepository
 {
-
     /**
-     * Create a page
+     * Create a page.
      *
      * @param array $data
      * @return Menu
@@ -65,7 +64,7 @@ class ImageRepository
             'copyright_modification' => 'nullable|string',
         ])->validate();
 
-        if (isset($data['file']) && !empty($data['file'])) {
+        if (isset($data['file']) && ! empty($data['file'])) {
             Storage::disk('public')->delete($image->filepath);
 
             $data['filepath'] = Storage::disk('public')->putFile('images', $data['file']);

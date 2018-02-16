@@ -39,7 +39,7 @@ class Exception
         if ($this->block->exception_rule) {
             return $this->hasAccess($path);
         } else {
-            return !$this->hasAccess($path);
+            return ! $this->hasAccess($path);
         }
     }
 
@@ -55,9 +55,9 @@ class Exception
             '.*',
         ];
 
-        $regexpPatter = '/^(' . preg_replace($to_replace, $replacements, $patterns_quoted) . ')$/';
+        $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
-        return (bool)preg_match($regexpPatter, $path);
+        return (bool) preg_match($regexpPatter, $path);
 
         return true;
     }

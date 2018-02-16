@@ -15,10 +15,10 @@ Route::group([
 
     // Menu
     Route::resource('/backend/menu/{menu}/link', \Alpaca\Controllers\MenuLinkController::class, ['except' => [
-        'index', 'show', 'create', 'edit'
+        'index', 'show', 'create', 'edit',
     ]]);
     Route::resource('/backend/menu', \Alpaca\Controllers\MenuController::class, ['except' => [
-        'show', 'create', 'edit'
+        'show', 'create', 'edit',
     ]]);
 
     // Block
@@ -26,15 +26,15 @@ Route::group([
 
     // Gallery
     Route::resource('/backend/image', \Alpaca\Controllers\ImageController::class, ['except' => [
-        'show', 'create', 'edit'
+        'show', 'create', 'edit',
     ]]);
 
     // User
     Route::resource('/backend/user', \Alpaca\Controllers\UserController::class, ['except' => [
-        'show', 'create', 'edit'
+        'show', 'create', 'edit',
     ]]);
     Route::resource('/backend/role', \Alpaca\Controllers\RolesController::class, ['except' => [
-        'show', 'create', 'edit'
+        'show', 'create', 'edit',
     ]]);
     Route::resource('/backend/permission', \Alpaca\Controllers\PermissionController::class, ['except' => [
         'show', 'create', 'edit', 'update', 'destroy',
@@ -43,5 +43,4 @@ Route::group([
     // Page
     Route::resource('/backend/page', \Alpaca\Controllers\PageController::class);
     Route::resource('/backend/category', \Alpaca\Controllers\CategoryController::class);
-
 });

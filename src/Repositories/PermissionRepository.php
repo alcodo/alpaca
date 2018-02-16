@@ -2,13 +2,13 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Permission;
+use Illuminate\Support\Facades\Validator;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
+use Alpaca\Events\Permission\PermissionWasSaved;
 use Alpaca\Events\Permission\PermissionWasCreated;
 use Alpaca\Events\Permission\PermissionWasDeleted;
-use Alpaca\Events\Permission\PermissionWasSaved;
 use Alpaca\Events\Permission\PermissionWasUpdated;
-use Alpaca\Models\Permission;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Illuminate\Support\Facades\Validator;
 
 class PermissionRepository
 {

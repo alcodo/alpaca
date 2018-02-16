@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Alpaca\Repositories\UserRepository;
+use Illuminate\Database\Migrations\Migration;
 
 class InstallAlpacaUser extends Migration
 {

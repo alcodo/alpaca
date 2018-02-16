@@ -30,5 +30,4 @@ class RefreshPermissionCacheListener
     {
         $this->guard->refreshCache();
     }
-
 }

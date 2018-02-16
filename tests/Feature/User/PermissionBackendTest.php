@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\User;
 
+use Tests\IntegrationTest;
+use Alpaca\Models\Permission;
+use Illuminate\Support\Facades\Event;
+use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Events\Permission\PermissionWasCreated;
 use Alpaca\Events\Permission\PermissionWasDeleted;
 use Alpaca\Events\Permission\PermissionWasUpdated;
-use Alpaca\Models\Permission;
-use Alpaca\Repositories\PermissionRepository;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class PermissionBackendTest extends IntegrationTest
 {
@@ -58,12 +58,11 @@ class PermissionBackendTest extends IntegrationTest
         $permission = $this->createPermission();
 
         $this->repo->update($permission, [
-            'name' => 'Delete article'
+            'name' => 'Delete article',
         ]);
 
-
         $this->assertDatabaseHas('permissions', [
-            'name' => 'Delete article'
+            'name' => 'Delete article',
         ]);
         Event::assertDispatched(PermissionWasUpdated::class);
     }
@@ -88,5 +87,4 @@ class PermissionBackendTest extends IntegrationTest
     {
         return $this->repo->create(['name' => 'Edit article']);
     }
-
 }

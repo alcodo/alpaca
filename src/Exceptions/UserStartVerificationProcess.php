@@ -2,13 +2,12 @@
 
 namespace Alpaca\Exceptions;
 
-use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserStartVerificationProcess extends \Exception
 {
-
     public function render(Request $request)
     {
         Auth::guard()->logout();
@@ -20,5 +19,4 @@ class UserStartVerificationProcess extends \Exception
 
         return redirect('/');
     }
-
 }

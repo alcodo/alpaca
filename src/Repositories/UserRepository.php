@@ -2,18 +2,16 @@
 
 namespace Alpaca\Repositories;
 
-
+use Alpaca\Models\Role;
+use Alpaca\Models\User;
+use Alpaca\Events\User\UserIsVerified;
 use Alpaca\Events\User\UserWasCreated;
 use Alpaca\Events\User\UserWasDeleted;
 use Alpaca\Events\User\UserWasUpdated;
-use Alpaca\Events\User\UserIsVerified;
-use Alpaca\Models\User;
 use Illuminate\Support\Facades\Validator;
-use Alpaca\Models\Role;
 
 class UserRepository
 {
-
     public function create(array $data): User
     {
         Validator::make($data, [
@@ -27,8 +25,7 @@ class UserRepository
 
         $user = User::create($data);
 
-
-        if (isset($data['roles']) && !empty($data['roles'])) {
+        if (isset($data['roles']) && ! empty($data['roles'])) {
             $user->assignRole($data['roles']);
         }
 
@@ -41,7 +38,7 @@ class UserRepository
     {
         Validator::make($data, [
             'name' => 'nullable|string|max:255',
-            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id . ',id',
+            'email' => 'nullable|string|email|max:255|unique:users,email,'.$user->id.',id',
             'password' => 'nullable|string|min:6',
             'verified' => 'nullable|boolean',
         ])->validate();
@@ -50,14 +47,14 @@ class UserRepository
         if (array_key_exists('password', $data)) {
             if (is_null($data['password'])) {
                 unset($data['password']);
-            } elseif (!empty($data['password'])) {
+            } elseif (! empty($data['password'])) {
                 $data['password'] = bcrypt($data['password']);
             }
         }
 
         $user->update($data);
 
-        if (isset($data['roles']) && !empty($data['roles'])) {
+        if (isset($data['roles']) && ! empty($data['roles'])) {
             $roleRepo = new RoleRepository();
             $roleRepo->syncRoleByIds($user, $data['roles']);
         }
@@ -99,12 +96,11 @@ class UserRepository
         return $user;
     }
 
-
     public function syncRole($roleSlug, $user): void
     {
         $role = Role::whereSlug($roleSlug)->first();
         if (is_null($role)) {
-            throw new \Exception('role not found: ' . $roleSlug);
+            throw new \Exception('role not found: '.$roleSlug);
         }
 
         self::syncRoleByIds($user, [$role->id]);
@@ -121,5 +117,4 @@ class UserRepository
 
         $user->roles()->sync($roleIds);
     }
-
 }

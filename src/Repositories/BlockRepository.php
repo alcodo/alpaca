@@ -2,16 +2,15 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Block;
 use Alpaca\Events\Block\BlockWasCreated;
 use Alpaca\Events\Block\BlockWasDeleted;
 use Alpaca\Events\Block\BlockWasUpdated;
-use Alpaca\Models\Block;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Support\Facades\Validator;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 
 class BlockRepository
 {
-
     public function create(array $data): Block
     {
         Validator::make($data, [

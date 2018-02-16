@@ -3,20 +3,19 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Models\Menu;
-use Alpaca\Repositories\MenuRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\MenuRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class MenuController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:menu.administer', ['only' => ['index']]);
-        $this->middleware('permission:menu.create', ['only' => ['store',]]);
-        $this->middleware('permission:menu.edit', ['only' => ['update',]]);
-        $this->middleware('permission:menu.delete', ['only' => ['destroy',]]);
+        $this->middleware('permission:menu.create', ['only' => ['store']]);
+        $this->middleware('permission:menu.edit', ['only' => ['update']]);
+        $this->middleware('permission:menu.delete', ['only' => ['destroy']]);
     }
 
     /**

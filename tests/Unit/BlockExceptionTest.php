@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
+use Tests\UnitTest;
 use Alpaca\Models\Block;
 use Alpaca\Support\Block\Roles\Exception;
-use Tests\UnitTest;
 
 class BlockExceptionTest extends UnitTest
 {

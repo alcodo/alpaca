@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\User;
 
-use Alpaca\Models\Permission;
 use Alpaca\Models\Role;
 use Tests\IntegrationTest;
+use Alpaca\Models\Permission;
 
 class MigrationTest extends IntegrationTest
 {

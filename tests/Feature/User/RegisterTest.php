@@ -2,15 +2,11 @@
 
 namespace Tests\Feature;
 
-use Alpaca\Listeners\User\AssignGuestRole;
-use Alpaca\Listeners\User\SendVerificationEmail;
-use Alpaca\Listeners\User\StartVerificationProcess;
 use Alpaca\Models\User;
-use Illuminate\Auth\Events\Attempting;
-use Illuminate\Auth\Events\Authenticated;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
+use Alpaca\Listeners\User\AssignGuestRole;
+use Alpaca\Listeners\User\StartVerificationProcess;
 
 class RegisterTest extends IntegrationTest
 {
@@ -61,5 +57,4 @@ class RegisterTest extends IntegrationTest
 //        Event::assertDispatched(AssignGuestRole::class);
 //        Event::assertDispatched(StartVerificationProcess::class);
     }
-
 }

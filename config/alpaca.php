@@ -2,18 +2,18 @@
 
 return [
 
-    /**
+    /*
      * Sitemap page
      */
     'sitemap' => [
-        'path' => '/sitemap'
+        'path' => '/sitemap',
     ],
 
-    /**
+    /*
      * Contact form
      */
     'contact' => [
-        'path' => '/contact'
-    ]
+        'path' => '/contact',
+    ],
 
 ];

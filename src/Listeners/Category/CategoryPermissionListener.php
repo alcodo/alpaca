@@ -28,7 +28,6 @@ class CategoryPermissionListener
             'slug' => 'category',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Administer categories',

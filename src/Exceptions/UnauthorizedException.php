@@ -16,7 +16,7 @@ class UnauthorizedException extends HttpException
 
         if (self::isExtendedException()) {
             $permStr = implode(', ', $roles);
-            $message = 'User does not have the right roles. Necessary roles are ' . $permStr;
+            $message = 'User does not have the right roles. Necessary roles are '.$permStr;
         }
 
         $exception = new static(403, $message, null, []);
@@ -31,7 +31,7 @@ class UnauthorizedException extends HttpException
 
         if (self::isExtendedException()) {
             $permStr = implode(', ', $permissions);
-            $message = 'User does not have the right permissions. Necessary permissions are ' . $permStr;
+            $message = 'User does not have the right permissions. Necessary permissions are '.$permStr;
         }
 
         $exception = new static(403, $message, null, []);

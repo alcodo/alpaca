@@ -3,20 +3,19 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Models\Role;
-use Alpaca\Repositories\RoleRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\RoleRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class RolesController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:role.administer', ['only' => ['index']]);
-        $this->middleware('permission:role.create', ['only' => ['store',]]);
-        $this->middleware('permission:role.edit', ['only' => ['update',]]);
-        $this->middleware('permission:role.delete', ['only' => ['destroy',]]);
+        $this->middleware('permission:role.create', ['only' => ['store']]);
+        $this->middleware('permission:role.edit', ['only' => ['update']]);
+        $this->middleware('permission:role.delete', ['only' => ['destroy']]);
     }
 
     /**

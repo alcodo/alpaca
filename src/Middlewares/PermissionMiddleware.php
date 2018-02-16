@@ -2,9 +2,9 @@
 
 namespace Alpaca\Middlewares;
 
-use Alpaca\Exceptions\UnauthorizedException;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Alpaca\Exceptions\UnauthorizedException;
 
 class PermissionMiddleware
 {

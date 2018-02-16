@@ -2,14 +2,13 @@
 
 namespace Tests\Feature\User;
 
+use Alpaca\Models\Role;
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Role\RoleWasCreated;
 use Alpaca\Events\Role\RoleWasDeleted;
 use Alpaca\Events\Role\RoleWasUpdated;
-use Alpaca\Models\Role;
-use Alpaca\Models\User;
 use Alpaca\Repositories\RoleRepository;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class RoleBackendTest extends IntegrationTest
 {
@@ -58,7 +57,6 @@ class RoleBackendTest extends IntegrationTest
         ])
             ->assertRedirect('/backend/role');
 
-
         $this->assertDatabaseHas('roles', [
             'name' => 'Alpha tester',
         ]);
@@ -83,7 +81,7 @@ class RoleBackendTest extends IntegrationTest
     protected function createRole()
     {
         $repo = new RoleRepository();
+
         return $repo->create(['name' => 'Beta tester']);
     }
-
 }

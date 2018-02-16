@@ -15,7 +15,7 @@ class Menu extends Model
 
     public function links()
     {
-        return $this->hasMany( MenuLink::class);
+        return $this->hasMany(MenuLink::class);
     }
 
     public function block()

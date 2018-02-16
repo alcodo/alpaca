@@ -2,7 +2,6 @@
 
 namespace Alpaca\Support\Permission;
 
-
 class PagePermission implements ModulePermissionContract
 {
     // name
@@ -17,12 +16,12 @@ class PagePermission implements ModulePermissionContract
     const UPDATE = 'update_page';
     const DELETE = 'delete_page';
 
-    static public function getModuleName()
+    public static function getModuleName()
     {
         return self::MODULE;
     }
 
-    static public function getAllPermissions()
+    public static function getAllPermissions()
     {
         return [
             self::VIEW,

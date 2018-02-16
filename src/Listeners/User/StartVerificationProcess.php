@@ -2,16 +2,15 @@
 
 namespace Alpaca\Listeners\User;
 
-use Alpaca\Repositories\UserRepository;
 use Alpaca\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Alpaca\Notifications\VerifyAccount;
-use Alpaca\Exceptions\UserStartVerificationProcess;
+use Alpaca\Repositories\UserRepository;
 use Illuminate\Support\Facades\Notification;
+use Alpaca\Exceptions\UserStartVerificationProcess;
 
 class StartVerificationProcess
 {
-
     /**
      * Handle the event.
      *
@@ -34,6 +33,5 @@ class StartVerificationProcess
 
         // output
         throw new UserStartVerificationProcess();
-
     }
 }

@@ -28,12 +28,10 @@ class ExtendUsersVerified extends Migration
      */
     public function up()
     {
-
         Schema::table($this->getUserTableName(), function (Blueprint $table) {
             $table->boolean('verified')->default(false);
             $table->string('verification_token')->nullable();
         });
-
     }
 
     /**
@@ -43,11 +41,9 @@ class ExtendUsersVerified extends Migration
      */
     public function down()
     {
-
         Schema::table($this->getUserTableName(), function (Blueprint $table) {
             $table->dropColumn('verified');
             $table->dropColumn('verification_token');
         });
-
     }
 }

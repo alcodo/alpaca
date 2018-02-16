@@ -2,43 +2,43 @@
 
 namespace Alpaca;
 
-use Alpaca\Commands\PublishTranslationCommand;
-use Alpaca\Events\Block\BlockIsRequested;
-use Alpaca\Events\Permission\PermissionsIsRequested;
-use Alpaca\Events\Permission\PermissionWasCreated;
-use Alpaca\Events\Permission\PermissionWasDeleted;
-use Alpaca\Events\Permission\PermissionWasSaved;
-use Alpaca\Events\Permission\PermissionWasUpdated;
+use Alpaca\Support\Guard;
+use Alpaca\Support\Block\BlockFacade;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Role\RoleWasCreated;
 use Alpaca\Events\Role\RoleWasDeleted;
 use Alpaca\Events\Role\RoleWasUpdated;
-use Alpaca\Events\Sitemap\SitemapIsRequested;
+use Alpaca\Events\User\UserIsVerified;
+use Alpaca\Support\Block\BlockBuilder;
+use Illuminate\Auth\Events\Registered;
+use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
-use Alpaca\Listeners\Block\BlockPermissionListener;
-use Alpaca\Listeners\Category\CategoryPermissionListener;
-use Alpaca\Listeners\Category\CategorySitemapListener;
-use Alpaca\Listeners\Contact\ContactPermissionListener;
-use Alpaca\Listeners\EmailTemplate\EmailTemplatePermissionListener;
-use Alpaca\Listeners\Image\ImagePermissionListener;
+use Alpaca\Listeners\User\IsUserVerified;
+use Illuminate\Auth\Events\Authenticated;
+use Alpaca\Listeners\User\AssignGuestRole;
+use Alpaca\Events\Sitemap\SitemapIsRequested;
+use Alpaca\Listeners\User\AssignRegisterRole;
+use Alpaca\Commands\PublishTranslationCommand;
+use Alpaca\Listeners\Page\PageSitemapListener;
+use Alpaca\Events\Permission\PermissionWasSaved;
+use Illuminate\Support\AggregateServiceProvider;
 use Alpaca\Listeners\Menu\MenuPermissionListener;
 use Alpaca\Listeners\Page\PagePermissionListener;
-use Alpaca\Listeners\Page\PageSitemapListener;
+use Alpaca\Listeners\Role\RolePermissionListener;
+use Alpaca\Listeners\User\UserPermissionListener;
+use Alpaca\Events\Permission\PermissionWasCreated;
+use Alpaca\Events\Permission\PermissionWasDeleted;
+use Alpaca\Events\Permission\PermissionWasUpdated;
+use Alpaca\Listeners\Block\BlockPermissionListener;
+use Alpaca\Listeners\Image\ImagePermissionListener;
+use Alpaca\Listeners\User\StartVerificationProcess;
+use Alpaca\Events\Permission\PermissionsIsRequested;
+use Alpaca\Listeners\Category\CategorySitemapListener;
+use Alpaca\Listeners\Contact\ContactPermissionListener;
+use Alpaca\Listeners\Category\CategoryPermissionListener;
 use Alpaca\Listeners\Permission\PermissionPermissionListener;
 use Alpaca\Listeners\Permission\RefreshPermissionCacheListener;
-use Alpaca\Listeners\Role\RolePermissionListener;
-use Alpaca\Events\User\UserIsVerified;
-use Alpaca\Listeners\User\IsUserVerified;
-use Alpaca\Listeners\User\StartVerificationProcess;
-use Alpaca\Listeners\User\AssignRegisterRole;
-use Alpaca\Listeners\User\AssignGuestRole;
-use Alpaca\Listeners\User\UserPermissionListener;
-use Alpaca\Support\Block\BlockBuilder;
-use Alpaca\Support\Block\BlockFacade;
-use Alpaca\Support\Guard;
-use Illuminate\Auth\Events\Authenticated;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\AggregateServiceProvider;
-use Illuminate\Support\Facades\Event;
+use Alpaca\Listeners\EmailTemplate\EmailTemplatePermissionListener;
 
 class AlpacaServiceProvider extends AggregateServiceProvider
 {
@@ -47,7 +47,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      */
     protected $listen = [
         Authenticated::class => [
-            IsUserVerified::class
+            IsUserVerified::class,
         ],
         Registered::class => [
             AssignGuestRole::class,
@@ -129,23 +129,23 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->registerEvents();
 
         // config
-        $this->mergeConfigFrom(__DIR__ . '/../config/alpaca.php', 'alpaca');
+        $this->mergeConfigFrom(__DIR__.'/../config/alpaca.php', 'alpaca');
 
         // view
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'alpaca');
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/alpaca'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/alpaca'),
         ]);
 
         // lang
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'alpaca');
 
         // migratiom
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // routes
-        $this->loadRoutesFrom(__DIR__ . '/routes_backend.php');
-        $this->loadRoutesFrom(__DIR__ . '/routes_fronted.php');
+        $this->loadRoutesFrom(__DIR__.'/routes_backend.php');
+        $this->loadRoutesFrom(__DIR__.'/routes_fronted.php');
 
         // facade
         $this->app->instance('block', new BlockBuilder());
@@ -155,7 +155,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
     }
 
     /**
-     * Add middlewares
+     * Add middlewares.
      *
      * @param \Illuminate\Routing\Router $router
      */
@@ -172,7 +172,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
     }
 
     /**
-     * Add events
+     * Add events.
      */
     public function registerEvents(): void
     {

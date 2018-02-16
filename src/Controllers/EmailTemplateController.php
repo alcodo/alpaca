@@ -2,14 +2,13 @@
 
 namespace Alpaca\Controllers;
 
+use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\View;
 use Alpaca\Notifications\ResetPassword;
 use Alpaca\Notifications\VerifyAccount;
-use Illuminate\Support\Facades\View;
-use Laracasts\Flash\Flash;
 
 class EmailTemplateController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:emailtemplate.show_template');
@@ -17,7 +16,7 @@ class EmailTemplateController extends Controller
 
     public function index()
     {
-        if (!View::exists('vendor.notifications.email')) {
+        if (! View::exists('vendor.notifications.email')) {
             Flash::error(trans('alpaca::emailtemplate.template_file_not_exists'));
         }
 
@@ -37,7 +36,7 @@ class EmailTemplateController extends Controller
 
     public function show($template)
     {
-        if (!View::exists('vendor.notifications.email')) {
+        if (! View::exists('vendor.notifications.email')) {
             throw new \Exception(trans('alpaca::emailtemplate.template_file_not_exists'));
         }
 
@@ -65,6 +64,7 @@ class EmailTemplateController extends Controller
         $message = $mail->toMail(null);
 
         $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
+
         return $markdown->render('vendor.notifications.email', $message->toArray());
     }
 }

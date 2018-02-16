@@ -2,23 +2,21 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Events\Permission\PermissionsIsRequested;
-use Alpaca\Interactions\CheckAllPermissionsExists;
-use Alpaca\Interactions\GetPermissionsFromForm;
 use Alpaca\Models\Role;
-use Alpaca\Repositories\PermissionRepository;
-use Alpaca\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\PermissionRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
+use Alpaca\Interactions\GetPermissionsFromForm;
+use Alpaca\Interactions\CheckAllPermissionsExists;
+use Alpaca\Events\Permission\PermissionsIsRequested;
 
 class PermissionController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:permission.administer', ['only' => ['index']]);
-        $this->middleware('permission:permission.edit', ['only' => ['store',]]);
+        $this->middleware('permission:permission.edit', ['only' => ['store']]);
     }
 
     /**

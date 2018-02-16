@@ -2,10 +2,10 @@
 
 namespace Alpaca\Support\Block;
 
-use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Models\Block;
-use Alpaca\Support\Block\Roles\Exception;
 use Alpaca\Support\Block\Roles\Html;
+use Alpaca\Events\Block\BlockIsRequested;
+use Alpaca\Support\Block\Roles\Exception;
 
 /**
  * This class gets all blocks.
@@ -13,7 +13,6 @@ use Alpaca\Support\Block\Roles\Html;
  */
 class BlockBuilder
 {
-
     /**
      * @var \Illuminate\Support\Collection
      */
@@ -74,7 +73,6 @@ class BlockBuilder
         return $this->blocks;
     }
 
-
     /**
      * Returns a html with all blocks for the area.
      *
@@ -95,7 +93,6 @@ class BlockBuilder
             $html = new Html($block);
 
             return $html->getHtml();
-
         })->implode('');
     }
 
@@ -125,7 +122,5 @@ class BlockBuilder
         if (isset($allBlocks[$area]) && $allBlocks[$area]->isNotEmpty()) {
             return $allBlocks[$area];
         }
-
-        return null;
     }
 }

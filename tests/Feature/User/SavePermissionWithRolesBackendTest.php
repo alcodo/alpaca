@@ -2,15 +2,12 @@
 
 namespace Tests\Feature\User;
 
-use Alpaca\Events\Permission\PermissionWasCreated;
-use Alpaca\Events\Permission\PermissionWasDeleted;
-use Alpaca\Events\Permission\PermissionWasSaved;
-use Alpaca\Events\Permission\PermissionWasUpdated;
-use Alpaca\Models\Permission;
 use Alpaca\Models\Role;
-use Alpaca\Repositories\PermissionRepository;
-use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
+use Alpaca\Models\Permission;
+use Illuminate\Support\Facades\Event;
+use Alpaca\Repositories\PermissionRepository;
+use Alpaca\Events\Permission\PermissionWasSaved;
 
 class SavePermissionWithRolesBackendTest extends IntegrationTest
 {
@@ -42,7 +39,7 @@ class SavePermissionWithRolesBackendTest extends IntegrationTest
                 'create' => 1,
                 'edit' => 1,
                 'administer' => 0,
-            ]
+            ],
         ])
             ->assertRedirect('/backend/permission');
 

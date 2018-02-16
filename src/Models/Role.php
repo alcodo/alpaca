@@ -24,7 +24,8 @@ class Role extends Model
 
     public function hasPermissionTo($permission): bool
     {
-        $key = $this->slug . '.' . $permission;
+        $key = $this->slug.'.'.$permission;
+
         return app('Alpaca\Support\Guard')->hasPermission($key);
     }
 }

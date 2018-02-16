@@ -2,16 +2,15 @@
 
 namespace Tests\Feature;
 
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
+use Alpaca\Repositories\MenuRepository;
 use Alpaca\Events\Menu\MenuLinkWasCreated;
 use Alpaca\Events\Menu\MenuLinkWasDeleted;
 use Alpaca\Events\Menu\MenuLinkWasUpdated;
-use Alpaca\Repositories\MenuRepository;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class MenuLinkTest extends IntegrationTest
 {
-
     public function setUp()
     {
         parent::setUp();
@@ -89,7 +88,7 @@ class MenuLinkTest extends IntegrationTest
     {
         $repo = new MenuRepository();
         $repo->create([
-            'title' => 'Demo Menu'
+            'title' => 'Demo Menu',
         ]);
     }
 
@@ -101,5 +100,4 @@ class MenuLinkTest extends IntegrationTest
             'href' => '/menulink',
         ]);
     }
-
 }

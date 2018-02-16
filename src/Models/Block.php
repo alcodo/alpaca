@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Block extends Model
 {
-
     /**
      * Possible areas.
      */
@@ -41,14 +40,13 @@ class Block extends Model
         'user_id',
     ];
 
-
     public static function getAreaChoice()
     {
         $areas = self::AREAS;
         $areas = array_flip($areas);
 
         foreach ($areas as $id => $number) {
-            $areas[$id] = trans('block::block.' . $id);
+            $areas[$id] = trans('block::block.'.$id);
         }
 
         return $areas;

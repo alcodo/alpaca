@@ -49,7 +49,7 @@ class PublishTranslationCommand extends Command
         $sourcePath = base_path('vendor/caouecs/laravel-lang/src');
         $targetPath = base_path('resources/lang/');
 
-        if (!is_dir($targetPath) && !mkdir($targetPath)) {
+        if (! is_dir($targetPath) && ! mkdir($targetPath)) {
             return $this->error('The lang path "resources/lang/" does not exist or not writable.');
         }
 
@@ -71,7 +71,7 @@ class PublishTranslationCommand extends Command
                 }
                 $file = $sourcePath.'/'.trim($filename);
 
-                if (!file_exists($file)) {
+                if (! file_exists($file)) {
                     $this->error("lang '$filename' not found.");
 
                     continue;

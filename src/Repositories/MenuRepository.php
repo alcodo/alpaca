@@ -2,19 +2,18 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Menu;
+use Alpaca\Models\Category;
 use Alpaca\Events\Menu\MenuWasCreated;
 use Alpaca\Events\Menu\MenuWasDeleted;
 use Alpaca\Events\Menu\MenuWasUpdated;
-use Alpaca\Models\Category;
-use Alpaca\Models\Menu;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 use Illuminate\Support\Facades\Validator;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
 
 class MenuRepository
 {
-
     /**
-     * Create a page
+     * Create a page.
      *
      * @param array $data
      * @return Menu

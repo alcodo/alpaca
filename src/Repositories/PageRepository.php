@@ -2,21 +2,21 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Page;
+use Illuminate\Support\Collection;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
 use Alpaca\Events\Page\PageWasUpdated;
-use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Alpaca\Models\Page;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
+use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class PageRepository
 {
     use ValidatesRequests;
 
     /**
-     * Create a page
+     * Create a page.
      *
      * @param array $data
      * @return Page
@@ -37,12 +37,12 @@ class PageRepository
             'meta_robots' => 'nullable|string',
         ])->validate();
 
-        if (!isset($data['teaser']) || empty($data['teaser'])) {
+        if (! isset($data['teaser']) || empty($data['teaser'])) {
             $data['teaser'] = ''; // TODO
         }
 
-        if (!isset($data['path']) || empty($data['path'])) {
-            $data['path'] = '/' . SlugifyFacade::slugify($data['title']);
+        if (! isset($data['path']) || empty($data['path'])) {
+            $data['path'] = '/'.SlugifyFacade::slugify($data['title']);
         }
 
         // TODO user id ?
@@ -59,7 +59,7 @@ class PageRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string|unique:pages,path,' . $page->id . ',id',
+            'path' => 'nullable|string|unique:pages,path,'.$page->id.',id',
             'active' => 'required|boolean',
             // ref
             'user_id' => 'nullable|integer',
@@ -70,12 +70,12 @@ class PageRepository
             'meta_robots' => 'nullable|string',
         ])->validate();
 
-        if (!isset($data['teaser']) || empty($data['teaser'])) {
+        if (! isset($data['teaser']) || empty($data['teaser'])) {
             $data['teaser'] = ''; // TODO
         }
 
-        if (!isset($data['path']) || empty($data['path'])) {
-            $data['path'] = '/' . SlugifyFacade::slugify($data['title']);
+        if (! isset($data['path']) || empty($data['path'])) {
+            $data['path'] = '/'.SlugifyFacade::slugify($data['title']);
         }
 
         $page->update($data);
@@ -116,5 +116,4 @@ class PageRepository
 
         return $releated;
     }
-
 }

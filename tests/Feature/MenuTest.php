@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
+use Alpaca\Models\Menu;
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Menu\MenuWasCreated;
 use Alpaca\Events\Menu\MenuWasDeleted;
 use Alpaca\Events\Menu\MenuWasUpdated;
-use Alpaca\Models\Menu;
 use Alpaca\Repositories\MenuRepository;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class MenuTest extends IntegrationTest
 {
@@ -50,9 +50,8 @@ class MenuTest extends IntegrationTest
 
         $repo = new MenuRepository();
         $repo->create([
-            'title' => 'Cazy'
+            'title' => 'Cazy',
         ]);
-
 
         $this->withoutExceptionHandling();
         $this->put('/backend/menu/1', [
@@ -79,5 +78,4 @@ class MenuTest extends IntegrationTest
         $this->assertEquals(0, Menu::count());
         Event::assertDispatched(MenuWasDeleted::class);
     }
-
 }
