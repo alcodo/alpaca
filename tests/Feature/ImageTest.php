@@ -2,15 +2,15 @@
 
 namespace Tests\Feature;
 
-use Alpaca\Events\Image\ImageWasCreated;
-use Alpaca\Events\Image\ImageWasDeleted;
-use Alpaca\Events\Image\ImageWasUpdated;
 use Alpaca\Models\Image;
-use Alpaca\Repositories\ImageRepository;
+use Tests\IntegrationTest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
-use Tests\IntegrationTest;
+use Alpaca\Events\Image\ImageWasCreated;
+use Alpaca\Events\Image\ImageWasDeleted;
+use Alpaca\Events\Image\ImageWasUpdated;
+use Alpaca\Repositories\ImageRepository;
 
 class ImageTest extends IntegrationTest
 {
@@ -39,7 +39,6 @@ class ImageTest extends IntegrationTest
             'file' => UploadedFile::fake()->image('example.jpg'),
         ])
             ->assertRedirect('/backend/image');
-
 
         $this->assertDatabaseHas('images', [
             'title' => 'Example image',
@@ -108,5 +107,4 @@ class ImageTest extends IntegrationTest
             'file' => UploadedFile::fake()->image('test.png'),
         ]);
     }
-
 }

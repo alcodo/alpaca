@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Category\CategoryWasCreated;
 use Alpaca\Events\Category\CategoryWasDeleted;
 use Alpaca\Events\Category\CategoryWasUpdated;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class CategoryTest extends IntegrationTest
 {
@@ -105,5 +105,4 @@ class CategoryTest extends IntegrationTest
 
         Event::assertDispatched(CategoryWasDeleted::class);
     }
-
 }

@@ -23,12 +23,10 @@ class PagePermissionListener
      */
     public function handle()
     {
-
         $module = new PermissionModule([
             'title' => 'Page',
             'slug' => 'page',
         ]);
-
 
         $module->permissions = [
             new Permission([

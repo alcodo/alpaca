@@ -4,20 +4,19 @@ namespace Alpaca\Controllers;
 
 use Alpaca\Models\Role;
 use Alpaca\Models\User;
-use Alpaca\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\UserRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:user.administer', ['only' => ['index']]);
-        $this->middleware('permission:user.create', ['only' => ['store',]]);
-        $this->middleware('permission:user.edit', ['only' => ['update',]]);
-        $this->middleware('permission:user.delete', ['only' => ['destroy',]]);
+        $this->middleware('permission:user.create', ['only' => ['store']]);
+        $this->middleware('permission:user.edit', ['only' => ['update']]);
+        $this->middleware('permission:user.delete', ['only' => ['destroy']]);
     }
 
     /**

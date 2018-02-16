@@ -28,7 +28,6 @@ class EmailTemplatePermissionListener
             'slug' => 'emailtemplate',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Show template',

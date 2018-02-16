@@ -7,7 +7,6 @@ use Alpaca\Repositories\UserRepository;
 
 class AssignRegisterRole
 {
-
     /**
      * Handle the event.
      *

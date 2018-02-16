@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use Alpaca\Models\User;
-use Alpaca\Repositories\UserRepository;
-use Illuminate\Support\Facades\Event;
 use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
+use Alpaca\Repositories\UserRepository;
 
 class LoginTest extends IntegrationTest
 {
@@ -70,7 +70,7 @@ class LoginTest extends IntegrationTest
         $user = $this->createUser();
 
         // prepare
-        /** @var \Alpaca\Models\User $user */
+        /* @var \Alpaca\Models\User $user */
         $this->assertFalse(User::find($user->id)->verified);
         $this->assertGuest();
 
@@ -91,6 +91,7 @@ class LoginTest extends IntegrationTest
     protected function createUser()
     {
         $repo = new UserRepository();
+
         return $repo->create([
             'name' => 'JohnDoe',
             'email' => 'john@example.com',
@@ -98,5 +99,4 @@ class LoginTest extends IntegrationTest
             'password_confirmation' => '123456',
         ]);
     }
-
 }

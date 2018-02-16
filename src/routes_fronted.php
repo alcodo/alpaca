@@ -13,10 +13,10 @@ Route::group([
 
     // Contact
     Route::get(config('alpaca.contact.path'), [
-        'as' => 'contact.show', 'uses' => '\Alpaca\Controllers\ContactController@show'
+        'as' => 'contact.show', 'uses' => '\Alpaca\Controllers\ContactController@show',
     ]);
     Route::post(config('alpaca.contact.path'), [
-        'as' => 'contact.send', 'uses' => '\Alpaca\Controllers\ContactController@send'
+        'as' => 'contact.send', 'uses' => '\Alpaca\Controllers\ContactController@send',
     ]);
 
     if (config('app.env') === 'testing') {
@@ -44,28 +44,25 @@ Route::group([
         $categories = \Alpaca\Models\Category::all();
 
         $categories->map(function ($category) {
-
             Route::get($category->path, function () use ($category) {
                 $controller = new \Alpaca\Controllers\CategoryController();
+
                 return $controller->show($category);
             });
         });
 
-
         /**
-         * Page
+         * Page.
          */
         $pages = \Alpaca\Models\Page::all();
 
         $pages->map(function ($page) {
-
             Route::get($page->path, function () use ($page) {
                 $controller = new \Alpaca\Controllers\PageController();
+
                 return $controller->show($page);
             });
         });
-
     } catch (Illuminate\Database\QueryException $e) {
     }
-
 });

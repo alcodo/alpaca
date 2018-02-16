@@ -3,8 +3,8 @@
 namespace Alpaca\Models;
 
 use Alpaca\Traits\Permission;
-use Illuminate\Notifications\Notifiable;
 use Alpaca\Notifications\ResetPassword;
+use Illuminate\Notifications\Notifiable;
 
 class User extends \Illuminate\Foundation\Auth\User
 {
@@ -71,5 +71,4 @@ class User extends \Illuminate\Foundation\Auth\User
 
         return '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
     }
-
 }

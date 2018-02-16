@@ -2,13 +2,12 @@
 
 namespace Alpaca\Exceptions;
 
-use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserIsNotVerified extends \Exception
 {
-
     public function render(Request $request)
     {
         Auth::guard()->logout();
@@ -18,5 +17,4 @@ class UserIsNotVerified extends \Exception
 
         return redirect('/');
     }
-
 }

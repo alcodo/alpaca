@@ -3,20 +3,18 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Models\Menu;
-use Alpaca\Models\MenuLink;
-use Alpaca\Repositories\MenuLinkRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Alpaca\Models\MenuLink;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\MenuLinkRepository;
 
 class MenuLinkController extends Controller
 {
-
     public function __construct()
     {
-        $this->middleware('permission:menu.add_link', ['only' => ['store',]]);
-        $this->middleware('permission:menu.edit_link', ['only' => ['update',]]);
-        $this->middleware('permission:menu.delete_link', ['only' => ['destroy',]]);
+        $this->middleware('permission:menu.add_link', ['only' => ['store']]);
+        $this->middleware('permission:menu.edit_link', ['only' => ['update']]);
+        $this->middleware('permission:menu.delete_link', ['only' => ['destroy']]);
     }
 
     /**
@@ -34,7 +32,6 @@ class MenuLinkController extends Controller
 
         return redirect('/backend/menu');
     }
-
 
     /**
      * Update the specified resource in storage.

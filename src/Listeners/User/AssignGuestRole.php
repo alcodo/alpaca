@@ -7,7 +7,6 @@ use Alpaca\Repositories\UserRepository;
 
 class AssignGuestRole
 {
-
     /**
      * Handle the event.
      *
@@ -23,6 +22,5 @@ class AssignGuestRole
 
         $repo = new UserRepository();
         $repo->syncRole('guest', $user);
-
     }
 }

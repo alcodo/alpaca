@@ -27,12 +27,10 @@ class PageSitemapListener
         $sitemaps = [];
 
         foreach ($pages as $page) {
-
             $sitemaps[] = new Sitemap([
                 'title' => $page->title,
-                'url' => config('app.url') . $page->path,
+                'url' => config('app.url').$page->path,
             ]);
-
         }
 
         return $sitemaps;

@@ -2,10 +2,10 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Mail\ContactFormWasFilled;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Alpaca\Mail\ContactFormWasFilled;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Config;
 use Artesaos\SEOTools\Facades\OpenGraph;

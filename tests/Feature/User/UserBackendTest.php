@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
+use Alpaca\Models\User;
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\User\UserWasCreated;
 use Alpaca\Events\User\UserWasDeleted;
 use Alpaca\Events\User\UserWasUpdated;
-use Alpaca\Models\User;
 use Alpaca\Repositories\UserRepository;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class UserBackendTest extends IntegrationTest
 {
@@ -55,10 +55,9 @@ class UserBackendTest extends IntegrationTest
         $this->createUser();
 
         $this->put('/backend/user/1', [
-            'name' => 'Max'
+            'name' => 'Max',
         ])
             ->assertRedirect('/backend/user');
-
 
         $this->assertDatabaseHas('users', [
             'name' => 'Max',
@@ -100,5 +99,4 @@ class UserBackendTest extends IntegrationTest
             'password_confirmation' => '123456',
         ]);
     }
-
 }

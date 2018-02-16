@@ -6,8 +6,8 @@ use Validator;
 use Laracasts\Flash\Flash;
 use Alpaca\User\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
 use Alpaca\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -68,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $redirect = request('redirect');
-        if (!empty($redirect)) {
+        if (! empty($redirect)) {
             $this->redirectTo = $redirect;
         }
 

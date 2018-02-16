@@ -2,12 +2,12 @@
 
 namespace Alpaca;
 
-use Approached\LaravelDateInternational\ServiceProvider as LaravelDateInternationalServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
+use Approached\LaravelDateInternational\ServiceProvider as LaravelDateInternationalServiceProvider;
 
 class DependencyServiceProvider extends AggregateServiceProvider
 {

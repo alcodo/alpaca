@@ -2,22 +2,21 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Models\Category;
-use Alpaca\Repositories\PageRepository;
-use Illuminate\Http\Request;
 use Alpaca\Models\Page;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Alpaca\Models\Category;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\PageRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class PageController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:page.administer', ['only' => ['index']]);
-        $this->middleware('permission:page.create', ['only' => ['create', 'store',]]);
-        $this->middleware('permission:page.edit', ['only' => ['edit', 'update',]]);
-        $this->middleware('permission:page.delete', ['only' => ['destroy',]]);
+        $this->middleware('permission:page.create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:page.edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:page.delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -85,7 +84,7 @@ class PageController extends Controller
 
         $releated = $repo->getRelatedPages($page);
 
-        if (!empty($page->meta_robots)) {
+        if (! empty($page->meta_robots)) {
             SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 

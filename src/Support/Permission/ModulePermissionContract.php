@@ -4,9 +4,7 @@ namespace Alpaca\Support\Permission;
 
 interface ModulePermissionContract
 {
+    public static function getModuleName();
 
-    static public function getModuleName();
-
-    static public function getAllPermissions();
-
+    public static function getAllPermissions();
 }

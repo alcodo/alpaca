@@ -3,20 +3,19 @@
 namespace Alpaca\Controllers;
 
 use Alpaca\Models\Image;
-use Alpaca\Repositories\ImageRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\ImageRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class ImageController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:image.administer', ['only' => ['index']]);
-        $this->middleware('permission:image.create', ['only' => ['store',]]);
-        $this->middleware('permission:image.edit', ['only' => ['update',]]);
-        $this->middleware('permission:image.delete', ['only' => ['destroy',]]);
+        $this->middleware('permission:image.create', ['only' => ['store']]);
+        $this->middleware('permission:image.edit', ['only' => ['update']]);
+        $this->middleware('permission:image.delete', ['only' => ['destroy']]);
     }
 
     /**

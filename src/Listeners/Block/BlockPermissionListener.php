@@ -28,7 +28,6 @@ class BlockPermissionListener
             'slug' => 'block',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Administer blocks',

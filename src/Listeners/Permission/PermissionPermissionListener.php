@@ -28,7 +28,6 @@ class PermissionPermissionListener
             'slug' => 'permission',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Administer permissions',

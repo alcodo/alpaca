@@ -3,14 +3,10 @@
 namespace Alpaca\Events\Block;
 
 use Alpaca\Models\Block;
-use Illuminate\Broadcasting\Channel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Support\Facades\Auth;
 
 class BlockWasCreated
 {
@@ -35,5 +31,4 @@ class BlockWasCreated
         $this->user = Auth::user();
         $this->block = $block;
     }
-
 }

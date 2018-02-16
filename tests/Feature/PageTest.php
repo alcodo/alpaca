@@ -2,15 +2,14 @@
 
 namespace Tests\Feature;
 
+use Tests\IntegrationTest;
+use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
 use Alpaca\Events\Page\PageWasUpdated;
-use Illuminate\Support\Facades\Event;
-use Tests\IntegrationTest;
 
 class PageTest extends IntegrationTest
 {
-
     public function setUp()
     {
         parent::setUp();
@@ -105,5 +104,4 @@ class PageTest extends IntegrationTest
 
         Event::assertDispatched(PageWasDeleted::class);
     }
-
 }

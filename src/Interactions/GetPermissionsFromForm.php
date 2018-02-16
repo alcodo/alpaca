@@ -6,7 +6,7 @@ use Alpaca\Repositories\PermissionRepository;
 
 class GetPermissionsFromForm
 {
-    protected $permissions = array();
+    protected $permissions = [];
 
     public function __construct()
     {
@@ -15,36 +15,27 @@ class GetPermissionsFromForm
 
     /**
      * Transform formdata to module with permission key
-     * Example: page.create_page
+     * Example: page.create_page.
      *
      * @param $formData
      * @return $this
      */
     public function handle($formData)
     {
-
         foreach ($formData as $moduleName => $data) {
-
             if (is_array($data)) {
-
-
                 foreach ($data as $permissionSlug => $value) {
-
-                    $permissionKey = $moduleName . '.' . $permissionSlug;
+                    $permissionKey = $moduleName.'.'.$permissionSlug;
                     $this->permissions[$permissionKey] = $value;
-
                 }
-
-
             }
-
         }
 
         return $this;
     }
 
     /**
-     * Return only active permssions
+     * Return only active permssions.
      *
      * @return mixed
      */
@@ -53,9 +44,7 @@ class GetPermissionsFromForm
         return collect($this->permissions)
             ->filter()
             ->map(function ($value, $permissionName) {
-
                 return $this->repo->findOrCreate(['name' => $permissionName]);
-
             })
             ->all();
     }

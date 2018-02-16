@@ -6,7 +6,6 @@ use Alpaca\Models\Role;
 
 trait Permission
 {
-
     /**
      * Determine if the model has (one of) the given role(s).
      *
@@ -31,8 +30,10 @@ trait Permission
                     return true;
                 }
             }
+
             return false;
         }
+
         return $roles->intersect($this->roles)->isNotEmpty();
     }
 
@@ -40,5 +41,4 @@ trait Permission
     {
         return $this->belongsToMany(Role::class);
     }
-
 }

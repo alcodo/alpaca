@@ -2,12 +2,11 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Repositories\UserRepository;
 use Laracasts\Flash\Flash;
+use Alpaca\Repositories\UserRepository;
 
 class VerifyController extends Controller
 {
-
     public function verify($token, UserRepository $repo)
     {
         $user = $repo->verify($token);

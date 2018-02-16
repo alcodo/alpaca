@@ -2,19 +2,17 @@
 
 namespace Alpaca\Repositories;
 
-
+use Alpaca\Models\Category;
+use Illuminate\Support\Facades\Validator;
 use Alpaca\Events\Category\CategoryWasCreated;
 use Alpaca\Events\Category\CategoryWasDeleted;
 use Alpaca\Events\Category\CategoryWasUpdated;
-use Alpaca\Models\Category;
 use Cocur\Slugify\Bridge\Laravel\SlugifyFacade;
-use Illuminate\Support\Facades\Validator;
 
 class CategoryRepository
 {
-
     /**
-     * Create a page
+     * Create a page.
      *
      * @param array $data
      * @return Category
@@ -28,8 +26,8 @@ class CategoryRepository
             'active' => 'required|boolean',
         ])->validate();
 
-        if (!isset($data['path']) || empty($data['path'])) {
-            $data['path'] = '/' . SlugifyFacade::slugify($data['title']);
+        if (! isset($data['path']) || empty($data['path'])) {
+            $data['path'] = '/'.SlugifyFacade::slugify($data['title']);
         }
 
         $category = Category::create($data);
@@ -44,12 +42,12 @@ class CategoryRepository
         Validator::make($data, [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'path' => 'nullable|string|unique:categories,path,' . $category->id . ',id',
+            'path' => 'nullable|string|unique:categories,path,'.$category->id.',id',
             'active' => 'required|boolean',
         ])->validate();
 
-        if (!isset($data['path']) || empty($data['path'])) {
-            $data['path'] = '/' . SlugifyFacade::slugify($data['title']);
+        if (! isset($data['path']) || empty($data['path'])) {
+            $data['path'] = '/'.SlugifyFacade::slugify($data['title']);
         }
 
         $category->update($data);

@@ -2,22 +2,21 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Models\Block;
 use Alpaca\Models\Menu;
-use Alpaca\Repositories\BlockRepository;
-use Illuminate\Http\Request;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
+use Alpaca\Models\Block;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Alpaca\Repositories\BlockRepository;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class BlockController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('permission:block.administer', ['only' => ['index']]);
-        $this->middleware('permission:block.create', ['only' => ['create', 'store',]]);
-        $this->middleware('permission:block.edit', ['only' => ['edit', 'update',]]);
-        $this->middleware('permission:block.delete', ['only' => ['destroy',]]);
+        $this->middleware('permission:block.create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:block.edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:block.delete', ['only' => ['destroy']]);
     }
 
     /**

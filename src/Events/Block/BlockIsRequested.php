@@ -2,13 +2,9 @@
 
 namespace Alpaca\Events\Block;
 
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class BlockIsRequested
 {
@@ -23,5 +19,4 @@ class BlockIsRequested
     public function __construct()
     {
     }
-
 }

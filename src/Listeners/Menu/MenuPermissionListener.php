@@ -28,7 +28,6 @@ class MenuPermissionListener
             'slug' => 'menu',
         ]);
 
-
         $module->permissions = [
             new Permission([
                 'name' => 'Administer menus',

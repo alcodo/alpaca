@@ -1,12 +1,11 @@
 <?php
 
 use Alpaca\Models\User;
-use Alpaca\Repositories\UserRepository;
 use Tests\IntegrationTest;
+use Alpaca\Repositories\UserRepository;
 
 class VerificationTest extends IntegrationTest
 {
-
     public function setUp()
     {
         parent::setUp();
@@ -31,17 +30,17 @@ class VerificationTest extends IntegrationTest
         $this->assertEquals(0, User::first()->verified);
 
         // verify account
-        $this->get('/register/verify/' . $token)->assertRedirect('/');
+        $this->get('/register/verify/'.$token)->assertRedirect('/');
 
         // check db
         $this->assertNull(User::first()->verification_token);
         $this->assertEquals(1, User::first()->verified);
     }
 
-
     protected function createUser()
     {
         $repo = new UserRepository();
+
         return $repo->create([
             'name' => 'JohnDoe',
             'email' => 'john@example.com',
@@ -49,5 +48,4 @@ class VerificationTest extends IntegrationTest
             'password_confirmation' => '123456',
         ]);
     }
-
 }

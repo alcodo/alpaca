@@ -6,7 +6,7 @@ use Alpaca\Repositories\PermissionRepository;
 
 class CheckAllPermissionsExists
 {
-    protected $allPermissions = array();
+    protected $allPermissions = [];
 
     public function __construct()
     {
@@ -14,27 +14,21 @@ class CheckAllPermissionsExists
     }
 
     /**
-     * Check that every permission exists
+     * Check that every permission exists.
      *
      * @param $data
      */
     public function handle($data)
     {
-
         foreach ($data as $permissionModule) {
-
             foreach ($permissionModule->permissions as $permission) {
-
                 $this->allPermissions[] = $this->repo->findOrCreate([
                     'name' => $permission->name,
-                    'slug' => $permissionModule->slug . '.' . $permission->slug,
+                    'slug' => $permissionModule->slug.'.'.$permission->slug,
                 ]);
-
             }
-
         }
 
         return $this->allPermissions;
-
     }
 }
