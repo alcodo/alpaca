@@ -112,6 +112,13 @@ class UserRepository
 
     public function syncRoleByIds($user, array $roleIds): void
     {
+        // workaround for other user class
+        if (method_exists($user, 'roles') === false) {
+            $user = new User([
+                'id' => $user->id,
+            ]);
+        }
+
         $user->roles()->sync($roleIds);
     }
 
