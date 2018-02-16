@@ -1,5 +1,14 @@
 Package is under development!
 
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></a></p>
+
+<p align="center">
+<a href="https://travis-ci.org/alcodo/alpaca"><img src="https://travis-ci.org/alcodo/alpaca.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/alcodo/alpaca"><img src="https://poser.pugx.org/alcodo/alpaca/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/alcodo/alpaca/framework"><img src="https://poser.pugx.org/alcodo/alpaca/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/alcodo/alpaca/framework"><img src="https://poser.pugx.org/alcodo/alpaca/license.svg" alt="License"></a>
+</p>
+
 # Alpaca
 Simple CMS System based on Laravel Framework.
 
