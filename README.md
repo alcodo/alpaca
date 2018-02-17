@@ -30,6 +30,7 @@ https://trends.google.de/trends/explore?q=Wordpress,Drupal,typo3,joomla,octoberc
 
 ## Installation
 
+### Package
 Install [laravel](https://laravel.com/docs/5.5/installation#installing-laravel)
 ```bash
 laravel new blog
@@ -38,8 +39,6 @@ laravel new blog
 Install *alpaca* and dependecies
 ```bash
 composer require alcodo/alpaca
-npm install file:./vendor/alcodo/alpaca/resources/js --save-dev
-yarn or with npm install
 ```
 
 Start create tables
@@ -55,13 +54,10 @@ Route::get('/', function () {
     return view('welcome');
 });
  ```
+ 
+### Template 
 
-Create laravel basic login and registration auth
-```bash
-php artisan make:auth
-```
-
-Export the template
+Export the template:
 ```bash
 php artisan vendor:publish --provider Alpaca\AlpacaServiceProvider
 
@@ -70,6 +66,23 @@ require('../../../vendor/alcodo/alpaca/resources/js/alpaca.js');
 
 Add in resources/assets/sass/app.scss:
 @import 'vendor/alcodo/alpaca/resources/sass/alpaca.scss';
+```
+
+Add alpaca npm dependencies:
+```bash
+npm install file:./vendor/alcodo/alpaca/resources/js --save-dev
+yarn or with npm install
+```
+
+### Extend auth logic
+Create laravel basic login and registration auth
+```bash
+php artisan make:auth
+```
+
+Copy translated auth blade template files. This files are automatic integrated with alpaca:
+```bash
+cp -r vendor/alcodo/alpaca/resources/views/auth/ resources/views/auth/
 ```
 
 Add to your User model the permission trait:
@@ -84,25 +97,17 @@ class User extends Authenticatable
     ...
 ```
 
-Add translation files for your language:
-```bash
-art alpaca:publish_transaltion de
-```
-
-Try to login with
+Try to login with:
 ```
 email: admin@alpaca.com
 password: alpaca
 ```
 
 ### Optional
-
-Copy translated auth blade template files:
+Add translation files for your language:
 ```bash
-cp -r vendor/alcodo/alpaca/resources/views/auth/ resources/views/auth/
+art alpaca:publish_transaltion de
 ```
-
-*TODO*
 
 ## Projects which alpaca uses
 
