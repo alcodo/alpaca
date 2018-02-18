@@ -59,7 +59,7 @@ class CategoryController extends Controller
 
         Flash::success(trans('alpaca::alpaca.successfully_created'));
 
-        return redirect($page->path);
+        return redirect('/backend/category');
     }
 
     /**
@@ -103,7 +103,7 @@ class CategoryController extends Controller
 
         Flash::success(trans('alpaca::category.alpaca.successfully_updated'));
 
-        return redirect($category->path);
+        return redirect('/backend/category');
     }
 
     /**

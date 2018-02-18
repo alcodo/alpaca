@@ -63,7 +63,7 @@ class PageController extends Controller
 
         Flash::success(trans('alpaca::alpaca.successfully_created'));
 
-        return redirect($page->path);
+        return redirect('/backend/page');
     }
 
     /**
@@ -130,7 +130,7 @@ class PageController extends Controller
 
         Flash::success(trans('alpaca::alpaca.successfully_updated'));
 
-        return redirect($page->path);
+        return redirect('/backend/page');
     }
 
     /**

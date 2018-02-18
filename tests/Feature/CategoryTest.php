@@ -50,7 +50,7 @@ class CategoryTest extends IntegrationTest
             'content' => 'Here you can ...',
             'active' => true,
         ])
-            ->assertRedirect('/general-category');
+            ->assertRedirect('/backend/category');
 
         $this->assertDatabaseHas('categories', [
             'title' => 'General category',
@@ -78,7 +78,7 @@ class CategoryTest extends IntegrationTest
             'content' => 'So cool',
             'active' => true,
         ])
-            ->assertRedirect('/new/path');
+            ->assertRedirect('/backend/category');
 
         $this->assertDatabaseHas('categories', [
             'title' => 'New cool Title',

@@ -49,7 +49,7 @@ class PageTest extends IntegrationTest
             'content' => 'So cool',
             'active' => true,
         ])
-            ->assertRedirect('/my-new-page');
+            ->assertRedirect('/backend/page');
 
         $this->assertDatabaseHas('pages', [
             'title' => 'My new Page',
@@ -77,7 +77,7 @@ class PageTest extends IntegrationTest
             'content' => 'So cool',
             'active' => true,
         ])
-            ->assertRedirect('/new/path');
+            ->assertRedirect('/backend/page');
 
         $this->assertDatabaseHas('pages', [
             'title' => 'New cool Title',
