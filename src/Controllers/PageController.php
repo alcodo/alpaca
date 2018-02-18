@@ -29,7 +29,7 @@ class PageController extends Controller
         SEO::setTitle(trans('alpaca::page.page_index'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $pages = Page::paginate(20);
+        $pages = Page::orderBy('updated_at', 'desc')->paginate(20);
 
         return view('alpaca::page.index', compact('pages'));
     }
