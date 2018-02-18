@@ -16,4 +16,11 @@ return [
         'path' => '/contact',
     ],
 
+    /**
+     * Cookie consent footer
+     */
+    'cookieconsent' => [
+        'path' => '/imprint',
+    ],
+
 ];

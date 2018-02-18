@@ -4,7 +4,7 @@
         <div class="container">
             <div class="col-sm-11 col-xs-10">
                 {{ trans('alpaca::cookieconsent.description') }}
-                <a href="/imprint" target="_blank">
+                <a href="{{ config('alpaca.cookieconsent.path') }}" target="_blank">
                     {{ trans('alpaca::cookieconsent.more') }}
                 </a>
             </div>
