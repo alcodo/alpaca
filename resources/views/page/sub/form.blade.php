@@ -32,6 +32,8 @@
 <b-tabs v-cloak>
     <b-tab title="{{ trans('alpaca::alpaca.content') }}" active>
 
+        <quill-editor></quill-editor>
+
         <div class="form-group">
             <span class="text-danger">*</span><textarea class="form-control" id="content" rows="15" name="content" required>
                 {{ old('content', isset($page) ? $page->content : '') }}

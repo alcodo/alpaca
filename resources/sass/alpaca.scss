@@ -1,3 +1,10 @@
 [v-cloak] {
   display: none;
 }
+
+/**
+ * quill-editor
+ */
+@import "quill-editor/quill.core";
+@import "quill-editor/quill.snow";
+//@import "quill-editor/quill.bubble";
