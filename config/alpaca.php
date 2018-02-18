@@ -16,7 +16,7 @@ return [
         'path' => '/contact',
     ],
 
-    /**
+    /*
      * Cookie consent footer
      */
     'cookieconsent' => [
