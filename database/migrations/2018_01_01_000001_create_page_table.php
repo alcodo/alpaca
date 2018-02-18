@@ -18,8 +18,8 @@ class CreatePageTable extends Migration
 
             $table->string('path')->unique();
             $table->string('title');
-            $table->text('teaser');
-            $table->text('content');
+            $table->tex('teaser');
+            $table->mediumText('content');
 
             // user
             $table->integer('user_id')->unsigned()->nullable();
