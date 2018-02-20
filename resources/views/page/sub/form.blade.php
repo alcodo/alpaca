@@ -32,21 +32,41 @@
 <b-tabs v-cloak>
     <b-tab title="{{ trans('alpaca::alpaca.content') }}" active>
 
-        TODO:
-        <quill-editor></quill-editor>
 
-        <div class="form-group">
-            <span class="text-danger">*</span><textarea class="form-control" id="content" rows="15" name="content"
-                                                        required>
-                {{ old('content', isset($page) ? $page->content : '') }}
-            </textarea>
-        </div>
+        <html-form html="{{ old('content', isset($page) ? $page->content : '') }}" inline-template>
+
+            <div>
+                <div class="form-group mt-3" style="height: 500px;">
+                    <quill-editor
+                            v-model="content"
+                            ref="pageEditor"
+                            :options="{placeholder: '{{ trans('alpaca::alpaca.content') }}...', }"
+                            style="height: 410px;">
+                    </quill-editor>
+                </div>
+
+
+                <div v-b-toggle.contentbox class="btn btn-primary btn-sm">Html anzeigen</div>
+
+                <b-collapse id="contentbox">
+
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" rows="10" name="dfgdcontent" v-model="content"
+                                  required></textarea>
+                    </div>
+
+                </b-collapse>
+
+            </div>
+
+
+        </html-form>
+
 
     </b-tab>
     <b-tab title="SEO">
 
-        <br>
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label for="html_title">{{ trans('alpaca::page.html_title') }}</label>
             <input type="text" class="form-control" id="html_title" name="html_title"
                    value="{{ old('html_title', isset($page) ? $page->html_title : '') }}">
