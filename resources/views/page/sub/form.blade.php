@@ -35,30 +35,12 @@
 
         <html-form html="{{ old('content', isset($page) ? $page->content : '') }}" inline-template>
 
-            <div>
-                <div class="form-group mt-3" style="height: 500px;">
-                    <quill-editor
-                            v-model="content"
-                            ref="pageEditor"
-                            :options="{placeholder: '{{ trans('alpaca::alpaca.content') }}...', }"
-                            style="height: 410px;">
-                    </quill-editor>
-                </div>
+            <div class="form-group mt-3">
 
-
-                <div v-b-toggle.contentbox class="btn btn-primary btn-sm">Html anzeigen</div>
-
-                <b-collapse id="contentbox">
-
-                    <div class="form-group mt-3">
-                        <textarea class="form-control" rows="10" name="dfgdcontent" v-model="content"
-                                  required></textarea>
-                    </div>
-
-                </b-collapse>
+                <trumbowyg v-model="content" class="form-control"></trumbowyg>
+                <textarea name="content" v-model="content" required hidden></textarea>
 
             </div>
-
 
         </html-form>
 

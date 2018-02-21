@@ -68,6 +68,12 @@ Add in resources/assets/sass/app.scss:
 @import 'vendor/alcodo/alpaca/resources/sass/alpaca.scss';
 ```
 
+Icons:
+```bash
+mkdir -p public/assets/icons
+cp node_modules/trumbowyg/dist/ui/icons.svg public/assets/icons/
+```
+
 Add alpaca npm dependencies:
 ```bash
 npm install file:./vendor/alcodo/alpaca/resources/js --save-dev

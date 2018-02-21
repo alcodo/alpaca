@@ -14,10 +14,12 @@ Vue.use(Tooltip);
 Vue.use(Toggle);
 
 /**
- * vue-quill-editor
+ * https://github.com/Alex-D/Trumbowyg
+ * https://github.com/ankurk91/vue-trumbowyg
  */
-import VueQuillEditor from 'vue-quill-editor'
-Vue.use(VueQuillEditor);
+$.trumbowyg.svgPath = '/assets/icons/icons.svg';
+import VueTrumbowyg from 'vue-trumbowyg';
+Vue.use(VueTrumbowyg);
 
 /**
  * Alpaca
