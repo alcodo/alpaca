@@ -19,6 +19,6 @@
   "homepage": "https://github.com/alcodo/alpaca#readme",
   "dependencies": {
     "bootstrap-vue": "^1.5.0",
-    "vue-quill-editor": "^3.0.5"
+    "trumbowyg": "^2.9.4"
   }
 }
