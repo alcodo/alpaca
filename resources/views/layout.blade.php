@@ -10,8 +10,10 @@
         @yield('css')
     @endif
     <link rel="shortcut icon" href="/favicon.ico"/>
+    @include('alpaca::partials.head')
 </head>
 <body>
+@include('alpaca::partials.body')
 
 <div id="app">
 
@@ -21,11 +23,7 @@
         @include('alpaca::blockWrapper')
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </div>
-    </footer>
+    @include('alpaca::partials.footer')
 
 </div>
 
