@@ -20,9 +20,19 @@
     @include('alpaca::navbar.navbar')
 
     <main class="alpaca-main">
-        <div class="container py-3">
+
+        @if(isset($withContainer) && $withContainer === false)
+
             @include('alpaca::blockWrapper')
-        </div>
+
+        @else
+
+            <div class="container py-3">
+                @include('alpaca::blockWrapper')
+            </div>
+
+        @endif
+
     </main>
 
     @include('alpaca::partials.footer')
