@@ -4,6 +4,7 @@ Route::group([
     'as' => 'backend.',
     'middleware' => [
         'web',
+        'auth',
         'alpaca',
     ],
 ], function () {
