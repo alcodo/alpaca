@@ -19,8 +19,10 @@
 
     @include('alpaca::navbar.navbar')
 
-    <main class="container py-4">
-        @include('alpaca::blockWrapper')
+    <main class="alpaca-main">
+        <div class="container py-3">
+            @include('alpaca::blockWrapper')
+        </div>
     </main>
 
     @include('alpaca::partials.footer')

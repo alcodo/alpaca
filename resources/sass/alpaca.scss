@@ -6,3 +6,21 @@
  * https://github.com/Alex-D/Trumbowyg
  */
 @import 'node_modules/trumbowyg/dist/ui/sass/trumbowyg.scss';
+
+/**
+ * Alpaca
+ */
+
+.alpaca-header {
+  background-color: $body-bg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.alpaca-main {
+  background-color: #f4f7f9;
+}
+
+.alpaca-footer {
+  background-color: $body-bg;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
+}

@@ -1,4 +1,3 @@
-{{--@extends('layouts.app')--}}
 @extends('alpaca::layout', ['withContainerBody' => false])
 
 @section('content')
