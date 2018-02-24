@@ -24,4 +24,5 @@ return [
     'file' => 'File',
     'alt' => 'Alt',
     'name' => 'Name',
+    'send' => 'Send',
 ];
