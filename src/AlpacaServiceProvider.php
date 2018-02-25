@@ -2,6 +2,14 @@
 
 namespace Alpaca;
 
+use Alpaca\Events\Category\CategoryWasCreated;
+use Alpaca\Events\Category\CategoryWasDeleted;
+use Alpaca\Events\Category\CategoryWasUpdated;
+use Alpaca\Events\Page\PageWasCreated;
+use Alpaca\Events\Page\PageWasDeleted;
+use Alpaca\Events\Page\PageWasUpdated;
+use Alpaca\Listeners\Category\RefreshCategoryCacheListener;
+use Alpaca\Listeners\Page\RefreshPageCacheListener;
 use Alpaca\Support\Guard;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Support\Facades\Event;
@@ -97,6 +105,24 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         PermissionWasSaved::class => [
             RefreshPermissionCacheListener::class,
         ],
+        CategoryWasCreated::class => [
+            RefreshCategoryCacheListener::class,
+        ],
+        CategoryWasUpdated::class => [
+            RefreshCategoryCacheListener::class,
+        ],
+        CategoryWasDeleted::class => [
+            RefreshCategoryCacheListener::class,
+        ],
+        PageWasCreated::class => [
+            RefreshPageCacheListener::class,
+        ],
+        PageWasUpdated::class => [
+            RefreshPageCacheListener::class,
+        ],
+        PageWasDeleted::class => [
+            RefreshPageCacheListener::class,
+        ],
     ];
 
     /**
@@ -145,6 +171,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 
         // routes
         $this->loadRoutesFrom(__DIR__.'/routes_backend.php');
+        $this->loadRoutesFrom(__DIR__.'/routes_testing.php');
         $this->loadRoutesFrom(__DIR__.'/routes_fronted.php');
 
         // facade
