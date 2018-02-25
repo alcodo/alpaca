@@ -16,5 +16,4 @@ class CategoryCache
     {
         return Category::get();
     }
-
 }
