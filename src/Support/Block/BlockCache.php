@@ -16,5 +16,4 @@ class BlockCache
     {
         return Block::with(['menu', 'menu.links'])->orderBy('position', 'asc')->get();
     }
-
 }
