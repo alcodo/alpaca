@@ -6,7 +6,6 @@ use Alpaca\Support\PageCache;
 
 class RefreshPageCacheListener
 {
-
     public function __construct()
     {
     }
