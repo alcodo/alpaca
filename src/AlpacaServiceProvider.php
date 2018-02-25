@@ -8,6 +8,7 @@ use Alpaca\Events\Category\CategoryWasUpdated;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
 use Alpaca\Events\Page\PageWasUpdated;
+use Alpaca\Listeners\Block\RefreshBlockCacheListener;
 use Alpaca\Listeners\Category\RefreshCategoryCacheListener;
 use Alpaca\Listeners\Page\RefreshPageCacheListener;
 use Alpaca\Support\Guard;
@@ -122,6 +123,15 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         PageWasDeleted::class => [
             RefreshPageCacheListener::class,
+        ],
+        BlockWasCreated::class => [
+            RefreshBlockCacheListener::class,
+        ],
+        BlockWasUpdated::class => [
+            RefreshBlockCacheListener::class,
+        ],
+        BlockWasDeleted::class => [
+            RefreshBlockCacheListener::class,
         ],
     ];
 

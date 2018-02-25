@@ -27,7 +27,7 @@ class BlockBuilder
     private function initBlocks()
     {
         // get block
-        $databaseBlocks = Block::with(['menu', 'menu.links'])->orderBy('position', 'asc')->get();
+        $databaseBlocks = BlockCache::get();
         $eventBlocks = event(BlockIsRequested::class); // TODO maybe use here the filter function
 
         // merge event blocks
@@ -81,7 +81,7 @@ class BlockBuilder
      */
     public function getBlocks($area)
     {
-        $areaBlocks = $this->getDesktopBlockByArea($area);
+        $areaBlocks = $this->getBlockByArea($area);
 
         if (is_null($areaBlocks)) {
             return;
@@ -104,7 +104,7 @@ class BlockBuilder
      */
     public function existsBlocks($area)
     {
-        $blocks = $this->getDesktopBlockByArea($area);
+        $blocks = $this->getBlockByArea($area);
 
         return ! is_null($blocks);
     }
@@ -115,7 +115,7 @@ class BlockBuilder
      * @param $area
      * @return mixed
      */
-    protected function getDesktopBlockByArea($area)
+    protected function getBlockByArea($area)
     {
         $allBlocks = $this->getAllBlocks();
 
