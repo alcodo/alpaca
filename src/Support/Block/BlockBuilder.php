@@ -24,7 +24,7 @@ class BlockBuilder
      *
      * return void
      */
-    private function initBlocks()
+    private function initBlocksAndParse()
     {
         // get block
         $databaseBlocks = BlockCache::get();
@@ -45,7 +45,7 @@ class BlockBuilder
         }
 
         // group by area
-        $this->blocks = $databaseBlocks
+        return $databaseBlocks
             ->filter(function ($block) {
                 if (is_null($block)) {
                     return false;
@@ -67,7 +67,7 @@ class BlockBuilder
     public function getAllBlocks()
     {
         if (is_null($this->blocks)) {
-            $this->initBlocks();
+            $this->blocks = $this->initBlocksAndParse();
         }
 
         return $this->blocks;
@@ -106,7 +106,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**
