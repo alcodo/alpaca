@@ -14,7 +14,10 @@ class CategoryCache
 
     public static function getFromDB()
     {
-        return Category::get();
+        return Category::with([
+            'pages',
+        ])
+            ->get();
     }
 
 }

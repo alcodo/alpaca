@@ -14,7 +14,11 @@ class PageCache
 
     public static function getFromDB()
     {
-        return Page::get();
+        return Page::with([
+            'category',
+            'user',
+        ])
+            ->get();
     }
 
 }
