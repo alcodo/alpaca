@@ -16,5 +16,4 @@ class PageCache
     {
         return Page::get();
     }
-
 }
