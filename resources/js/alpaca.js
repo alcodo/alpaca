@@ -19,13 +19,22 @@ Vue.use(Toggle);
  */
 $.trumbowyg.svgPath = '/assets/icons/icons.svg';
 import VueTrumbowyg from 'vue-trumbowyg';
+
 Vue.use(VueTrumbowyg);
+
+/**
+ * http://dimsemenov.com/plugins/magnific-popup/
+ */
+import MagnificPopup from 'magnific-popup';
+$(function () {
+    $('.is-popup').magnificPopup({type: 'image'});
+});
 
 /**
  * Alpaca
  */
 import HtmlForm from './components/HtmlForm';
-import { registerComponents, vueUse } from 'bootstrap-vue/es/utils';
+import {registerComponents, vueUse} from 'bootstrap-vue/es/utils';
 
 var components = {
     'html-form': HtmlForm,
