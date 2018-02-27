@@ -6,7 +6,6 @@ Route::group([
         'alpaca',
     ],
 ], function () {
-
     if (config('app.env') === 'testing') {
         // Authentication Routes...
         Route::get('login', '\Alpaca\Controllers\Auth\LoginController@showLoginForm')->name('login');
@@ -23,5 +22,4 @@ Route::group([
         Route::get('password/reset/{token}', '\Alpaca\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
         Route::post('password/reset', '\Alpaca\Controllers\Auth\ResetPasswordController@reset');
     }
-
 });
