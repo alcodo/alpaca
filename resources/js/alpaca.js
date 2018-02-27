@@ -31,13 +31,25 @@ $(function () {
 });
 
 /**
+ * https://github.com/apertureless/vue-chartjs
+ */
+// import VueCharts from 'vue-chartjs';
+// import { Bar, Line } from 'vue-chartjs'
+
+/**
  * Alpaca
  */
+import PieChart from './components/PieChart';
+import LineChart from './components/LineChart';
+import HorizontalBarChart from './components/HorizontalBarChart';
 import HtmlForm from './components/HtmlForm';
 import {registerComponents, vueUse} from 'bootstrap-vue/es/utils';
 
 var components = {
     'html-form': HtmlForm,
+    'line-chart': LineChart,
+    'pie-chart': PieChart,
+    'horizontal-bar-chart': HorizontalBarChart,
 };
 
 var VuePlugin = {
