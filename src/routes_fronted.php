@@ -31,7 +31,7 @@ Route::group([
             });
         });
 
-        /**
+        /*
          * Page.
          */
         \Alpaca\Support\PageCache::get()->map(function ($page) {
