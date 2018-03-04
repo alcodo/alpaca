@@ -6,14 +6,11 @@ use Illuminate\Support\Facades\Cache;
 
 trait AlpacaModelCache
 {
-
     public static function refreshCache()
     {
         if (Cache::has(self::$cacheKey)) {
-
             Cache::forget(self::$cacheKey);
             self::get();
-
         }
     }
 
@@ -23,5 +20,4 @@ trait AlpacaModelCache
             return self::getFromDB();
         });
     }
-
 }
