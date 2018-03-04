@@ -1,6 +1,7 @@
-<div class="card" style="border: 1px solid silver;">
+<div class="card">
     <a class="is-popup" href="{{ asset($image->filepath) }}">
-        <img class="card-img-top" src="{{ asset($image->filepath)  }}?w=260&h=260&fit=crop" alt=""/>
+        <img class="img-fluid"
+             src="{{ powerimage(asset($image->filepath), ['w'=> 260, 'h' => 260, 'fit' => 'crop'])  }}" alt=""/>
     </a>
 
     @if (!empty($image->copyright_source_url))
