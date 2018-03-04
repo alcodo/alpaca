@@ -22,8 +22,8 @@
     <div class="row">
         @foreach($images as $image)
 
-            <div class="col-12 col-sm-6 col-md-4 mb-3">
-                @include('alpaca::image.image', ['image' => $image, 'showAction' => true])
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3">
+                @include('alpaca::image.image_admin', ['image' => $image, 'showAction' => true])
             </div>
 
         @endforeach
