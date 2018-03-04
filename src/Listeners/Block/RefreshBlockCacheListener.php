@@ -6,7 +6,6 @@ use Alpaca\Support\Block\BlockCache;
 
 class RefreshBlockCacheListener
 {
-
     public function __construct()
     {
     }
