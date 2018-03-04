@@ -58,7 +58,5 @@ class Exception
         $regexpPatter = '/^('.preg_replace($to_replace, $replacements, $patterns_quoted).')$/';
 
         return (bool) preg_match($regexpPatter, $path);
-
-        return true;
     }
 }
