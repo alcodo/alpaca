@@ -3,9 +3,9 @@
 namespace Alpaca;
 
 use Alcodo\PowerImage\Facades\PowerImage;
-use Alcodo\PowerImage\PowerImageServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
+use Alcodo\PowerImage\PowerImageServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
