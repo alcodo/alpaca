@@ -2,6 +2,8 @@
 
 namespace Alpaca;
 
+use Alcodo\PowerImage\Facades\PowerImage;
+use Alcodo\PowerImage\PowerImageServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
@@ -17,6 +19,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         SlugifyServiceProvider::class,
         HoneypotServiceProvider::class,
         LaravelDateInternationalServiceProvider::class,
+        PowerImageServiceProvider::class,
     ];
 
     protected $aliases = [
@@ -24,6 +27,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         'SEO' => \Artesaos\SEOTools\Facades\SEOTools::class,
         'Slugify' => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
         'Honeypot' => \Msurguy\Honeypot\HoneypotFacade::class,
+        'PowerImage' => PowerImage::class,
     ];
 
     protected $middlewares = [
