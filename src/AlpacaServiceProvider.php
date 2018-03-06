@@ -2,9 +2,6 @@
 
 namespace Alpaca;
 
-use Alpaca\Events\Image\ImageWasCreated;
-use Alpaca\Events\Image\ImageWasUpdated;
-use Alpaca\Listeners\Image\OptimizeImageListener;
 use Alpaca\Support\Guard;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Support\Facades\Event;
@@ -17,6 +14,8 @@ use Alpaca\Events\Role\RoleWasUpdated;
 use Alpaca\Events\User\UserIsVerified;
 use Alpaca\Support\Block\BlockBuilder;
 use Illuminate\Auth\Events\Registered;
+use Alpaca\Events\Image\ImageWasCreated;
+use Alpaca\Events\Image\ImageWasUpdated;
 use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\User\IsUserVerified;
@@ -31,6 +30,7 @@ use Alpaca\Events\Category\CategoryWasUpdated;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Alpaca\Events\Permission\PermissionWasSaved;
 use Illuminate\Support\AggregateServiceProvider;
+use Alpaca\Listeners\Image\OptimizeImageListener;
 use Alpaca\Listeners\Menu\MenuPermissionListener;
 use Alpaca\Listeners\Page\PagePermissionListener;
 use Alpaca\Listeners\Role\RolePermissionListener;
