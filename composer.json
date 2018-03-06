@@ -26,6 +26,7 @@
     "approached/laravel-date-international": "^1.3",
     "caouecs/laravel-lang": "~3.0",
     "guzzlehttp/guzzle": "~6.0",
+    "spatie/image-optimizer": "1.0.*",
     "alcodo/powerimage": "dev-master"
   },
   "require-dev": {

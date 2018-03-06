@@ -2,6 +2,9 @@
 
 namespace Alpaca;
 
+use Alpaca\Events\Image\ImageWasCreated;
+use Alpaca\Events\Image\ImageWasUpdated;
+use Alpaca\Listeners\Image\OptimizeImageListener;
 use Alpaca\Support\Guard;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Support\Facades\Event;
@@ -132,6 +135,12 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         BlockWasDeleted::class => [
             RefreshBlockCacheListener::class,
+        ],
+        ImageWasCreated::class => [
+            OptimizeImageListener::class,
+        ],
+        ImageWasUpdated::class => [
+            OptimizeImageListener::class,
         ],
     ];
 
