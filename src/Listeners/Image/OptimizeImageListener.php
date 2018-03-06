@@ -4,6 +4,7 @@ namespace Alpaca\Listeners\Image;
 
 use Alcodo\PowerImage\Events\ImageWasCreated;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
+use Illuminate\Support\Facades\Storage;
 
 class OptimizeImageListener
 {
@@ -19,6 +20,8 @@ class OptimizeImageListener
 
         $optimizerChain = OptimizerChainFactory::create();
 
-        $optimizerChain->optimize($image->filepath);
+        $optimizerChain->optimize(
+            Storage::path($image->filepath)
+        );
     }
 }
