@@ -14,6 +14,11 @@ class BlockCache
 
     public static function getFromDB()
     {
-        return Block::with(['menu', 'menu.links'])->orderBy('position', 'asc')->get();
+        return Block::with([
+            'menu',
+            'menu.links' => function ($query) {
+                $query->orderBy('position', 'ASC');
+            }
+        ])->orderBy('position', 'asc')->get();
     }
 }
