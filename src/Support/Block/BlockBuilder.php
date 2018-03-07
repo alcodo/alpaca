@@ -33,7 +33,6 @@ class BlockBuilder
         return $databaseBlocks
             ->merge($eventBlocks)
             ->filter(function ($block) {
-
                 if (is_null($block)) {
                     return false;
                 }
@@ -45,7 +44,6 @@ class BlockBuilder
 
                 // exception
                 return (new Exception($block))->isViewable();
-
             })
             ->sortBy('position')
             ->groupBy('area'); // group by area
@@ -79,7 +77,7 @@ class BlockBuilder
             return;
         }
 
-        if ($area == 'left'){
+        if ($area == 'left') {
 //            dd($areaBlocks);
         }
 
@@ -102,7 +100,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**
