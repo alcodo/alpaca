@@ -18,7 +18,7 @@ class BlockCache
             'menu',
             'menu.links' => function ($query) {
                 $query->orderBy('position', 'ASC');
-            }
+            },
         ])->orderBy('position', 'asc')->get();
     }
 }
