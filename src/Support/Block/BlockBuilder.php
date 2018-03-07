@@ -79,16 +79,10 @@ class BlockBuilder
             return;
         }
 
-        if ($area == 'left'){
-//            dd($areaBlocks);
-        }
-
         return $areaBlocks->map(function (Block $block, $key) {
 
-            // each block
-            $html = new Html($block);
+            return (new Html($block))->getHtml();
 
-            return $html->getHtml();
         })->implode('');
     }
 
