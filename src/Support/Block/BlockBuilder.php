@@ -26,12 +26,16 @@ class BlockBuilder
      */
     private function initBlocksAndParse()
     {
-        // get block
-        $databaseBlocks = BlockCache::get();
-        $eventBlocks = event(BlockIsRequested::class);
+        // db
+        $blocks = BlockCache::get();
 
-        return $databaseBlocks
-            ->merge($eventBlocks)
+        // event
+        $eventBlocks = event(BlockIsRequested::class);
+        if (!empty($eventBlocks)) {
+            $blocks = $blocks->merge($eventBlocks);
+        }
+
+        return $blocks
             ->filter(function ($block) {
                 if (is_null($block)) {
                     return false;
@@ -92,7 +96,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**

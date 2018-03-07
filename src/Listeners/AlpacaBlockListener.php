@@ -27,7 +27,7 @@ class AlpacaBlockListener
     {
         // user is not logged in
         if (Auth::check() === false) {
-            return;
+            return false;
         }
 
         $block = new Block([
