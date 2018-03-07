@@ -28,35 +28,27 @@ class BlockBuilder
     {
         // get block
         $databaseBlocks = BlockCache::get();
-        $eventBlocks = event(BlockIsRequested::class); // TODO maybe use here the filter function
+        $eventBlocks = event(BlockIsRequested::class);
 
-        // merge event blocks
-        foreach ($eventBlocks as $eventBlock) {
-            if (is_null($eventBlock)) {
-                continue;
-            }
-
-            if ($eventBlock->active == false) {
-                // not active
-                continue;
-            }
-
-            $databaseBlocks->push($eventBlock);
-        }
-
-        // group by area
         return $databaseBlocks
+            ->merge($eventBlocks)
             ->filter(function ($block) {
+
                 if (is_null($block)) {
                     return false;
                 }
-                // check exception rule
-                $ex = new Exception($block);
 
-                return $ex->isViewable();
+                // active
+                if ($block->active == false) {
+                    return false;
+                }
+
+                // exception
+                return (new Exception($block))->isViewable();
+
             })
             ->sortBy('position')
-            ->groupBy('area');
+            ->groupBy('area'); // group by area
     }
 
     /**
@@ -87,6 +79,10 @@ class BlockBuilder
             return;
         }
 
+        if ($area == 'left'){
+//            dd($areaBlocks);
+        }
+
         return $areaBlocks->map(function (Block $block, $key) {
 
             // each block
@@ -106,7 +102,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**
