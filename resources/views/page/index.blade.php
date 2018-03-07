@@ -13,7 +13,7 @@
         {{ trans('alpaca::page.page_index') }}
     </h1>
 
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
         <tr>
             <th>{{ trans('alpaca::alpaca.title') }}</th>

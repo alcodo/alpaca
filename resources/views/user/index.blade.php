@@ -15,7 +15,7 @@
         {{ trans('alpaca::user.users') }}
     </h1>
 
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
         <tr>
             <th>{{ trans('alpaca::alpaca.title') }}</th>
