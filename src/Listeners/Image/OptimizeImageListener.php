@@ -2,9 +2,9 @@
 
 namespace Alpaca\Listeners\Image;
 
+use Illuminate\Support\Facades\Storage;
 use Alcodo\PowerImage\Events\ImageWasCreated;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
-use Illuminate\Support\Facades\Storage;
 
 class OptimizeImageListener
 {
