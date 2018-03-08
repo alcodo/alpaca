@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Support;
+namespace Alpaca\Support\Page;
 
 use Alpaca\Models\Page;
 use Alpaca\Traits\AlpacaModelCache;

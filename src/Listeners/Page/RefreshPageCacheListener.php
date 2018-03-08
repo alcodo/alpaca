@@ -2,7 +2,7 @@
 
 namespace Alpaca\Listeners\Page;
 
-use Alpaca\Support\PageCache;
+use Alpaca\Support\Page\PageCache;
 
 class RefreshPageCacheListener
 {

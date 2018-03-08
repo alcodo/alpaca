@@ -34,7 +34,7 @@ Route::group([
         /*
          * Page.
          */
-        \Alpaca\Support\PageCache::get()->map(function ($page) {
+        \Alpaca\Support\Page\PageCache::get()->map(function ($page) {
             Route::get($page->path, function () use ($page) {
                 $controller = new \Alpaca\Controllers\PageController();
 
