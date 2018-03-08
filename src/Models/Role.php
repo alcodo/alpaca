@@ -26,6 +26,6 @@ class Role extends Model
     {
         $key = $this->slug.'.'.$permission;
 
-        return app('Alpaca\Support\Guard')->hasPermission($key);
+        return app('Alpaca\Support\Permission\Guard')->hasPermission($key);
     }
 }
