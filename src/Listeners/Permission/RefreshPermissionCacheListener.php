@@ -2,7 +2,7 @@
 
 namespace Alpaca\Listeners\Permission;
 
-use Alpaca\Support\Guard;
+use Alpaca\Support\Permission\Guard;
 
 class RefreshPermissionCacheListener
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpaca\Support;
+namespace Alpaca\Support\Permission;
 
 use Alpaca\Models\Role;
 use Illuminate\Contracts\Auth\Access\Gate;

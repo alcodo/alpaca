@@ -2,7 +2,7 @@
 
 namespace Alpaca;
 
-use Alpaca\Support\Guard;
+use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Page\PageWasCreated;

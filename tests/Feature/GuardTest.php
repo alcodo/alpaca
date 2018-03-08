@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Alpaca\Support\Guard;
+use Alpaca\Support\Permission\Guard;
 use Tests\IntegrationTest;
 
 class GuardTest extends IntegrationTest
