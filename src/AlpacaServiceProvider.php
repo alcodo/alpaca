@@ -123,12 +123,15 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         PageWasCreated::class => [
             RefreshPageCacheListener::class,
+            RefreshCategoryCacheListener::class,
         ],
         PageWasUpdated::class => [
             RefreshPageCacheListener::class,
+            RefreshCategoryCacheListener::class,
         ],
         PageWasDeleted::class => [
             RefreshPageCacheListener::class,
+            RefreshCategoryCacheListener::class,
         ],
         BlockWasCreated::class => [
             RefreshBlockCacheListener::class,
