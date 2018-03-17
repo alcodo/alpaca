@@ -51,7 +51,7 @@ class ContactController extends Controller
 
         // Send mail
         $input = $request->all();
-        Mail::to(config('mail.from'))->send(new ContactFormWasFilled($input));
+        Mail::to(config('mail.from.address'))->send(new ContactFormWasFilled($input));
 
         Flash::success(trans('alpaca::contact.send_successfully'));
 
