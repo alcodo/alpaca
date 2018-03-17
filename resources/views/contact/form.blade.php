@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{ trans('alpaca::contact.contact') }}</h1>
 
-    <form action="/contact" method="post" accept-charset="UTF-8">
+    <form action="{{ config('alpaca.contact.path') }}" method="post" accept-charset="UTF-8">
         {!! Honeypot::generate('form_name', 'form_time')  !!}
         {{ csrf_field() }}
 
