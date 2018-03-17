@@ -1,4 +1,4 @@
-<div class="col-12 col-md-4 pull-right mb-1">
+<div class="col-12 col-md-3 pull-left text-center mb-1">
 
     {{--image--}}
     <a class="is-popup text-center" href="{{ asset($image->filepath) }}">
