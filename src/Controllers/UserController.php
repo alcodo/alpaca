@@ -29,7 +29,7 @@ class UserController extends Controller
         SEO::setTitle(trans('alpaca::user.users'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $users = User::with('roles')->paginate(50);
+        $users = User::with('roles')->orderByDesc('id')->paginate(30);
         $roles = Role::orderBy('name', 'asc')->pluck('name', 'id');
 
         return view('alpaca::user.index', compact('users', 'roles'));
