@@ -9,6 +9,6 @@ return [
     'message' => 'Nachricht',
     'send' => 'Senden',
     'send_successfully' => 'Nachricht wurde erfolgreich gesendet',
-    'send_from' => 'Kontaktformular wurd gesendet vom :Name',
+    'send_from' => 'Kontaktformular wurde gesendet vom :Name',
 
 ];

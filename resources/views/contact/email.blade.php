@@ -1,10 +1,10 @@
-{{ trans('contact::contact.send_from', ['Name' => Config::get('app.name')]) }}
+{{ trans('alpaca::contact.send_from', ['Name' => Config::get('app.name')]) }}
 
 <br/><br/>
-{{ trans('contact::contact.name') }}: {{ $name }}<br/>
-{{ trans('contact::contact.email') }}: {{ $email }}<br/>
-{{ trans('contact::contact.subject') }}: {{ $subject }}<br/>
+{{ trans('alpaca::contact.name') }}: {{ $name }}<br/>
+{{ trans('alpaca::contact.email') }}: {{ $email }}<br/>
+{{ trans('alpaca::contact.subject') }}: {{ $subject }}<br/>
 <br/>
 <br/>
-{{ trans('contact::contact.message') }}:<br/>
+{{ trans('alpaca::contact.message') }}:<br/>
 {{ $text }}
