@@ -110,7 +110,7 @@ class AlpacaBlockListener
         }
 
         if ($block->menu->links->isEmpty()) {
-            return;
+            return false;
         }
 
         return $block;
