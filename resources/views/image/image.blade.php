@@ -1,9 +1,9 @@
 <div class="col-12 col-md-3 pull-left text-center mb-1">
 
     {{--image--}}
-    <a class="is-popup text-center" href="{{ asset($image->filepath) }}">
+    <a class="is-popup text-center" href="{{ Storage::url($image->filepath) }}">
         <img class="rounded img-fluid"
-             src="{{ powerimage(asset($image->filepath), ['w'=> 300, 'h' => 300, 'fit' => 'crop'])  }}"
+             src="{{ powerimage(Storage::url($image->filepath), ['w'=> 300, 'h' => 300, 'fit' => 'crop'])  }}"
              alt="">
     </a>
 

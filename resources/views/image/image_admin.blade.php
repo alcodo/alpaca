@@ -1,7 +1,7 @@
 <div class="card">
-    <a class="is-popup text-center" href="{{ asset($image->filepath) }}">
+    <a class="is-popup text-center" href="{{ Storage::url($image->filepath) }}">
         <img class="img-fluid"
-             src="{{ powerimage(asset($image->filepath), ['w'=> 300, 'h' => 300, 'fit' => 'crop'])  }}" alt=""/>
+             src="{{ powerimage(Storage::url($image->filepath), ['w'=> 300, 'h' => 300, 'fit' => 'crop'])  }}" alt=""/>
     </a>
 
     @if (!empty($image->copyright_source_url))
