@@ -119,7 +119,6 @@ class BlockBuilder
         $blocks = $this->getAllBlocks();
 
         return $blocks->collapse()
-            ->where('menu_id', '!=', '')
             ->sortBy('position')
             ->map(function (Block $block, $key) {
                 return (new Html($block))->getMobileHtmlMenu();

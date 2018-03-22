@@ -7,11 +7,17 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-            @foreach($block->menu->links as $link)
+            @if($block->menu)
+                @foreach($block->menu->links as $link)
 
-                @include('alpaca::menu.link.link', ['isBlockView' => false, 'link' => $link, 'class' => 'dropdown-item'])
+                    @include('alpaca::menu.link.link', ['isBlockView' => false, 'link' => $link, 'class' => 'dropdown-item'])
 
-            @endforeach
+                @endforeach
+            @else
+                <div class="card-body">
+                    {!! $block->html !!}
+                </div>
+            @endif
 
         </div>
     </li>
