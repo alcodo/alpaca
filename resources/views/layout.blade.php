@@ -43,7 +43,7 @@
     <script defer src="{{ asset('/js/app.js') }}"></script>
 @endif
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-@include('alpaca::cookieconsent')
+@include('alpaca::partials.cookieconsent')
 @yield('scripts')
 </body>
 </html>
