@@ -23,4 +23,9 @@ class Html
     {
         return view('alpaca::block.show', ['block' => $this->block])->render();
     }
+
+    public function getMobileHtmlMenu()
+    {
+        return view('alpaca::block.generate.mobile_menu', ['block' => $this->block])->render();
+    }
 }

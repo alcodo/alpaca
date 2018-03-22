@@ -31,7 +31,7 @@ class BlockBuilder
 
         // event
         $eventBlocks = event(BlockIsRequested::class);
-        if (! empty($eventBlocks)) {
+        if (!empty($eventBlocks)) {
             $blocks = $blocks->merge($eventBlocks);
         }
 
@@ -96,7 +96,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return ! is_null($blocks);
+        return !is_null($blocks);
     }
 
     /**
@@ -112,5 +112,17 @@ class BlockBuilder
         if (isset($allBlocks[$area]) && $allBlocks[$area]->isNotEmpty()) {
             return $allBlocks[$area];
         }
+    }
+
+    public function getMobileMenuBlocks()
+    {
+        $blocks = $this->getAllBlocks();
+
+        return $blocks->collapse()
+            ->where('menu_id', '!=', '')
+            ->sortBy('position')
+            ->map(function (Block $block, $key) {
+                return (new Html($block))->getMobileHtmlMenu();
+            })->implode('');
     }
 }
