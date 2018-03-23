@@ -31,7 +31,7 @@ class BlockBuilder
 
         // event
         $eventBlocks = event(BlockIsRequested::class);
-        if (!empty($eventBlocks)) {
+        if (! empty($eventBlocks)) {
             $blocks = $blocks->merge($eventBlocks);
         }
 
@@ -96,7 +96,7 @@ class BlockBuilder
     {
         $blocks = $this->getBlockByArea($area);
 
-        return !is_null($blocks);
+        return ! is_null($blocks);
     }
 
     /**
