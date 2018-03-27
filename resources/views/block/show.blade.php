@@ -1,4 +1,5 @@
-<div class="card mb-3" @if(isset($isWithBorder) && $isWithBorder) style="border: 1px solid silver" @endif>
+<div class="card mb-3 d-none d-sm-none d-md-block"
+     @if(isset($isWithBorder) && $isWithBorder) style="border: 1px solid silver" @endif>
 
     <div class="card-header">
         {{ $block->title }}

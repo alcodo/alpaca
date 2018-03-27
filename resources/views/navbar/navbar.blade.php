@@ -8,11 +8,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
+
+            {{--Left navbar side--}}
             @include('alpaca::navbar.left')
 
-            <!-- Right Side Of Navbar -->
+            {{--Right navbar side--}}
             @include('alpaca::navbar.right')
+
+            {{--Block for mobile view--}}
+            <div class="d-sm-block d-md-none">
+
+                <hr>
+                {!! Block::getMobileMenuBlocks() !!}
+
+            </div>
+
         </div>
     </div>
 </nav>

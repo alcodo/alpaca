@@ -124,4 +124,19 @@ class BlockBuilder
                 return (new Html($block))->getMobileHtmlMenu();
             })->implode('');
     }
+
+    public function isMenuActive($block)
+    {
+        if (is_null($block->menu)) {
+            return false;
+        }
+
+        foreach ($block->menu->links as $link) {
+            if (isActiveUrlExact($link->href)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
