@@ -46,8 +46,6 @@ class ContactController extends Controller
             'email' => 'nullable|email',
             'subject' => 'nullable',
             'text' => 'required|string',
-            'form_name' => 'honeypot',
-            'form_time' => 'required|honeytime:3',
         ])->validate();
 
         // Send mail

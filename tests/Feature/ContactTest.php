@@ -23,13 +23,13 @@ class ContactTest extends IntegrationTest
     {
         Mail::fake();
         $this->withoutExceptionHandling();
-        Honeypot::disable();
 
         $this->post(config('alpaca.contact.path'), [
             'name' => 'John Doe',
             'subject' => 'Welcome',
             'text' => 'Hi Alpaca User',
             'form_time' => 'honeypot',
+            'g-recaptcha-response' => 'ALPACA-TEST',
         ])
             ->assertRedirect('/contact');
 
