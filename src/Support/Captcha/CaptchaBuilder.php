@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CaptchaBuilder
 {
-
     private $publicKey;
     private $secretKey;
 
@@ -15,7 +14,6 @@ class CaptchaBuilder
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
     }
-
 
     public function renderJs()
     {
@@ -31,7 +29,7 @@ class CaptchaBuilder
 
     public function verify(Request $request)
     {
-        if (!$request->has('g-recaptcha-response')) {
+        if (! $request->has('g-recaptcha-response')) {
             return false;
         }
 
@@ -47,11 +45,10 @@ class CaptchaBuilder
         $response = json_decode($response->getBody(), true);
 
         // check
-        if (!isset($response['success']) || $response['success'] !== true) {
+        if (! isset($response['success']) || $response['success'] !== true) {
             return false;
         }
 
         return true;
     }
-
 }
