@@ -2,7 +2,6 @@
 
 namespace Alpaca\Events\User;
 
-use Alpaca\Models\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -19,9 +18,9 @@ class UserIsVerified
     /**
      * Create a new event instance.
      *
-     * @param User|null $user
+     * @param $user
      */
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
     }
