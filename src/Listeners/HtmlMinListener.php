@@ -23,7 +23,8 @@ class HtmlMinListener
      */
     public function handle($event)
     {
-        dump($this->command);
-        dump($this->exitCode);
+        if($event->command == 'view:cache' && $event->exitCode === 0){
+
+        }
     }
 }
