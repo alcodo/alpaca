@@ -209,8 +209,8 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->app->instance('block', new BlockBuilder());
         $this->app->singleton('captcha', function ($app) {
             return new CaptchaBuilder(
-                config('services.recaptcha.public'),
-                config('services.recaptcha.secret')
+                config('alpaca.recaptcha.public'),
+                config('alpaca.recaptcha.secret')
             );
         });
 
