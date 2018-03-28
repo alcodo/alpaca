@@ -6,6 +6,7 @@ use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Captcha\CaptchaFacade;
 use Alpaca\Support\Block\BlockFacade;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
@@ -64,6 +65,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
      */
     protected $listen = [
         Authenticated::class => [
+            IsUserVerified::class,
+        ],
+        PasswordReset::class => [
             IsUserVerified::class,
         ],
         Registered::class => [
