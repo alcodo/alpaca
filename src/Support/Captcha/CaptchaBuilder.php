@@ -2,8 +2,6 @@
 
 namespace Alpaca\Support\Captcha;
 
-use Symfony\Component\HttpFoundation\Request;
-
 class CaptchaBuilder
 {
 
@@ -29,8 +27,10 @@ class CaptchaBuilder
         return "<div class=\"g-recaptcha\" data-sitekey=\"$this->publicKey\"></div>";
     }
 
-    public function verify(Request $request)
+    public function verify()
     {
+        $request = request();
+
         if (!$request->has('g-recaptcha-response')) {
             return false;
         }

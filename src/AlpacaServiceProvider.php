@@ -204,7 +204,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
 
         // validation
         $this->app['validator']->extend('captcha', function ($attribute, $value) {
-            return $this->app['captcha']->verify($this->app['request']);
+            return $this->app['captcha']->verify();
         });
 
         // facade

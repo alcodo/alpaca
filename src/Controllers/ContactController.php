@@ -40,10 +40,8 @@ class ContactController extends Controller
      */
     public function send(Request $request)
     {
-        dd(
-            $request->all()
-        );
         Validator::make($request->all(), [
+            'g-recaptcha-response' => 'required|captcha',
             'name' => 'required',
             'email' => 'nullable|email',
             'subject' => 'nullable',
