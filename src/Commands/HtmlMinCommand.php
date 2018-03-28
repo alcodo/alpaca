@@ -53,9 +53,10 @@ class HtmlMinCommand extends Command
 
 
         // compress now
-        $process = new Process("html-minifier --input-dir {$bladePath} --output-dir {$bladePath} --remove-comments --collapse-whitespace --minify-css --minify-js");
+//        $process = new Process("html-minifier --inpllut-dir {$bladePath} --output-dir {$bladePath} --remove-comments --collapse-whitespace --minify-css --minify-js");
+        $process = new Process("node_modules/html-minifier/cli.js --input-dir {$bladePath} --output-dir {$bladePath} --remove-comments --collapse-whitespace --minify-css --minify-js");
         $process->run();
-
+ll
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
@@ -73,7 +74,8 @@ class HtmlMinCommand extends Command
 
     protected function checkHtmlFiles($bladePath)
     {
-        $files = app('filesystem');
+        $files = app('Filesystem');
+        dd($files);
 
         foreach ($files->glob("{$bladePath}/*") as $view) {
             $content = $files->get($view);
