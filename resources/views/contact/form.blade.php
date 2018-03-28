@@ -34,15 +34,4 @@
 
     </form>
 
-
-
-    {{--{!! BootForm::openHorizontal(['sm' => [4, 8],'lg' => [2, 10]])--}}
-    {{--->action( route('contact.send') ) !!}--}}
-    {{--{!! BootForm::text(trans('contact::contact.name'), 'name') !!}--}}
-    {{--{!! BootForm::email(trans('contact::contact.email'), 'email') !!}--}}
-    {{--{!! BootForm::text(trans('contact::contact.subject'), 'subject') !!}--}}
-    {{--{!! BootForm::textarea(trans('contact::contact.message'), 'text') !!}--}}
-    {{--{!! BootForm::submit(trans('contact::contact.send'))->addClass('btn-primary') !!}--}}
-    {{--{!! BootForm::close() !!}--}}
-
 @endsection

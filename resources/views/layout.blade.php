@@ -11,6 +11,7 @@
     @endif
     <link rel="shortcut icon" href="/favicon.ico"/>
     @include('alpaca::partials.head')
+    @yield('head')
 </head>
 <body>
 @include('alpaca::partials.body')

@@ -40,6 +40,9 @@ class ContactController extends Controller
      */
     public function send(Request $request)
     {
+        dd(
+            $request->all()
+        );
         Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'nullable|email',
