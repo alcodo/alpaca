@@ -2,7 +2,7 @@
 
 namespace Alpaca\Listeners;
 
-use Illuminate\Console\Events\ArtisanStarting;
+use Illuminate\Console\Events\CommandFinished;
 
 class HtmlMinListener
 {
@@ -18,14 +18,12 @@ class HtmlMinListener
     /**
      * Handle the event.
      *
-     * @param ArtisanStarting $event
+     * @param CommandFinished $event
      * @return void
      */
     public function handle($event)
     {
-        /** @var \Illuminate\Console\Application $app */
-        $app = $event->artisan;
-
-        dd($app->all());
+        dump($this->command);
+        dump($this->exitCode);
     }
 }

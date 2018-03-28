@@ -9,7 +9,7 @@ use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Captcha\CaptchaFacade;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Console\Events\ArtisanStarting;
+use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
@@ -80,7 +80,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         UserIsVerified::class => [
             AssignRegisterRole::class,
         ],
-        ArtisanStarting::class => [
+        CommandFinished::class => [
             HtmlMinListener::class,
         ],
         PermissionsIsRequested::class => [
