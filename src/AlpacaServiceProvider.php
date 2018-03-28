@@ -2,12 +2,14 @@
 
 namespace Alpaca;
 
+use Alpaca\Listeners\HtmlMinListener;
 use Alpaca\Listeners\User\VerifyUser;
 use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Captcha\CaptchaFacade;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Console\Events\ArtisanStarting;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
@@ -77,6 +79,9 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         ],
         UserIsVerified::class => [
             AssignRegisterRole::class,
+        ],
+        ArtisanStarting::class => [
+            HtmlMinListener::class,
         ],
         PermissionsIsRequested::class => [
             BlockPermissionListener::class,
