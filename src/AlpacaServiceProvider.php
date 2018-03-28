@@ -2,12 +2,9 @@
 
 namespace Alpaca;
 
-use Alpaca\Listeners\User\VerifyUser;
-use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Support\Permission\Guard;
-use Alpaca\Support\Captcha\CaptchaFacade;
+use Alpaca\Listeners\User\VerifyUser;
 use Alpaca\Support\Block\BlockFacade;
-use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Events\Page\PageWasCreated;
 use Alpaca\Events\Page\PageWasDeleted;
@@ -26,8 +23,11 @@ use Alpaca\Events\Image\ImageWasUpdated;
 use Alpaca\Events\Block\BlockIsRequested;
 use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\User\IsUserVerified;
+use Alpaca\Support\Captcha\CaptchaFacade;
 use Illuminate\Auth\Events\Authenticated;
+use Illuminate\Auth\Events\PasswordReset;
 use Alpaca\Listeners\User\AssignGuestRole;
+use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\User\AssignRegisterRole;
 use Alpaca\Commands\PublishTranslationCommand;
