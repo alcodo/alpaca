@@ -86,9 +86,9 @@ class UserRepository
     public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
+
         return $this->verifyUser($user);
     }
-
 
     public function verifyUser($user)
     {
