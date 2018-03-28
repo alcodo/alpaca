@@ -2,7 +2,6 @@
 
 namespace Alpaca;
 
-use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Support\Facades\Event;
@@ -25,6 +24,7 @@ use Alpaca\Listeners\AlpacaBlockListener;
 use Alpaca\Listeners\User\IsUserVerified;
 use Illuminate\Auth\Events\Authenticated;
 use Alpaca\Listeners\User\AssignGuestRole;
+use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\User\AssignRegisterRole;
 use Alpaca\Commands\PublishTranslationCommand;
