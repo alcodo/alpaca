@@ -2,6 +2,7 @@
 
 namespace Alpaca\Listeners;
 
+use Alpaca\Commands\HtmlMinCommand;
 use Illuminate\Console\Events\CommandFinished;
 
 class HtmlMinListener
@@ -23,8 +24,9 @@ class HtmlMinListener
      */
     public function handle($event)
     {
-        if($event->command == 'view:cache' && $event->exitCode === 0){
-
+        if ($event->command == 'view:cache' && $event->exitCode === 0) {
+            $command = new HtmlMinCommand();
+            $command->handle();
         }
     }
 }
