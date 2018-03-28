@@ -14,7 +14,7 @@ class IsUserVerified
      * @return void
      * @throws UserIsNotVerified
      */
-    public function handle(Authenticated $event)
+    public function handle($event)
     {
         if ($event->user->verified === false || $event->user->verified === 0) {
             throw new UserIsNotVerified();
