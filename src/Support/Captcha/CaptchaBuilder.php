@@ -4,7 +4,6 @@ namespace Alpaca\Support\Captcha;
 
 class CaptchaBuilder
 {
-
     private $publicKey;
     private $secretKey;
 
@@ -13,7 +12,6 @@ class CaptchaBuilder
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
     }
-
 
     public function renderJs()
     {
@@ -31,12 +29,12 @@ class CaptchaBuilder
     {
         $request = request();
 
-        if (!$request->has('g-recaptcha-response')) {
+        if (! $request->has('g-recaptcha-response')) {
             return false;
         }
 
         // local test
-        if($request->get('g-recaptcha-response') === 'ALPACA-TEST'){
+        if ($request->get('g-recaptcha-response') === 'ALPACA-TEST') {
             return true;
         }
 
@@ -52,11 +50,10 @@ class CaptchaBuilder
         $response = json_decode($response->getBody(), true);
 
         // check
-        if (!isset($response['success']) || $response['success'] !== true) {
+        if (! isset($response['success']) || $response['success'] !== true) {
             return false;
         }
 
         return true;
     }
-
 }
