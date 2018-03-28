@@ -30,7 +30,7 @@
                             {{ trans('alpaca::menu.no_links_exists') }}
                         </div>
                     @else
-                        <ul class="list-group list-group-flush">
+                        <div class="list-group list-group-flush">
                             @foreach($menu->links as $link)
 
                                 <div class="list-group-item">
@@ -39,7 +39,7 @@
                                 </div>
 
                             @endforeach
-                        </ul>
+                        </div>
                     @endif
                     <div class="card-footer border-light">
 

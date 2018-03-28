@@ -8,13 +8,13 @@
         @endif
     </div>
     @if($block->menu)
-        <ul class="list-group list-group-flush">
+        <div class="list-group list-group-flush">
             @foreach($block->menu->links as $link)
 
                 @include('alpaca::menu.link.link', ['isBlockView' => true, 'link' => $link, 'class' => ''])
 
             @endforeach
-        </ul>
+        </div>
     @else
         <div class="card-body">
             {!! $block->html !!}

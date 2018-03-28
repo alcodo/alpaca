@@ -7,7 +7,7 @@
                 <div class="card-header">
                     {{ $module->title }}
                 </div>
-                <ul class="list-group list-group-flush">
+                <div class="list-group list-group-flush">
                     @foreach($module->permissions as $perm)
 
                         <li class="list-group-item">
@@ -32,7 +32,7 @@
 
                         </li>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
 
