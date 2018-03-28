@@ -20,7 +20,7 @@
 
     @include('alpaca::navbar.navbar')
 
-    <main class="alpaca-main">
+    <div class="alpaca-main">
 
         @if(isset($withContainer) && $withContainer === false)
 
@@ -34,7 +34,7 @@
 
         @endif
 
-    </main>
+    </div>
 
     @include('alpaca::partials.footer')
 
