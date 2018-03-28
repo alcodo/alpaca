@@ -21,7 +21,7 @@ class CaptchaBuilder
     {
         $langCode = app()->getLocale();
 
-        return "<script src=\"https://www.google.com/recaptcha/api.js&hl=$langCode\" async defer></script>";
+        return "<script src=\"https://www.google.com/recaptcha/api.js?hl=$langCode\" async defer></script>";
     }
 
     public function renderInput()
