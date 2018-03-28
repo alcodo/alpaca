@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use Alpaca\Support\Captcha\CaptchaBuilder;
-use Illuminate\Http\Request;
 use Tests\IntegrationTest;
+use Illuminate\Http\Request;
+use Alpaca\Support\Captcha\CaptchaBuilder;
 
-class SitemapTest extends IntegrationTest
+class CaptchaTest extends IntegrationTest
 {
     public function testRender()
     {
