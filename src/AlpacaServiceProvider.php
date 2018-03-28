@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Listeners\User\VerifyUser;
 use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Captcha\CaptchaFacade;
@@ -68,7 +69,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             IsUserVerified::class,
         ],
         PasswordReset::class => [
-            IsUserVerified::class,
+            VerifyUser::class,
         ],
         Registered::class => [
             AssignGuestRole::class,
