@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Commands\HtmlMinCommand;
 use Alpaca\Listeners\HtmlMinListener;
 use Alpaca\Listeners\User\VerifyUser;
 use Alpaca\Support\Captcha\CaptchaBuilder;
@@ -183,7 +184,10 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $loader->alias('Captcha', CaptchaFacade::class);
 
         // commands
-        $this->commands(PublishTranslationCommand::class);
+        $this->commands([
+            PublishTranslationCommand::class,
+            HtmlMinCommand::class,
+        ]);
     }
 
     public function boot(\Illuminate\Routing\Router $router, Guard $guard)
@@ -193,24 +197,24 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->registerEvents();
 
         // config
-        $this->mergeConfigFrom(__DIR__.'/../config/alpaca.php', 'alpaca');
+        $this->mergeConfigFrom(__DIR__ . '/../config/alpaca.php', 'alpaca');
 
         // view
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'alpaca');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/alpaca'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/alpaca'),
         ]);
 
         // lang
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'alpaca');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
 
         // migratiom
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // routes
-        $this->loadRoutesFrom(__DIR__.'/routes_backend.php');
-        $this->loadRoutesFrom(__DIR__.'/routes_testing.php');
-        $this->loadRoutesFrom(__DIR__.'/routes_fronted.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_backend.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_testing.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_fronted.php');
 
         // validation
         $this->app['validator']->extend('captcha', function ($attribute, $value) {
