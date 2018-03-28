@@ -2,9 +2,8 @@
 
 namespace Alpaca\Listeners\User;
 
-use Alpaca\Exceptions\UserIsNotVerified;
 use Alpaca\Repositories\UserRepository;
-use Illuminate\Auth\Events\Authenticated;
+use Alpaca\Exceptions\UserIsNotVerified;
 use Illuminate\Auth\Events\PasswordReset;
 
 class VerifyUser

@@ -45,18 +45,17 @@ class HtmlMinCommand extends Command
 
         $bladePath = config('view.compiled');
 
-        if (!$bladePath) {
+        if (! $bladePath) {
             throw new RuntimeException('Bladepath for the views not found.');
         }
 
         $this->checkHtmlFiles($bladePath);
 
-
         // compress now
         $process = new Process("html-minifier --input-dir {$bladePath} --output-dir {$bladePath} --remove-comments --collapse-whitespace --minify-css --minify-js");
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
 
@@ -64,7 +63,7 @@ class HtmlMinCommand extends Command
         $process = new Process("git checkout HEAD {$bladePath}/.gitignore");
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
 
