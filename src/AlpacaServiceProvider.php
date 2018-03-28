@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Support\Block\BlockFacade;
 use Illuminate\Support\Facades\Event;
@@ -199,8 +200,19 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes_testing.php');
         $this->loadRoutesFrom(__DIR__.'/routes_fronted.php');
 
+        // validation
+        $this->app['validator']->extend('captcha', function ($attribute, $value) {
+            return $this->app['captcha']->verify($this->app['request']);
+        });
+
         // facade
         $this->app->instance('block', new BlockBuilder());
+        $this->app->singleton('captcha', function ($app) {
+            return new CaptchaBuilder(
+                config('services.recaptcha.public'),
+                config('services.recaptcha.secret')
+            );
+        });
 
         // gate
         $guard->registerPermissions();
