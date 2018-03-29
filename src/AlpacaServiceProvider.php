@@ -3,6 +3,7 @@
 namespace Alpaca;
 
 use Alpaca\Commands\HtmlMinCommand;
+use Alpaca\Commands\SyncPermissionCommand;
 use Alpaca\Events\Redirect\RedirectWasCreated;
 use Alpaca\Events\Redirect\RedirectWasDeleted;
 use Alpaca\Events\Redirect\RedirectWasUpdated;
@@ -202,6 +203,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->commands([
             PublishTranslationCommand::class,
             HtmlMinCommand::class,
+            SyncPermissionCommand::class,
         ]);
     }
 

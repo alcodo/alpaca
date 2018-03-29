@@ -21,6 +21,9 @@ class CreateRedirectTable extends Migration
 
             $table->timestamps();
         });
+
+        // sync permission
+        \Illuminate\Support\Facades\Artisan::call('alpaca:sync_permission');
     }
 
     /**

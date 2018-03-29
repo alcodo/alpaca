@@ -13,10 +13,10 @@ class MigrationTest extends IntegrationTest
         $this->withoutExceptionHandling();
 
         $this->assertEquals(3, Role::count());
-        $this->assertEquals(35, Permission::count());
+        $this->assertEquals(39, Permission::count());
 
         $adminRole = Role::whereSlug('administrator')->first();
-        $this->assertEquals(35, $adminRole->permissions->count());
+        $this->assertEquals(39, $adminRole->permissions->count());
 
         $permission = Permission::first();
         $this->assertEquals(1, $permission->roles->count());
