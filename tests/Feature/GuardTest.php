@@ -67,6 +67,10 @@ class GuardTest extends IntegrationTest
             32 => 'administrator.page.create',
             33 => 'administrator.page.edit',
             34 => 'administrator.page.delete',
+            35 => 'administrator.redirect.administer',
+            36 => 'administrator.redirect.create',
+            37 => 'administrator.redirect.edit',
+            38 => 'administrator.redirect.delete',
         ], $permissions);
     }
 }
