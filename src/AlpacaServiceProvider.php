@@ -3,12 +3,6 @@
 namespace Alpaca;
 
 use Alpaca\Commands\HtmlMinCommand;
-use Alpaca\Commands\SyncPermissionCommand;
-use Alpaca\Events\Redirect\RedirectWasCreated;
-use Alpaca\Events\Redirect\RedirectWasDeleted;
-use Alpaca\Events\Redirect\RedirectWasUpdated;
-use Alpaca\Listeners\Redirect\RedirectPermissionListener;
-use Alpaca\Listeners\Redirect\RefreshRedirectCacheListener;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Listeners\HtmlMinListener;
 use Alpaca\Listeners\User\VerifyUser;
@@ -34,6 +28,7 @@ use Alpaca\Listeners\User\IsUserVerified;
 use Alpaca\Support\Captcha\CaptchaFacade;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\PasswordReset;
+use Alpaca\Commands\SyncPermissionCommand;
 use Alpaca\Listeners\User\AssignGuestRole;
 use Alpaca\Support\Captcha\CaptchaBuilder;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
@@ -42,6 +37,9 @@ use Alpaca\Commands\PublishTranslationCommand;
 use Alpaca\Events\Category\CategoryWasCreated;
 use Alpaca\Events\Category\CategoryWasDeleted;
 use Alpaca\Events\Category\CategoryWasUpdated;
+use Alpaca\Events\Redirect\RedirectWasCreated;
+use Alpaca\Events\Redirect\RedirectWasDeleted;
+use Alpaca\Events\Redirect\RedirectWasUpdated;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Illuminate\Console\Events\CommandFinished;
 use Alpaca\Events\Permission\PermissionWasSaved;
@@ -63,7 +61,9 @@ use Alpaca\Listeners\Block\RefreshBlockCacheListener;
 use Alpaca\Listeners\Category\CategorySitemapListener;
 use Alpaca\Listeners\Contact\ContactPermissionListener;
 use Alpaca\Listeners\Category\CategoryPermissionListener;
+use Alpaca\Listeners\Redirect\RedirectPermissionListener;
 use Alpaca\Listeners\Category\RefreshCategoryCacheListener;
+use Alpaca\Listeners\Redirect\RefreshRedirectCacheListener;
 use Alpaca\Listeners\Permission\PermissionPermissionListener;
 use Alpaca\Listeners\Permission\RefreshPermissionCacheListener;
 use Alpaca\Listeners\EmailTemplate\EmailTemplatePermissionListener;
@@ -214,24 +214,24 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->registerEvents();
 
         // config
-        $this->mergeConfigFrom(__DIR__ . '/../config/alpaca.php', 'alpaca');
+        $this->mergeConfigFrom(__DIR__.'/../config/alpaca.php', 'alpaca');
 
         // view
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'alpaca');
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/alpaca'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/alpaca'),
         ]);
 
         // lang
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'alpaca');
 
         // migratiom
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // routes
-        $this->loadRoutesFrom(__DIR__ . '/routes_backend.php');
-        $this->loadRoutesFrom(__DIR__ . '/routes_testing.php');
-        $this->loadRoutesFrom(__DIR__ . '/routes_fronted.php');
+        $this->loadRoutesFrom(__DIR__.'/routes_backend.php');
+        $this->loadRoutesFrom(__DIR__.'/routes_testing.php');
+        $this->loadRoutesFrom(__DIR__.'/routes_fronted.php');
 
         // validation
         $this->app['validator']->extend('captcha', function ($attribute, $value) {

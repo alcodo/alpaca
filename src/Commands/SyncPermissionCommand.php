@@ -41,6 +41,5 @@ class SyncPermissionCommand extends Command
         $ids = collect($allPermissions)->pluck('id')->all();
         $adminRole = Role::where('slug', 'administrator')->first();
         $adminRole->permissions()->sync($ids);
-
     }
 }
