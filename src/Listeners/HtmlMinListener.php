@@ -2,8 +2,9 @@
 
 namespace Alpaca\Listeners;
 
-use Alpaca\Commands\HtmlMinCommand;
+//use Alpaca\Commands\HtmlMinCommand;
 use Illuminate\Console\Events\CommandFinished;
+use Illuminate\Support\Facades\Artisan;
 
 class HtmlMinListener
 {
@@ -25,8 +26,7 @@ class HtmlMinListener
     public function handle($event)
     {
         if ($event->command == 'view:cache' && $event->exitCode === 0) {
-            $command = new HtmlMinCommand();
-            $command->handle();
+            Artisan::call('alpaca:html_minifier');
         }
     }
 }
