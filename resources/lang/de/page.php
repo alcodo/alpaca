@@ -12,6 +12,6 @@ return [
     'releated_pages' => 'Das könnte dich auch interessieren',
     'url' => 'Url',
     'name' => 'Name',
-    'page_index' => 'Page index',
+    'page_index' => 'Seitenübersicht',
 
 ];

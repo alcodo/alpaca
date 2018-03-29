@@ -3,6 +3,11 @@
 namespace Alpaca;
 
 use Alpaca\Commands\HtmlMinCommand;
+use Alpaca\Events\Redirect\RedirectWasCreated;
+use Alpaca\Events\Redirect\RedirectWasDeleted;
+use Alpaca\Events\Redirect\RedirectWasUpdated;
+use Alpaca\Listeners\Redirect\RedirectPermissionListener;
+use Alpaca\Listeners\Redirect\RefreshRedirectCacheListener;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Listeners\HtmlMinListener;
 use Alpaca\Listeners\User\VerifyUser;
@@ -95,6 +100,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             RolePermissionListener::class,
             UserPermissionListener::class,
             PagePermissionListener::class,
+            RedirectPermissionListener::class,
         ],
         SitemapIsRequested::class => [
             PageSitemapListener::class,
@@ -145,6 +151,15 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         PageWasDeleted::class => [
             RefreshPageCacheListener::class,
             RefreshCategoryCacheListener::class,
+        ],
+        RedirectWasCreated::class => [
+            RefreshRedirectCacheListener::class,
+        ],
+        RedirectWasUpdated::class => [
+            RefreshRedirectCacheListener::class,
+        ],
+        RedirectWasDeleted::class => [
+            RefreshRedirectCacheListener::class,
         ],
         BlockWasCreated::class => [
             RefreshBlockCacheListener::class,
@@ -197,24 +212,24 @@ class AlpacaServiceProvider extends AggregateServiceProvider
         $this->registerEvents();
 
         // config
-        $this->mergeConfigFrom(__DIR__.'/../config/alpaca.php', 'alpaca');
+        $this->mergeConfigFrom(__DIR__ . '/../config/alpaca.php', 'alpaca');
 
         // view
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'alpaca');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alpaca');
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/alpaca'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/alpaca'),
         ]);
 
         // lang
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'alpaca');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'alpaca');
 
         // migratiom
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // routes
-        $this->loadRoutesFrom(__DIR__.'/routes_backend.php');
-        $this->loadRoutesFrom(__DIR__.'/routes_testing.php');
-        $this->loadRoutesFrom(__DIR__.'/routes_fronted.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_backend.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_testing.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes_fronted.php');
 
         // validation
         $this->app['validator']->extend('captcha', function ($attribute, $value) {

@@ -23,6 +23,9 @@ Route::group([
     Route::get('/register/verify/{token}', '\Alpaca\Controllers\VerifyController@verify');
 
     try {
+        /**
+         * Category
+         */
         \Alpaca\Support\CategoryCache::get()->map(function ($category) {
             Route::get($category->path, function () use ($category) {
                 $controller = new \Alpaca\Controllers\CategoryController();
@@ -39,6 +42,17 @@ Route::group([
                 $controller = new \Alpaca\Controllers\PageController();
 
                 return $controller->show($page);
+            });
+        });
+
+        /**
+         * Redirect
+         */
+        \Alpaca\Support\Redirect\RedirectCache::get()->map(function ($redirect) {
+            Route::get($redirect->from, function () use ($redirect) {
+                $controller = new \Alpaca\Controllers\RedirectController();
+
+                return $controller->show($redirect);
             });
         });
     } catch (Illuminate\Database\QueryException $e) {

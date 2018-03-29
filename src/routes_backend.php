@@ -44,4 +44,9 @@ Route::group([
     // Page
     Route::resource('/backend/page', \Alpaca\Controllers\PageController::class);
     Route::resource('/backend/category', \Alpaca\Controllers\CategoryController::class);
+
+    // Redirect
+    Route::resource('/backend/redirect', \Alpaca\Controllers\RedirectController::class, ['except' => [
+        'create', 'edit',
+    ]]);
 });
