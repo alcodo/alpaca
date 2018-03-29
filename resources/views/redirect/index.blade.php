@@ -22,6 +22,7 @@
             <th>{{ trans('alpaca::redirect.from') }}</th>
             <th>{{ trans('alpaca::redirect.to') }}</th>
             <th>{{ trans('alpaca::redirect.code') }}</th>
+            <th>{{ trans('alpaca::redirect.hits') }}</th>
             <th>{{ trans('alpaca::alpaca.created') }}</th>
             <th>{{ trans('alpaca::alpaca.updated') }}</th>
             <th></th>
@@ -41,6 +42,9 @@
                 </td>
                 <td>
                     {{ $redirect->code }}
+                </td>
+                <td>
+                    {{ $redirect->hits }}
                 </td>
                 <td>{{ dateintl_full('short', $redirect->created_at) }}</td>
                 <td>{{ dateintl_full('short', $redirect->updated_at) }}</td>

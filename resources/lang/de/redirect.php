@@ -8,5 +8,6 @@ return [
     'from' => 'Von',
     'to' => 'Nach',
     'code' => 'Code',
+    'hits' => 'Aufrufe',
 
 ];
