@@ -3,8 +3,8 @@
 namespace Alpaca\Listeners;
 
 //use Alpaca\Commands\HtmlMinCommand;
-use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Console\Events\CommandFinished;
 
 class HtmlMinListener
 {
