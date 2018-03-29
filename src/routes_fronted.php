@@ -23,7 +23,7 @@ Route::group([
     Route::get('/register/verify/{token}', '\Alpaca\Controllers\VerifyController@verify');
 
     try {
-        /**
+        /*
          * Category
          */
         \Alpaca\Support\CategoryCache::get()->map(function ($category) {
@@ -45,7 +45,7 @@ Route::group([
             });
         });
 
-        /**
+        /*
          * Redirect
          */
         \Alpaca\Support\Redirect\RedirectCache::get()->map(function ($redirect) {

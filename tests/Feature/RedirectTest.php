@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
+use Tests\IntegrationTest;
+use Alpaca\Models\Redirect;
+use Illuminate\Support\Facades\Event;
+use Alpaca\Repositories\RedirectRepository;
 use Alpaca\Events\Redirect\RedirectWasCreated;
 use Alpaca\Events\Redirect\RedirectWasDeleted;
 use Alpaca\Events\Redirect\RedirectWasUpdated;
-use Alpaca\Models\Redirect;
-use Alpaca\Repositories\RedirectRepository;
-use Tests\IntegrationTest;
-use Illuminate\Support\Facades\Event;
 
 class RedirectTest extends IntegrationTest
 {

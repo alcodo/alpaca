@@ -2,10 +2,10 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Models\Redirect;
-use Alpaca\Repositories\RedirectRepository;
 use Laracasts\Flash\Flash;
+use Alpaca\Models\Redirect;
 use Illuminate\Http\Request;
+use Alpaca\Repositories\RedirectRepository;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class RedirectController extends Controller

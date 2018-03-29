@@ -2,16 +2,14 @@
 
 namespace Alpaca\Repositories;
 
+use Alpaca\Models\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Alpaca\Events\Redirect\RedirectWasCreated;
 use Alpaca\Events\Redirect\RedirectWasDeleted;
 use Alpaca\Events\Redirect\RedirectWasUpdated;
-use Alpaca\Models\Page;
-use Alpaca\Models\Redirect;
-use Illuminate\Support\Facades\Validator;
 
 class RedirectRepository
 {
-
     public function create(array $data): Redirect
     {
         Validator::make($data, [
@@ -56,5 +54,4 @@ class RedirectRepository
         $redirect->hits++;
         $redirect->save();
     }
-
 }
