@@ -79,6 +79,12 @@ class AlpacaBlockListener
             );
         }
 
+        if ($user->can('redirect.administer')) {
+            $block->menu->links->push(
+                new MenuLink(['text' => 'Redirect', 'title' => 'Redirect administration', 'href' => '/backend/redirect'])
+            );
+        }
+
         if ($user->can('user.administer')) {
             $block->menu->links->push(
                 new MenuLink(['text' => 'User', 'title' => 'User administration', 'href' => '/backend/user'])
