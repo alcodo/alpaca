@@ -2,10 +2,10 @@
 
 namespace Alpaca\Commands;
 
-use Illuminate\Console\Command;
-use Symfony\Component\Process\Process;
-use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Illuminate\Console\Command;
+use RecursiveDirectoryIterator;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class HtmlMinCommand extends Command
@@ -46,7 +46,7 @@ class HtmlMinCommand extends Command
 
         $bladePath = config('view.compiled');
 
-        if (!$bladePath) {
+        if (! $bladePath) {
             throw new RuntimeException('Bladepath for the views not found.');
         }
 
@@ -58,14 +58,14 @@ class HtmlMinCommand extends Command
 
         $filesizeNow = $this->dirSize($bladePath);
         $kiloBytesSaved = $filesizeBefore - $filesizeNow;
-        $this->comment('Filesize before: ' . $filesizeBefore . 'KB Now: ' . $filesizeNow . 'KB Saved: ' . $kiloBytesSaved . 'KB');
+        $this->comment('Filesize before: '.$filesizeBefore.'KB Now: '.$filesizeNow.'KB Saved: '.$kiloBytesSaved.'KB');
 
         $this->info('successful minified');
     }
 
     protected function checkFiles($bladePath)
     {
-        foreach (glob($bladePath . "/*.php") as $filepath) {
+        foreach (glob($bladePath.'/*.php') as $filepath) {
             $this->checkFile($filepath);
         }
     }
@@ -83,11 +83,10 @@ class HtmlMinCommand extends Command
 
     protected function minify($bladePath)
     {
-
         $parameter = [
             "--input-dir $bladePath",
             "--output-dir $bladePath",
-            "--file-ext php",
+            '--file-ext php',
             '--use-short-doctype',
             '--remove-empty-elements',
             '--remove-empty-attributes',
@@ -98,14 +97,13 @@ class HtmlMinCommand extends Command
             '--minify-js',
         ];
 
-        $command = $this->htmlminifyerExecuter . ' ' . implode(' ', $parameter);
+        $command = $this->htmlminifyerExecuter.' '.implode(' ', $parameter);
         $process = new Process($command);
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
-
     }
 
     protected function getHtmlMinifyerExecuter()
@@ -131,6 +129,7 @@ class HtmlMinCommand extends Command
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory)) as $file) {
             $size += $file->getSize();
         }
+
         return $size;
     }
 }
