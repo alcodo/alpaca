@@ -35,10 +35,14 @@
                     {{ $redirect->id }}
                 </td>
                 <td>
-                    {{ $redirect->from }}
+                    <a href="{{ $redirect->from }}">
+                        {{ $redirect->from }}
+                    </a>
                 </td>
                 <td>
-                    {{ $redirect->to }}
+                    <a href="{{ $redirect->to }}">
+                        {{ $redirect->to }}
+                    </a>
                 </td>
                 <td>
                     {{ $redirect->code }}
@@ -55,5 +59,7 @@
         @endforeach
         </tbody>
     </table>
+
+    {{ $redirects->links() }}
 
 @endsection
