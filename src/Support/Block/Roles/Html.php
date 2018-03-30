@@ -21,11 +21,11 @@ class Html
 
     public function getHtml()
     {
-        return view('alpaca::block.show', ['block' => $this->block])->render();
+        return view('alpaca::block.generate.block', ['block' => $this->block])->render();
     }
 
     public function getMobileHtmlMenu()
     {
-        return view('alpaca::block.generate.mobile_menu', ['block' => $this->block])->render();
+        return view('alpaca::block.generate.block_mobile', ['block' => $this->block])->render();
     }
 }

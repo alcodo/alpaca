@@ -18,7 +18,7 @@
 
             <div class="col-sm-6">
 
-                @include('alpaca::block.show', [
+                @include('alpaca::block.generate.block', [
                                                 'isWithBorder' => true,
                                                 'isWithAction' => true,
                                                 ])
