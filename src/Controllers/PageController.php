@@ -90,7 +90,7 @@ class PageController extends Controller
 
         $releated = $repo->getRelatedPages($page);
 
-        if (!empty($page->meta_robots)) {
+        if (! empty($page->meta_robots)) {
             SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 
