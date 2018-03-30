@@ -40,5 +40,4 @@ function isActiveUrl($similarPath, $output = 'active', $actualPath = null)
     if ($actualPath === $similarPath) {
         return $output;
     }
-
 }
