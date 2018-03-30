@@ -14,9 +14,6 @@ class CategoryCache
 
     public static function getFromDB()
     {
-        return Category::with([
-            'pages',
-        ])
-            ->get();
+        return Category::get()->pluck('path', 'id');
     }
 }

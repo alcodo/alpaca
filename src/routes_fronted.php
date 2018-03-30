@@ -26,23 +26,25 @@ Route::group([
         /*
          * Category
          */
-        \Alpaca\Support\CategoryCache::get()->map(function ($category) {
-            Route::get($category->path, function () use ($category) {
-                $controller = new \Alpaca\Controllers\CategoryController();
+        \Alpaca\Support\CategoryCache::get()->map(function ($path, $id) {
 
-                return $controller->show($category);
+            Route::get($path, function () use ($id) {
+                $controller = new \Alpaca\Controllers\CategoryController();
+                return $controller->show($id);
             });
+
         });
 
         /*
          * Page.
          */
-        \Alpaca\Support\Page\PageCache::get()->map(function ($page) {
-            Route::get($page->path, function () use ($page) {
-                $controller = new \Alpaca\Controllers\PageController();
+        \Alpaca\Support\Page\PageCache::get()->map(function ($path, $id) {
 
-                return $controller->show($page);
+            Route::get($path, function () use ($id) {
+                $controller = new \Alpaca\Controllers\PageController();
+                return $controller->show($id);
             });
+
         });
 
         /*

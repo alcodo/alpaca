@@ -14,10 +14,6 @@ class PageCache
 
     public static function getFromDB()
     {
-        return Page::with([
-            'category',
-            'user',
-        ])
-            ->get();
+        return Page::get()->pluck('path', 'id');
     }
 }

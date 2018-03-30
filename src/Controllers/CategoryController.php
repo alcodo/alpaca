@@ -68,8 +68,13 @@ class CategoryController extends Controller
      * @param Category $category
      * @return Response
      */
-    public function show(Category $category)
+    public function show($categoryId)
     {
+        $category = Category::with([
+            'pages',
+        ])
+            ->findOrFail($categoryId);
+
         SEO::setTitle($category->title);
 
         return view('alpaca::category.show', compact('category'));

@@ -73,8 +73,14 @@ class PageController extends Controller
      * @param PageRepository $repo
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show($pageId)
     {
+        $page = Page::with([
+            'category',
+            'user',
+        ])
+            ->findOrFail($pageId);
+
         $repo = new PageRepository();
 
         // TODO check is active
@@ -84,7 +90,7 @@ class PageController extends Controller
 
         $releated = $repo->getRelatedPages($page);
 
-        if (! empty($page->meta_robots)) {
+        if (!empty($page->meta_robots)) {
             SEO::metatags()->addMeta('robots', $page->meta_robots);
         }
 
