@@ -14,6 +14,6 @@ class RedirectCache
 
     public static function getFromDB()
     {
-        return Redirect::get();
+        return Redirect::get()->pluck('from', 'id');
     }
 }

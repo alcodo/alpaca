@@ -55,8 +55,10 @@ class RedirectController extends Controller
      * @param Redirect $redirect
      * @return void
      */
-    public function show(Redirect $redirect)
+    public function show($redirectId)
     {
+        $redirect = Redirect::findOrFail($redirectId);
+
         $repo = new RedirectRepository();
         $repo->addHit($redirect);
 

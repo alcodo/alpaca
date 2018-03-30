@@ -18,7 +18,6 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>{{ trans('alpaca::alpaca.name') }}</th>
             <th>{{ trans('alpaca::redirect.from') }}</th>
             <th>{{ trans('alpaca::redirect.to') }}</th>
             <th>{{ trans('alpaca::redirect.code') }}</th>

@@ -48,12 +48,13 @@ Route::group([
         /*
          * Redirect
          */
-        \Alpaca\Support\Redirect\RedirectCache::get()->map(function ($redirect) {
-            Route::get($redirect->from, function () use ($redirect) {
-                $controller = new \Alpaca\Controllers\RedirectController();
+        \Alpaca\Support\Redirect\RedirectCache::get()->map(function ($from, $id) {
 
-                return $controller->show($redirect);
+            Route::get($from, function () use ($id) {
+                $controller = new \Alpaca\Controllers\RedirectController();
+                return $controller->show($id);
             });
+
         });
     } catch (Illuminate\Database\QueryException $e) {
     }
