@@ -20,49 +20,25 @@ function isActiveUrlExact($exactPath, $output = 'active')
     }
 }
 
-function isActiveUrl($similarPath, $output = 'active')
+function isActiveUrl($similarPath, $output = 'active', $actualPath = null)
 {
-    $actualPath = \Illuminate\Support\Facades\Request::getPathInfo();
+    if (is_null($actualPath)) {
+        $actualPath = \Illuminate\Support\Facades\Request::getPathInfo();
+    }
 
-    if (strpos($actualPath, $similarPath) !== false) {
+    // convert both string are same length
+    $lenghtActualPath = strlen($actualPath);
+    $lenghtSimilarPath = strlen($similarPath);
+
+    if ($lenghtActualPath > $lenghtSimilarPath) {
+        $actualPath = substr($actualPath, 0, $lenghtSimilarPath);
+    } elseif ($lenghtActualPath < $lenghtSimilarPath) {
+        $similarPath = substr($similarPath, 0, $lenghtActualPath);
+    }
+
+    // check
+    if ($actualPath === $similarPath) {
         return $output;
     }
+
 }
-
-//function removeFirstSlash($path)
-//{
-//    // frontpage except rule
-//    if ($path == '/') {
-//        return $path;
-//    }
-//
-//    // remove first slash
-//    if ($path[0] == '/') {
-//        return trim($path, '/');;
-//    }
-//
-//    return $path;
-//}
-
-//if (! function_exists('alpacaFactory')) {
-//    /**
-//     * Create a model factory builder for a given class, name, and amount.
-//     *
-//     * @param  dynamic  class|class,name|class,amount|class,name,amount
-//     * @return \Illuminate\Database\Eloquent\FactoryBuilder
-//     */
-//    function alpacaFactory()
-//    {
-//        $factory = \Illuminate\Database\Eloquent\Factory::construct(app('Faker\Generator'), base_path('vendor/alcodo/alpaca/src/resources/factories/'));
-//
-//        $arguments = func_get_args();
-//
-//        if (isset($arguments[1]) && is_string($arguments[1])) {
-//            return $factory->of($arguments[0], $arguments[1])->times(isset($arguments[2]) ? $arguments[2] : 1);
-//        } elseif (isset($arguments[1])) {
-//            return $factory->of($arguments[0])->times($arguments[1]);
-//        } else {
-//            return $factory->of($arguments[0]);
-//        }
-//    }
-//}
