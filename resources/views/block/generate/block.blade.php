@@ -1,4 +1,4 @@
-<div class="card mb-3 d-none d-sm-none d-md-block"
+<div class="card mb-3 @if($block->menu) d-none d-sm-none d-md-block @endif"
      @if(isset($isWithBorder) && $isWithBorder) style="border: 1px solid silver" @endif>
 
     <div class="card-header">
