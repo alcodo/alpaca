@@ -27,36 +27,33 @@ Route::group([
          * Category
          */
         \Alpaca\Support\CategoryCache::get()->map(function ($path, $id) {
-
             Route::get($path, function () use ($id) {
                 $controller = new \Alpaca\Controllers\CategoryController();
+
                 return $controller->show($id);
             });
-
         });
 
         /*
          * Page.
          */
         \Alpaca\Support\Page\PageCache::get()->map(function ($path, $id) {
-
             Route::get($path, function () use ($id) {
                 $controller = new \Alpaca\Controllers\PageController();
+
                 return $controller->show($id);
             });
-
         });
 
         /*
          * Redirect
          */
         \Alpaca\Support\Redirect\RedirectCache::get()->map(function ($from, $id) {
-
             Route::get($from, function () use ($id) {
                 $controller = new \Alpaca\Controllers\RedirectController();
+
                 return $controller->show($id);
             });
-
         });
     } catch (Illuminate\Database\QueryException $e) {
     }
