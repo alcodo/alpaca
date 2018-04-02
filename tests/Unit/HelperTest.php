@@ -6,7 +6,6 @@ use Tests\UnitTest;
 
 class HelperTest extends UnitTest
 {
-
     public function test_isActiveUrl()
     {
         $path = '/info/buchung-einlagerung';
@@ -34,6 +33,5 @@ class HelperTest extends UnitTest
         $this->assertNull(
             isActiveUrl('/buch/foo', true, $path)
         );
-
     }
 }
