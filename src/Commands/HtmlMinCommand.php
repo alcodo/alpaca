@@ -88,7 +88,6 @@ class HtmlMinCommand extends Command
             "--output-dir $bladePath",
             '--file-ext php',
             '--use-short-doctype',
-            '--remove-empty-elements',
             '--remove-empty-attributes',
             '--remove-attribute-quotes',
             '--remove-comments',
