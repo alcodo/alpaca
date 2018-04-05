@@ -17,6 +17,7 @@ Requirements:
 * [Vue.js](https://github.com/vuejs/vue) ([Doc](https://vuejs.org/v2/guide/))
 * [Bootstrap 4](https://github.com/twbs/bootstrap) ([Doc](https://getbootstrap.com/docs/4.0/))
 * [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue) ([Doc](https://bootstrap-vue.js.org/docs))
+* [EmailChecker](https://github.com/MattKetmo/EmailChecker))
 
 ## Why a new CMS system again?
 

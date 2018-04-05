@@ -3,6 +3,8 @@
 namespace Alpaca;
 
 use Alcodo\PowerImage\Facades\PowerImage;
+use EmailChecker\Laravel\EmailCheckerFacade;
+use EmailChecker\Laravel\EmailCheckerServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Alcodo\PowerImage\PowerImageServiceProvider;
@@ -20,6 +22,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         HoneypotServiceProvider::class,
         LaravelDateInternationalServiceProvider::class,
         PowerImageServiceProvider::class,
+        EmailCheckerServiceProvider::class,
     ];
 
     protected $aliases = [
@@ -28,6 +31,7 @@ class DependencyServiceProvider extends AggregateServiceProvider
         'Slugify' => \Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
         'Honeypot' => \Msurguy\Honeypot\HoneypotFacade::class,
         'PowerImage' => PowerImage::class,
+        'EmailChecker' => EmailCheckerFacade::class,
     ];
 
     protected $middlewares = [
