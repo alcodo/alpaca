@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use Alpaca\Models\User;
 use Tests\IntegrationTest;
 use Illuminate\Support\Facades\Event;
-use Alpaca\Listeners\User\AssignGuestRole;
-use Alpaca\Listeners\User\StartVerificationProcess;
 
 class RegisterTest extends IntegrationTest
 {

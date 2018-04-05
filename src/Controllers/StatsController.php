@@ -2,27 +2,18 @@
 
 namespace Alpaca\Controllers;
 
-use Laracasts\Flash\Flash;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Alpaca\Mail\ContactFormWasFilled;
-use Artesaos\SEOTools\Facades\SEOMeta;
-use Illuminate\Support\Facades\Config;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Validator;
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
+use Carbon\Carbon;
 use Alpaca\Models\Page;
 use Alpaca\Models\User;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools as SEO;
 
 class StatsController extends Controller
 {
-
     public function user()
     {
         // seo
-        SEO::setTitle(trans('alpaca::user.registrated_user') . ' - ' . trans('alpaca::alpaca.stats'));
+        SEO::setTitle(trans('alpaca::user.registrated_user').' - '.trans('alpaca::alpaca.stats'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         // parameter
@@ -61,7 +52,6 @@ class StatsController extends Controller
 
         $stats = [];
         while ($dateAfter->toDateString() < Carbon::now()->toDateString()) {
-
             $count = 0;
             if (isset($users[$dateAfter->format($format)])) {
                 $count = $users[$dateAfter->format($format)]->count();
@@ -101,7 +91,7 @@ class StatsController extends Controller
 //                }
 //            }
 //
-////            dd($stats);
+        ////            dd($stats);
 //
 //        } elseif ($view === 'day') {
 //
@@ -140,5 +130,4 @@ class StatsController extends Controller
 
         return view('alpaca::page.index', compact('pages'));
     }
-
 }
