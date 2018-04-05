@@ -3,12 +3,12 @@
 namespace Alpaca;
 
 use Alcodo\PowerImage\Facades\PowerImage;
-use EmailChecker\Laravel\EmailCheckerFacade;
-use EmailChecker\Laravel\EmailCheckerServiceProvider;
 use Laracasts\Flash\FlashServiceProvider;
+use EmailChecker\Laravel\EmailCheckerFacade;
 use Msurguy\Honeypot\HoneypotServiceProvider;
 use Alcodo\PowerImage\PowerImageServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
+use EmailChecker\Laravel\EmailCheckerServiceProvider;
 use Artesaos\SEOTools\Providers\SEOToolsServiceProvider;
 use Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider;
 use Approached\LaravelDateInternational\ServiceProvider as LaravelDateInternationalServiceProvider;

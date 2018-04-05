@@ -28,7 +28,7 @@ class RedirectRepository
     public function update(Redirect $redirect, array $data): Redirect
     {
         Validator::make($data, [
-            'from' => 'required|string|max:255|unique:redirects,from,' . $redirect->id . ',id',
+            'from' => 'required|string|max:255|unique:redirects,from,'.$redirect->id.',id',
             'to' => 'required|string|max:255',
             'code' => 'nullable|integer',
         ])->validate();
