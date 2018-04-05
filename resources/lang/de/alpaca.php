@@ -27,5 +27,9 @@ return [
     'send' => 'Senden',
     'stats' => 'Statistik',
     'month' => 'Monat',
+    'months' => 'Monate',
     'sum' => 'Summe',
+    'last' => 'Letzte',
+    'day' => 'Tag',
+    'view' => 'Ansicht',
 ];

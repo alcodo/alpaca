@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'registrated_user'  => 'Registrierte Benutzer',
     'confirm'  => 'Bestätigen',
     'add_permission'  => 'Berechtigung hinzufügen',
     'add_role'  => 'Rolle hinzufügen',

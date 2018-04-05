@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'registrated_user'  => 'Registrated user',
     'confirm'  => 'Confirm',
     'add_permission'  => 'Add permission',
     'add_role'  => 'Add role',

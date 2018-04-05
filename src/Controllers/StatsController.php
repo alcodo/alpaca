@@ -21,31 +21,114 @@ class StatsController extends Controller
 
     public function user()
     {
-        SEO::setTitle(trans('alpaca::alpaca.stats'));
+        // seo
+        SEO::setTitle(trans('alpaca::user.registrated_user') . ' - ' . trans('alpaca::alpaca.stats'));
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
-        $dateAfter = Carbon::now()->subMonths(6);
-        $users = User::where('created_at', '>', $dateAfter)->get();
+        // parameter
+        $view = 'month';
+        $format = 'Y-m';
+        $last = 6;
+        if (request()->has('view') && ! empty(request()->get('view'))) {
+            $view = request()->get('view');
+        }
+        if (request()->has('last') && ! empty(request()->get('last'))) {
+            $last = request()->get('last');
+        }
+        if ($view == 'day') {
+            $format = 'Y-m-d';
+        }
+
+        // get date
+        $dateAfter = Carbon::now()->subMonths($last);
+        if ($view === 'month') {
+            $dateAfter->startOfMonth();
+        } elseif ($view === 'day') {
+            $dateAfter->startOfDay();
+        }
+
+        $users = User::where('verified', true)->where('created_at', '>', $dateAfter)->get();
+
+        // stats
+        $sum = $users->count();
+        $daysBetween = $dateAfter->diffInDays(Carbon::now());
+        $avg = round($sum / $daysBetween, 2);
 
         // group
-        $users = $users->groupBy(function($item)
-        {
-            return $item->created_at->format('Y-m-d');
+        $users = $users->groupBy(function ($item) use ($format) {
+            return $item->created_at->format($format);
         });
 
         $stats = [];
-        while ($dateAfter->toDateString() != Carbon::now()->toDateString()) {
+        while ($dateAfter->toDateString() < Carbon::now()->toDateString()) {
 
             $count = 0;
-            if(isset($users[$dateAfter->toDateString()])){
-                $count = $users[$dateAfter->toDateString()]->count();
+            if (isset($users[$dateAfter->format($format)])) {
+                $count = $users[$dateAfter->format($format)]->count();
             }
 
-            $stats[$dateAfter->toDateString()] = $count;
-            $dateAfter->addDay();
+            $stats[$dateAfter->format($format)] = $count;
+
+            if ($view === 'month') {
+                $dateAfter->addMonth();
+            } else {
+                $dateAfter->addDay();
+            }
         }
 
-        return view('alpaca::stats.user', compact('stats'));
+        // parse
+//        if ($view === 'month') {
+//
+//            // group
+//            $users = $users->groupBy(function ($item) {
+//                return $item->created_at->format('Y-m');
+//            });
+//
+//            $stats = [];
+//            while ($dateAfter->toDateString() < Carbon::now()->toDateString()) {
+//
+//                $count = 0;
+//                if (isset($users[$dateAfter->format('Y-m')])) {
+//                    $count = $users[$dateAfter->format('Y-m')]->count();
+//                }
+//
+//                $stats[$dateAfter->format('Y-m')] = $count;
+//
+//                    if ($view === 'month') {
+//                $dateAfter->addMonth();
+//                } else {
+//                    $dateAfter->addDay();
+//                }
+//            }
+//
+////            dd($stats);
+//
+//        } elseif ($view === 'day') {
+//
+//            // group
+//            $users = $users->groupBy(function ($item) {
+//                return $item->created_at->format('Y-m-d');
+//            });
+//
+//            $stats = [];
+//            while ($dateAfter->toDateString() != Carbon::now()->toDateString()) {
+//
+//                $count = 0;
+//                if (isset($users[$dateAfter->toDateString()])) {
+//                    $count = $users[$dateAfter->toDateString()]->count();
+//                }
+//
+//                $stats[$dateAfter->toDateString()] = $count;
+//                $dateAfter->addDay();
+//            }
+//
+//        }
+
+        // stats
+        $min = $users->min()->count();
+        $max = $users->max()->count();
+
+        return view('alpaca::stats.user', compact('stats', 'sum', 'avg', 'min', 'max'));
     }
 
     public function page()

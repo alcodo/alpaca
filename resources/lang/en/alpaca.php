@@ -27,5 +27,9 @@ return [
     'send' => 'Send',
     'stats' => 'Stats',
     'month' => 'Month',
+    'months' => 'Months',
     'sum' => 'Sum',
+    'last' => 'Last',
+    'day' => 'Day',
+    'view' => 'View',
 ];
