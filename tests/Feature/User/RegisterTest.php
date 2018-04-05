@@ -31,30 +31,22 @@ class RegisterTest extends IntegrationTest
     public function testRegister()
     {
         Event::fake();
-//        $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $this->assertGuest();
         $this->equalTo(1, User::count());
 
         $this->post('/register', [
             'name' => 'JohnDoe',
-            'email' => 'john_doe@example.com',
+            'email' => 'john_doe@notFakeMailAdress.com',
             'password' => 'mySecretPassword',
             'password_confirmation' => 'mySecretPassword',
+            'g-recaptcha-response' => 'ALPACA-TEST',
         ])
-//            ->dump()
-//            ->assertRedirect('/');
             ->assertRedirect('/home');
 
-        // TODO events are corrupt in tests
-
-//        $this->assertGuest();
-//        $this->assertAuthenticated();
-//        $this->equalTo(2, User::count());
+        $this->assertAuthenticated();
 
         Event::assertDispatched(\Illuminate\Auth\Events\Registered::class);
-//        Event::assertDispatched(\Illuminate\Auth\Events\Registered::class);
-//        Event::assertDispatched(AssignGuestRole::class);
-//        Event::assertDispatched(StartVerificationProcess::class);
     }
 }
