@@ -45,6 +45,10 @@ Route::group([
     Route::resource('/backend/page', \Alpaca\Controllers\PageController::class);
     Route::resource('/backend/category', \Alpaca\Controllers\CategoryController::class);
 
+    // Stats
+    Route::get('/backend/stats/user', '\Alpaca\Controllers\StatsController@user');
+    Route::get('/backend/stats/page', '\Alpaca\Controllers\StatsController@page');
+
     // Redirect
     Route::resource('/backend/redirect', \Alpaca\Controllers\RedirectController::class, ['except' => [
         'create', 'edit',

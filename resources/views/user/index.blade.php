@@ -9,7 +9,9 @@
         </a>
         @include('alpaca::user.sub.create')
     @endcan
-
+    <a href="/backend/stats/user" class="btn btn-info float-right mr-1" v-b-modal.modalcreateuser>
+        {{ trans('alpaca::alpaca.stats') }}
+    </a>
 
     <h1>
         {{ trans('alpaca::user.users') }}

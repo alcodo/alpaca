@@ -25,4 +25,7 @@ return [
     'alt' => 'Alt',
     'name' => 'Name',
     'send' => 'Send',
+    'stats' => 'Stats',
+    'month' => 'Month',
+    'sum' => 'Sum',
 ];

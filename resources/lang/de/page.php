@@ -13,5 +13,6 @@ return [
     'url' => 'Url',
     'name' => 'Name',
     'page_index' => 'Seitenübersicht',
+    'page_stats' => 'Seiten Statistik',
 
 ];

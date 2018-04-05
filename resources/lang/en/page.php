@@ -12,4 +12,5 @@ return [
     'url' => 'Url',
     'name' => 'Name',
     'page_index' => 'Page index',
+    'page_stats' => 'Page stats',
 ];
