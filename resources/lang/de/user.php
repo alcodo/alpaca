@@ -29,7 +29,7 @@ return [
     'throttle'                    => 'Zu viele fehlversuche beim Anmelden. Bitte versuche es in :seconds sekunden erneut.',
     'password_forget' => 'Passwort vergessen?',
     'reset_password' => 'Passwort zurücksetzen',
-    'you_receive_email_because' => 'Du erhältst diese E-Mail, weil du das Passwort zurücksetzen Funktion für dein Konto benutzt.',
+    'you_receive_email_because' => 'Du erhältst diese E-Mail, weil du die Funktion "Passwort zurücksetzen" für dein Konto benutzt. Um den Prozess fortzusetzen, klicke auf den Button:',
     'if_not_you_requested' => 'Wenn du nicht das Passwort zurücksetzen Funktion genutzt hast, dann ignoriere diese Mail einfach.',
     'verification' => 'Verifizierung',
     'verification_successful' => 'Du bist nun verifiziert.',
