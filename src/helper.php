@@ -26,8 +26,8 @@ function isActiveUrl($similarPath, $output = 'active', $actualPath = null)
         $actualPath = \Illuminate\Support\Facades\Request::getPathInfo();
     }
 
-    if($actualPath == '/'){
-        return null;
+    if ($actualPath == '/') {
+        return;
     }
 
     // convert both string are same length
