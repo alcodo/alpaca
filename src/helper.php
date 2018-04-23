@@ -26,6 +26,10 @@ function isActiveUrl($similarPath, $output = 'active', $actualPath = null)
         $actualPath = \Illuminate\Support\Facades\Request::getPathInfo();
     }
 
+    if($actualPath == '/'){
+        return null;
+    }
+
     // convert both string are same length
     $lenghtActualPath = strlen($actualPath);
     $lenghtSimilarPath = strlen($similarPath);
