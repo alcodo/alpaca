@@ -17,9 +17,9 @@ class StatsController extends Controller
         SEO::metatags()->addMeta('robots', 'noindex,nofollow');
 
         // parameter
-        $view = 'month';
+        $view = 'day';
         $format = 'Y-m';
-        $last = 6;
+        $last = 3;
         if (request()->has('view') && ! empty(request()->get('view'))) {
             $view = request()->get('view');
         }
@@ -51,7 +51,7 @@ class StatsController extends Controller
         });
 
         $stats = [];
-        while ($dateAfter->toDateString() < Carbon::now()->toDateString()) {
+        while ($dateAfter->toDateString() <= Carbon::now()->toDateString()) {
             $count = 0;
             if (isset($users[$dateAfter->format($format)])) {
                 $count = $users[$dateAfter->format($format)]->count();
@@ -65,54 +65,6 @@ class StatsController extends Controller
                 $dateAfter->addDay();
             }
         }
-
-        // parse
-//        if ($view === 'month') {
-//
-//            // group
-//            $users = $users->groupBy(function ($item) {
-//                return $item->created_at->format('Y-m');
-//            });
-//
-//            $stats = [];
-//            while ($dateAfter->toDateString() < Carbon::now()->toDateString()) {
-//
-//                $count = 0;
-//                if (isset($users[$dateAfter->format('Y-m')])) {
-//                    $count = $users[$dateAfter->format('Y-m')]->count();
-//                }
-//
-//                $stats[$dateAfter->format('Y-m')] = $count;
-//
-//                    if ($view === 'month') {
-//                $dateAfter->addMonth();
-//                } else {
-//                    $dateAfter->addDay();
-//                }
-//            }
-//
-        ////            dd($stats);
-//
-//        } elseif ($view === 'day') {
-//
-//            // group
-//            $users = $users->groupBy(function ($item) {
-//                return $item->created_at->format('Y-m-d');
-//            });
-//
-//            $stats = [];
-//            while ($dateAfter->toDateString() != Carbon::now()->toDateString()) {
-//
-//                $count = 0;
-//                if (isset($users[$dateAfter->toDateString()])) {
-//                    $count = $users[$dateAfter->toDateString()]->count();
-//                }
-//
-//                $stats[$dateAfter->toDateString()] = $count;
-//                $dateAfter->addDay();
-//            }
-//
-//        }
 
         // stats
         $min = $users->min()->count();
