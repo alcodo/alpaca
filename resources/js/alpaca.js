@@ -39,6 +39,7 @@ $(function () {
 /**
  * Alpaca
  */
+import DoughnutChart from './components/DoughnutChart';
 import PieChart from './components/PieChart';
 import LineChart from './components/LineChart';
 import HorizontalBarChart from './components/HorizontalBarChart';
@@ -47,6 +48,7 @@ import {registerComponents, vueUse} from 'bootstrap-vue/es/utils';
 
 var components = {
     'html-form': HtmlForm,
+    'doughnut-chart': DoughnutChart,
     'line-chart': LineChart,
     'pie-chart': PieChart,
     'horizontal-bar-chart': HorizontalBarChart,
