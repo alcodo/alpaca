@@ -2,6 +2,7 @@
 
 namespace Alpaca;
 
+use Alpaca\Commands\DeleteUnverifyUsersCommand;
 use Alpaca\Commands\HtmlMinCommand;
 use Alpaca\Commands\SendVerifyEmailCommand;
 use Alpaca\Support\Permission\Guard;
@@ -206,6 +207,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             HtmlMinCommand::class,
             SyncPermissionCommand::class,
             SendVerifyEmailCommand::class,
+            DeleteUnverifyUsersCommand::class,
         ]);
     }
 
