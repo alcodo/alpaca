@@ -3,6 +3,7 @@
 namespace Alpaca;
 
 use Alpaca\Commands\HtmlMinCommand;
+use Alpaca\Commands\SendVerifyEmailCommand;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Listeners\HtmlMinListener;
 use Alpaca\Listeners\User\VerifyUser;
@@ -204,6 +205,7 @@ class AlpacaServiceProvider extends AggregateServiceProvider
             PublishTranslationCommand::class,
             HtmlMinCommand::class,
             SyncPermissionCommand::class,
+            SendVerifyEmailCommand::class,
         ]);
     }
 
