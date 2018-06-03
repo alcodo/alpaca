@@ -2,10 +2,10 @@
 
 namespace Alpaca\Commands;
 
-use Alpaca\Models\User;
-use Alpaca\Repositories\UserRepository;
 use Carbon\Carbon;
+use Alpaca\Models\User;
 use Illuminate\Console\Command;
+use Alpaca\Repositories\UserRepository;
 
 class DeleteUnverifyUsersCommand extends Command
 {
@@ -32,19 +32,14 @@ class DeleteUnverifyUsersCommand extends Command
             ->where('created_at', Carbon::now()->subWeeks(3))
             ->get();
 
-        $this->comment('how users are unverified: ' . $users->count);
-
+        $this->comment('how users are unverified: '.$users->count);
 
         $repo = new UserRepository();
 
         $users->each(function ($user, $key) use ($repo) {
-
             $repo->delete($user);
-
         });
-
 
         $this->info('... done');
     }
-
 }
