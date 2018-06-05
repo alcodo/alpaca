@@ -31,7 +31,7 @@ class SendVerifyEmailCommand extends Command
 
         $users = User::where('verified', 0)->get();
 
-        $this->comment('how users must verified: ' . $users->count);
+        $this->comment('how users must verified: ' . $users->count());
 
 
         $repo = new UserRepository();
