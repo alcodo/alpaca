@@ -3,10 +3,10 @@
 namespace Alpaca\Commands;
 
 use Alpaca\Models\User;
+use Illuminate\Console\Command;
 use Alpaca\Notifications\VerifyAccount;
 use Alpaca\Repositories\UserRepository;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Console\Command;
 
 class SendVerifyEmailCommand extends Command
 {
@@ -31,8 +31,7 @@ class SendVerifyEmailCommand extends Command
 
         $users = User::where('verified', 0)->get();
 
-        $this->comment('how users must verified: ' . $users->count());
-
+        $this->comment('how users must verified: '.$users->count());
 
         $repo = new UserRepository();
 
@@ -43,11 +42,8 @@ class SendVerifyEmailCommand extends Command
 
             // send mail
             Notification::send($user, new VerifyAccount($token, $user->name));
-
         });
-
 
         $this->info('... done');
     }
-
 }
