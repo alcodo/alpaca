@@ -27,12 +27,14 @@ class DeleteUnverifyUsersCommand extends Command
     public function handle()
     {
         $this->info('get users...');
+        $this->info('all users: ' . User::count());
+        $this->info('unverified users: ' . User::where('verified', 0)->count());
 
         $users = User::where('verified', 0)
-            ->where('created_at', Carbon::now()->subWeeks(3))
+            ->where('created_at', '<', Carbon::now()->subWeeks(3))
             ->get();
 
-        $this->comment('how users are unverified: '.$users->count());
+        $this->comment('unverified users (older than 3 weeks): '.$users->count());
 
         $repo = new UserRepository();
 
