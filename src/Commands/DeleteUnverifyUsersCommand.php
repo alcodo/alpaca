@@ -32,7 +32,7 @@ class DeleteUnverifyUsersCommand extends Command
             ->where('created_at', Carbon::now()->subWeeks(3))
             ->get();
 
-        $this->comment('how users are unverified: ' . $users->count);
+        $this->comment('how users are unverified: ' . $users->count());
 
 
         $repo = new UserRepository();
