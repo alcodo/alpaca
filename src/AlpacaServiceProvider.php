@@ -2,9 +2,7 @@
 
 namespace Alpaca;
 
-use Alpaca\Commands\DeleteUnverifyUsersCommand;
 use Alpaca\Commands\HtmlMinCommand;
-use Alpaca\Commands\SendVerifyEmailCommand;
 use Alpaca\Support\Permission\Guard;
 use Alpaca\Listeners\HtmlMinListener;
 use Alpaca\Listeners\User\VerifyUser;
@@ -33,6 +31,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Alpaca\Commands\SyncPermissionCommand;
 use Alpaca\Listeners\User\AssignGuestRole;
 use Alpaca\Support\Captcha\CaptchaBuilder;
+use Alpaca\Commands\SendVerifyEmailCommand;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Alpaca\Listeners\User\AssignRegisterRole;
 use Alpaca\Commands\PublishTranslationCommand;
@@ -44,6 +43,7 @@ use Alpaca\Events\Redirect\RedirectWasDeleted;
 use Alpaca\Events\Redirect\RedirectWasUpdated;
 use Alpaca\Listeners\Page\PageSitemapListener;
 use Illuminate\Console\Events\CommandFinished;
+use Alpaca\Commands\DeleteUnverifyUsersCommand;
 use Alpaca\Events\Permission\PermissionWasSaved;
 use Illuminate\Support\AggregateServiceProvider;
 use Alpaca\Listeners\Image\OptimizeImageListener;
