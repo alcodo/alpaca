@@ -91,7 +91,7 @@ class HtmlMinCommand extends Command
             '--remove-empty-attributes',
             '--remove-attribute-quotes',
             '--remove-comments',
-            '--collapse-whitespace',
+//            '--collapse-whitespace',
             '--minify-css',
             '--minify-js',
         ];
