@@ -26,6 +26,16 @@ class HtmlMinCommand extends Command
     protected $htmlminifyerExecuter;
 
     /**
+     * @var string
+     */
+    protected $bladePath;
+
+    /**
+     * @var string
+     */
+    protected $qurantineDir;
+
+    /**
      * Publish constructor.
      */
     public function __construct()
@@ -33,6 +43,12 @@ class HtmlMinCommand extends Command
         parent::__construct();
 
         $this->htmlminifyerExecuter = $this->getHtmlMinifyerExecuter();
+        $this->bladePath = config('view.compiled');
+        $this->qurantineDir = '/tmp/qurantine_' . str_slug(config('app.name'));
+
+        if (!$this->bladePath) {
+            throw new RuntimeException('Bladepath for the views not found.');
+        }
     }
 
     /**
@@ -44,63 +60,72 @@ class HtmlMinCommand extends Command
     {
         $this->info('start minify html...');
 
-        $bladePath = config('view.compiled');
+        $this->createQurantineDir();
 
-        if (! $bladePath) {
-            throw new RuntimeException('Bladepath for the views not found.');
-        }
+        $filesizeBefore = $this->dirSize();
 
-        $filesizeBefore = $this->dirSize($bladePath);
+        $this->checkFiles();
 
-        $this->checkFiles($bladePath);
+        $this->minify();
 
-        $this->minify($bladePath);
+        $this->removeAllQurantineFilesBack();
 
-        $filesizeNow = $this->dirSize($bladePath);
-        $kiloBytesSaved = $filesizeBefore - $filesizeNow;
-        $this->comment('Filesize before: '.$filesizeBefore.'KB Now: '.$filesizeNow.'KB Saved: '.$kiloBytesSaved.'KB');
+        $this->comment($this->getInfoLineAboutDifferentSize($filesizeBefore));
 
         $this->info('successful minified');
     }
 
-    protected function checkFiles($bladePath)
+    protected function checkFiles()
     {
-        foreach (glob($bladePath.'/*.php') as $filepath) {
-            $this->checkFile($filepath);
+        foreach (glob($this->bladePath . '/*.php') as $filepath) {
+            if (is_dir($filepath)) {
+                continue;
+            }
+
+            $content = file_get_contents($filepath);
+
+            // exclude files
+            if ($this->isQuarantineFile($content)) {
+                $this->moveFileToQuarantine($filepath);
+            }
+
+            // incorrect doctype
+            if (strpos($content, '<!doctype>') !== false) {
+                $content = str_replace('<!doctype>', '<!doctype html>', $content);
+                file_put_contents($filepath, $content);
+            }
         }
     }
 
-    protected function checkFile($filepath)
+    protected function isQuarantineFile($content)
     {
-        $content = file_get_contents($filepath);
-
-        // incorrect doctype
-        if (strpos($content, '<!doctype>') !== false) {
-            $content = str_replace('<!doctype>', '<!doctype html>', $content);
-            file_put_contents($filepath, $content);
+        if (strpos($content, 'mail::message') !== false) {
+            return true;
         }
+
+        return false;
     }
 
-    protected function minify($bladePath)
+    protected function minify()
     {
         $parameter = [
-            "--input-dir $bladePath",
-            "--output-dir $bladePath",
+            "--input-dir $this->bladePath",
+            "--output-dir $this->bladePath",
             '--file-ext php',
             '--use-short-doctype',
             '--remove-empty-attributes',
             '--remove-attribute-quotes',
             '--remove-comments',
-//            '--collapse-whitespace',
+            '--collapse-whitespace',
             '--minify-css',
             '--minify-js',
         ];
 
-        $command = $this->htmlminifyerExecuter.' '.implode(' ', $parameter);
+        $command = $this->htmlminifyerExecuter . ' ' . implode(' ', $parameter);
         $process = new Process($command);
         $process->run();
 
-        if (! $process->isSuccessful()) {
+        if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
     }
@@ -122,13 +147,46 @@ class HtmlMinCommand extends Command
         }
     }
 
-    protected function dirSize($directory)
+    protected function dirSize()
     {
         $size = 0;
-        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory)) as $file) {
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($this->bladePath)) as $file) {
             $size += $file->getSize();
         }
 
         return $size;
+    }
+
+    protected function getInfoLineAboutDifferentSize($filesizeBefore)
+    {
+        $filesizeNow = $this->dirSize();
+
+        $kiloBytesSaved = $filesizeBefore - $filesizeNow;
+
+        return 'Filesize before: ' . $filesizeBefore . 'KB Now: ' . $filesizeNow . 'KB Saved: ' . $kiloBytesSaved . 'KB';
+    }
+
+    protected function createQurantineDir(): void
+    {
+        if (file_exists($this->qurantineDir)) {
+            deleteDirectory($this->qurantineDir);
+        }
+
+        mkdir($this->qurantineDir);
+    }
+
+    protected function moveFileToQuarantine($filepath): void
+    {
+        $newFilepath = $this->qurantineDir . '/' . basename($filepath);
+        rename($filepath, $newFilepath);
+    }
+
+    protected function removeAllQurantineFilesBack()
+    {
+        foreach (scandir($this->qurantineDir) as $filename) {
+            if ($filename != '.' && $filename != '..') {
+                rename($this->qurantineDir . '/' . $filename, $this->$bladePath . '/' . $filename);
+            }
+        }
     }
 }
