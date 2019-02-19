@@ -44,9 +44,9 @@ class HtmlMinCommand extends Command
 
         $this->htmlminifyerExecuter = $this->getHtmlMinifyerExecuter();
         $this->bladePath = config('view.compiled');
-        $this->qurantineDir = '/tmp/qurantine_' . str_slug(config('app.name'));
+        $this->qurantineDir = '/tmp/qurantine_'.str_slug(config('app.name'));
 
-        if (!$this->bladePath) {
+        if (! $this->bladePath) {
             throw new RuntimeException('Bladepath for the views not found.');
         }
     }
@@ -77,7 +77,7 @@ class HtmlMinCommand extends Command
 
     protected function checkFiles()
     {
-        foreach (glob($this->bladePath . '/*.php') as $filepath) {
+        foreach (glob($this->bladePath.'/*.php') as $filepath) {
             if (is_dir($filepath)) {
                 continue;
             }
@@ -121,11 +121,11 @@ class HtmlMinCommand extends Command
             '--minify-js',
         ];
 
-        $command = $this->htmlminifyerExecuter . ' ' . implode(' ', $parameter);
+        $command = $this->htmlminifyerExecuter.' '.implode(' ', $parameter);
         $process = new Process($command);
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
     }
@@ -163,7 +163,7 @@ class HtmlMinCommand extends Command
 
         $kiloBytesSaved = $filesizeBefore - $filesizeNow;
 
-        return 'Filesize before: ' . $filesizeBefore . 'KB Now: ' . $filesizeNow . 'KB Saved: ' . $kiloBytesSaved . 'KB';
+        return 'Filesize before: '.$filesizeBefore.'KB Now: '.$filesizeNow.'KB Saved: '.$kiloBytesSaved.'KB';
     }
 
     protected function createQurantineDir(): void
@@ -177,7 +177,7 @@ class HtmlMinCommand extends Command
 
     protected function moveFileToQuarantine($filepath): void
     {
-        $newFilepath = $this->qurantineDir . '/' . basename($filepath);
+        $newFilepath = $this->qurantineDir.'/'.basename($filepath);
         rename($filepath, $newFilepath);
     }
 
@@ -185,7 +185,7 @@ class HtmlMinCommand extends Command
     {
         foreach (scandir($this->qurantineDir) as $filename) {
             if ($filename != '.' && $filename != '..') {
-                rename($this->qurantineDir . '/' . $filename, $this->$bladePath . '/' . $filename);
+                rename($this->qurantineDir.'/'.$filename, $this->$bladePath.'/'.$filename);
             }
         }
     }

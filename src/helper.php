@@ -61,7 +61,7 @@ function deleteDirectory($dir)
             continue;
         }
 
-        if (! deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+        if (! deleteDirectory($dir.DIRECTORY_SEPARATOR.$item)) {
             return false;
         }
     }
