@@ -185,7 +185,7 @@ class HtmlMinCommand extends Command
     {
         foreach (scandir($this->qurantineDir) as $filename) {
             if ($filename != '.' && $filename != '..') {
-                rename($this->qurantineDir.'/'.$filename, $this->$bladePath.'/'.$filename);
+                rename($this->qurantineDir.'/'.$filename, $this->bladePath.'/'.$filename);
             }
         }
     }
