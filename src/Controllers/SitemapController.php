@@ -2,7 +2,6 @@
 
 namespace Alpaca\Controllers;
 
-use Alpaca\Sitemap\Models\Sitemap;
 use Illuminate\Routing\Controller;
 use Alpaca\Events\Sitemap\SitemapIsRequested;
 use Artesaos\SEOTools\Facades\SEOTools as SEO;

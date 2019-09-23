@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Tests\IntegrationTest;
 use Illuminate\Support\Facades\Mail;
 use Alpaca\Mail\ContactFormWasFilled;
-use Msurguy\Honeypot\HoneypotFacade as Honeypot;
 
 class ContactTest extends IntegrationTest
 {

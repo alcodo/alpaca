@@ -3,7 +3,6 @@
 namespace Tests\Feature\User;
 
 use Tests\IntegrationTest;
-use Alpaca\Models\Permission;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Events\Permission\PermissionWasCreated;

@@ -6,7 +6,7 @@ use Alpaca\Models\Image;
 
 class ImageAsHtmlCode
 {
-    public static function render(Image $image): String
+    public static function render(Image $image): string
     {
         $html = view('alpaca::image.image', [
             'image' => $image,

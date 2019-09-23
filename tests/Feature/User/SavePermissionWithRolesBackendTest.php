@@ -4,7 +4,6 @@ namespace Tests\Feature\User;
 
 use Alpaca\Models\Role;
 use Tests\IntegrationTest;
-use Alpaca\Models\Permission;
 use Illuminate\Support\Facades\Event;
 use Alpaca\Repositories\PermissionRepository;
 use Alpaca\Events\Permission\PermissionWasSaved;
